@@ -311,7 +311,7 @@
                                 <br />
                                 <br />
                                 <input type="hidden" id="gallery_cnt" value="1">
-                                <div class="row add-new-browse">
+                                <div class=" add-new-browse">
                                     <div class="form-group gallery-brouser-area">
                                         <div class="proo">
                                             <img src="<?=base_url('assets/images/noimage.png')?>" alt="" style="height:40px; width:45px;" id="display_gal_img1">

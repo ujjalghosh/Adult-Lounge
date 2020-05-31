@@ -1,3 +1,4 @@
+<!-- <a href="#" id="myBtn">Credit Popup</a> -->
 <!--------vote-PopUp---------->
 <div class="vote-bg">
     <div class="vote-container">
@@ -45,6 +46,7 @@
 <!-- Buy Credits -->
 
 <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
 
 <script src="<?=base_url('assets/js/owl.carousel.min.js')?>"></script>
 <script src="<?=base_url('assets/js/sweetalert2.min.js')?>"></script>
@@ -173,10 +175,10 @@
                 dots: true,
             responsive:{
                 0:{
-                    items:2
+                    items:1
                 },
                 600:{
-                    items:4
+                    items:2
                 },
                 1000:{
                     items:6
@@ -249,17 +251,16 @@ var msnry = new Masonry( elem, {
 var msnry = new Masonry( '.grid', {
 });
 */
-
 </script>
 
 
 
 
 <script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script>
-<script src="<?=base_url('dist/index.js')?>"></script>
 
 
-<!-- <script src="<?=base_url('assets/js/modernizr.custom.js')?>"></script>
+
+<script src="<?=base_url('assets/js/modernizr.custom.js')?>"></script>
 <script src="<?= base_url('assets/js/masonry.pkgd.min.js') ?>"></script>
 <script src="<?=base_url('assets/js/imagesloaded.js')?>"></script>
 <script src="<?=base_url('assets/js/classie.js')?>"></script>
@@ -270,7 +271,7 @@ var msnry = new Masonry( '.grid', {
         maxDuration : 0.7,
         viewportFactor : 0.2
     } );
-</script> -->
+</script>
 <script></script>
 </body>
 

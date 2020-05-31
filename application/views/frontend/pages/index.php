@@ -29,11 +29,11 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
 <main class="content-wrapper">
     <section class="content-sec">
         <div class="dash_inner">
-            <div class="dash_nav">
-                <div class="col-2">
-                    <h3>DASHBOARD</h3>
+            <div class="dash_nav row">
+                <div class="col-sm-2">
+                    <h3 class="dashboard-text">DASHBOARD</h3>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-10">
                     <div class="dash_user_info">
                         <div class="dash_user_pic">
                             <?php if($user[0]['image'] != ''){ ?>

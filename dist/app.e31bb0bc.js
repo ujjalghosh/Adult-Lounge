@@ -51387,11 +51387,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-/**
- * A collection of shims that provide minimal functionality of the ES6 collections.
- *
- * These implementations are not meant to be used outside of the ResizeObserver
- * modules as they cover only a limited range of use cases.
+/**
+ * A collection of shims that provide minimal functionality of the ES6 collections.
+ *
+ * These implementations are not meant to be used outside of the ResizeObserver
+ * modules as they cover only a limited range of use cases.
  */
 
 /* eslint-disable require-jsdoc, valid-jsdoc */
@@ -51399,12 +51399,12 @@ var MapShim = function () {
   if (typeof Map !== 'undefined') {
     return Map;
   }
-  /**
-   * Returns index in provided array that matches the specified key.
-   *
-   * @param {Array<Array>} arr
-   * @param {*} key
-   * @returns {number}
+  /**
+   * Returns index in provided array that matches the specified key.
+   *
+   * @param {Array<Array>} arr
+   * @param {*} key
+   * @returns {number}
    */
 
 
@@ -51431,16 +51431,16 @@ var MapShim = function () {
         configurable: true
       }
     };
-    /**
-     * @returns {boolean}
+    /**
+     * @returns {boolean}
      */
 
     prototypeAccessors.size.get = function () {
       return this.__entries__.length;
     };
-    /**
-     * @param {*} key
-     * @returns {*}
+    /**
+     * @param {*} key
+     * @returns {*}
      */
 
 
@@ -51449,10 +51449,10 @@ var MapShim = function () {
       var entry = this.__entries__[index];
       return entry && entry[1];
     };
-    /**
-     * @param {*} key
-     * @param {*} value
-     * @returns {void}
+    /**
+     * @param {*} key
+     * @param {*} value
+     * @returns {void}
      */
 
 
@@ -51465,9 +51465,9 @@ var MapShim = function () {
         this.__entries__.push([key, value]);
       }
     };
-    /**
-     * @param {*} key
-     * @returns {void}
+    /**
+     * @param {*} key
+     * @returns {void}
      */
 
 
@@ -51479,27 +51479,27 @@ var MapShim = function () {
         entries.splice(index, 1);
       }
     };
-    /**
-     * @param {*} key
-     * @returns {void}
+    /**
+     * @param {*} key
+     * @returns {void}
      */
 
 
     anonymous.prototype.has = function (key) {
       return !!~getIndex(this.__entries__, key);
     };
-    /**
-     * @returns {void}
+    /**
+     * @returns {void}
      */
 
 
     anonymous.prototype.clear = function () {
       this.__entries__.splice(0);
     };
-    /**
-     * @param {Function} callback
-     * @param {*} [ctx=null]
-     * @returns {void}
+    /**
+     * @param {Function} callback
+     * @param {*} [ctx=null]
+     * @returns {void}
      */
 
 
@@ -51517,8 +51517,8 @@ var MapShim = function () {
     return anonymous;
   }();
 }();
-/**
- * Detects whether window and document objects are available in current environment.
+/**
+ * Detects whether window and document objects are available in current environment.
  */
 
 
@@ -51540,11 +51540,11 @@ var global$1 = function () {
 
   return Function('return this')();
 }();
-/**
- * A shim for the requestAnimationFrame which falls back to the setTimeout if
- * first one is not supported.
- *
- * @returns {number} Requests' identifier.
+/**
+ * A shim for the requestAnimationFrame which falls back to the setTimeout if
+ * first one is not supported.
+ *
+ * @returns {number} Requests' identifier.
  */
 
 
@@ -51565,24 +51565,24 @@ var requestAnimationFrame$1 = function () {
 
 
 var trailingTimeout = 2;
-/**
- * Creates a wrapper function which ensures that provided callback will be
- * invoked only once during the specified delay period.
- *
- * @param {Function} callback - Function to be invoked after the delay period.
- * @param {number} delay - Delay after which to invoke callback.
- * @returns {Function}
+/**
+ * Creates a wrapper function which ensures that provided callback will be
+ * invoked only once during the specified delay period.
+ *
+ * @param {Function} callback - Function to be invoked after the delay period.
+ * @param {number} delay - Delay after which to invoke callback.
+ * @returns {Function}
  */
 
 var throttle = function (callback, delay) {
   var leadingCall = false,
       trailingCall = false,
       lastCallTime = 0;
-  /**
-   * Invokes the original callback function and schedules new invocation if
-   * the "proxy" was called during current request.
-   *
-   * @returns {void}
+  /**
+   * Invokes the original callback function and schedules new invocation if
+   * the "proxy" was called during current request.
+   *
+   * @returns {void}
    */
 
   function resolvePending() {
@@ -51595,22 +51595,22 @@ var throttle = function (callback, delay) {
       proxy();
     }
   }
-  /**
-   * Callback invoked after the specified delay. It will further postpone
-   * invocation of the original function delegating it to the
-   * requestAnimationFrame.
-   *
-   * @returns {void}
+  /**
+   * Callback invoked after the specified delay. It will further postpone
+   * invocation of the original function delegating it to the
+   * requestAnimationFrame.
+   *
+   * @returns {void}
    */
 
 
   function timeoutCallback() {
     requestAnimationFrame$1(resolvePending);
   }
-  /**
-   * Schedules invocation of the original function.
-   *
-   * @returns {void}
+  /**
+   * Schedules invocation of the original function.
+   *
+   * @returns {void}
    */
 
 
@@ -51647,8 +51647,8 @@ var REFRESH_DELAY = 20; // A list of substrings of CSS properties used to find t
 var transitionKeys = ['top', 'right', 'bottom', 'left', 'width', 'height', 'size', 'weight']; // Check if MutationObserver is available.
 
 var mutationObserverSupported = typeof MutationObserver !== 'undefined';
-/**
- * Singleton controller class which handles updates of ResizeObserver instances.
+/**
+ * Singleton controller class which handles updates of ResizeObserver instances.
  */
 
 var ResizeObserverController = function () {
@@ -51659,29 +51659,29 @@ var ResizeObserverController = function () {
   this.onTransitionEnd_ = this.onTransitionEnd_.bind(this);
   this.refresh = throttle(this.refresh.bind(this), REFRESH_DELAY);
 };
-/**
- * Adds observer to observers list.
- *
- * @param {ResizeObserverSPI} observer - Observer to be added.
- * @returns {void}
+/**
+ * Adds observer to observers list.
+ *
+ * @param {ResizeObserverSPI} observer - Observer to be added.
+ * @returns {void}
  */
 
-/**
- * Holds reference to the controller's instance.
- *
- * @private {ResizeObserverController}
+/**
+ * Holds reference to the controller's instance.
+ *
+ * @private {ResizeObserverController}
  */
 
-/**
- * Keeps reference to the instance of MutationObserver.
- *
- * @private {MutationObserver}
+/**
+ * Keeps reference to the instance of MutationObserver.
+ *
+ * @private {MutationObserver}
  */
 
-/**
- * Indicates whether DOM listeners have been added.
- *
- * @private {boolean}
+/**
+ * Indicates whether DOM listeners have been added.
+ *
+ * @private {boolean}
  */
 
 
@@ -51695,11 +51695,11 @@ ResizeObserverController.prototype.addObserver = function (observer) {
     this.connect_();
   }
 };
-/**
- * Removes observer from observers list.
- *
- * @param {ResizeObserverSPI} observer - Observer to be removed.
- * @returns {void}
+/**
+ * Removes observer from observers list.
+ *
+ * @param {ResizeObserverSPI} observer - Observer to be removed.
+ * @returns {void}
  */
 
 
@@ -51716,11 +51716,11 @@ ResizeObserverController.prototype.removeObserver = function (observer) {
     this.disconnect_();
   }
 };
-/**
- * Invokes the update of observers. It will continue running updates insofar
- * it detects changes.
- *
- * @returns {void}
+/**
+ * Invokes the update of observers. It will continue running updates insofar
+ * it detects changes.
+ *
+ * @returns {void}
  */
 
 
@@ -51732,13 +51732,13 @@ ResizeObserverController.prototype.refresh = function () {
     this.refresh();
   }
 };
-/**
- * Updates every observer from observers list and notifies them of queued
- * entries.
- *
- * @private
- * @returns {boolean} Returns "true" if any observer has detected changes in
- *  dimensions of it's elements.
+/**
+ * Updates every observer from observers list and notifies them of queued
+ * entries.
+ *
+ * @private
+ * @returns {boolean} Returns "true" if any observer has detected changes in
+ *  dimensions of it's elements.
  */
 
 
@@ -51757,11 +51757,11 @@ ResizeObserverController.prototype.updateObservers_ = function () {
   });
   return activeObservers.length > 0;
 };
-/**
- * Initializes DOM listeners.
- *
- * @private
- * @returns {void}
+/**
+ * Initializes DOM listeners.
+ *
+ * @private
+ * @returns {void}
  */
 
 
@@ -51793,11 +51793,11 @@ ResizeObserverController.prototype.connect_ = function () {
 
   this.connected_ = true;
 };
-/**
- * Removes DOM listeners.
- *
- * @private
- * @returns {void}
+/**
+ * Removes DOM listeners.
+ *
+ * @private
+ * @returns {void}
  */
 
 
@@ -51823,12 +51823,12 @@ ResizeObserverController.prototype.disconnect_ = function () {
   this.mutationEventsAdded_ = false;
   this.connected_ = false;
 };
-/**
- * "Transitionend" event handler.
- *
- * @private
- * @param {TransitionEvent} event
- * @returns {void}
+/**
+ * "Transitionend" event handler.
+ *
+ * @private
+ * @param {TransitionEvent} event
+ * @returns {void}
  */
 
 
@@ -51844,10 +51844,10 @@ ResizeObserverController.prototype.onTransitionEnd_ = function (ref) {
     this.refresh();
   }
 };
-/**
- * Returns instance of the ResizeObserverController.
- *
- * @returns {ResizeObserverController}
+/**
+ * Returns instance of the ResizeObserverController.
+ *
+ * @returns {ResizeObserverController}
  */
 
 
@@ -51860,12 +51860,12 @@ ResizeObserverController.getInstance = function () {
 };
 
 ResizeObserverController.instance_ = null;
-/**
- * Defines non-writable/enumerable properties of the provided target object.
- *
- * @param {Object} target - Object for which to define properties.
- * @param {Object} props - Properties to be defined.
- * @returns {Object} Target object.
+/**
+ * Defines non-writable/enumerable properties of the provided target object.
+ *
+ * @param {Object} target - Object for which to define properties.
+ * @param {Object} props - Properties to be defined.
+ * @returns {Object} Target object.
  */
 
 var defineConfigurable = function (target, props) {
@@ -51881,11 +51881,11 @@ var defineConfigurable = function (target, props) {
 
   return target;
 };
-/**
- * Returns the global object associated with provided element.
- *
- * @param {Object} target
- * @returns {Object}
+/**
+ * Returns the global object associated with provided element.
+ *
+ * @param {Object} target
+ * @returns {Object}
  */
 
 
@@ -51901,22 +51901,22 @@ var getWindowOf = function (target) {
 
 
 var emptyRect = createRectInit(0, 0, 0, 0);
-/**
- * Converts provided string to a number.
- *
- * @param {number|string} value
- * @returns {number}
+/**
+ * Converts provided string to a number.
+ *
+ * @param {number|string} value
+ * @returns {number}
  */
 
 function toFloat(value) {
   return parseFloat(value) || 0;
 }
-/**
- * Extracts borders size from provided styles.
- *
- * @param {CSSStyleDeclaration} styles
- * @param {...string} positions - Borders positions (top, right, ...)
- * @returns {number}
+/**
+ * Extracts borders size from provided styles.
+ *
+ * @param {CSSStyleDeclaration} styles
+ * @param {...string} positions - Borders positions (top, right, ...)
+ * @returns {number}
  */
 
 
@@ -51931,11 +51931,11 @@ function getBordersSize(styles) {
     return size + toFloat(value);
   }, 0);
 }
-/**
- * Extracts paddings sizes from provided styles.
- *
- * @param {CSSStyleDeclaration} styles
- * @returns {Object} Paddings box.
+/**
+ * Extracts paddings sizes from provided styles.
+ *
+ * @param {CSSStyleDeclaration} styles
+ * @returns {Object} Paddings box.
  */
 
 
@@ -51951,12 +51951,12 @@ function getPaddings(styles) {
 
   return paddings;
 }
-/**
- * Calculates content rectangle of provided SVG element.
- *
- * @param {SVGGraphicsElement} target - Element content rectangle of which needs
- *      to be calculated.
- * @returns {DOMRectInit}
+/**
+ * Calculates content rectangle of provided SVG element.
+ *
+ * @param {SVGGraphicsElement} target - Element content rectangle of which needs
+ *      to be calculated.
+ * @returns {DOMRectInit}
  */
 
 
@@ -51964,11 +51964,11 @@ function getSVGContentRect(target) {
   var bbox = target.getBBox();
   return createRectInit(0, 0, bbox.width, bbox.height);
 }
-/**
- * Calculates content rectangle of provided HTMLElement.
- *
- * @param {HTMLElement} target - Element for which to calculate the content rectangle.
- * @returns {DOMRectInit}
+/**
+ * Calculates content rectangle of provided HTMLElement.
+ *
+ * @param {HTMLElement} target - Element for which to calculate the content rectangle.
+ * @returns {DOMRectInit}
  */
 
 
@@ -52044,11 +52044,11 @@ function getHTMLElementContentRect(target) {
 
   return createRectInit(paddings.left, paddings.top, width, height);
 }
-/**
- * Checks whether provided element is an instance of the SVGGraphicsElement.
- *
- * @param {Element} target - Element to be checked.
- * @returns {boolean}
+/**
+ * Checks whether provided element is an instance of the SVGGraphicsElement.
+ *
+ * @param {Element} target - Element to be checked.
+ * @returns {boolean}
  */
 
 
@@ -52068,22 +52068,22 @@ var isSVGGraphicsElement = function () {
     return target instanceof getWindowOf(target).SVGElement && typeof target.getBBox === 'function';
   };
 }();
-/**
- * Checks whether provided element is a document element (<html>).
- *
- * @param {Element} target - Element to be checked.
- * @returns {boolean}
+/**
+ * Checks whether provided element is a document element (<html>).
+ *
+ * @param {Element} target - Element to be checked.
+ * @returns {boolean}
  */
 
 
 function isDocumentElement(target) {
   return target === getWindowOf(target).document.documentElement;
 }
-/**
- * Calculates an appropriate content rectangle for provided html or svg element.
- *
- * @param {Element} target - Element content rectangle of which needs to be calculated.
- * @returns {DOMRectInit}
+/**
+ * Calculates an appropriate content rectangle for provided html or svg element.
+ *
+ * @param {Element} target - Element content rectangle of which needs to be calculated.
+ * @returns {DOMRectInit}
  */
 
 
@@ -52098,12 +52098,12 @@ function getContentRect(target) {
 
   return getHTMLElementContentRect(target);
 }
-/**
- * Creates rectangle with an interface of the DOMRectReadOnly.
- * Spec: https://drafts.fxtf.org/geometry/#domrectreadonly
- *
- * @param {DOMRectInit} rectInit - Object with rectangle's x/y coordinates and dimensions.
- * @returns {DOMRectReadOnly}
+/**
+ * Creates rectangle with an interface of the DOMRectReadOnly.
+ * Spec: https://drafts.fxtf.org/geometry/#domrectreadonly
+ *
+ * @param {DOMRectInit} rectInit - Object with rectangle's x/y coordinates and dimensions.
+ * @returns {DOMRectReadOnly}
  */
 
 
@@ -52128,15 +52128,15 @@ function createReadOnlyRect(ref) {
   });
   return rect;
 }
-/**
- * Creates DOMRectInit object based on the provided dimensions and the x/y coordinates.
- * Spec: https://drafts.fxtf.org/geometry/#dictdef-domrectinit
- *
- * @param {number} x - X coordinate.
- * @param {number} y - Y coordinate.
- * @param {number} width - Rectangle's width.
- * @param {number} height - Rectangle's height.
- * @returns {DOMRectInit}
+/**
+ * Creates DOMRectInit object based on the provided dimensions and the x/y coordinates.
+ * Spec: https://drafts.fxtf.org/geometry/#dictdef-domrectinit
+ *
+ * @param {number} x - X coordinate.
+ * @param {number} y - Y coordinate.
+ * @param {number} width - Rectangle's width.
+ * @param {number} height - Rectangle's height.
+ * @returns {DOMRectInit}
  */
 
 
@@ -52148,9 +52148,9 @@ function createRectInit(x, y, width, height) {
     height: height
   };
 }
-/**
- * Class that is responsible for computations of the content rectangle of
- * provided DOM element and for keeping track of it's changes.
+/**
+ * Class that is responsible for computations of the content rectangle of
+ * provided DOM element and for keeping track of it's changes.
  */
 
 
@@ -52160,23 +52160,23 @@ var ResizeObservation = function (target) {
   this.contentRect_ = createRectInit(0, 0, 0, 0);
   this.target = target;
 };
-/**
- * Updates content rectangle and tells whether it's width or height properties
- * have changed since the last broadcast.
- *
- * @returns {boolean}
+/**
+ * Updates content rectangle and tells whether it's width or height properties
+ * have changed since the last broadcast.
+ *
+ * @returns {boolean}
  */
 
-/**
- * Reference to the last observed content rectangle.
- *
- * @private {DOMRectInit}
+/**
+ * Reference to the last observed content rectangle.
+ *
+ * @private {DOMRectInit}
  */
 
-/**
- * Broadcasted width of content rectangle.
- *
- * @type {number}
+/**
+ * Broadcasted width of content rectangle.
+ *
+ * @type {number}
  */
 
 
@@ -52185,11 +52185,11 @@ ResizeObservation.prototype.isActive = function () {
   this.contentRect_ = rect;
   return rect.width !== this.broadcastWidth || rect.height !== this.broadcastHeight;
 };
-/**
- * Updates 'broadcastWidth' and 'broadcastHeight' properties with a data
- * from the corresponding properties of the last observed content rectangle.
- *
- * @returns {DOMRectInit} Last observed content rectangle.
+/**
+ * Updates 'broadcastWidth' and 'broadcastHeight' properties with a data
+ * from the corresponding properties of the last observed content rectangle.
+ *
+ * @returns {DOMRectInit} Last observed content rectangle.
  */
 
 
@@ -52226,31 +52226,31 @@ var ResizeObserverSPI = function (callback, controller, callbackCtx) {
   this.controller_ = controller;
   this.callbackCtx_ = callbackCtx;
 };
-/**
- * Starts observing provided element.
- *
- * @param {Element} target - Element to be observed.
- * @returns {void}
+/**
+ * Starts observing provided element.
+ *
+ * @param {Element} target - Element to be observed.
+ * @returns {void}
  */
 
-/**
- * Registry of the ResizeObservation instances.
- *
- * @private {Map<Element, ResizeObservation>}
+/**
+ * Registry of the ResizeObservation instances.
+ *
+ * @private {Map<Element, ResizeObservation>}
  */
 
-/**
- * Public ResizeObserver instance which will be passed to the callback
- * function and used as a value of it's "this" binding.
- *
- * @private {ResizeObserver}
+/**
+ * Public ResizeObserver instance which will be passed to the callback
+ * function and used as a value of it's "this" binding.
+ *
+ * @private {ResizeObserver}
  */
 
-/**
- * Collection of resize observations that have detected changes in dimensions
- * of elements.
- *
- * @private {Array<ResizeObservation>}
+/**
+ * Collection of resize observations that have detected changes in dimensions
+ * of elements.
+ *
+ * @private {Array<ResizeObservation>}
  */
 
 
@@ -52279,11 +52279,11 @@ ResizeObserverSPI.prototype.observe = function (target) {
 
   this.controller_.refresh();
 };
-/**
- * Stops observing provided element.
- *
- * @param {Element} target - Element to stop observing.
- * @returns {void}
+/**
+ * Stops observing provided element.
+ *
+ * @param {Element} target - Element to stop observing.
+ * @returns {void}
  */
 
 
@@ -52313,10 +52313,10 @@ ResizeObserverSPI.prototype.unobserve = function (target) {
     this.controller_.removeObserver(this);
   }
 };
-/**
- * Stops observing all elements.
- *
- * @returns {void}
+/**
+ * Stops observing all elements.
+ *
+ * @returns {void}
  */
 
 
@@ -52325,11 +52325,11 @@ ResizeObserverSPI.prototype.disconnect = function () {
   this.observations_.clear();
   this.controller_.removeObserver(this);
 };
-/**
- * Collects observation instances the associated element of which has changed
- * it's content rectangle.
- *
- * @returns {void}
+/**
+ * Collects observation instances the associated element of which has changed
+ * it's content rectangle.
+ *
+ * @returns {void}
  */
 
 
@@ -52342,11 +52342,11 @@ ResizeObserverSPI.prototype.gatherActive = function () {
     }
   });
 };
-/**
- * Invokes initial callback function with a list of ResizeObserverEntry
- * instances collected from active resize observations.
- *
- * @returns {void}
+/**
+ * Invokes initial callback function with a list of ResizeObserverEntry
+ * instances collected from active resize observations.
+ *
+ * @returns {void}
  */
 
 
@@ -52364,20 +52364,20 @@ ResizeObserverSPI.prototype.broadcastActive = function () {
   this.callback_.call(ctx, entries, ctx);
   this.clearActive();
 };
-/**
- * Clears the collection of active observations.
- *
- * @returns {void}
+/**
+ * Clears the collection of active observations.
+ *
+ * @returns {void}
  */
 
 
 ResizeObserverSPI.prototype.clearActive = function () {
   this.activeObservations_.splice(0);
 };
-/**
- * Tells whether observer has active observations.
- *
- * @returns {boolean}
+/**
+ * Tells whether observer has active observations.
+ *
+ * @returns {boolean}
  */
 
 
@@ -52389,9 +52389,9 @@ ResizeObserverSPI.prototype.hasActive = function () {
 
 
 var observers = typeof WeakMap !== 'undefined' ? new WeakMap() : new MapShim();
-/**
- * ResizeObserver API. Encapsulates the ResizeObserver SPI implementation
- * exposing only those methods and properties that are defined in the spec.
+/**
+ * ResizeObserver API. Encapsulates the ResizeObserver SPI implementation
+ * exposing only those methods and properties that are defined in the spec.
  */
 
 var ResizeObserver = function (callback) {
@@ -58622,14 +58622,14 @@ var Span = function Span(props) {
 
 
 var CLASS_PREFIX = 'react-images';
-/**
- String representation of component state for styling with class names.
-
- Expects an array of strings OR a string/object pair:
- - className(['comp', 'comp-arg', 'comp-arg-2'])
-   @returns 'react-images__comp react-images__comp-arg react-images__comp-arg-2'
- - className('comp', { some: true, state: false })
-   @returns 'react-images__comp react-images__comp--some'
+/**
+ String representation of component state for styling with class names.
+
+ Expects an array of strings OR a string/object pair:
+ - className(['comp', 'comp-arg', 'comp-arg-2'])
+   @returns 'react-images__comp react-images__comp-arg react-images__comp-arg-2'
+ - className('comp', { some: true, state: false })
+   @returns 'react-images__comp react-images__comp--some'
 */
 
 function className(name, state) {

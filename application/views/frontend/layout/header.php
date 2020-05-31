@@ -5,15 +5,16 @@ $controller = $this->router->fetch_class();
 $method = $this->router->fetch_method();
 $active_url = $controller.'/'.$method;
 ?>
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+<head>
+<meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Adult Lounge</title>
 <meta property="og:title" content="Adult Lounge">
 <meta name="author" content="Basudev Mondal">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link href="<?=base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?=base_url('assets/css/jquery.mCustomScrollbar.css')?>">
-<!--<link href="<?=base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" />-->
+
 <link rel="stylesheet" href="<?=base_url()?>backend/node_modules/bootstrap-utilities/bootstrap-utilities.css">
 <link href="<?=base_url('assets/css/owl.carousel.min.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url('assets/css/owl.theme.default.css')?>" rel="stylesheet" type="text/css" />
@@ -25,7 +26,7 @@ $active_url = $controller.'/'.$method;
 <link href="<?=base_url('assets/css/component.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url('assets/css/style.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url('assets/css/custom.css')?>" rel="stylesheet" type="text/css" />
-<link href="<?=base_url('dist/index.css')?>" rel="stylesheet" type="text/css" />
+<link href="<?=base_url('assets/css/responsive.css')?>" rel="stylesheet" type="text/css" />
 <script>
         var base_url = "<?=base_url()?>";
         var API_URL = "<?=base_url()?>api/v1/";

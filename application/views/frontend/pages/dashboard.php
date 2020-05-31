@@ -102,7 +102,7 @@
 	<section class="content-sec">
 		<div class="dash_inner">
 			<div class="dash_nav">
-				<div class="col-2">
+				<div class="col-sm-2">
 					<h3>DASHBOARD</h3>
 				</div>
 				<div class="col-2">
