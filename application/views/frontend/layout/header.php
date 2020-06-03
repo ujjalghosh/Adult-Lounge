@@ -3,7 +3,7 @@
 <?php
 $controller = $this->router->fetch_class();
 $method = $this->router->fetch_method();
-$active_url = $controller.'/'.$method;
+$active_url = $controller . '/' . $method;
 ?>
 <head>
 <meta charset="UTF-8" />
@@ -31,7 +31,7 @@ $active_url = $controller.'/'.$method;
         var base_url = "<?=base_url()?>";
         var API_URL = "<?=base_url()?>api/v1/";
         var UserId = "<?=$this->session->userdata('UserId')?>";
-        var performerID = "<?php echo $this->uri->segment('2');?>";
+        var performerID = "<?php echo $this->uri->segment('2'); ?>";
         var customerID = UserId;
         var UserType = "<?=$this->session->userdata('UserType')?>";
        // mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
@@ -51,28 +51,28 @@ $active_url = $controller.'/'.$method;
           <ul class="inline-styled text-right">
             <!--<li><a href="javascript:void(0)" title="country"><img src="images/icon-flag.png" alt="uk"></a></li>-->
             <li><a href="<?=base_url()?>" title="Home"><img src="<?=base_url('assets/images/icon-home.png')?>" alt="Home"></a></li>
-            <?php if($this->session->userdata('UserId') || $this->session->userdata('UserId') != ''){ ?>
+            <?php if ($this->session->userdata('UserId') || $this->session->userdata('UserId') != '') {?>
             <li> <a href="<?=base_url('profile')?>" title="My Account"> <img src="<?=base_url('assets/images/icon-user.png')?>" alt="My Account"> </a> </li>
-            <?php } ?>
+            <?php }?>
             <!--<li><a href="javascript:void(0)" title="Briefcase"><img src="images/icon-briefcase.png" alt="briefcase"></a></li>-->
-            <?php if($this->session->userdata('UserType') && ($this->session->userdata('UserType') == 1 || $this->session->userdata('UserType') == 2)){ ?>
+            <?php if ($this->session->userdata('UserType') && ($this->session->userdata('UserType') == 1 || $this->session->userdata('UserType') == 2)) {?>
             <li> <a href="javascript:void(0);" id="msg" class="msg" title="Chat"> <i class="fa fa-comments" aria-hidden="true"></i> </a> </li>
-            <?php } ?>
-            <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1){ ?>
+            <?php }?>
+            <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
             <li> <a href="<?=base_url('personal-details')?>" title="Setting"> <img src="<?=base_url('assets/images/icon-setting.png')?>" alt="setting"> </a> </li>
-            <?php } ?>
+            <?php }?>
           </ul>
         </div>
         <div class="hdr-rwidgt">
           <div class="btn-group">
-            <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1){ ?>
+            <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
             <a href="javascript:void(0);" id="myBtn" class="btn buybtn"><img src="<?=base_url('assets/images/icon-buycrd.png')?>" alt="BUY CREDITS" /> BUY CREDITS </a>
-            <?php } ?>
-            <?php if(!$this->session->userdata('UserId') || $this->session->userdata('UserId') == ''){ ?>
+            <?php }?>
+            <?php if (!$this->session->userdata('UserId') || $this->session->userdata('UserId') == '') {?>
             <a href="<?=base_url('signup')?>" class="btn logbtn"><img src="<?=base_url('assets/images/icon-lock.png')?>" alt="signup" /> SIGNUP</a> <a href="<?=base_url('login')?>" class="btn logbtn"><img src="<?=base_url('assets/images/icon-lock.png')?>" alt="login" /> LOGIN</a>
-            <?php }else{ ?>
+            <?php } else {?>
             <a href="<?=base_url('logout')?>" class="btn logbtn"><img src="<?=base_url('assets/images/icon-lock.png')?>" alt="signup" /> LOGOUT</a>
-            <?php } ?>
+            <?php }?>
           </div>
         </div>
       </div>
@@ -80,31 +80,32 @@ $active_url = $controller.'/'.$method;
     <section style="display: block;" class="header-bottom">
       <nav>
         <ul>
-        <?php if(!$this->session->userdata('UserType')) { ?>
+        <?php if (!$this->session->userdata('UserType')) {
+	?>
             <li>
               <a href="javascript:void(0)">Categories</a>
-                <?php if(!empty($categories)){ ?>
+                <?php if (!empty($categories)) {?>
                   <div class="submenu">
                     <h3>Filter By: Catagories</h3>
                     <ul>
-                      <?php foreach($categories as $category){ ?>
-                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$category->name.''));?>" href="javascript:void(0);">#
+                      <?php foreach ($categories as $category) {?>
+                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>" href="javascript:void(0);">#
                         <?=$category->name?>
                         </a></li>
-                      <?php } ?>
+                      <?php }?>
                     </ul>
                   </div>
-                <?php } ?>
+                <?php }?>
             </li>
             <li><a href="javascript:void(0);">Show Types</a>
               <div class="submenu submenu-2">
                 <h3>Filter By: Show Type</h3>
                 <ul>
-                  <?php if(!empty($show)) { 
-                    foreach($show as $sh) { ?>
-                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$sh->name.''));?>" href="javascript:;"><?php echo $sh->name;?></a></li>
-                    <?php } ?>
-                  <?php } ?>
+                  <?php if (!empty($show)) {
+		foreach ($show as $sh) {?>
+                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" href="javascript:;"><?php echo $sh->name; ?></a></li>
+                    <?php }?>
+                  <?php }?>
                 </ul>
               </div>
             </li>
@@ -123,7 +124,7 @@ $active_url = $controller.'/'.$method;
                         <div class="u-posRelative">
                           <input class="Typeahead-hint" id="search" type="text" tabindex="-1" readonly>
                           <input class="Typeahead-input" id="demo-input" type="text" name="q" placeholder="Search all girls cams...">
-                          <img class="Typeahead-spinner" src="<?php echo base_url('assets/plugins/typeahead/img/spinner.gif');?>">
+                          <img class="Typeahead-spinner" src="<?php echo base_url('assets/plugins/typeahead/img/spinner.gif'); ?>">
                         </div>
                         <div class="Typeahead-menu"></div>
                       </div>
@@ -144,40 +145,41 @@ $active_url = $controller.'/'.$method;
             <span class="grid"><img src="<?=base_url('assets/images/icon-grid.png')?>" alt="grid"/></span>
         </div>
       </div>
-        <?php } elseif($this->session->userdata('UserType') && $this->session->userdata('UserType') != 2) {?>
+        <?php } elseif ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 2) {
+	?>
           <li>
               <a href="javascript:void(0)">Categories</a>
-                <?php if(!empty($categories)){ ?>
+                <?php if (!empty($categories)) {?>
                   <div class="submenu">
                     <h3>Filter By: Catagories</h3>
                     <ul>
-                      <?php foreach($categories as $category){ ?>
-                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$category->name.''));?>">#
+                      <?php foreach ($categories as $category) {?>
+                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>">#
                         <?=$category->name?>
                         </a></li>
-                      <?php } ?>
+                      <?php }?>
                     </ul>
                   </div>
-                <?php } ?>
+                <?php }?>
             </li>
             <li><a href="javascript:void(0);">Show Types</a>
               <div class="submenu submenu-2">
                 <h3>Filter By: Show Type</h3>
                 <ul>
-                  <?php if(!empty($show)) { 
-                    foreach($show as $sh) { ?>
-                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$sh->name.''));?>" href="javascript:;"><?php echo $sh->name;?></a></li>
-                    <?php } ?>
-                    <?php } ?>
+                  <?php if (!empty($show)) {
+		foreach ($show as $sh) {?>
+                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" href="javascript:;"><?php echo $sh->name; ?></a></li>
+                    <?php }?>
+                    <?php }?>
                 </ul>
               </div>
             </li>
             <li><a href="<?=base_url('awards')?>">Awards</a></li>
             <li><a href="<?=base_url('loyalty')?>">Loyalty</a></li>
-            
-        <?php } ?>
-            
-          <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) { ?>
+
+        <?php }?>
+
+          <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) {?>
             <li><a href="<?=base_url('content')?>">CONTENT</a></li>
             <li><a href="<?=base_url('manage-users')?>">MANAGE USERS</a></li>
             <li><a href="<?=base_url('financial')?>">FINANCIAL</a></li>
@@ -188,13 +190,13 @@ $active_url = $controller.'/'.$method;
             <li><a href="<?=base_url('gifts')?>">GIFTS</a></li>
           <!--<li><a href="<?=base_url('settings')?>">SETTINGS</a></li>-->
             <li><a href="<?=base_url('help')?>">HELP</a></li>
-            <?php if($this->session->userdata('AccountVerified') == 'No') { ?>
+            <?php if ($this->session->userdata('AccountVerified') == 'No') {?>
             <li><a href="<?=base_url('verification')?>">Verification</a></li>
-          <?php } ?>
-          <?php } ?>
+          <?php }?>
+          <?php }?>
         </ul>
       </nav>
-      <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1){ ?>
+      <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
       <div class="right-filters">
       	<div class="search">
         	<!--<span><img src="<?=base_url('assets/images/icon-search.png')?>" alt="search"/></span>-->
@@ -208,7 +210,7 @@ $active_url = $controller.'/'.$method;
                         <div class="u-posRelative">
                           <input class="Typeahead-hint" id="search" type="text" tabindex="-1" readonly>
                           <input class="Typeahead-input" id="demo-input" type="text" name="q" placeholder="Search all girls cams...">
-                          <img class="Typeahead-spinner" src="<?php echo base_url('assets/plugins/typeahead/img/spinner.gif');?>">
+                          <img class="Typeahead-spinner" src="<?php echo base_url('assets/plugins/typeahead/img/spinner.gif'); ?>">
                         </div>
                         <div class="Typeahead-menu"></div>
                       </div>
@@ -229,7 +231,7 @@ $active_url = $controller.'/'.$method;
             <span class="grid"><img src="<?=base_url('assets/images/icon-grid.png')?>" alt="grid"/></span>
         </div>
       </div>
-        <?php } ?>
+        <?php }?>
     </section>
   </div>
 </section>
@@ -240,7 +242,7 @@ $active_url = $controller.'/'.$method;
       <span id="msg-close">&times;</span> </div>
     <div class="msg-body">
       <div class="msg-body-nav"> <span>Recent Messages</span>
-        <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1){ ?>
+        <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
         <ul id="srchMsg">
           <li> <a href="javascript:void(0)" class="btn"> <i class="fa fa-search m-srch" onclick="openSearch('Search Messages')" aria-hidden="true"></i> </a> </li>
           <li> <a href="javascript:void(0)" class="btn"> <i class="fa fa-plus m-new" onclick="openSearch('New Message')" aria-hidden="true"></i> </a> </li>
@@ -250,216 +252,219 @@ $active_url = $controller.'/'.$method;
         <ul class="suggList hide_content">
         </ul>
         </span>
-        <?php } ?>
+        <?php }?>
       </div>
       <div class="msg-list"></div>
     </div>
-    
+
     <!--<div class="msg-foo">
-					<p> LEGAL DISCLAIMER: 
+					<p> LEGAL DISCLAIMER:
 						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lorem nisl. Aliquam erat volutpat. Proin vulputate enim ac hendrerit sagittis. </span>
 					</p>
-				</div>--> 
-    
+				</div>-->
+
   </div>
 </section>
-<?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 2) { ?>
-<?php $this->load->view('partials/popups/video-upload') ?>
-<?php } ?>
-<?php $this->load->view('partials/popups/common-popup') ?>
-<?php if($header == 'one'){ ?>
+<?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 2) {?>
+<?php $this->load->view('partials/popups/video-upload')?>
+<?php }?>
+<?php $this->load->view('partials/popups/common-popup')?>
+<?php if ($header == 'one') {
+	?>
 <main class="content-wrapper">
 <aside>
   <div class="sidebar">
-    <?php if($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1){ ?>
+    <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
       <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS'));?>" href="javascript:void(0);" >GIRLS</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS'));?>" href="javascript:void(0);" >BOYS</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES'));?>"  href="javascript:void(0);" >COUPLES</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS'));?>"  href="javascript:void(0);" >TV/TS</a></li>    
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
           </ul>
       </li>
       <?php
-                        if(!empty($categories)){
-                        ?>
+if (!empty($categories)) {
+		?>
       <li class="performers"><a href="javascript:void(0);">CATEGORIES</a>
         <ul>
           <?php
-                                foreach($categories as $cat){
-                                ?>
-          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$cat->name.''));?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', ''.$cat->name.''));?>');">#
+foreach ($categories as $cat) {
+			?>
+          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
             <?=$cat->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+		?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($show)){
-                        ?>
+}
+		if (!empty($show)) {
+			?>
       <li class="types"><a href="javascript:void(0);">SHOW TYPES</a>
         <ul>
           <?php
-                                foreach($show as $shw){
-                                ?>
-          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$shw->name.''));?>" href="javascript:void(0);">#
+foreach ($show as $shw) {
+				?>
+          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
             <?=$shw->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($age)){
-                        ?>
+}
+		if (!empty($age)) {
+			?>
       <li class="age"><a href="javascript:void(0);">AGE</a>
         <ul>
-          <?php foreach($age as $ag){ ?>
+          <?php foreach ($age as $ag) {?>
           <li> <a class="_filter" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
             <?=$ag->age?>
             </a> </li>
-          <?php } ?>
+          <?php }?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($will)){
-                        ?>
+}
+		if (!empty($will)) {
+			?>
       <li class="willingers"><a href="javascript:void(0);">WILLINGNESS</a>
         <ul>
           <?php
-                                foreach($will as $wll){
-                                ?>
-          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$wll->name.''));?>" href="javascript:void(0);">#
+foreach ($will as $wll) {
+				?>
+          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
             <?=$wll->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($appearence)){
-                        ?>
+}
+		if (!empty($appearence)) {
+			?>
       <li class="appearance"><a  href="javascript:void(0);">APPEARANCE</a>
         <ul>
           <?php
-                                foreach($appearence as $aprnc){
-                                ?>
-          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$aprnc->name.''));?>" href="javascript:void(0);">#
+foreach ($appearence as $aprnc) {
+				?>
+          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
             <?=$aprnc->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        ?>
+}
+		?>
     </ul>
-    <?php }else{ ?>
+    <?php } else {
+// for non performer
+		?>
     <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS'));?>" href="javascript:void(0);" >GIRLS</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS'));?>" href="javascript:void(0);" >BOYS</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES'));?>"  href="javascript:void(0);" >COUPLES</a></li>              
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS'));?>"  href="javascript:void(0);" >TV/TS</a></li>    
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
+              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
           </ul>
       </li>
       <?php
-                        if(!empty($categories)){
-                        ?>
+if (!empty($categories)) {
+			?>
       <li class="performers"><a href="javascript:void(0);">CATEGORIES</a>
         <ul>
           <?php
-                                foreach($categories as $cat){
-                                ?>
-          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$cat->name.''));?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', ''.$cat->name.''));?>');">#
+foreach ($categories as $cat) {
+				?>
+          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
             <?=$cat->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($show)){
-                        ?>
+}
+		if (!empty($show)) {
+			?>
       <li class="types"><a href="javascript:void(0);">SHOW TYPES</a>
         <ul>
           <?php
-                                foreach($show as $shw){
-                                ?>
-          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$shw->name.''));?>" href="javascript:void(0);">#
+foreach ($show as $shw) {
+				?>
+          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
             <?=$shw->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($age)){
-                        ?>
+}
+		if (!empty($age)) {
+			?>
       <li class="age"><a href="javascript:void(0);">AGE</a>
         <ul>
-          <?php foreach($age as $ag){ ?>
+          <?php foreach ($age as $ag) {?>
           <li> <a class="_filter" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
             <?=$ag->age?>
             </a> </li>
-          <?php } ?>
+          <?php }?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($will)){
-                        ?>
+}
+		if (!empty($will)) {
+			?>
       <li class="willingers"><a href="javascript:void(0);">WILLINGNESS</a>
         <ul>
           <?php
-                                foreach($will as $wll){
-                                ?>
-          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$wll->name.''));?>" href="javascript:void(0);">#
+foreach ($will as $wll) {
+				?>
+          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
             <?=$wll->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        if(!empty($appearence)){
-                        ?>
+}
+		if (!empty($appearence)) {
+			?>
       <li class="appearance"><a  href="javascript:void(0);">APPEARANCE</a>
         <ul>
           <?php
-                                foreach($appearence as $aprnc){
-                                ?>
-          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', ''.$aprnc->name.''));?>" href="javascript:void(0);">#
+foreach ($appearence as $aprnc) {
+				?>
+          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
             <?=$aprnc->name?>
             </a> </li>
           <?php
-                                }
-                                ?>
+}
+			?>
         </ul>
       </li>
       <?php
-                        }
-                        ?>
+}
+		?>
     </ul>
-    <?php } ?>
+    <?php }?>
   </div>
 </aside>
-<?php } ?>
+<?php }?>
