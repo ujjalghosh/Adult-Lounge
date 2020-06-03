@@ -141,11 +141,11 @@ class Services extends CI_Controller {
 						'name' => ucwords($service_name),
 					];
 					$up_status = $this->cm->update('services', ['id' => $id], $up_array);
-					if ($up_status) {
-						echo json_encode(array('success' => true, 'message' => 'Successfully update service'));die();
-					} else {
+					/*if ($up_status) {*/
+					echo json_encode(array('success' => true, 'message' => 'Successfully update service'));die();
+					/*} else {
 						echo json_encode(array('success' => false, 'message' => 'Nothing to change, please try again.'));die();
-					}
+					}*/
 				}
 			}
 		}

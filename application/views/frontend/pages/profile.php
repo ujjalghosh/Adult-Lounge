@@ -1,4 +1,5 @@
-<?php //echo "<pre>"; print_r($user);exit;?>
+<?php //echo "<pre>"; print_r($user);exit;
+echo SITE_NAME; ?>
 <style>
 .video-container {
 	display: grid;

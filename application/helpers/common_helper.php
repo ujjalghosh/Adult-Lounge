@@ -110,9 +110,9 @@ if (!function_exists('db_val')) {
 
 function SendEmailTo($to, $subject, $message, $from = "", $bcc = "", $path = "") {
 // $host=$_SERVER['HTTP_HOST'];
-	// if($host=='localhost' || $host=='animesh'){
+	// if($host=='localhost' || $host=='ujjal'){
 	//  customSmtpMailSend($to,$subject,$message,$bcc,$path);
-	// }else if($host=='partha.webgrity.net'){
+	// }else if($host=='ujjal.net'){
 	//  customMailSend($to,$subject,$message,$from,$bcc);
 	//  //echo "test";
 	// }else{
@@ -123,9 +123,9 @@ function SendEmailTo($to, $subject, $message, $from = "", $bcc = "", $path = "")
 
 function customMailSend($to, $subject, $message, $from, $bcc) {
 	if ($from == '') {
-		$from = EMAIL;
+		$from = SITE_SENDER_EMAIL;
 	}
-	$headers = "From: " . SITE_NAME . " <" . strip_tags(EMAIL) . "> \r\n";
+	$headers = "From: " . SITE_NAME . " <" . strip_tags(SITE_SENDER_EMAIL) . "> \r\n";
 	$headers .= "Reply-To: " . strip_tags($from) . "\r\n";
 	$headers .= "Bcc: " . strip_tags($bcc) . "\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
