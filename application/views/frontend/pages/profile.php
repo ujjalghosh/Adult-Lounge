@@ -594,34 +594,30 @@ for ($p = 0; $p < count($appearence); $p++) {
                                 <div class="show float-none">
                                     <textarea class="ingin" name="editpro_description"><?=$user[0]['description']?></textarea>
                                 </div>
+
+
+<h3>SUBSCRIBE RATE </h3>
+                                <!-- <p>PLEASE WRITE A DESCRIPTION TO GRAB ATTENTION OF THE USER</p> -->
+                                <div class="form-widget __subscribeWiget">
+                                    <div class="form-three-col">
+                                        <div class="form-group">
+                                            <input type="text" name="subscription_rate" id="subscription_rate" placeholder="0.00" class="form-control" value="<?=$user[0]['subscription_rate']?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" name="subscription_rate_for" id="subscription_rate_for">
+                                                <option value="year" <?=($user[0]['subscription_rate_for'] == 'year' ? 'selected' : '')?>>Year</option>
+                                                <option value="month" <?=($user[0]['subscription_rate_for'] == 'month' ? 'selected' : '')?>>Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-two-col">
                                     <div class="form-group form-action mt-0">
                                         <input type="submit" value="Update" id="editpro_submit_btn">
                                     </div>
                                 </div>
-                                <h3>SUBSCRIBE RATE </h3>
-                                <!-- <p>PLEASE WRITE A DESCRIPTION TO GRAB ATTENTION OF THE USER</p> -->
-                                <div class="form-widget __subscribeWiget">
-                                    <div class="form-three-col">
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option value="1">1</option>
-                                                <option value="2">1</option>
-                                                <option value="3">3</option>
-                                                <option value="Both">Both</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" placeholder="0.00" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option value="year">Year</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="clear"></div>

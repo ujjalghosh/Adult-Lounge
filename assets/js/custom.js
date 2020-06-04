@@ -627,7 +627,7 @@ $("#editprofile-form").submit(function (e) {
     var flag = common_form_checking(tmp);
     if (flag != 'false') {
         var formData = new FormData(this);
-        $.ajax({
+/*        $.ajax({
             type: "POST",
             url: "profile-update",
             data: formData,
@@ -647,7 +647,39 @@ $("#editprofile-form").submit(function (e) {
                     swal_warning(res[1]);
                 }
             }
+        });*/
+
+
+        $.ajax({
+            url: 'profile-update',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function(   ) {
+             $("#editpro_submit_btn").prop("disabled", true);
+          }
+        })
+        .done(function(res) {
+            if (res.status==true) {
+                $('.welcome_unm').text('Welcome ' + $('#name_edit').val());
+                swal_success(res.message);
+            } else {
+                swal_warning(res.message);
+            }
+        })
+        .fail(function(e) {
+            console.log(e)
+            swal_warning('Sorry.! Server error');
+        })
+        .always(function() {
+           $("#editpro_submit_btn").prop("disabled", false);
         });
+
+
     }
 });
 $("#personaldetails-form").submit(function (e) {

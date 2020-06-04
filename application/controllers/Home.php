@@ -41,6 +41,7 @@ class Home extends Common_Controller {
 		$this->checkAge();
 		$this->checkLogin();
 		$this->data['user'] = $this->getUserDetails($this->session->userdata('UserId'));
+
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/profile');
 		$this->load->view('frontend/layout/footer', $this->data);
@@ -53,19 +54,47 @@ class Home extends Common_Controller {
 		}
 		$pro_image = '';
 		$files = $_FILES;
-		if (!empty($files) && $files['editpro_image']['name'] != '') {
-			$pro_image = $this->commonFileUpload('assets/profile_image/', $files['editpro_image']['name'], 'editpro_image', $this->input->post('old_editpro_image'));
-		} else {
-			$pro_image = $this->input->post('old_editpro_image');
+		/*if (!empty($files) && $files['editpro_image']['name'] != '') {
+
+				$pro_image = $this->commonFileUpload('assets/profile_image/', $files['editpro_image']['name'], 'editpro_image', $this->input->post('old_editpro_image'));
+			} else {
+				$pro_image = $this->input->post('old_editpro_image');
+		*/
+
+		$updateArray['name'] = $this->input->post('name_edit');
+		$updateArray['usernm'] = '@' . $this->input->post('usernm_edit');
+		$updateArray['sexual_pref'] = $this->input->post('editpro_sexual_pref');
+		$updateArray['age'] = $this->input->post('editpro_age');
+		$updateArray['updated_at'] = date('Y-m-d H:i:s');
+
+		if (isset($_FILES['editpro_image']) && $_FILES['editpro_image'] != NULL && $_FILES['editpro_image'] != '' && $_FILES['editpro_image']['size'] > 0) {
+			//print_r($_FILES['editpro_image']['size']);
+			$config['upload_path'] = './assets/profile_image/';
+			//$config['allowed_types'] = 'jpg|gif|png|jpeg|JPG|PNG';
+			$config['allowed_types'] = '*';
+			/*$config['max_size'] = '2024';
+				$config['max_width'] = '1024';
+				$config['max_height'] = '768';*/
+			$config['file_name'] = time() . $_FILES['editpro_image']['name'];
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			if ($this->upload->do_upload('editpro_image')) {
+				$data = $this->upload->data();
+				$updateArray['image'] = $data['file_name'];
+				$oldimg = $this->input->post('old_editpro_image', TRUE);
+				if ($oldimg != '' && $oldimg != 'non_pic.png') {
+					if (file_exists('./assets/profile_image/' . $oldimg)) {
+						unlink('./assets/profile_image/' . $oldimg);
+					}
+				}
+			} else {
+				$return_data['message'] = $this->upload->display_errors();
+				$return_data['status'] = false;
+				echo json_encode($return_data);
+				exit();
+			}
 		}
-		$updateArray = array(
-			'name' => $this->input->post('name_edit'),
-			'usernm' => '@' . $this->input->post('usernm_edit'),
-			'sexual_pref' => $this->input->post('editpro_sexual_pref'),
-			'age' => $this->input->post('editpro_age'),
-			'image' => $pro_image,
-			'updated_at' => date('Y-m-d H:i:s'),
-		);
+
 		if ($this->input->post('editpro_id')) {
 			$this->performer->setUserId($this->input->post('editpro_id'));
 		}
@@ -155,11 +184,14 @@ class Home extends Common_Controller {
 			'price_in_private' => $this->input->post('price_in_private'),
 			'price_in_group' => $this->input->post('price_in_group'),
 			'performer_type' => $this->input->post('performer_type'),
+			'subscription_rate' => $this->input->post('subscription_rate'),
+			'subscription_rate_for' => $this->input->post('subscription_rate_for'),
 		);
 		$chkTwo = $this->cm->get_all('user_preference', array("user_id" => $this->input->post('editpro_id')));
 		if ($this->session->userdata('UserType') == 2 && count($files['gallery']['name']) > 0) {
 			$this->galleryFilesUpload('assets/performer_gallery/', $files['gallery'], 'performer_gallery', array("user_id" => $this->input->post('editpro_id')));
 		}
+
 		if (empty($chkTwo)) {
 			$updateArrayTwo['user_id'] = $this->input->post('editpro_id');
 			$this->cm->insert('user_preference', $updateArrayTwo);
@@ -167,7 +199,12 @@ class Home extends Common_Controller {
 			$updateArrayTwo['updated_at'] = date('Y-m-d H:i:s');
 			$this->cm->update('user_preference', array("user_id" => $this->input->post('editpro_id')), $updateArrayTwo);
 		}
-		print 'ok~~Profile Details Updated Successfully!!!';
+
+		//print 'ok~~Profile Details Updated Successfully!!!';
+		$return_data['message'] = 'Profile Details Updated Successfully!!!';
+		$return_data['status'] = TRUE;
+		echo json_encode($return_data);
+		exit();
 	}
 
 	public function personalDetails() {
