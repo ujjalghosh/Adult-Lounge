@@ -240,16 +240,17 @@ if ($user[0]['usernm'] != '') {
                             <div class="form-group">
                                 <select class="custom-select requiredCheck" name="perform_type" id="perform_type" data-check="Display perform type">
                                     <option value="" selected>Perform Type</option>
-                                    <option value="private" <?php if (isset($user)) {if ($user[0]['price_in_private']) {print 'selected';}}?>>In Private</option>
-                                    <option value="group" <?php if (isset($user)) {if ($user[0]['price_in_group']) {print 'selected';}}?>>In Group</option>
+                                    <option value="private" <?php if (isset($user)) {if ($user[0]['perform_type'] == 'private') {print 'selected';}}?>>In Private</option>
+                                    <option value="group" <?php if (isset($user)) {if ($user[0]['perform_type'] == 'group') {print 'selected';}}?>>In Group</option>
                                 </select>
                             </div>
-                            <div id="privatePriceEl" class="form-group" style="display: none;">
+                            <?php $perform_type = isset($user) ? $user[0]['perform_type'] : '';?>
+                            <div id="privatePriceEl" class="form-group" style="display: <?=($perform_type == 'private' ? 'block' : 'none')?>;">
                                 <label class="check">Private price</label>
                                 <input value="<?php echo ($user['0']['price_in_private']) ? $user['0']['price_in_private'] : 0.00 ?>" type="text" class="form-control" id="price_in_private" name="price_in_private" placeholder="0.00">
                             </div>
 
-                            <div id="groupPriceEl" class="form-group" style="display: none;">
+                            <div id="groupPriceEl" class="form-group" style="display: <?=($perform_type == 'group' ? 'block' : 'none')?>;">
                                 <label class="check">Group price</label>
                                 <input value="<?php echo ($user['0']['price_in_group']) ? $user['0']['price_in_group'] : 0.00 ?>" type="text" class="form-control" id="price_in_group" name="price_in_group" placeholder="0.00">
                             </div>
@@ -649,4 +650,4 @@ for ($p = 0; $p < count($appearence); $p++) {
         showThumbByDefault: false,
     });
 </script>
-<script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script> 
+<script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script>

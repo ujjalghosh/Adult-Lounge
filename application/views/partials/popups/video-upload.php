@@ -5,7 +5,7 @@
             <span id="msg-close">&times;</span>
         </div>
         <div class="msg-body">
-            <form id="video-upload-form">
+            <form id="video-upload-form" enctype="multipart/form-data">
                 <div class="form-widget perso my-4 gallery-brouser-area">
                     <div class="form-group">
                         <label for="video_type">Show Type:</label>

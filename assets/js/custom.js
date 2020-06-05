@@ -667,6 +667,9 @@ $("#editprofile-form").submit(function (e) {
             if (res.status==true) {
                 $('.welcome_unm').text('Welcome ' + $('#name_edit').val());
                 swal_success(res.message);
+                setTimeout(function() {   
+                   window.location.reload()
+                }, 10000);
             } else {
                 swal_warning(res.message);
             }

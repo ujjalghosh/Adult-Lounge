@@ -186,6 +186,7 @@ class Home extends Common_Controller {
 			'performer_type' => $this->input->post('performer_type'),
 			'subscription_rate' => $this->input->post('subscription_rate'),
 			'subscription_rate_for' => $this->input->post('subscription_rate_for'),
+			'perform_type' => $this->input->post('perform_type'),
 		);
 		$chkTwo = $this->cm->get_all('user_preference', array("user_id" => $this->input->post('editpro_id')));
 		if ($this->session->userdata('UserType') == 2 && count($files['gallery']['name']) > 0) {
