@@ -1,5 +1,5 @@
-<?php //echo "<pre>"; print_r($user);exit;
-echo SITE_NAME; ?>
+<!-- <?php //echo "<pre>"; print_r($user);exit;
+echo SITE_NAME; ?> -->
 <style>
 .video-container {
 	display: grid;
@@ -649,4 +649,4 @@ for ($p = 0; $p < count($appearence); $p++) {
         showThumbByDefault: false,
     });
 </script>
-<script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script>
+<script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script> 

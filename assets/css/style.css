@@ -5201,3 +5201,21 @@ body { font-family: sans-serif; }
 .modal-widget .btn-group .btn{
 	border-radius: 0 !important;
 }
+.add-new-browse{
+	width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    position: relative;
+}
+.video-upload-bg .gallery-brouser-area .form-group .username.formsm{
+	float: none;
+	width: 60% !important;
+	margin-left: 0;
+}
+.video-upload-bg .gallery-brouser-area .form-group label{
+	padding-right: 15px;
+}
+.video-upload-bg .gallery-brouser-area .brouse-input{
+	display: block;
+}
