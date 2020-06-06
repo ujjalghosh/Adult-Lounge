@@ -1,7 +1,7 @@
-<?php $this->load->view('admin/layout/header'); ?>
+<?php $this->load->view('admin/layout/header');?>
 
     <!-- side bar -->
-    <?php $this->load->view('admin/layout/sidemenu'); ?>
+    <?php $this->load->view('admin/layout/sidemenu');?>
 
     <!-- CONTENT -->
     <!-- ========================================================= -->
@@ -20,13 +20,20 @@
         <div class="row animated fadeInUp">
             <div class="col-sm-12 col-md-12">
                 <!--<h4 class="section-subtitle">Manage CMS</h4>-->
-                <?php if($this->session->flashdata('success_msg')){ ?>
+                <?php if ($this->session->flashdata('success_msg')) {?>
                 <div class="alert alert-success fade in">
                     <a href="#" class="close" data-dismiss="alert">×</a>
                     <h4><i class="icon fa fa-check"></i> Success!</h4>
                     <?=$this->session->flashdata('success_msg')?>
                 </div>
-                <?php } ?>
+                <?php }?>
+                   <?php if ($this->session->flashdata('error_msg')) {?>
+            <div class="alert alert-danger fade in">
+                <a href="#" class="close" data-dismiss="alert">×</a>
+                <h4><i class="icon fa fa-close"></i> Error!</h4>
+                <?=$this->session->flashdata('error_msg')?>
+            </div>
+            <?php }?>
                 <div class="panel">
                     <div class="panel-content">
                         <div class="table-responsive">
@@ -42,23 +49,23 @@
                                 </thead>
                                 <tbody>
                                    <?php
-                                    if ($data_list) {
-                                        $i = 1;
-                                        foreach ($data_list as $dis_list) {
-                                        ?>
+if ($data_list) {
+	$i = 1;
+	foreach ($data_list as $dis_list) {
+		?>
                                     <tr>
                                         <td><?=$i?></td>
                                         <td><?=stripslashes($dis_list['page_name'])?></td>
                                         <td><?=stripslashes($dis_list['page_title'])?></td>
                                         <td><?=date('d M, Y H:i', strtotime($dis_list['updated_at']))?></td>
-                                        <td><a href="<?=base_url('admin/settings/edit_cms?mode=edit&id='.$dis_list['id'])?>" title="edit"><i class="fa fa-fw fa-edit"></i></a>
+                                        <td><a href="<?=base_url('admin/settings/edit_cms?mode=edit&id=' . $dis_list['id'])?>" title="edit"><i class="fa fa-fw fa-edit"></i></a>
                                         </td>
                                     </tr>
                                     <?php
-                                            $i++;
-                                        }
-                                    }
-                                    ?>
+$i++;
+	}
+}
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -70,9 +77,9 @@
         </div>
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     </div>
-    
 
-<?php $this->load->view('admin/layout/footer'); ?>
+
+<?php $this->load->view('admin/layout/footer');?>
 <script src="<?=base_url()?>backend/vendor/data-table/media/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>backend/vendor/data-table/media/js/dataTables.bootstrap.min.js"></script>
 <!--Examples-->

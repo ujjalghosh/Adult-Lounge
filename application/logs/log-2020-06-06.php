@@ -15,3 +15,4 @@
 [2020-06-06 00:18:39]: <p>You did not select a file to upload.</p>
 [2020-06-06 00:22:16]: <p>The filetype you are attempting to upload is not allowed.</p>
 [2020-06-06 00:22:39]: <p>You did not select a file to upload.</p>
+[2020-06-06 00:35:17]: File not uploaded

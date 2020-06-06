@@ -371,7 +371,7 @@ class Services extends CI_Controller {
 		if ($this->input->post()) {
 			$chk = $this->cm->get_specific('show_type', array("name" => $this->input->post('showname'), "id!=" => $id));
 			if (!empty($chk)) {
-				$this->session->set_flashdata('success_msg', 'Show Type Already Available !!!');
+				$this->session->set_flashdata('error_msg', 'Show Type Already Available !!!');
 			} else {
 				if ($this->input->post('show_edit_id') == '' || $id == '0') {
 					$this->cm->insert('show_type', array("name" => $this->input->post('showname')));
@@ -411,7 +411,7 @@ class Services extends CI_Controller {
 			$id = $this->input->post('will_edit_id');
 			$chk = $this->cm->get_specific('willingness', array("name" => $this->input->post('willname'), 'id!=' => $id));
 			if (!empty($chk)) {
-				$this->session->set_flashdata('success_msg', 'Willingness Already Available !!!');
+				$this->session->set_flashdata('error_msg', 'Willingness Already Available !!!');
 			} else {
 				if ($this->input->post('will_edit_id') == '' || $id == '0') {
 					$this->cm->insert('willingness', array("name" => $this->input->post('willname')));
@@ -451,9 +451,9 @@ class Services extends CI_Controller {
 			$id = $this->input->post('aprnc_edit_id');
 			$chk = $this->cm->get_specific('appearence', array("name" => $this->input->post('aprncname'), 'id!=' => $id));
 			if (!empty($chk)) {
-				$this->session->set_flashdata('success_msg', 'Appearence Already Available !!!');
+				$this->session->set_flashdata('error_msg', 'Appearence Already Available !!!');
 			} else {
-				if ($this->input->post('aprnc_edit_id') == '' || $id != '0') {
+				if ($this->input->post('aprnc_edit_id') == '' || $id == '0') {
 					$this->cm->insert('appearence', array("name" => $this->input->post('aprncname')));
 					$this->session->set_flashdata('success_msg', 'Appearence Successfully addded !!!');
 				} else {

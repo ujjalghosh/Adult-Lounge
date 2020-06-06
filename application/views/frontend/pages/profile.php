@@ -319,7 +319,7 @@ if (!empty($img)) {
                                         <div class="proo">
                                             <img src="<?=base_url('assets/images/noimage.png')?>" alt="" style="height:40px; width:45px;" id="display_gal_img1">
                                         </div>
-                                        <input type="file" class="form-control username formsm display_gal_img1 brouse-input" onchange="disp_img('1', this)" data-count="1" name="gallery[]" id="gallery_image1" />
+                                        <input accept=".png, .jpg, .jpeg" type="file" class="form-control username formsm display_gal_img1 brouse-input" onchange="disp_img('1', this)" data-count="1" name="gallery[]" id="gallery_image1" />
                                         <div class="brows editpro_gal_image_brows" data-count="1">BROWSER</div>
                                         <select name="video_type" id="video_type" class="form-control username formsm display_gal_img1">
                                             <option value="1">Free Content</option>

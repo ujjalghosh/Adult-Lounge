@@ -1,7 +1,7 @@
-<?php $this->load->view('admin/layout/header'); ?>
+<?php $this->load->view('admin/layout/header');?>
 
     <!-- side bar -->
-    <?php $this->load->view('admin/layout/sidemenu'); ?>
+    <?php $this->load->view('admin/layout/sidemenu');?>
 
     <!-- CONTENT -->
     <!-- ========================================================= -->
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-xs-10">
                         <h3 class="page-heding-title">
-                            
+
                         </h3>
                     </div>
                     <div class="col-xs-2">
@@ -34,13 +34,20 @@
                         </div>
                     </div>
                 </div>
-                <?php if($this->session->flashdata('success_msg')){ ?>
+                <?php if ($this->session->flashdata('success_msg')) {?>
                 <div class="alert alert-success fade in">
                     <a href="#" class="close" data-dismiss="alert">×</a>
                     <h4><i class="icon fa fa-check"></i> Success!</h4>
                     <?=$this->session->flashdata('success_msg')?>
                 </div>
-                <?php } ?>
+                <?php }?>
+                   <?php if ($this->session->flashdata('error_msg')) {?>
+            <div class="alert alert-danger fade in">
+                <a href="#" class="close" data-dismiss="alert">×</a>
+                <h4><i class="icon fa fa-close"></i> Error!</h4>
+                <?=$this->session->flashdata('error_msg')?>
+            </div>
+            <?php }?>
                 <div class="panel">
                     <div class="panel-content">
                         <div class="table-responsive">
@@ -50,35 +57,35 @@
                                         <th>Sl No.</th>
                                         <th>Name</th>
                                         <th>Last Update</th>
-                                        <th>Status</th>                                        
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                    <?php
-                                    if ($data_list) {
-                                        $i = 1;
-                                        foreach ($data_list as $dis_list) {
-                                        ?>
+if ($data_list) {
+	$i = 1;
+	foreach ($data_list as $dis_list) {
+		?>
                                     <tr>
                                         <td><?=$i?></td>
                                         <td><?=stripslashes($dis_list['name'])?></td>
-                                        <td><?=($dis_list['updated_at'])?date('d M, Y H:i', strtotime($dis_list['updated_at'])):'---'?></td>
+                                        <td><?=($dis_list['updated_at']) ? date('d M, Y H:i', strtotime($dis_list['updated_at'])) : '---'?></td>
                                         <td><a href="javascript:void(0)" id="<?=$dis_list['id']?>" class="change-status" data-table="categories" data-url="admin/services/change_status" title="Status | Green:Active, Red:InActive">
-                                        <?php if($dis_list['status'] == 1){ ?>
+                                        <?php if ($dis_list['status'] == 1) {?>
                                         <span class="glyphicon glyphicon-ok-sign green-check-icon"></span>
-                                        <?php } else { ?>
+                                        <?php } else {?>
                                         <span class="glyphicon glyphicon-remove-sign red-check-icon"></span>
-                                        <?php } ?>
+                                        <?php }?>
                                         </a></td>
-                                        <td><a href="<?=base_url('admin/category/add_category?mode=edit&id='.$dis_list['id'])?>" title="edit"><i class="fa fa-fw fa-edit"></i></a>
+                                        <td><a href="<?=base_url('admin/category/add_category?mode=edit&id=' . $dis_list['id'])?>" title="edit"><i class="fa fa-fw fa-edit"></i></a>
                                         </td>
                                     </tr>
                                     <?php
-                                            $i++;
-                                        }
-                                    }
-                                    ?>
+$i++;
+	}
+}
+?>
                                 </tbody>
                             </table>
                         </div>
@@ -90,9 +97,9 @@
         </div>
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     </div>
-    
 
-<?php $this->load->view('admin/layout/footer'); ?>
+
+<?php $this->load->view('admin/layout/footer');?>
 <script src="<?=base_url()?>backend/vendor/data-table/media/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>backend/vendor/data-table/media/js/dataTables.bootstrap.min.js"></script>
 <!--Examples-->
