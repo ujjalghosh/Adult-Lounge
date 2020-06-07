@@ -306,10 +306,11 @@ class Home extends Common_Controller {
 
 	public function viewProfile($id = '', $nm = '') {
 		$this->checkAge();
-		$this->checkLogin();
+		//$this->checkLogin();
 		$this->data['user'] = $this->getUserDetails($id);
-		$this->data['current_user'] = $this->getUserDetails($this->session->userdata('UserId'))[0];
-
+		if ($this->session->userdata('UserId')) {
+			$this->data['current_user'] = $this->getUserDetails($this->session->userdata('UserId'))[0];
+		}
 		if (!empty($this->data['user'])) {
 			if ($this->data['user'][0]['willingness'] != '') {
 				$this->data['user'][0]['willingness'] = $this->getPerformerWillingNess($this->data['user'][0]['willingness']);

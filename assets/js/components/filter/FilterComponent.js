@@ -189,6 +189,7 @@ class FilterComponent extends QueryStringComponent {
         var self = this;
         this._shortListingElements.forEach((shortListingElement) => {
             shortListingElement.addEventListener('click', function() {
+                console.log(111)
                 if(e.target.matches('_tag')) {
                     console.log(1);
                 }
@@ -243,6 +244,7 @@ class FilterComponent extends QueryStringComponent {
         } 
         if(Object.keys(params).length > 0) {
             if(models.length > 0) {
+                this._renderModelElement.innerHTML='';
                 this._renderFilterElement.innerHTML =  (
                     `<div class="list-widget">
                         ${heading}

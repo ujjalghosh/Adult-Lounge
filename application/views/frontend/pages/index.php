@@ -1,5 +1,5 @@
-<?php 
-if(!$this->session->userdata('UserType') || $this->session->userdata('UserType') == ''){ ?>
+<?php
+if (!$this->session->userdata('UserType') || $this->session->userdata('UserType') == '') {?>
 <section class="content-sec">
     <div class="_app">
         <div id="_render_filter_element"></div>
@@ -10,10 +10,10 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
     </div>
 </section>
 <?php
-}else{ 
-    if($this->session->userdata('UserType')){
-        if($this->session->userdata('UserType') == 1){          
-?>
+} else {
+	if ($this->session->userdata('UserType')) {
+		if ($this->session->userdata('UserType') == 1) {
+			?>
 <section class="content-sec">
     <div class="_app">
         <div id="_render_filter_element"></div>
@@ -24,8 +24,8 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
     </div>
 </section>
 <?php
-        }elseif($this->session->userdata('UserType') == 2){
-?>
+} elseif ($this->session->userdata('UserType') == 2) {
+			?>
 <main class="content-wrapper">
     <section class="content-sec">
         <div class="dash_inner">
@@ -36,11 +36,11 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
                 <div class="col-sm-10">
                     <div class="dash_user_info">
                         <div class="dash_user_pic">
-                            <?php if($user[0]['image'] != ''){ ?>
-                            <img src="<?=base_url('assets/profile_image/'.$user[0]['image'])?>" alt="<?=($user[0]['display_name'] != '') ? $user[0]['display_name'] : $user[0]['name']?>">
-                            <?php }else{ ?>
+                            <?php if ($user[0]['image'] != '') {?>
+                            <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="<?=($user[0]['display_name'] != '') ? $user[0]['display_name'] : $user[0]['name']?>">
+                            <?php } else {?>
                             <img src="<?=base_url('assets/images/no-image.png')?>" alt="<?=($user[0]['display_name'] != '') ? $user[0]['display_name'] : $user[0]['name']?>">
-                            <?php } ?>
+                            <?php }?>
                         </div>
                         <div class="dash_user_name">
                             <p><?=($user[0]['display_name'] != '') ? $user[0]['display_name'] : $user[0]['name']?></p>
@@ -82,7 +82,7 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
                             </a>
                         </li>
                         <li>
-                            <a href="<?= base_url('financial') ?>">
+                            <a href="<?=base_url('financial')?>">
                                 <span class="show_icon">
                                     <img src="<?=base_url('assets/images/finance.png')?>" alt="FINANCIALS">
                                 </span>
@@ -90,7 +90,7 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
                             </a>
                         </li>
                         <li>
-                            <a href="<?= base_url('loyalty') ?>">
+                            <a href="<?=base_url('loyalty')?>">
                                 <span class="show_icon">
                                     <img src="<?=base_url('assets/images/loyalty.png')?>" alt="LOYALTY">
                                 </span>
@@ -114,29 +114,29 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
                         <div class="dash_box_body customScroll" style="height: 225px; overflow-y: scroll;">
                             <ul>
                                 <?php
-                                if(!empty($showHistory)){
-                                    for($j=0; $j<count($showHistory); $j++){
-                                ?>
+if (!empty($showHistory)) {
+				for ($j = 0; $j < count($showHistory); $j++) {
+					?>
                                 <li>
                                     <span class="user_icon">
-                                        <?php if($showHistory[$j]['image'] != ''){ ?>
-                                        <img src="<?=base_url('assets/profile_image/'.$showHistory[$j]['image'])?>" alt="<?=($showHistory[$j]['display_name'] != '') ? $showHistory[$j]['display_name'] : $showHistory[$j]['name']?>">
-                                        <?php }else{ ?>
+                                        <?php if ($showHistory[$j]['image'] != '') {?>
+                                        <img src="<?=base_url('assets/profile_image/' . $showHistory[$j]['image'])?>" alt="<?=($showHistory[$j]['display_name'] != '') ? $showHistory[$j]['display_name'] : $showHistory[$j]['name']?>">
+                                        <?php } else {?>
                                         <img src="<?=base_url('assets/images/demo-user.png')?>" alt="user">
-                                        <?php } ?>
+                                        <?php }?>
                                     </span>
                                     <span class="lft_txt"><?=($showHistory[$j]['display_name'] != '') ? $showHistory[$j]['display_name'] : $showHistory[$j]['name']?> <?=$showHistory[$j]['usernm']?></span>
                                     <span class="mdl_txt"><?=$showHistory[$j]['usernm']?></span>
                                     <span class="rht_txt"><?=$showHistory[$j]['show_type']?></span>
                                 </li>
                                 <?php
-                                    }
-                                }else{
-                                ?>
+}
+			} else {
+				?>
                                 <li>
                                     <span style="color: #a4b567; font-size: 35px;">No Show History Found !!!</span>
                                 </li>
-                                <?php } ?>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
@@ -187,25 +187,25 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
                         <div class="dash_box_body customScroll" style="height: 225px; overflow-y: scroll;">
                             <ul>
                                 <?php
-                                if(!empty($newSubs)){
-                                    for($i = 0; $i < count($newSubs); $i++){
-                                        if(!empty($newSubs[$i])){
-                                ?>
+if (!empty($newSubs)) {
+				for ($i = 0; $i < count($newSubs); $i++) {
+					if (!empty($newSubs[$i])) {
+						?>
                                 <li>
                                     <span class="user_icon">
-                                        <?php if($newSubs[$i]['image'] != ''){ ?>
-                                        <img src="<?=base_url('assets/profile_image/'.$newSubs[$i]['image'])?>" alt="<?php print ($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name']; ?>">
-                                        <?php } else{ ?>
-                                        <img src="<?=base_url('assets/images/no-image.png')?>" alt="<?php print ($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name']; ?>">
-                                        <?php } ?>
+                                        <?php if ($newSubs[$i]['image'] != '') {?>
+                                        <img src="<?=base_url('assets/profile_image/' . $newSubs[$i]['image'])?>" alt="<?php print($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name'];?>">
+                                        <?php } else {?>
+                                        <img src="<?=base_url('assets/images/no-image.png')?>" alt="<?php print($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name'];?>">
+                                        <?php }?>
                                     </span>
-                                    <span class="lft_txt"><?php print ($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name']; ?> <?=$newSubs[$i]['usernm']?></span>
+                                    <span class="lft_txt"><?php print($newSubs[$i]['display_name'] != '') ? $newSubs[$i]['display_name'] : $newSubs[$i]['name'];?> <?=$newSubs[$i]['usernm']?></span>
                                 </li>
-                                <?php } } }else{ ?>
+                                <?php }}} else {?>
                                 <li>
                                     <span style="color: #a4b567; font-size: 35px;">No Subscribers Found !!!</span>
                                 </li>
-                                <?php } ?>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
@@ -215,8 +215,8 @@ if(!$this->session->userdata('UserType') || $this->session->userdata('UserType')
     </section>
 </main>
 <?php
-        }
-    }
+}
+	}
 }
 ?>
 <script type="module" defer src="<?=base_url('assets/js/components/filter/FilterComponent.js')?>"></script>
