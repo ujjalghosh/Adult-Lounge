@@ -75,7 +75,7 @@ echo SITE_NAME; ?> -->
                             <div class="show show2">
                                 <h3>PROFILE PHOTO</h3>
                                 <div class="form-group">
-                                    <div class="proo">
+                                    <div class="proo profile-view">
                                         <?php if ($user[0]['image'] == '') {?>
                                         <img src="<?=base_url('assets/images/noimage.png')?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php } else {?>
@@ -246,7 +246,7 @@ if ($user[0]['usernm'] != '') {
                             </div>
                             <?php $perform_type = isset($user) ? $user[0]['perform_type'] : '';?>
                             <div id="privatePriceEl" class="form-group" style="display: <?=($perform_type == 'private' ? 'block' : 'none')?>;">
-                                <label class="check">Private price</label>
+                                <!--<label class="check">Private price</label>-->
                                 <input value="<?php echo ($user['0']['price_in_private']) ? $user['0']['price_in_private'] : 0.00 ?>" type="text" class="form-control" id="price_in_private" name="price_in_private" placeholder="0.00">
                             </div>
 

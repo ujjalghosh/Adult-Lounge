@@ -179,21 +179,31 @@ $active_url = $controller . '/' . $method;
 
         <?php }?>
 
-          <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) {?>
-            <li><a href="<?=base_url('content')?>">CONTENT</a></li>
-            <li><a href="<?=base_url('manage-users')?>">MANAGE USERS</a></li>
-            <li><a href="<?=base_url('financial')?>">FINANCIAL</a></li>
-            <li><a href="<?=base_url('my-subscriptions')?>">SUBSCRIPTIONS</a></li>
-            <li><a href="<?=base_url('profile')?>">PROFILE</a></li>
-            <li><a href="<?=base_url('my-network')?>">MY NETWORK</a></li>
-            <li><a href="<?=base_url('loyalty')?>">LOYALTY</a></li>
-            <li><a href="<?=base_url('gifts')?>">GIFTS</a></li>
-          <!--<li><a href="<?=base_url('settings')?>">SETTINGS</a></li>-->
-            <li><a href="<?=base_url('help')?>">HELP</a></li>
-            <?php if ($this->session->userdata('AccountVerified') == 'No') {?>
-            <li><a href="<?=base_url('verification')?>">Verification</a></li>
-          <?php }?>
-          <?php }?>
+        <nav class="navbar navbar-expand-lg performer-head">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+                <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) {?>
+                  <li class="nav-item"><a href="<?=base_url('content')?>" class="nav-link">CONTENT</a></li>
+                  <li class="nav-item"><a href="<?=base_url('manage-users')?>" class="nav-link">MANAGE USERS</a></li>
+                  <li class="nav-item"><a href="<?=base_url('financial')?>" class="nav-link">FINANCIAL</a></li>
+                  <li class="nav-item"><a href="<?=base_url('my-subscriptions')?>" class="nav-link">SUBSCRIPTIONS</a></li>
+                  <li class="nav-item"><a href="<?=base_url('profile')?>" class="nav-link">PROFILE</a></li>
+                  <li class="nav-item"><a href="<?=base_url('my-network')?>" class="nav-link">MY NETWORK</a></li>
+                  <li class="nav-item"><a href="<?=base_url('loyalty')?>" class="nav-link">LOYALTY</a></li>
+                  <li class="nav-item"><a href="<?=base_url('gifts')?>" class="nav-link">GIFTS</a></li>
+                <!--<li><a href="<?=base_url('settings')?>">SETTINGS</a></li>-->
+                  <li class="nav-item"><a href="<?=base_url('help')?>" class="nav-link">HELP</a></li>
+                  <?php if ($this->session->userdata('AccountVerified') == 'No') {?>
+                  <li class="nav-item"><a href="<?=base_url('verification')?>" class="nav-link">Verification</a></li>
+                <?php }?>
+                
+              </ul>
+          </div>
+        </nav>
+        <?php }?>
         </ul>
       </nav>
       <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>

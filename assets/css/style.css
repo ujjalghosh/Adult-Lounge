@@ -1941,7 +1941,10 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
 	float: left;
 	border: 1px solid #d8c17e;
 	padding: 5px;
-	margin: -12px 10px 0 0;
+	margin: 6px 6px 0 0;
+}
+.add-new-browse .proo{
+	margin-top: -12px;
 }
 .show2 {
 	width: 70%;
@@ -5218,4 +5221,35 @@ body { font-family: sans-serif; }
 }
 .video-upload-bg .gallery-brouser-area .brouse-input{
 	display: block;
+}
+.galdiv .add-new-browse .remove_gal{
+	position: absolute;
+    right: -6px;
+    margin-top: 24px;
+}
+.performer-head.navbar-expand-lg .navbar-nav .nav-link{
+	-webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+	padding: 10px 15px;
+	font-family: 'Gotham-Light';
+    font-size: 0.75rem;
+}
+.performer-head ul li.nav-item{
+	position: relative;
+}
+.performer-head ul li.nav-item::after {
+	content: '\007c';
+	position: absolute;
+	top: 5px;
+	color: #fff;
+}
+.performer-head ul li.nav-item:first-child::after {
+	display: none;
+}
+.performer-head ul li:hover > a {
+    background: #5f5b50;
+    color: #fff;
+}
+.profile-view.proo {
+	margin-top: -10px;
 }

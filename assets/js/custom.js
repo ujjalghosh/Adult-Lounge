@@ -838,7 +838,7 @@ $(document).on('click', '.add-more-gal-img', function() {
     var old_cnt = $('#gallery_cnt').val();
     var new_cnt = parseInt($('#gallery_cnt').val()) + parseInt(1);
     $('#gallery_cnt').val(new_cnt);
-    $('.galdiv').append('<div class="add-new-browse"><a href="javascript:void(0);" class="remove_gal"><span class="glyphicon glyphicon-remove"></span></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area">\
+    $('.galdiv').append('<div class="add-new-browse"><a href="javascript:void(0);" class="remove_gal"><i class="fa fa-trash-o" aria-hidden="true"></i></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area">\
                                     <div class="proo">\
                                         <img src="' + base_url + 'assets/images/noimage.png" alt="" style="height:40px; width:45px;" id="display_gal_img' + new_cnt + '">\
                                     </div>\
