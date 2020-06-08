@@ -2,11 +2,42 @@
 if (!$this->session->userdata('UserType') || $this->session->userdata('UserType') == '') {?>
 <section class="content-sec">
     <div class="_app">
-        <div id="_render_filter_element"></div>
+<div id="_render_filter_element">
+    <div class="list-widget">
+    <div class="main-heading">
+        <h3>ALL GIRLS CAMS <a href="javascript:void(0);" id="reload">
+            <img src="http://hirewebagency.com/adultlounge/assets/images/icon-reload.png"></a>
+            <span><a href="#" id="_totfnd">12 Models Found </a></span></h3>
+    </div>
+
+    <div class="shorting-list">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="col gridview">
+
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer"><img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591453941download_(2).jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+
+    </div>
+</div>
+</div>
         <!--Search Filter-->
-        <hr  class="divider-line"/>
-        <!--Main Section-->
-        <div id="_render_model_element"></div>
+
+
+        <div class="paginationBox"></div>
     </div>
 </section>
 <?php
@@ -21,6 +52,7 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
         <hr  class="divider-line"/>
         <!--Main Section-->
         <div id="_render_model_element"></div>
+        <div class="paginationBox"></div>
     </div>
 </section>
 <?php
@@ -219,4 +251,6 @@ if (!empty($newSubs)) {
 	}
 }
 ?>
-<script type="module" defer src="<?=base_url('assets/js/components/filter/FilterComponent.js')?>"></script>
+<!-- <script type="module" defer src="<?=base_url('assets/js/components/filter/FilterComponent.js')?>"></script> -->
+
+

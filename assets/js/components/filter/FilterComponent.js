@@ -61,7 +61,7 @@ class FilterComponent extends QueryStringComponent {
         this.componentDidMount();
         
         this.onClickFilterElementEventHandler();
-        //this.onClickRemoveTagElementEventHandler();
+        this.onClickRemoveTagElementEventHandler();
         //this.reload();
         
     }

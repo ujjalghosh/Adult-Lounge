@@ -37,13 +37,16 @@ class Auth extends Common_Controller {
 	public function doRegistration() {
 
 		if (empty($this->cm->get_specific('users', array("email" => $this->input->post('reg_email'))))) {
-			if ($this->input->post('reg_type') == 1) {
-				$status = 1;
-				$verified = 'Yes';
-			} else {
-				$status = 0;
-				$verified = 'No';
-			}
+			/*	if ($this->input->post('reg_type') == 1) {
+					$status = 1;
+					$verified = 'Yes';
+				} else {
+					$status = 0;
+					$verified = 'No';
+			*/
+			$status = 0;
+			$verified = 'No';
+
 			$to = $this->input->post('reg_email');
 			$user_type = in_array($this->input->post('reg_type'), [1, 2]) ? $this->input->post('reg_type') : 1;
 

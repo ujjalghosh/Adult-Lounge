@@ -18,10 +18,10 @@
 <!--------vote-PopUp---------->
 
 <!--------gift-PopUp---------->
-<?php $this->load->view('partials/popups/gift') ?>
+<?php $this->load->view('partials/popups/gift')?>
 <!--------gift-PopUp---------->
 
-<?php $this->load->view('partials/popups/credit-plans') ?>
+<?php $this->load->view('partials/popups/credit-plans')?>
 
 <!-- Buy Credits -->
 <!--<div class="modal-buy fade" id="buy-credits" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -46,6 +46,8 @@
 <!-- Buy Credits -->
 
 <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
+ <script type="text/javascript" src="//botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
+<script   src="<?=base_url('assets/js/filterferformer.js')?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
 
 <script src="<?=base_url('assets/js/owl.carousel.min.js')?>"></script>
@@ -55,7 +57,7 @@
 <script src="<?=base_url('assets/js/jquery.multipurpose_tabcontent.js')?>"></script>
 <script src="<?=base_url('assets/js/jquery.overlayScrollbars.min.js')?>"></script>
 <script src="<?=base_url('assets/js/waitMe.min.js')?>"></script>
-<script src="<?= base_url('assets/js/jquery.switcher.min.js') ?>"></script>
+<script src="<?=base_url('assets/js/jquery.switcher.min.js')?>"></script>
 
 
 
@@ -68,7 +70,7 @@
     <div class="ProfileCard-details">
         <div class="ProfileCard-realName">{{name}}</div>
         <div class="ProfileCard-screenName">30 y/tests female</div>
-        <div class="ProfileCard-description">Private</div> 
+        <div class="ProfileCard-description">Private</div>
     </div>
 
     <!-- <div class="ProfileCard-stats">
@@ -87,17 +89,17 @@
 <!--Empty Template-->
 
 
-<script src="<?= base_url('assets/plugins/typeahead/js/handlebars.js') ?>"></script>
-<script src="<?= base_url('assets/plugins/typeahead/js/jquery.xdomainrequest.min.js') ?>"></script>
-<script src="<?= base_url('assets/plugins/typeahead/js/typeahead.bundle.js') ?>"></script>
+<script src="<?=base_url('assets/plugins/typeahead/js/handlebars.js')?>"></script>
+<script src="<?=base_url('assets/plugins/typeahead/js/jquery.xdomainrequest.min.js')?>"></script>
+<script src="<?=base_url('assets/plugins/typeahead/js/typeahead.bundle.js')?>"></script>
 
 <link href="<?=base_url('assets/css/material-components-web.min.css')?>" rel="stylesheet">
 <script src="<?=base_url('assets/js/material-components-web.min.js')?>"></script>
 
-<script src="<?= base_url('assets/js/bundler.js') ?>"></script>
+<script src="<?=base_url('assets/js/bundler.js')?>"></script>
 <script>
-    var base_url = '<?php echo base_url();?>';
-    
+    var base_url = '<?php echo base_url(); ?>';
+
     $(document).ready(function() {
         $('.sidebar-menu > li > a').click(function() {
             $(this).next().slideToggle();
@@ -136,7 +138,7 @@
         // theme: "inset"
         // }).mCustomScrollbar("scrollTo", "top", {
         // scrollInertia: 0
-        // }); 
+        // });
 
         loadOwlCarouselEventHandler();
 
@@ -147,7 +149,7 @@
         onCLickBuyCreditModalCloseButtonEventHandler({modal:modal});
         onCLickBuy2CreditButtonEventHandler({modal:modal});
 
-       
+
 
         // When the user clicks anywhere outside of the modal, close it
         //window.onclick = function(event) {
@@ -195,7 +197,7 @@
             return;
         }
 
-        // When the user clicks the button, open the modal 
+        // When the user clicks the button, open the modal
         btn.onclick = function() {
             options.modal.style.display = "block";
         }
@@ -208,7 +210,7 @@
             return;
         }
 
-        // When the user clicks the button, open the modal 
+        // When the user clicks the button, open the modal
         btn.onclick = function() {
             options.modal.style.display = "block";
         }
@@ -233,14 +235,14 @@
 
 <div class=""></div>
 <link href="<?=base_url('assets/plugins/fakeLoader/css/fakeLoader.min.css')?>" rel="stylesheet" type="text/css" />
-<script src="<?= base_url('assets/plugins/fakeLoader/js/fakeLoader.min.js') ?>"></script>
+<script src="<?=base_url('assets/plugins/fakeLoader/js/fakeLoader.min.js')?>"></script>
 
 
 <script>
     $(document).ready(function(){
-      
 
-                
+
+
             });
 /*
 var elem = document.querySelector('.grid');
@@ -261,7 +263,7 @@ var msnry = new Masonry( '.grid', {
 
 
 <script src="<?=base_url('assets/js/modernizr.custom.js')?>"></script>
-<script src="<?= base_url('assets/js/masonry.pkgd.min.js') ?>"></script>
+<script src="<?=base_url('assets/js/masonry.pkgd.min.js')?>"></script>
 <script src="<?=base_url('assets/js/imagesloaded.js')?>"></script>
 <script src="<?=base_url('assets/js/classie.js')?>"></script>
 <script src="<?=base_url('assets/js/AnimOnScroll.js')?>"></script>

@@ -89,7 +89,7 @@ $active_url = $controller . '/' . $method;
                     <h3>Filter By: Catagories</h3>
                     <ul>
                       <?php foreach ($categories as $category) {?>
-                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>" href="javascript:void(0);">#
+                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>" data-name="<?=$category->name?>" href="javascript:void(0);">#
                         <?=$category->name?>
                         </a></li>
                       <?php }?>
@@ -103,7 +103,7 @@ $active_url = $controller . '/' . $method;
                 <ul>
                   <?php if (!empty($show)) {
 		foreach ($show as $sh) {?>
-                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" href="javascript:;"><?php echo $sh->name; ?></a></li>
+                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" data-name="<?=$sh->name?>"  href="javascript:;"><?php echo $sh->name; ?></a></li>
                     <?php }?>
                   <?php }?>
                 </ul>
@@ -154,7 +154,7 @@ $active_url = $controller . '/' . $method;
                     <h3>Filter By: Catagories</h3>
                     <ul>
                       <?php foreach ($categories as $category) {?>
-                      <li><a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>">#
+                      <li><a class="_filter" data-key="category" data-name="<?=$category->name?>" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $category->name . '')); ?>">#
                         <?=$category->name?>
                         </a></li>
                       <?php }?>
@@ -168,7 +168,7 @@ $active_url = $controller . '/' . $method;
                 <ul>
                   <?php if (!empty($show)) {
 		foreach ($show as $sh) {?>
-                      <li><a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" href="javascript:;"><?php echo $sh->name; ?></a></li>
+                      <li><a class="_filter" data-name="<?=$sh->name?>"  data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $sh->name . '')); ?>" href="javascript:;"><?php echo $sh->name; ?></a></li>
                     <?php }?>
                     <?php }?>
                 </ul>
@@ -199,7 +199,7 @@ $active_url = $controller . '/' . $method;
                   <?php if ($this->session->userdata('AccountVerified') == 'No') {?>
                   <li class="nav-item"><a href="<?=base_url('verification')?>" class="nav-link">Verification</a></li>
                 <?php }?>
-                
+
               </ul>
           </div>
         </nav>
@@ -284,30 +284,31 @@ $active_url = $controller . '/' . $method;
 <main class="content-wrapper">
 <aside>
   <div class="sidebar">
-    <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
+    <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {
+		?>
       <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="GIRLS" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
+              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
           </ul>
       </li>
       <?php
 if (!empty($categories)) {
-		?>
+			?>
       <li class="performers"><a href="javascript:void(0);">CATEGORIES</a>
         <ul>
           <?php
 foreach ($categories as $cat) {
-			?>
-          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
+				?>
+          <li> <a class="_filter" data-name="<?=$cat->name?>" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
             <?=$cat->name?>
             </a> </li>
           <?php
 }
-		?>
+			?>
         </ul>
       </li>
       <?php
@@ -319,7 +320,7 @@ foreach ($categories as $cat) {
           <?php
 foreach ($show as $shw) {
 				?>
-          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$shw->name?>" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
             <?=$shw->name?>
             </a> </li>
           <?php
@@ -334,7 +335,7 @@ foreach ($show as $shw) {
       <li class="age"><a href="javascript:void(0);">AGE</a>
         <ul>
           <?php foreach ($age as $ag) {?>
-          <li> <a class="_filter" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
+          <li> <a class="_filter" data-name="<?=$ag->age?>" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
             <?=$ag->age?>
             </a> </li>
           <?php }?>
@@ -349,7 +350,7 @@ foreach ($show as $shw) {
           <?php
 foreach ($will as $wll) {
 				?>
-          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$wll->name?>"  data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
             <?=$wll->name?>
             </a> </li>
           <?php
@@ -366,7 +367,7 @@ foreach ($will as $wll) {
           <?php
 foreach ($appearence as $aprnc) {
 				?>
-          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$aprnc->name?>" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
             <?=$aprnc->name?>
             </a> </li>
           <?php
@@ -384,10 +385,10 @@ foreach ($appearence as $aprnc) {
     <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
-              <li><a class="_filter" data-key="performer" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="GIRLS"  data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
+              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
           </ul>
       </li>
       <?php
@@ -398,7 +399,7 @@ if (!empty($categories)) {
           <?php
 foreach ($categories as $cat) {
 				?>
-          <li> <a class="_filter" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
+          <li> <a class="_filter" data-name="<?=$cat->name?>" data-key="category" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>" href="javascript:void(0);" onclick="onClickFilterEventHandler('category', '<?php echo strtolower(str_replace(' ', '_', '' . $cat->name . '')); ?>');">#
             <?=$cat->name?>
             </a> </li>
           <?php
@@ -415,7 +416,7 @@ foreach ($categories as $cat) {
           <?php
 foreach ($show as $shw) {
 				?>
-          <li> <a class="_filter" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$shw->name?>" data-key="show_type" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $shw->name . '')); ?>" href="javascript:void(0);">#
             <?=$shw->name?>
             </a> </li>
           <?php
@@ -430,7 +431,7 @@ foreach ($show as $shw) {
       <li class="age"><a href="javascript:void(0);">AGE</a>
         <ul>
           <?php foreach ($age as $ag) {?>
-          <li> <a class="_filter" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
+          <li> <a class="_filter" data-name="<?=$ag->age?>" data-key="age" data-value="<?=$ag->age?>" href="javascript:void(0);">
             <?=$ag->age?>
             </a> </li>
           <?php }?>
@@ -445,7 +446,7 @@ foreach ($show as $shw) {
           <?php
 foreach ($will as $wll) {
 				?>
-          <li> <a class="_filter" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$wll->name?>" data-key="willingness" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $wll->name . '')); ?>" href="javascript:void(0);">#
             <?=$wll->name?>
             </a> </li>
           <?php
@@ -462,7 +463,7 @@ foreach ($will as $wll) {
           <?php
 foreach ($appearence as $aprnc) {
 				?>
-          <li> <a class="_filter" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
+          <li> <a class="_filter" data-name="<?=$aprnc->name?>" data-key="appearence" data-value="<?php echo strtolower(str_replace(' ', '_', '' . $aprnc->name . '')); ?>" href="javascript:void(0);">#
             <?=$aprnc->name?>
             </a> </li>
           <?php
