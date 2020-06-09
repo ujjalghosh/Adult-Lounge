@@ -43,7 +43,11 @@ class Home extends Common_Controller {
 		$this->data['user'] = $this->getUserDetails($this->session->userdata('UserId'));
 
 		$this->load->view('frontend/layout/header', $this->data);
-		$this->load->view('frontend/pages/profile');
+		if ($this->session->userdata('UserType') == '1') {
+			$this->load->view('frontend/pages/user_profile');
+		} else {
+			$this->load->view('frontend/pages/profile');
+		}
 		$this->load->view('frontend/layout/footer', $this->data);
 	}
 

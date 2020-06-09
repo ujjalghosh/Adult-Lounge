@@ -28,6 +28,7 @@ update_mount()
 $(document).on('click', '#reload', function(event) {
 	event.preventDefault();
 	current_page=1; 
+	$('.paginationBox').bootpag({page: 1});
 	update_mount()
 });
 
@@ -37,6 +38,7 @@ $(document).on('click', '._tag .rmv', function(event) {
 	var index = paramsArr.findIndex(p => p.key == fl_key) 
 	paramsArr.splice(index,1);
 	current_page=1; 
+	$('.paginationBox').bootpag({page: 1});
 	update_mount()
 });
 
@@ -55,6 +57,7 @@ $(document).on('click', '._tag .rmv', function(event) {
 	//paramsArr.push(a)
  	add(paramsArr, a);
  	current_page=1;
+ 	$('.paginationBox').bootpag({page: 1});
 	update_mount()
  
 
@@ -99,11 +102,13 @@ $.ajax({
 .done(function(res) {
 	
 	if(res.status==true){
+		$('.paginationBox').show();
 		$('.paginationBox').bootpag({total:res.total_page})
 		$('#performer_list').html(res.data);
 		$('#_totfnd').html(res.total_perfomers);
 	}
 	if(res.status==false){
+		$('.paginationBox').hide();
 		$('.paginationBox').bootpag({total:0})
 		$('#performer_list').html(res.message);
 		$('#_totfnd').html(0);
