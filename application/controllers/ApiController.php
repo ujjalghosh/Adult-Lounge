@@ -69,18 +69,19 @@ class ApiController extends Common_Controller {
 			if (!empty($this->request) && is_array($this->request)) {
 				$this->setFilterData($this->request);
 			}
-
+			$total_perfomers = $this->performer->total_perfomers($this->filterData);
 			if ($this->filterData) {
 				$this->setPerformer($this->performer->filter($this->filterData));
 			} else {
 				$this->setPerformer($this->performer->all(true));
 			}
+
 			// echo "<pre>";
 			// print_r($this->performer);
 			// exit;
 			if ($this->performer) {
 				foreach ($this->performer as $performer) {
-					$this->data[] = array(
+					/*	$this->data[] = array(
 						'id' => $performer['id'],
 						'name' => $performer['name'],
 						'slug' => strtolower(str_replace(' ', '_', ($performer['name']))),
@@ -88,12 +89,44 @@ class ApiController extends Common_Controller {
 						'price_in_private' => $performer['price_in_private'],
 						'price_in_group' => $performer['price_in_group'],
 						'img' => (isset($performer['image'])) ? base_url('assets/profile_image/' . $performer['image']) : base_url('assets/images/noimage.png'),
-					);
+					);*/
+					$performType = '';
+					if ($performer['price_in_private'] && $performer['price_in_private'] != '0.00') {
+						$performType = 'In Private';
+					}
+					if ($performer['price_in_group'] && $performer['price_in_group'] != '0.00') {
+						$performType = 'In Group';
+					}
+
+					$link = base_url('performer/' . $performer['id'] . '/' . strtolower(str_replace(' ', '_', ($performer['name']))));
+					$img = (isset($performer['image'])) ? base_url('assets/profile_image/' . $performer['image']) : base_url('assets/images/noimage.png');
+					$html = '';
+
+					$html .= '
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">' . $performType . '</span>
+                <a href="' . base_url($link) . '" class="list-image-view">
+                <img src="' . $img . '" alt="' . $performer['display_name'] . '"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="' . $link . '">' . $performer['display_name'] . '</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£' . $performer['price_in_private'] . '</span> p/m</li>
+                    <li>GROUP: <span>£' . $performer['price_in_group'] . '</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div';
+
+					$this->data[] = $html;
 				}
 				return $this->output
 					->set_content_type('application/json')
 					->set_status_header(200)
 					->set_output(json_encode(array(
+						'status' => TRUE,
+						'total_page' => ceil($total_perfomers / 10),
+						'total_perfomers' => $total_perfomers,
 						'data' => $this->data,
 					)));
 			} else {
@@ -101,6 +134,7 @@ class ApiController extends Common_Controller {
 					->set_content_type('application/json')
 					->set_status_header(200)
 					->set_output(json_encode(array(
+						'status' => FALSE,
 						'data' => [],
 						'message' => 'Sorry, we can\t find any results that match your criteria.'
 					)));
@@ -110,6 +144,7 @@ class ApiController extends Common_Controller {
 				->set_content_type('application/json')
 				->set_status_header(405)
 				->set_output(json_encode(array(
+					'status' => FALSE,
 					'message' => Common_Controller::$statusTexts[405],
 				)));
 		}
