@@ -5253,3 +5253,40 @@ body { font-family: sans-serif; }
 .profile-view.proo {
 	margin-top: -10px;
 }
+.gridview .col-grid figure{
+	height: 190px;
+	overflow: hidden;
+	margin-bottom: 0;
+}
+.pagination-custome .pagination{
+	justify-content: center;
+	margin: 20px 0;
+}
+.pagination-custome .pagination li{
+	margin: 2px;
+}
+.pagination-custome .pagination li a{
+	display: block;
+	padding: 8px 12px;
+	border: 1px solid #cbad71;
+	transition: all 0.4s;
+}
+.pagination-custome .pagination li.first, .pagination-custome .pagination li.last{
+	background: #cbad71;
+	color: #000;
+}
+.pagination-custome .pagination li.first.disabled, .pagination-custome .pagination li.last.disabled{
+	background: #cbad71;
+    opacity: .6;
+}
+.pagination-custome .pagination li.active a, .pagination-custome .pagination li a:hover{
+	background: #cbad71;
+}
+.listview .col-grid figure {
+	border: 1px solid #cbad71;
+	padding: 5px;
+	margin: 0;
+}
+.listview .col-grid figure .list-image-view img{
+	max-width: 200px;
+}

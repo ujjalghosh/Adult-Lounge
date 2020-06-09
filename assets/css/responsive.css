@@ -5,7 +5,9 @@
 }
 
 @media (max-width: 1199px){
-
+    .content-wrapper aside + .content-sec{
+        padding-left: 200px;
+    }
 }
 
 @media (max-width: 992px){

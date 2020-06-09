@@ -15,12 +15,259 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
 
         </ul>
     </div>
-    <div class="col gridview">
+    <div class="col gridview p-0">
 
         <div class="col-grid">
             <figure class="active">
                 <span class="strapbox">In Private</span>
-                <a href="performer/3/test_performer"><img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591453941download_(2).jpg" alt="Oleg Gekman"></a>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591453941download_(2).jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/5.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/8.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/1.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/demo_user.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/award-3.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-002.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001_d.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591453941download_(2).jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/5.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/8.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/1.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/demo_user.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/award-3.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-002.jpg" alt="Oleg Gekman"></a>
+                <figcaption>
+                <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
+                <ul>
+                    <li>PRIVATE: <span>£100.00</span> p/m</li>
+                    <li>GROUP: <span>£0.00</span> p/M</li>
+                </ul>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="col-grid">
+            <figure class="active">
+                <span class="strapbox">In Private</span>
+                <a href="performer/3/test_performer" class="list-image-view"><img src="http://hirewebagency.com/adultlounge/assets/images/img-001_d.jpg" alt="Oleg Gekman"></a>
                 <figcaption>
                 <h4><span class="active-circle"></span><a href="performer/3/test_performer">Oleg Gekman</a></h4>
                 <ul>
@@ -37,7 +284,7 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
         <!--Search Filter-->
 
 
-        <div class="paginationBox"></div>
+        <div class="paginationBox pagination-custome"></div>
     </div>
 </section>
 <?php
