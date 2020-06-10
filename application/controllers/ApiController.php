@@ -75,7 +75,7 @@ class ApiController extends Common_Controller {
 			} else {
 				$this->setPerformer($this->performer->all(true));
 			}
-
+			//echo $this->db->last_query();
 			// echo "<pre>";
 			// print_r($this->performer);
 			// exit;
@@ -106,7 +106,7 @@ class ApiController extends Common_Controller {
         <div class="col-grid">
             <figure class="active">
                 <span class="strapbox">' . $performType . '</span>
-                <a href="' . base_url($link) . '" class="list-image-view">
+                <a href="' . $link . '" class="list-image-view">
                 <img src="' . $img . '" alt="' . $performer['display_name'] . '"></a>
                 <figcaption>
                 <h4><span class="active-circle"></span><a href="' . $link . '">' . $performer['display_name'] . '</a></h4>

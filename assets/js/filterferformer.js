@@ -2,7 +2,7 @@
         return window.location.origin;
     }
   
-    var total_performer=10;
+    var total_performer=1;
     var current_page=1;
  $('.paginationBox').bootpag({
        total: total_performer,
@@ -25,6 +25,7 @@ current_page=page;
 update_mount()
 
 });
+ $('.paginationBox').hide();
 $(document).on('click', '#reload', function(event) {
 	event.preventDefault();
 	current_page=1; 

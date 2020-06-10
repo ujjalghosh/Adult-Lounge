@@ -89,3 +89,7 @@
 .premium-lock-image ul.grid.masonary-ul li:nth-child(4){
 	left: 75%; top: 0px;
 }
+label.error{
+	color: #f21616;
+font-size: 12px;
+}

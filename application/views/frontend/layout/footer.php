@@ -45,7 +45,7 @@
 </div>-->
 <!-- Buy Credits -->
 
-<script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
+
  <script type="text/javascript" src="//botmonster.com/jquery-bootpag/jquery.bootpag.js"></script>
 <script   src="<?=base_url('assets/js/filterferformer.js')?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>

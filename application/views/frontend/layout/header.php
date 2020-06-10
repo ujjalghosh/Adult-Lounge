@@ -37,6 +37,9 @@ $active_url = $controller . '/' . $method;
        // mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
     </script>
 <script src="<?=base_url('assets/js/DetectRTC.js')?>"></script>
+<script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.additional-methods.min.js'); ?>"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body id="body-content" class="hide">

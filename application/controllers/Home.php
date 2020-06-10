@@ -50,6 +50,101 @@ class Home extends Common_Controller {
 		}
 		$this->load->view('frontend/layout/footer', $this->data);
 	}
+	public function checkUsernameExist() {
+		$new_username = $this->input->post('new_username');
+		$cur_username = $this->input->post('cur_username');
+		if ($new_username == $cur_username) {
+			echo "true";
+		} else {
+			$result = get_user_info('usernm', '@' . $new_username);
+			if ($result) {
+				echo "false";
+			} else {
+				echo "true";
+			}
+		}
+	}
+
+	public function checkEmailExist() {
+		$new_email = $this->input->post('new_email');
+		$cur_email = $this->input->post('cur_email');
+		if ($new_email == $cur_email) {
+			echo "true";
+		} else {
+			$result = get_user_info('email', $new_email);
+			if ($result) {
+				echo "false";
+			} else {
+				echo "true";
+			}
+		}
+	}
+	public function update_user_profile() {
+		$this->load->model('user_model');
+		$user_id = $this->input->post('editpro_id');
+		$users['name'] = $this->input->post('name');
+		$users['usernm'] = '@' . $this->input->post('usernm');
+		$users['email'] = $this->input->post('email');
+		$users['gender'] = $this->input->post('gender');
+		$users['phone_no'] = $this->input->post('phone_no');
+		$users['age'] = $this->input->post('age');
+
+		$this->form_validation->set_rules('name', 'name', 'trim|required');
+		$this->form_validation->set_rules('usernm', 'username', 'trim|required');
+		$this->form_validation->set_rules('email', 'email', 'trim|required');
+		$this->form_validation->set_rules('age', 'age', 'numeric');
+
+		$return_data = array();
+		if ($this->form_validation->run() == FALSE) {
+			$return_data['message'] = validation_errors('<span>', '</span>');
+			$return_data['status'] = FALSE;
+		} else {
+
+			if (isset($_FILES['editpro_image']) && $_FILES['editpro_image'] != NULL && $_FILES['editpro_image'] != '' && $_FILES['editpro_image']['size'] > 0) {
+				$config['upload_path'] = './assets/profile_image/';
+				$config['allowed_types'] = '*';
+				$config['file_name'] = time() . $_FILES['editpro_image']['name'];
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				if ($this->upload->do_upload('editpro_image')) {
+					$data = $this->upload->data();
+					$users['image'] = $data['file_name'];
+					$oldimg = $this->input->post('old_editpro_image', TRUE);
+					if ($oldimg != '' && $oldimg != 'non_pic.png') {
+						if (file_exists('./assets/profile_image/' . $oldimg)) {
+							unlink('./assets/profile_image/' . $oldimg);
+						}
+					}
+				} else {
+					$return_data['message'] = $this->upload->display_errors();
+					$return_data['status'] = FALSE;
+					echo json_encode($return_data);
+					exit();
+				}
+			}
+
+			$users['updated_at'] = date("Y-m-d H:i:s");
+			if ($user_id > 0) {
+				$return = $this->user_model->update_user($user_id, $users);
+
+				if ($return) {
+					$return_data['message'] = 'Your profile details successfully updated.';
+					$return_data['status'] = TRUE;
+
+				} else {
+					$return_data['message'] = 'Something went wrong while saving the data. Please try again.';
+					$return_data['status'] = FALSE;
+
+				}
+			} else {
+				$return_data['message'] = 'User details missing .';
+				$return_data['status'] = FALSE;
+			}
+
+		}
+		echo json_encode($return_data);
+		exit();
+	}
 
 	public function profileUpdate() {
 		if (!empty($this->cm->get_specific('users', array("usernm" => '@' . $this->input->post('usernm_edit'), "id !=" => $this->input->post('editpro_id'))))) {
@@ -217,7 +312,7 @@ class Home extends Common_Controller {
 		$this->checkLogin();
 
 		if ($this->input->post('editpro_name')) {
-			if (empty($this->cm->get_specific('users', array("email" => $this->input->post('editpro_email'), "id !=" => $this->input->post('UserId'))))) {
+			if (empty($this->cm->get_specific('users', array("email" => $this->input->post('editpro_email'), "id !=" => $this->session->userdata('UserId'))))) {
 				$updateArray = array(
 					'name' => $this->input->post('editpro_name'),
 					'email' => $this->input->post('editpro_email'),
@@ -230,12 +325,12 @@ class Home extends Common_Controller {
 				if ($this->input->post('editpro_pwd') != '') {
 					$updateArray['login_password'] = MD5($this->input->post('editpro_pwd'));
 				}
-				if ($this->input->post('editpro_card') != '') {
-					$updateArray['card_no'] = $this->input->post('editpro_card');
-					$updateArray['card_month'] = $this->input->post('editpro_cardm');
-					$updateArray['card_year'] = $this->input->post('editpro_cardy');
-					$updateArray['card_cvv'] = $this->input->post('editpro_card_cvv');
-				}
+				//if ($this->input->post('editpro_card') != '') {
+				$updateArray['card_no'] = $this->input->post('editpro_card');
+				$updateArray['card_month'] = $this->input->post('editpro_cardm');
+				$updateArray['card_year'] = $this->input->post('editpro_cardy');
+				$updateArray['card_cvv'] = $this->input->post('editpro_card_cvv');
+				//}
 				$this->cm->update('users', array("id" => $this->session->userdata('UserId')), $updateArray);
 				print 'Personal Details Updated Successfully!!!';
 				die;
@@ -245,6 +340,7 @@ class Home extends Common_Controller {
 			}
 		}
 		$this->data['user'] = $this->getUserDetails($this->session->userdata('UserId'));
+		//pr($this->data['user']);die();
 		$this->data['wallet'] = $this->getWalletAmonut($this->session->userdata('UserId'));
 		$this->data['subs'] = $this->getSubsPerformer(array('s.user_id' => $this->session->userdata('UserId'), 's.status' => 1));
 		$this->data['invoices'] = $this->getInvoices();

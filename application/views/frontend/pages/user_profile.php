@@ -64,7 +64,7 @@ echo SITE_NAME; ?> -->
 
                 </div>
                 <div class="clear"></div>
-                <form id="userprofile-form" method="post" autocomplete="off" class="form-catagories">
+                <form id="userprofile-form" action="<?=base_url('home/update_user_profile')?>" autocomplete="off" class="form-catagories">
                     <div class="box-content-widget pl-0">
                         <div class="form-two-col per2 leftsc ">
                             <div class="show show2">
@@ -91,11 +91,21 @@ echo SITE_NAME; ?> -->
                             <div class="form-group">
                                 <input type="text" placeholder="NAME" class="man form-control username requiredCheck" data-check="Name" name="name" id="name" value="<?=$user[0]['name']?>" />
                             </div>
+                                                       <?php
+if ($user[0]['usernm'] != '') {
+	$unm = explode('@', $user[0]['usernm'])[1];
+} else {
+	$unm = '';
+}
+?>
+                            <div class="form-group">
+                                <input type="text" placeholder="user name" class="man form-control username requiredCheck" data-check="usernm" name="usernm" id="usernm" value="<?=$unm?>" />
+                            </div>
                             <div class="form-group">
                                 <input type="email" placeholder="Email" class="man form-control username requiredCheck" data-check="email" name="email" id="email" value="<?=$user[0]['email']?>" />
                             </div>
                              <div class="form-group">
-                                <select class="custom-select requiredCheck" name="editpro_sexual_pref" id="editpro_sexual_pref" data-check="Sexual Preference">
+                                <select class="custom-select requiredCheck" name="gender" id="gender"  >
                                     <option value="">SEXUAL PREFERENCE</option>
                                     <option value="Male" <?php if (isset($user)) {if ($user[0]['gender'] == 'Male') {print 'selected';}}?>>Male</option>
                                     <option value="Female" <?php if (isset($user)) {if ($user[0]['gender'] == 'Female') {print 'selected';}}?>>Female</option>
@@ -143,4 +153,101 @@ echo SITE_NAME; ?> -->
         animateThumb      : false,
         showThumbByDefault: false,
     });
+
+
+jQuery(document).ready(function($) {
+
+        $("#userprofile-form").validate({
+            rules:
+            {
+            name: "required",
+            editpro_image: {
+            required: false,
+            extension: "jpg|gif|png|jpeg|JPG|PNG"
+            },
+             email: {
+                required:true,
+                email:true,
+                remote: {
+                      param: {
+                            url: "<?php echo base_url(); ?>home/checkEmailExist/",
+                            data: {
+                                    new_email: function() {
+                                        return $('#email').val();
+                                    },
+                                    cur_email: function() {
+                                        return '<?=$user[0]['email']?>';
+                                    }
+                               },
+                            type: "post"
+                       }
+                }
+            },
+            usernm:{
+                    required:true,
+                    remote: {
+                        param: {
+                            url: "<?php echo base_url(); ?>home/checkUsernameExist/",
+                            data: {
+                                    new_username: function() {
+                                        return $('#usernm').val();
+                                    },
+                                    cur_username: function() {
+                                        return '<?=$unm?>';
+                                    }
+                            },
+                            type: "post"
+                       }
+                   }
+            },
+
+            },
+            messages:{
+                name: "Please enter your full name",
+                email:{
+                  required: "Please enter email",
+                  remote: jQuery.validator.format("Email already exist.")
+                },
+                usernm:{
+                  required: "Please enter username",
+                  remote: jQuery.validator.format("Username already exist.")
+                },
+                editpro_image: {
+                     extension: "Allow only image format jpg,png,jpeg,JPG,PNG"
+            },
+
+
+            },
+            submitHandler: function(form) {
+                var formData = new FormData($(form)[0]);
+                $.ajax({
+                    type     : "POST",
+                    cache    : false,
+                    contentType: false,
+                    processData: false,
+                    url      : form.action,
+                    dataType : 'json',
+                    data     : formData,
+                    success  : function(res) {
+                      swal_warning(res.message);
+
+                        $('html, body').animate({
+                            scrollTop: 0
+                        }, 800);
+
+                    },
+                    beforeSend: function(){
+                        $("#editpro_submit_btn").prop("disabled", true);
+                        $("#loadingDv").show();
+                    },
+                    complete: function(){
+                        $("#editpro_submit_btn").prop("disabled", false);
+                        $("#loadingDv").hide();
+                    }
+                });
+
+            }
+        }).settings.ignore = [];
+
+});
 </script>

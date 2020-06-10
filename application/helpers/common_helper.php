@@ -212,3 +212,22 @@ ul{margin:10px 0; padding:0;}
 
 	return $message = $message_header . $msg . $message_footer;
 }
+
+function get_user_info($field, $value) {
+	$ci = &get_instance();
+	$ci->db->select('*');
+	$ci->db->where($field, $value);
+	$query = $ci->db->get('users');
+	$result = $query->row();
+	return $result;
+}
+
+function get_billdetails() {
+	$ci = &get_instance();
+	$userid = $ci->session->userdata('UserId');
+	$ci->db->select('*');
+	$ci->db->where('id', $userid);
+	$query = $ci->db->get('users');
+	$result = $query->row();
+	return $result;
+}

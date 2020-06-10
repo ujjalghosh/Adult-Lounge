@@ -72,7 +72,7 @@ class Performer_model extends CI_model {
 	public function search() {
 
 	}
-	public function all($verifiedAccount = false, $option = array()) {
+	public function all($verifiedAccount = true, $option = array()) {
 		$condition = array(
 			'u.login_type' => '2',
 			'u.status' => '1',
@@ -80,10 +80,19 @@ class Performer_model extends CI_model {
 		// if($sexual_pref != '') {
 		//     $condition['u.sexual_pref'] = $sexual_pref;
 		// }
+		//pr($option);
 		if (!empty($option) && isset($option)) {
 			if (is_array($option)) {
 				if (array_key_exists('name', $option) && in_array($option['name'], $option)) {
-					$condition['up.display_name LIKE'] = '%' . $option['name'] . '%';
+					//$condition['up.display_name LIKE'] = '%' . $option['name'] . '%';
+					//$condition['up.display_name LIKE'] = '%' . $option['name'] . '%' . ' OR u.gender =' . $option['name'] . ' OR u.name %' . $option['name'] . '%';
+
+					$this->db->group_start();
+					$this->db->where('u.gender', $option['name']);
+					$this->db->or_like('up.display_name', $option['name'])
+						->or_like('u.name', $option['name']);
+					$this->db->group_end();
+
 				}
 			}
 		}
@@ -104,7 +113,7 @@ class Performer_model extends CI_model {
 		// }
 		$join[] = ['table' => 'user_preference up', 'on' => 'up.user_id = u.id', 'type' => 'left'];
 		$performer = $this->cm->select('users u', $condition, 'u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref, u.age, u.image, u.isLogin, up.display_name, up.height, up.weight, up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst, up.cup, up.pubic_hair, up.penis, up.description,up.currency, up.price_in_private,up.price_in_group, up.category, up.attribute, up.willingness, up.appearance, up.feature, (select GROUP_CONCAT(pg.image) from performer_gallery pg where pg.user_id = u.id) images', 'u.id', 'desc', $join);
-
+		//echo $this->db->last_query();die();
 		return $performer;
 	}
 	public function getFreeContent($options = array()) {
@@ -378,8 +387,8 @@ class Performer_model extends CI_model {
 				if (array_key_exists('willingness', $this->data) && isset($this->data['willingness']) && !empty($this->data['willingness'])) {
 					$this->conditions['wi.name LIKE'] = '%' . $this->data['willingness'] . '%';
 				}
-				if (array_key_exists('appearances', $this->data) && isset($this->data['appearances']) && !empty($this->data['appearances'])) {
-					$this->conditions['ap.name LIKE'] = '%' . $this->data['appearances'] . '%';
+				if (array_key_exists('appearence', $this->data) && isset($this->data['appearence']) && !empty($this->data['appearence'])) {
+					$this->conditions['ap.name LIKE'] = '%' . $this->data['appearence'] . '%';
 				}
 
 				if (array_key_exists('id', $this->data) && isset($this->data['id']) && !empty($this->data['id'])) {
@@ -469,8 +478,8 @@ class Performer_model extends CI_model {
 				if (array_key_exists('willingness', $this->data) && isset($this->data['willingness']) && !empty($this->data['willingness'])) {
 					$this->conditions['wi.name LIKE'] = '%' . $this->data['willingness'] . '%';
 				}
-				if (array_key_exists('appearances', $this->data) && isset($this->data['appearances']) && !empty($this->data['appearances'])) {
-					$this->conditions['ap.name LIKE'] = '%' . $this->data['appearances'] . '%';
+				if (array_key_exists('appearence', $this->data) && isset($this->data['appearence']) && !empty($this->data['appearence'])) {
+					$this->conditions['ap.name LIKE'] = '%' . $this->data['appearence'] . '%';
 				}
 
 				// if(array_key_exists('customer_id', $this->data) && isset($this->data['customer_id']) && !empty($this->data['customer_id']) && array_key_exists('id', $this->data) && isset($this->data['id']) && !empty($this->data['id'])) {

@@ -669,7 +669,7 @@ $("#editprofile-form").submit(function (e) {
                 swal_success(res.message);
                 setTimeout(function() {   
                    window.location.reload()
-                }, 10000);
+                }, 4000);
             } else {
                 swal_warning(res.message);
             }
