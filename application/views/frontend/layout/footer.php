@@ -69,8 +69,7 @@
 
     <div class="ProfileCard-details">
         <div class="ProfileCard-realName">{{name}}</div>
-        <div class="ProfileCard-screenName">30 y/tests female</div>
-        <div class="ProfileCard-description">Private</div>
+
     </div>
 
     <!-- <div class="ProfileCard-stats">

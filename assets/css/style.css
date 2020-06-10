@@ -4753,7 +4753,7 @@ h2.overview {
 }
 .ProfileCard:hover,  .ProfileCard.is-active {
 	color: #fff;
-	background: #55acee;
+	background: #d6b872;
 }
 .ProfileCard:hover .ProfileCard-screenName,  .ProfileCard:hover .ProfileCard-stat-label,  .ProfileCard.is-active .ProfileCard-screenName,  .ProfileCard.is-active .ProfileCard-stat-label {
 	color: #fff;

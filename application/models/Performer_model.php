@@ -454,6 +454,7 @@ class Performer_model extends CI_model {
 		}
 		$this->db->where('u.login_type', 2);
 		$this->db->where('u.status', 1);
+		$this->db->where('u.account_verified', 'Yes');
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
@@ -532,6 +533,7 @@ class Performer_model extends CI_model {
             ');
 			$this->db->where('u.login_type', 2);
 			$this->db->where('u.status', 1);
+			$this->db->where('u.account_verified', 'Yes');
 			if (isset($this->data['page'])) {
 				$page = $this->data['page'] - 1;
 				$offset = $page * 10;
@@ -563,6 +565,8 @@ class Performer_model extends CI_model {
             ');
 			$this->db->where('u.login_type', 2);
 			$this->db->where('u.status', 1);
+			$this->db->where('u.account_verified', 'Yes');
+
 			if (isset($this->data['page'])) {
 				$page = $this->data['page'] - 1;
 				$offset = $page * 10;
@@ -572,7 +576,7 @@ class Performer_model extends CI_model {
 		}
 
 		if ($this->query) {
-
+			//echo $this->db->last_query();die();
 			return $this->query->result_array();
 		}
 		return array();

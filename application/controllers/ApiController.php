@@ -29,6 +29,7 @@ class ApiController extends Common_Controller {
 			} else {
 				$this->setPerformer($this->performer->all(true, $this->option));
 			}
+			//echo $this->db->last_query(); die();
 			if ($this->performer) {
 				foreach ($this->performer as $performer) {
 					$this->data[] = array(
