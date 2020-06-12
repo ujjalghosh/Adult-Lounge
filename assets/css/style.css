@@ -5291,4 +5291,17 @@ body { font-family: sans-serif; }
 .listview .col-grid figure .list-image-view img{
 	max-width: 200px;
 }
- 
+ .performer-gift-view.manage-list{
+	margin: 15px;
+    max-height: 400px;
+    overflow-y: scroll;
+ }
+ .manage-list.performer-gift-view h4 img{
+	 max-width: 50px;
+ }
+ .manage-list.performer-gift-view li{
+	margin-bottom: 5px;
+ }
+ .subs_thumb {
+    margin: 15px 0;
+}
