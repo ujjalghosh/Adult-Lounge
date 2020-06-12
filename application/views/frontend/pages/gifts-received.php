@@ -1,7 +1,7 @@
 <main class="content-wrapper">
     <section class="content-sec">
         <div class="manage-user-heading">
-            <h3>MY NETWORK</h3>
+            <h3 class="dashboard-text">MY NETWORK</h3>
             <ul>
                 <li>
                     <img src="<?= base_url('assets/profile_image/' . $current_user['image']) ?>" alt="<?= $current_user['name'] ?>">
@@ -16,13 +16,13 @@
         </div>
         <div class="manage-area">
             <div class="ad-row">
-                <div class="col-6 pr-20">
+                <div class="col-md-6 pr-20">
                     <div class="dash_box">
                         <?php if (count($gifts)) : ?>
                             <div class="dash_box_hed">
                                 <p>YOUR GIFTS</p>
                             </div>
-                            <div class="manage-list">
+                            <div class="manage-list performer-gift-view">
                                 <ul style="list-style:none">
                                     <?php foreach ($gifts as $gift) : ?>
                                         <li>
@@ -39,7 +39,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="col-6 pl-20">
+                <div class="col-md-6 pl-20">
                     <h2 class="overview">FINANCIAL OVERVIEW</h2>
                     <div class="dash_box network-area">
                         <div class="dash_box_hed">

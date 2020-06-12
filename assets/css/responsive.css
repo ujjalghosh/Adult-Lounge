@@ -8,16 +8,298 @@
     .content-wrapper aside + .content-sec{
         padding-left: 200px;
     }
+    .content-wrapper{
+        margin-top: 15px;
+    }
+    .subs_thumb_hed p{
+        font-size: 16px;
+    }
+    .subs_thumb ul li{
+        height: 200px;
+    }
+    .box-content-layout{
+        margin-top: 0;
+    }
+    .mdl-style1 .top-header h2, .mdl-style1 .sub-title h3, .box-content-layout .title-sec h1, .box-content-layout h2{
+        font-size: 20px;
+    }
+    .manage-list h4{
+        font-size: 14px;
+    }
+    .dash_box .manage-list{
+        padding: 12px;
+    }
+    .dash_box .manage-list .btn{
+        padding: 4px 15px;
+    }
+    .search-network h2{
+        font-size: 16px;
+    }
+    .search-network .restrictSpecial{
+        width: 75%;
+    }
+}
+
+@media (max-width: 1024px){
+    .performer-head ul li.nav-item::after{
+        left: 0;
+    }
+    .dash_action .dash_tabs li{
+        width: 31%;
+        margin: 0 12px 12px 0;
+    }
+    .perso{
+        width: 100%;
+    }
+    .leftsc {
+        width: 100%;
+    }
 }
 
 @media (max-width: 992px){
-
+    .header-bottom {
+        margin-top: 0px;
+    }
+    .performer-head .navbar-toggler{
+        border: 1px solid #d8c17e;
+        border-radius: 0;
+        color: #d8c17e;
+        font-size: 21px;
+    }
+    .performer-head .navbar-toggler .navbar-toggler-icon{
+        width: auto;
+        height: auto;
+    }
+    .performer-head ul li.nav-item::after{
+        display: none;
+    }
+    .performer-head.navbar-expand-lg .navbar-nav .nav-link{
+        font-size: 14px;
+        text-align: left;
+        border-bottom: 1px solid #53482f;
+        padding: 8px 0;
+    }
+    .dash_nav{
+        padding: 10px 2px;
+    }
+    .dash_nav h3.dashboard-text{
+        font-size: 15px;
+        padding: 15px 0;
+    }
+    .dash_inner{
+        padding: 15px 5px;
+    }
+    .dash_box_body ul li .mdl_txt{
+        color: #ddd;
+    }
+    .subs_thumb ul li{
+        width: 25%;
+    }
+    .dash_box .manage-list .btn{
+        margin-bottom: 5px;
+    }
+    .search-network .restrictSpecial {
+        width: 66%;
+    }
+    .spand-heading-area h3, .spand-heading-area h4{
+        font-size: 18px;
+    }
 }
 
-@media (max-width: 767px){
-
+@media (max-width: 768px){
+    .header-layout{
+        position: relative;
+    }
+    .subs_thumb ul li{
+        width: 33.3333%;
+    }
+    .gallery-brouser-area .brows.editpro_gal_image_brows{
+        width: 40%;
+        margin: 0;
+    }
+    .show.show2 .form-group .formsm{
+        width: 43% !important;
+        margin-top: 2px;
+    }
+    .manage-user-heading h3{
+        font-size: 15px;
+    }
+    .search-network .restrictSpecial {
+        width: 78%;
+    }
+    .how-it-work, .loyalty-terms{
+        width: 100%;
+        float: none;
+    }
+    .reward-slider{
+        padding: 15px 50px;
+    }
+    .spand-heading-area h3, .spand-heading-area h4{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 575px){
+.dashboard-text{
+    padding: 0;
+    margin-bottom: 10px;
+}
+.performer-head{
+    padding-top: 0px;
+    padding-bottom: 8px;
+    margin-top: -25px;
+}
+.hdr-rwidgt{
+    margin-top: 10px;
+}
+.hdr-rgt .hdr-rwidgt:nth-child(2){
+    margin-top: 20px;
+}
+.header-wrap, .header-layout{
+    min-height: 100%;
+}
+.text-right{
+    margin: 0;
+}
+.subs_thumb ul li{
+    width: 50%;
+}
+.perso{
+    margin: 10px 0 0 0;
+}
+.gallery-brouser-area .brows.editpro_gal_image_brows{
+    width: 75%;
+}
+.show.show2 .form-group .formsm{
+    width: 100% !important;
+    margin: 0;
+}
+.add-more-gal a.add-more-gal-img{
+    line-height: 30px;
+    font-size: 14px;
+}
+.add-more-gal-img{
+    float: right;
+}
+.msg-bg, .theme-popup{
+    overflow: scroll;
+}
+.content-area p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: normal;
+}
+.manage-user-heading{
+    display: block;
+}
+.manage-user-heading h3.dashboard-text{
+    display: block;
+    float: none;
+    width: 100%;
+    margin-top: 10px;
+}
+.manage-list h4 {
+    font-size: 13px;
+}
+.manage-area .ad-row .pr-20{
+    padding-right: 15px;
+}
+.manage-area .ad-row .pl-20{
+    padding-left: 15px;
+}
+.dash_box .manage-list .btn {
+    padding: 4px 12px;
+}
+.search-network .restrictSpecial {
+    width: 74%;
+}
+.spand-heading-area p{
+    padding-left: 5px;
+    font-size: 12px;
+}
+.how-it-work h3{
+    font-size: 18px;
+}
+.step-description h4{
+    font-size: 16px;
+}
+.step-description p{
+    font-size: 12px;
+}
+.step-work h2{
+    font-size: 2rem;
+}
+.step-work{
+    width: 80px;
+    height: 80px;
+}
+.step-work p{
+    padding-top: 4px;
+}
+.loyalty-terms{
+    margin: 0;
+}
+.dash_box .dash_box_hed p{
+    font-size: 15px;
+}
+} 
 
+@media (max-width: 480px){
+.manage-area .manage-list li, .manage-list h4{
+    display: block;
+}  
+.manage-list .list-btn{
+    width: 100%;
+    display: block;
+    margin-top: 7px;
+}
+.dash_box .manage-list .btn{
+    width: 49%;
+}
+.search-network .restrictSpecial {
+    width: 69%;
+}
+.loyalty-scheme h2{
+    font-size: 21px;
+}
+.spand-heading-area h3{
+    display: block;
+    margin-bottom: 5px;
+}
+.how-it-work ul li{
+    align-items: top;
+}
+
+}
+
+
+@media (max-width: 420px){
+    .dash_action .dash_tabs li{
+        margin: 0 10px 10px 0;
+    }
+    .dash_action .dash_tabs li a span.show_name{
+        font-size: 10px;
+    }
+    .msg-body-nav span{
+        width: 100%;
+        font-size: 17px;
+    }
+    .manage-user-heading ul li h5{
+        font-size: 11px;
+    }
+    .manage-user-heading ul li a{
+        font-size: 10px;
+    }
+    .manage-user-heading ul li{
+        margin-right: 6px;
+    }
+    .manage-user-heading ul li:last-child{
+        margin-right: 0;
+    }
+    .manage-user-heading ul li h2{
+        font-size: 13px;
+    }
+    .search-network .restrictSpecial {
+        width: 55%;
+    }
 }

@@ -211,7 +211,7 @@ p{
  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#e3c47c', endColorstr='#aa8e52', GradientType=1);
 }
 .header-bottom {
-	margin-top: 15px;
+	margin-top: 6px;
 }
 .header-bottom nav > ul > li {
 	float: left;
@@ -2083,7 +2083,7 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
 	margin-left: 4px;
 }
 .hdr-rgt {
-	width: 100% !important;
+	width: 45% !important;
 	text-align: center;
 	float: right;
 }
@@ -2100,7 +2100,7 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
 	display: inherit;
 }
 .hdr-lft {
-	width: 45%;
+	width: 48%;
 	float: left;
 }
 .hdr-rgt {
@@ -2111,7 +2111,7 @@ input[type="radio"] + label span, input[type="radio"]:checked + label span {
 	float: none;
 }
 .box-content-layout {
-	margin: 90px 0 0 0;
+	margin: 0px 0 0 0;
 }
 .mdl-rgt {
 	display: none;
@@ -3332,14 +3332,13 @@ Track
 }
  @media (max-width: 480px) {
 .dash_user_pic {
-	width: 25%;
+	width: 15%;
 }
 .dash_user_name {
-	width: 75%;
+	width: 35%;
 }
 .dash_user_rank {
-	float: left;
-	width: 100%;
+	float: right;
 	margin: 10px 0 0;
 }
 .dash_user_rank p {
@@ -3358,6 +3357,7 @@ Track
 }
 .dash_box_body ul li .user_icon {
 	width: 25%;
+	height: 50px;
 }
 .dash_box_body ul li .lft_txt, .dash_box_body ul li .rht_txt {
 	width: 75%;
@@ -5240,7 +5240,8 @@ body { font-family: sans-serif; }
 .performer-head ul li.nav-item::after {
 	content: '\007c';
 	position: absolute;
-	top: 5px;
+	top: 8px;
+	font-size: 13px;
 	color: #fff;
 }
 .performer-head ul li.nav-item:first-child::after {
@@ -5289,4 +5290,18 @@ body { font-family: sans-serif; }
 }
 .listview .col-grid figure .list-image-view img{
 	max-width: 200px;
+}
+ .performer-gift-view.manage-list{
+	margin: 15px;
+    max-height: 400px;
+    overflow-y: scroll;
+ }
+ .manage-list.performer-gift-view h4 img{
+	 max-width: 50px;
+ }
+ .manage-list.performer-gift-view li{
+	margin-bottom: 5px;
+ }
+ .subs_thumb {
+    margin: 15px 0;
 }
