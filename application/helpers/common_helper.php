@@ -231,3 +231,11 @@ function get_billdetails() {
 	$result = $query->row();
 	return $result;
 }
+function get_plan_info($plan_id) {
+	$ci = &get_instance();
+	$ci->db->select('*');
+	$ci->db->where('id', $plan_id);
+	$query = $ci->db->get('credit_plans');
+	$result = $query->row();
+	return $result;
+}
