@@ -45,12 +45,13 @@ class User_model extends CI_model {
 	public function applyForLoyaltyPoints($user_id) {
 		$this->db->select_sum('amount');
 		$this->db->where('user_id', $user_id);
+		$this->db->where('payment_mode', PAYPAL_MODE);
 		$row = $this->db->from('user_payments')->get()->row(0);
 		$total_amount = $row->amount ? $row->amount : 0;
 		// write_log('total_amount: ' . $total_amount);
 
 		$this->db->where('user_id', $user_id);
-		$row = $this->db->from('user_loyalty_points')->get()->row();
+		$row = $this->db->from('user_loyalty_points')->order_by('id', 'desc')->limit(1)->get()->row();
 		$last_points_on_amount = $row ? $row->last_points_given_on_amount : 0;
 		// write_log('last_points_on_amount: ' . $last_points_on_amount);
 
@@ -65,20 +66,22 @@ class User_model extends CI_model {
 			if ($plan->sell_price > $last_points_on_amount) {
 				$this->addCredit($plan->credit, $user_id);
 
-				if ($last_points_on_amount) {
+				/*if ($last_points_on_amount) {
 					$this->db->set('amount_spent', $total_amount);
 					$this->db->set('loyalty_points', 'loyalty_points+' . $plan->credit, FALSE);
 					$this->db->set('last_points_given_on_amount', $plan->sell_price);
 					$this->db->where('user_id', $user_id);
 					$this->db->update('user_loyalty_points');
-				} else {
-					$this->db->insert('user_loyalty_points', [
-						'user_id' => $user_id,
-						'amount_spent' => $total_amount,
-						'loyalty_points' => $plan->credit,
-						'last_points_given_on_amount' => $plan->sell_price,
-					]);
-				}
+				} else {*/
+				$this->db->insert('user_loyalty_points', [
+					'user_id' => $user_id,
+					'amount_spent' => $total_amount,
+					'loyalty_points' => $plan->credit,
+					'last_points_given_on_amount' => $plan->sell_price,
+				]);
+				//}
+				$log = 'You have receive free ' . $plan->credit . ' loyalty points';
+				user_log($log);
 			}
 		}
 	}

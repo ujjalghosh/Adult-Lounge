@@ -125,7 +125,10 @@ class Paypalpayment extends Common_Controller {
 
 				$mail_content = $this->mail->get_body($params, 'payment-success-admin.twig');
 				$this->mail->sent_mail($this->config->item('admin_email'), "[{$blogname}] New Payment Received", $mail_content);
-
+				$u_id = $this->session->userdata('UserId');
+				$this->session->set_userdata('curr_user', $this->getUserDetails($u_id)[0]);
+				$log = 'Account has been credited ' . CURRENCY_SIGN . $values['amount'];
+				user_log($log);
 				redirect('payment-completed');
 			} else {
 				$this->session->set_flashdata('error_msg', $this->lang->line('general_error_msg'));

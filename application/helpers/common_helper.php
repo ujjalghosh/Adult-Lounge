@@ -239,3 +239,8 @@ function get_plan_info($plan_id) {
 	$result = $query->row();
 	return $result;
 }
+function user_log($log) {
+	$ci = &get_instance();
+	$user_id = $ci->session->userdata('UserId');
+	$ci->db->insert('log_history', array('user_id' => $user_id, 'log' => $log));
+}
