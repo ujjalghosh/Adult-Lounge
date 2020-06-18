@@ -114,6 +114,7 @@ $active_url = $controller . '/' . $method;
             </li>
             <li><a href="<?=base_url('awards')?>">Awards</a></li>
             <li><a href="<?=base_url('loyalty')?>">Loyalty</a></li>
+    
             <div class="right-filters">
       	<div class="search">
         	<!--<span><img src="<?=base_url('assets/images/icon-search.png')?>" alt="search"/></span>-->
@@ -292,10 +293,10 @@ $active_url = $controller . '/' . $method;
       <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-name="GIRLS" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a></li>
-              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a></li>
-              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a></li>
-              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a></li>
+              <li><a class="_filter" data-key="performer" data-name="GIRLS" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS <span class="filter-style"></span></a></li>
+              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS <span class="filter-style"></span></a></li>
+              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES <span class="filter-style"></span></a></li>
+              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS <span class="filter-style"></span></a></li>
           </ul>
       </li>
       <?php

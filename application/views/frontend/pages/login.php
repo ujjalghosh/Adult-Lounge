@@ -1,4 +1,4 @@
-<section class="modal">
+<section class="modal modal-signup">
     <span class="overlay"></span>
 	<span class="close_reg" id="cancel_btn">X</span>
     <div class="modal-body">

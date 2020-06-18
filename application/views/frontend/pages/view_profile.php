@@ -9,6 +9,13 @@
         <div class="perform-widget perform-top-layout">
             <div class="perform-left-widget">
                 <div class="imgbox">
+                    <div class="group-message">
+                        <div class="group-message-text">
+                            <h3>Megan Kroft is currently in group</h3>
+                            <h6>Would you join to join at £3.99 per minute</h6>
+                            <a href="#" class="btn">Join Group</a>
+                        </div>
+                    </div>
                     <div class="icons-lft">
                         <ul>
                             <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-001.png') ?>" alt="" /></a></li>
@@ -43,11 +50,28 @@
 
                 </div>
                 <div class="option-box">
-                    <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?= $user[0]['id'] ?>', '<?php if ($user[0]['display_name'] != '') {
+                
+                    <div class="btn dropup start-show-dropdown">
+                        <a href="javascript:void(0)" class="btn text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">START SHOW</a>
+                        <div class="dropdown-menu dropdown-show-type">
+                            <h3>SELECT SHOW TYPE</h3>
+                            <ul>
+                                <li class="bg-light-pink"><a href="javascript:;">Freeview <span>$3.99 P/M</span></a></li>
+                                <li class="bg-light-gray"><a href="javascript:;">Group <span>$3.99 P/M</span></a></li>
+                                <li class="bg-light-green"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+                                <li class="bg-deep-pink"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                        
+
+
+
+                    <!-- <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?= $user[0]['id'] ?>', '<?php if ($user[0]['display_name'] != '') {
                                                                                                                                                     print $user[0]['display_name'];
                                                                                                                                                 } else {
                                                                                                                                                     print  $user[0]['name'];
-                                                                                                                                                } ?>')">START SHOW</a>
+                                                                                                                                                } ?>')">START SHOW</a> -->
                     <?php if (empty($subs)) { ?>
                         <a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn text-center subs_btn">Subscribe</a>
                     <?php } else { ?>
@@ -89,56 +113,62 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="box002">
-                    <div class="heading-stripe">
-                        <h3><?php if ($user[0]['display_name'] != '') {
-                                print $user[0]['display_name'];
-                            } else {
-                                print  $user[0]['name'];
-                            } ?> Chat</h3>
+                <div class="right-chat-area">
+                    <div class="box002">
+                        <div class="heading-stripe">
+                            <h3><?php if ($user[0]['display_name'] != '') {
+                                    print $user[0]['display_name'];
+                                } else {
+                                    print  $user[0]['name'];
+                                } ?> Chat</h3>
+                        </div>
+                        <div class="list-style">
+                            <ul class="chat-ul ovr-scrl-box" id="p_chat_box">
+                                <?php
+                                $last_chat_id = '';
+                                if (!empty($chat)) {
+                                    for ($i = 0; $i < count($chat); $i++) {
+                                        $last_chat_id = $chat[$i]->id;
+                                        ?>
+                                        <li style="<?php if ($chat[$i]->sender_id == $this->session->userdata('UserId')) {
+                                                                print 'text-align: right';
+                                                            } ?>"><?= $chat[$i]->msg ?></li>
+                                <?php }
+                                } ?>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="list-style">
-                        <ul class="chat-ul ovr-scrl-box" id="p_chat_box">
-                            <?php
-                            $last_chat_id = '';
-                            if (!empty($chat)) {
-                                for ($i = 0; $i < count($chat); $i++) {
-                                    $last_chat_id = $chat[$i]->id;
-                                    ?>
-                                    <li style="<?php if ($chat[$i]->sender_id == $this->session->userdata('UserId')) {
-                                                            print 'text-align: right';
-                                                        } ?>"><?= $chat[$i]->msg ?></li>
-                            <?php }
-                            } ?>
-                        </ul>
-                    </div>
-                </div>
-                <input type="hidden" id="last_chat_id" value="<?= $last_chat_id ?>">
-                <div class="box003">
-                    <div class="btm-form">
-                        <input type="text" id="p_chat_msg" />
-                        <input type="button" value="Send" id="p_send_chat" />
-                        <ul>
-                            <li>
-                                <img src="<?= base_url('assets/images/icon-giftbox.png') ?>" alt="Send Gift" />
-                                <a href="javascript:void(0);" class="gift-modal">Send Gift</a>
-                            </li>
-                            <li>
-                                <?php if (isset($vote)) { ?>
-                                    <input type="hidden" id="perf_vote<?= $user[0]['id'] ?>" value="<?= $point; ?>">
-                                    <input type="hidden" id="perf_rank<?= $user[0]['id'] ?>" value="<?= $vote['rank'] ?>">
-                                <?php } ?>
-                                <input type="hidden" id="perf_name<?= $user[0]['id'] ?>" value="<?php if ($user[0]['display_name'] != '') {
-                                                                                                    print $user[0]['display_name'];
-                                                                                                } else {
-                                                                                                    print  $user[0]['name'];
-                                                                                                } ?>">
-                                <?php if (isset($vote)) { ?>
-                                    <img src="<?= base_url('assets/images/icon-trophy.png') ?>" alt="Vote For Me" />
-                                    <a href="javascript:void(0);" class="vt" id="<?= $user[0]['id'] ?>">Vote For Me</a>
-                                <?php } ?>
-                            </li>
-                        </ul>
+                    <input type="hidden" id="last_chat_id" value="<?= $last_chat_id ?>">
+                    <div class="box003">
+                        <div class="btm-form">
+                            <input type="text" id="p_chat_msg" />
+                            <input type="button" value="Send" id="p_send_chat" />
+                            <ul>
+                                <li>
+                                    <img src="<?= base_url('assets/images/icon-giftbox.png') ?>" alt="Send Gift" />
+                                    <a href="javascript:void(0);" class="gift-modal">Send Gift</a>
+                                </li>
+                                <li>
+                                    <?php if (isset($vote)) { ?>
+                                        <input type="hidden" id="perf_vote<?= $user[0]['id'] ?>" value="<?= $point; ?>">
+                                        <input type="hidden" id="perf_rank<?= $user[0]['id'] ?>" value="<?= $vote['rank'] ?>">
+                                    <?php } ?>
+                                    <input type="hidden" id="perf_name<?= $user[0]['id'] ?>" value="<?php if ($user[0]['display_name'] != '') {
+                                                                                                        print $user[0]['display_name'];
+                                                                                                    } else {
+                                                                                                        print  $user[0]['name'];
+                                                                                                    } ?>">
+                                    <?php if (isset($vote)) { ?>
+                                        <img src="<?= base_url('assets/images/icon-trophy.png') ?>" alt="Vote For Me" />
+                                        <a href="javascript:void(0);" class="vt" id="<?= $user[0]['id'] ?>">Vote For Me</a>
+                                    <?php } ?>
+                                </li>
+                                <li>
+                                    <img src="<?= base_url('assets/images/tip.png') ?>" alt="Send Gift" />
+                                    <a href="javascript:void(0);" class="gift-modal">TIP </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,7 +204,12 @@
                     <?php } ?>
                 </div>
                 <div class="short-des-col">
-                    <h5>Get involed</h5>
+                    <h5>Buy My Personal Items</h5>
+                    <ul class="personal-items">
+                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/underwear.png') ?>" alt=""/></div>Underwear</a></li>
+                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/toys.png') ?>" alt=""/></div>Toys</a></li>
+                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/shoes.png') ?>" alt=""/></div>Shoes</a></li>
+                    </ul>
                     <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
                     <a href="javascript:void(0)" class="btn">BUY MY ITEMS</a>

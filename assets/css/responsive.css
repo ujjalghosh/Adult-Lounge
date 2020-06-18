@@ -2,6 +2,9 @@
     .show2 {
         width: 100%;
     }
+    .chat-ul {
+        height: 230px;
+    }
 }
 
 @media (max-width: 1199px){
