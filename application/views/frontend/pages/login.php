@@ -59,9 +59,10 @@
                 <div class="form-group">
                     <input type="email" placeholder="Email" class="form-control username requiredCheck" data-check="Email" name="login_email" id="login_email" />
                 </div>
+                <button type="submit" class="btn">Submit</button>
                 <div class="form-action">
                     <ul>
-                        <li><input type="submit" value="Back To Login" class="" id="login_btn" /></li>
+                        <li><input type="submit" value="Back to Login" id="login_btn" /></li>
                         <!--<li><a href="javascript:void(0)" class="assist">NEED ASSISTANCE</a></li>-->
                     </ul>
                 </div>

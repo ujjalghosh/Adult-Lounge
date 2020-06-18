@@ -5501,6 +5501,12 @@ span.filter-style:before{
 .modal .modal-body .forgot-modal h2{
 	font-size: 1rem;
 }
+.forgot-modal .form-action input{
+	text-transform: capitalize;
+	background: none;
+	padding: 5px 0;
+	margin-top: 10px;
+}
 .swal2-icon{
 	width: 65px;
     height: 65px;
