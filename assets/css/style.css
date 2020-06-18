@@ -5494,6 +5494,13 @@ span.filter-style:before{
 	font-size: 36px;
 	line-height: 68px;
 }
+.mdl-lft.forgot-modal{
+	margin: auto;
+	width: 100%;
+}
+.modal .modal-body .forgot-modal h2{
+	font-size: 1rem;
+}
 .swal2-icon{
 	width: 65px;
     height: 65px;
@@ -5502,4 +5509,7 @@ span.filter-style:before{
 .swal2-modal button.styled{
 	font-size: 15px;
 	padding: 6px 30px;
+}
+.forgot-paddword-box.modal-signup{
+	width: 40%;
 }

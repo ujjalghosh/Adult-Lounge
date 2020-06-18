@@ -1378,3 +1378,9 @@ $(".user-content-list li").click(function(){
 $(document).ready(function(){
     $.switcher('[name="default_video_id"]');
 });
+
+$("#forgot").click(function () {
+    $("#hide-forgot").css("display","none")
+    $("#show-forgot").css("display","flex")
+    // $("#").show();   
+});
