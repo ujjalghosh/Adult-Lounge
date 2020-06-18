@@ -114,7 +114,7 @@ $active_url = $controller . '/' . $method;
             </li>
             <li><a href="<?=base_url('awards')?>">Awards</a></li>
             <li><a href="<?=base_url('loyalty')?>">Loyalty</a></li>
-    
+
             <div class="right-filters">
       	<div class="search">
         	<!--<span><img src="<?=base_url('assets/images/icon-search.png')?>" alt="search"/></span>-->
@@ -137,11 +137,10 @@ $active_url = $controller . '/' . $method;
             </div>
         </div>
         <div class="drop-list select-filter">
-            <Select class="form-control">
-                <option>recommended</option>
-                <option>recommended</option>
-                <option>recommended</option>
-                <option>recommended</option>
+            <Select class="form-control" id="filter_">
+                <option value="">Recommended</option>
+                <option value="rating">Rating</option>
+                <option value="latest">Latest</option>
             </select>
         </div>
         <div class="switch-view">
@@ -204,7 +203,7 @@ $active_url = $controller . '/' . $method;
                   <li class="nav-item"><a href="<?=base_url('verification')?>" class="nav-link">Verification</a></li>
                 <?php }?>
 
-              </ul> 
+              </ul>
           </div>
         </nav>
         <?php }?>
@@ -233,11 +232,10 @@ $active_url = $controller . '/' . $method;
             </div>
         </div>
         <div class="drop-list select-filter">
-            <Select class="form-control">
-                <option>recommended</option>
-                <option>recommended</option>
-                <option>recommended</option>
-                <option>recommended</option>
+             <Select class="form-control" id="filter_">
+                <option value="">Recommended</option>
+                <option value="rating">Rating</option>
+                <option value="latest">Latest</option>
             </select>
         </div>
         <div class="switch-view">

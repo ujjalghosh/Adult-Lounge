@@ -206,6 +206,12 @@ function subscribe(performer_id, user_id) {
         });
     });
 }
+//**********Tipping*********/
+$(document).on('click', '#tipping_me', function(event) {
+    event.preventDefault();
+    $('#tipping_pop').show();
+});
+
 /***************VOTE*******************/
 $(".vt").click(function () {
     $("#vote_nm").text('VOTE FOR ' + $('#perf_name' + $(this).attr('id')).val());
@@ -1244,6 +1250,7 @@ $(".gift-send").click(function(){
             },
             success: function(resp) {
                 if (resp.success) {
+                    $('.giftClose').trigger('click');
                     $(".credit-total").text(resp.data.credit);
                     swal_success(resp.data.message);
                 } else {
@@ -1378,6 +1385,7 @@ $(".user-content-list li").click(function(){
 $(document).ready(function(){
     $.switcher('[name="default_video_id"]');
 });
+ 
 
 $("#forgot").click(function () {
     $("#hide-forgot").css("display","none")

@@ -1,326 +1,361 @@
-<?php if ($this->session->userdata('UserType') == 1) { ?>
-    <input type="hidden" id="p_receiver_id" value="<?= $user[0]['id'] ?>">
-    <input type="hidden" id="p_receiver_type" value="performer">
-    <input type="hidden" id="p_sender_id" value="<?= $this->session->userdata('UserId') ?>">
-    <input type="hidden" id="p_sender_type" value="user">
-<?php  } ?>
+<?php if ($this->session->userdata('UserType') == 1) {?>
+<input type="hidden" id="p_receiver_id" value="<?=$user[0]['id']?>">
+<input type="hidden" id="p_receiver_type" value="performer">
+<input type="hidden" id="p_sender_id" value="<?=$this->session->userdata('UserId')?>">
+<input type="hidden" id="p_sender_type" value="user">
+<?php }?>
 <main class="content-wrapper">
-    <section class="content-sec">
-        <div class="perform-widget perform-top-layout">
-            <div class="perform-left-widget">
-                <div class="imgbox">
-                    <div class="group-message">
-                        <div class="group-message-text">
-                            <h3>Megan Kroft is currently in group</h3>
-                            <h6>Would you join to join at £3.99 per minute</h6>
-                            <a href="#" class="btn">Join Group</a>
-                        </div>
-                    </div>
-                    <div class="icons-lft">
-                        <ul>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-001.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-002.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-003.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-004.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-005.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-006.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-007.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-008.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-009.png') ?>" alt="" /></a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-010.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-011.png') ?>" alt="" /></a></li>
-                            <li><a href="javascript:void(0)"><img src="<?= base_url('assets/images/icon-012.png') ?>" alt="" /></a></li>
-                        </ul>
-                    </div>
-                    <div class="box01-rtl">
-                        <div class="box-trns-blck">
-                            <span>PRIVATE: £6.99 p/m</span>
-                            <span>GROUP: £3.99 p/M</span>
-                        </div>
-                        <!--<div class="drop-show">
-    <span>START SHOW</span>
-    <ul>
-        <li></li>
-    </ul>
+<section class="content-sec">
+<div class="perform-widget perform-top-layout">
+<div class="perform-left-widget">
+<div class="imgbox">
+<div class="group-message">
+<div class="group-message-text">
+<h3>Megan Kroft is currently in group</h3>
+<h6>Would you join to join at £3.99 per minute</h6>
+<a href="#" class="btn">Join Group</a>
+</div>
+</div>
+<div class="icons-lft">
+<ul>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-001.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-002.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-003.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-004.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-005.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-006.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-007.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-008.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-009.png')?>" alt="" /></a></li>
+</ul>
+<ul>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-010.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-011.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-012.png')?>" alt="" /></a></li>
+</ul>
+</div>
+<div class="box01-rtl">
+<div class="box-trns-blck">
+<span>PRIVATE: £6.99 p/m</span>
+<span>GROUP: £3.99 p/M</span>
+</div>
+<!--<div class="drop-show">
+<span>START SHOW</span>
+<ul>
+<li></li>
+</ul>
 </div>-->
-                    </div>
-                    <img src="<?= base_url('assets/images/img-003.jpg') ?>" alt="img" />
+</div>
+<img src="<?=base_url('assets/images/img-003.jpg')?>" alt="img" />
 
-                </div>
-                <div class="option-box">
-                
-                    <div class="btn dropup start-show-dropdown">
-                        <a href="javascript:void(0)" class="btn text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">START SHOW</a>
-                        <div class="dropdown-menu dropdown-show-type">
-                            <h3>SELECT SHOW TYPE</h3>
-                            <ul>
-                                <li class="bg-light-pink"><a href="javascript:;">Freeview <span>$3.99 P/M</span></a></li>
-                                <li class="bg-light-gray"><a href="javascript:;">Group <span>$3.99 P/M</span></a></li>
-                                <li class="bg-light-green"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
-                                <li class="bg-deep-pink"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                        
+</div>
+<div class="option-box">
 
+<div class="btn dropup start-show-dropdown">
+<a href="javascript:void(0)" class="btn text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">START SHOW</a>
+<div class="dropdown-menu dropdown-show-type">
+<h3>SELECT SHOW TYPE</h3>
+<ul>
+<li class="bg-light-pink"><a href="javascript:;">Freeview <span>$3.99 P/M</span></a></li>
+<li class="bg-light-gray"><a href="javascript:;">Group <span>$3.99 P/M</span></a></li>
+<li class="bg-light-green"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+<li class="bg-deep-pink"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+</ul>
+</div>
+</div>
 
 
-                    <!-- <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?= $user[0]['id'] ?>', '<?php if ($user[0]['display_name'] != '') {
-                                                                                                                                                    print $user[0]['display_name'];
-                                                                                                                                                } else {
-                                                                                                                                                    print  $user[0]['name'];
-                                                                                                                                                } ?>')">START SHOW</a> -->
-                    <?php if (empty($subs)) { ?>
-                        <a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn text-center subs_btn">Subscribe</a>
-                    <?php } else { ?>
-                        <a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn text-center subs_btn">
-                            <?php if ($subs[0]->status == 0) {
-                                    print 'Subscribe';
-                                } else {
-                                    print 'Unsubscribe';
-                                } ?>
-                        </a>
-                    <?php } ?>
-                    <a href="javascript:void(0)" class="btn text-center" id="myBtn2">Buy Credits</a>
-                    <a href="javascript:void(0)" class="btn text-center gift-modal">Send Gifts</a>
-                    <a href="javascript:void(0)" class="btn text-center">Concierge Service</a>
-                </div>
-            </div>
-            <div class="perform-right-widget">
-                <div class="box001">
-                    <h2><?php if ($user[0]['display_name'] != '') {
-                            print $user[0]['display_name'];
-                        } else {
-                            print  $user[0]['name'];
-                        } ?></h2>
-                    <div class="flex-cont">
-                        <ul>
-                            <li><img src="<?= base_url('assets/images/icon-xs-love.png') ?>" alt="" /> 320.000</li>
-                            <li><img src="<?= base_url('assets/images/icon-xs-trophy.png') ?>" alt="" /> 320.000</li>
-                        </ul>
-                        <?php if (empty($subs)) { ?>
-                            <a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn text-center subs_btn">Subscribe</a>
-                        <?php } else { ?>
-                            <a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn text-center subs_btn">
-                                <?php if ($subs[0]->status == 0) {
-                                        print 'Subscribe';
-                                    } else {
-                                        print 'Unsubscribe';
-                                    } ?>
-                            </a>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div class="right-chat-area">
-                    <div class="box002">
-                        <div class="heading-stripe">
-                            <h3><?php if ($user[0]['display_name'] != '') {
-                                    print $user[0]['display_name'];
-                                } else {
-                                    print  $user[0]['name'];
-                                } ?> Chat</h3>
-                        </div>
-                        <div class="list-style">
-                            <ul class="chat-ul ovr-scrl-box" id="p_chat_box">
-                                <?php
-                                $last_chat_id = '';
-                                if (!empty($chat)) {
-                                    for ($i = 0; $i < count($chat); $i++) {
-                                        $last_chat_id = $chat[$i]->id;
-                                        ?>
-                                        <li style="<?php if ($chat[$i]->sender_id == $this->session->userdata('UserId')) {
-                                                                print 'text-align: right';
-                                                            } ?>"><?= $chat[$i]->msg ?></li>
-                                <?php }
-                                } ?>
-                            </ul>
-                        </div>
-                    </div>
-                    <input type="hidden" id="last_chat_id" value="<?= $last_chat_id ?>">
-                    <div class="box003">
-                        <div class="btm-form">
-                            <input type="text" id="p_chat_msg" />
-                            <input type="button" value="Send" id="p_send_chat" />
-                            <ul>
-                                <li>
-                                    <img src="<?= base_url('assets/images/icon-giftbox.png') ?>" alt="Send Gift" />
-                                    <a href="javascript:void(0);" class="gift-modal">Send Gift</a>
-                                </li>
-                                <li>
-                                    <?php if (isset($vote)) { ?>
-                                        <input type="hidden" id="perf_vote<?= $user[0]['id'] ?>" value="<?= $point; ?>">
-                                        <input type="hidden" id="perf_rank<?= $user[0]['id'] ?>" value="<?= $vote['rank'] ?>">
-                                    <?php } ?>
-                                    <input type="hidden" id="perf_name<?= $user[0]['id'] ?>" value="<?php if ($user[0]['display_name'] != '') {
-                                                                                                        print $user[0]['display_name'];
-                                                                                                    } else {
-                                                                                                        print  $user[0]['name'];
-                                                                                                    } ?>">
-                                    <?php if (isset($vote)) { ?>
-                                        <img src="<?= base_url('assets/images/icon-trophy.png') ?>" alt="Vote For Me" />
-                                        <a href="javascript:void(0);" class="vt" id="<?= $user[0]['id'] ?>">Vote For Me</a>
-                                    <?php } ?>
-                                </li>
-                                <li>
-                                    <img src="<?= base_url('assets/images/tip.png') ?>" alt="Send Gift" />
-                                    <a href="javascript:void(0);" class="gift-modal">TIP </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="perform-widget">
-            <div class="perfomer-short-des">
-                <div class="short-des-col">
-                    <div class="short-des-about">
-                        <span class="round-pic"><img src="<?= base_url('assets/profile_image/' . $user[0]['image']) ?>" alt="<?php if ($user[0]['display_name'] != '') {
-                                                                                                                                print $user[0]['display_name'];
-                                                                                                                            } else {
-                                                                                                                                print  $user[0]['name'];
-                                                                                                                            } ?>" /></span>
-                        <div class="shortcont">
-                            <h1><?php if ($user[0]['display_name'] != '') {
-                                    print $user[0]['display_name'];
-                                } else {
-                                    print  $user[0]['name'];
-                                } ?></h1>
-                            <p><?= $user[0]['description'] ?></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="short-des-col">
-                    <?php if ($user[0]['willingness'] != '') {
-                        $will = explode(',', $user[0]['willingness']); ?>
-                        <h5>WILLINGNESS</h5>
-                        <ul>
-                            <?php foreach ($will as $wll) { ?>
-                                <li><a href="javascript:void(0)">#<?= $wll ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    <?php } ?>
-                </div>
-                <div class="short-des-col">
-                    <h5>Buy My Personal Items</h5>
-                    <ul class="personal-items">
-                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/underwear.png') ?>" alt=""/></div>Underwear</a></li>
-                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/toys.png') ?>" alt=""/></div>Toys</a></li>
-                        <li><a href="#"><div class="personal-items-image"><img src="<?= base_url('assets/images/shoes.png') ?>" alt=""/></div>Shoes</a></li>
-                    </ul>
-                    <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
+
+
+<!-- <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">START SHOW</a> -->
+<?php if ($this->session->userdata('UserType')) {
+	?>
+<?php if (empty($subs)) {?>
+<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn text-center subs_btn">Subscribe</a>
+<?php } else {
+		?>
+<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn text-center subs_btn">
+<?php if ($subs[0]->status == 0) {
+			print 'Subscribe';
+		} else {
+			print 'Unsubscribe';
+		}?>
+</a>
+<?php }
+} else {?>
+<a href="<?=base_url('login')?>"  class="btn text-center subs_btn">Subscribe</a>
+<?php }?>
+<?php if ($this->session->userdata('UserType')) {?>
+
+<a href="javascript:void(0)" class="btn text-center" id="myBtn2">Buy Credits</a>
+<a href="javascript:void(0)" class="btn text-center gift-modal">Send Gifts</a>
+<?php } else {?>
+    <a href="<?=base_url('login')?>" class="btn text-center" id="myBtn2">Buy Credits</a>
+<a href="<?=base_url('login')?>" class="btn text-center gift-modal">Send Gifts</a>
+    <?php }?>
+<a href="javascript:void(Tawk_API.toggle())" class="btn text-center">Concierge Service</a>
+</div>
+</div>
+<div class="perform-right-widget">
+<div class="box001">
+<h2><?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?></h2>
+<div class="flex-cont">
+<ul>
+<li><img src="<?=base_url('assets/images/icon-xs-love.png')?>" alt="" /> 320.000</li>
+<li><img src="<?=base_url('assets/images/icon-xs-trophy.png')?>" alt="" /> 320.000</li>
+</ul>
+<?php if ($this->session->userdata('UserType')) {
+	?>
+<?php if (empty($subs)) {?>
+<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn text-center subs_btn">Subscribe</a>
+<?php } else {
+		?>
+<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn text-center subs_btn">
+<?php if ($subs[0]->status == 0) {
+			print 'Subscribe';
+		} else {
+			print 'Unsubscribe';
+		}?>
+</a>
+<?php }
+} else {
+	?>
+<a href="<?=base_url('login')?>"  class="btn text-center subs_btn">Subscribe</a>
+<?php }?>
+</div>
+</div>
+<div class="right-chat-area">
+<div class="box002">
+<div class="heading-stripe">
+<h3><?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?> Chat</h3>
+</div>
+<div class="list-style">
+<ul class="chat-ul ovr-scrl-box" id="p_chat_box">
+<?php
+$last_chat_id = '';
+if (!empty($chat)) {
+	for ($i = 0; $i < count($chat); $i++) {
+		$last_chat_id = $chat[$i]->id;
+		?>
+<li style="<?php if ($chat[$i]->sender_id == $this->session->userdata('UserId')) {
+			print 'text-align: right';
+		}?>"><?=$chat[$i]->msg?></li>
+<?php }
+}?>
+</ul>
+</div>
+</div>
+<input type="hidden" id="last_chat_id" value="<?=$last_chat_id?>">
+<div class="box003">
+<div class="btm-form">
+<input type="text" id="p_chat_msg" />
+<input type="button" value="Send" id="p_send_chat" />
+<ul>
+<li>
+<img src="<?=base_url('assets/images/icon-giftbox.png')?>" alt="Send Gift" />
+<?php if ($this->session->userdata('UserType')) {
+	?>
+<a href="javascript:void(0);" class="gift-modal">Send Gift</a>
+<?php } else {?>
+<a href="<?=base_url('login')?>" class="gift-modal">Send Gift</a>
+    <?php }?>
+</li>
+<li>
+    <?php if ($this->session->userdata('UserType')) {
+	?>
+<?php if (isset($vote)) {?>
+<input type="hidden" id="perf_vote<?=$user[0]['id']?>" value="<?=$point;?>">
+<input type="hidden" id="perf_rank<?=$user[0]['id']?>" value="<?=$vote['rank']?>">
+<?php }?>
+<input type="hidden" id="perf_name<?=$user[0]['id']?>" value="<?php if ($user[0]['display_name'] != '') {
+		print $user[0]['display_name'];
+	} else {
+		print $user[0]['name'];
+	}?>">
+<?php if (isset($vote)) {?>
+<img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
+<a href="javascript:void(0);" class="vt" id="<?=$user[0]['id']?>">Vote For Me</a>
+<?php }
+} else {?>
+   <img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
+<a href="<?=base_url('login')?>"    >Vote For Me</a>
+<?php }
+?>
+</li>
+<li>
+<img src="<?=base_url('assets/images/tip.png')?>" alt="Send Gift" />
+<?php if ($this->session->userdata('UserType')) {?>
+<a href="javascript:void(0);" class="gift-modal">TIP </a>
+<?php } else {?>
+    <a href="<?=base_url('login')?>" class="gift-modal">TIP </a>
+<?php }?>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="perform-widget">
+<div class="perfomer-short-des">
+<div class="short-des-col">
+<div class="short-des-about">
+<span class="round-pic"><img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>" /></span>
+<div class="shortcont">
+<h1><?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?></h1>
+<p><?=$user[0]['description']?></p>
+</div>
+</div>
+</div>
+<div class="short-des-col">
+<?php if ($user[0]['willingness'] != '') {
+	$will = explode(',', $user[0]['willingness']);?>
+<h5>WILLINGNESS</h5>
+<ul>
+<?php foreach ($will as $wll) {?>
+<li><a href="javascript:void(0)">#<?=$wll?></a></li>
+<?php }?>
+</ul>
+<?php }?>
+</div>
+<div class="short-des-col">
+<h5>Buy My Personal Items</h5>
+<ul class="personal-items">
+<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/underwear.png')?>" alt=""/></div>Underwear</a></li>
+<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/toys.png')?>" alt=""/></div>Toys</a></li>
+<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/shoes.png')?>" alt=""/></div>Shoes</a></li>
+</ul>
+<!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-                    <a href="javascript:void(0)" class="btn">BUY MY ITEMS</a>
-                </div>
-            </div>
-        </div>
-        <div class="perform-widget">
-            <div class="top-bar-layout">
-                <div class="top-bar-widgets">
-                    <ul class="user-content-list user-list-tab">
-                        <li>
-                            <a href="javascript:void(0)" class="user-free-content">FREE CONTENT</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="user-premium-content">PREMIUM CONTENT</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="user-details-content">Full Details</a>
-                        </li>
-                    </ul>
-                    <!--<div class="switch-view">
-                        <span class="list"><img src="<?= base_url('assets/images/icon-list.png') ?>" alt="list" /></span>
-                    <span class="grid"><img src="<?= base_url('assets/images/icon-grid.png') ?>" alt="grid" /></span>
-                </div>-->
-                </div>
-            </div>
-            <?php
-            if ($user[0]['images'] != '') {
-                $img = explode(',', $user[0]['images']);
-            } else {
-                $img = array();
-            }
-            ?>
-            <!-- <div id="__freeContent" class="user-content-block">
-                
-            </div>
-            <div id="__premiumContent" class="user-content-block d-none">
-               
-            </div> -->
-            <div id="content">
-            </div>
-            <div class="user-content-block d-none pt-2">
-                <h2>Performer Details</h2>
-                <table class="performer-details"
-                    <tbody>
-                        <tr>
-                            <th align="left">Full Name</th>
-                            <td><?= db_val( $user[0]['display_name'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Sexual Preference</th>
-                            <td><?= db_val( $user[0]['sexual_pref'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Height</th>
-                            <td><?= db_val( $user[0]['height'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Weight</th>
-                            <td><?= db_val( $user[0]['weight'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Hair Colour</th>
-                            <td><?= db_val( $user[0]['hair'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Eye Colour</th>
-                            <td><?= db_val( $user[0]['eye'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Zodiac Sign</th>
-                            <td><?= db_val( $user[0]['zodiac'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Build</th>
-                            <td><?= db_val( $user[0]['build'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left"><?= $user[0]['gender'] == 'Male' ? 'Chest' : 'Breast' ?> Size</th>
-                            <td><?= db_val( $user[0]['chest'] ) ?></td>
-                        </tr>
-                        <tr>
-                            <th align="left">Burst Size</th>
-                            <td><?= db_val( $user[0]['burst'] ) ?></td>
-                        </tr>
-                        <?php if( $user[0]['gender'] == 'Female' ) : ?>
-                        <tr>
-                            <th align="left">Cup</th>
-                            <td><?= db_val( $user[0]['cup'] ) ?></td>
-                        </tr>
-                        <?php endif; ?>
-                        <tr>
-                            <th align="left">Display Age As</th>
-                            <td><?= db_val( $user[0]['age'] ) ?></td>
-                        </tr>
-                        <?php if( $user[0]['gender'] == 'Male' ) : ?>
-                        <tr>
-                            <th align="left">Penis Size</th>
-                            <td><?= db_val( $user[0]['penis'] ) ?></td>
-                        </tr>
-                        <?php endif; ?>
-                        <tr>
-                            <th align="left">Pubic Hair</th>
-                            <td><?= db_val( $user[0]['pubic_hair'] ) ?></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<a href="javascript:void(0)" class="btn">BUY MY ITEMS</a>
+</div>
+</div>
+</div>
+<div class="perform-widget">
+<div class="top-bar-layout">
+<div class="top-bar-widgets">
+<ul class="user-content-list user-list-tab">
+<li>
+<a href="javascript:void(0)" class="user-free-content">FREE CONTENT</a>
+</li>
+<li>
+<a href="javascript:void(0)" class="user-premium-content">PREMIUM CONTENT</a>
+</li>
+<li>
+<a href="javascript:void(0)" class="user-details-content">Full Details</a>
+</li>
+</ul>
+<!--<div class="switch-view">
+<span class="list"><img src="<?=base_url('assets/images/icon-list.png')?>" alt="list" /></span>
+<span class="grid"><img src="<?=base_url('assets/images/icon-grid.png')?>" alt="grid" /></span>
+</div>-->
+</div>
+</div>
+<?php
+if ($user[0]['images'] != '') {
+	$img = explode(',', $user[0]['images']);
+} else {
+	$img = array();
+}
+?>
+<!-- <div id="__freeContent" class="user-content-block">
 
-        </div>
-    </section>
+</div>
+<div id="__premiumContent" class="user-content-block d-none">
+
+</div> -->
+<div id="content">
+</div>
+<div class="user-content-block d-none pt-2">
+<h2>Performer Details</h2>
+<table class="performer-details"
+<tbody>
+<tr>
+<th align="left">Full Name</th>
+<td><?=db_val($user[0]['display_name'])?></td>
+</tr>
+<tr>
+<th align="left">Sexual Preference</th>
+<td><?=db_val($user[0]['sexual_pref'])?></td>
+</tr>
+<tr>
+<th align="left">Height</th>
+<td><?=db_val($user[0]['height'])?></td>
+</tr>
+<tr>
+<th align="left">Weight</th>
+<td><?=db_val($user[0]['weight'])?></td>
+</tr>
+<tr>
+<th align="left">Hair Colour</th>
+<td><?=db_val($user[0]['hair'])?></td>
+</tr>
+<tr>
+<th align="left">Eye Colour</th>
+<td><?=db_val($user[0]['eye'])?></td>
+</tr>
+<tr>
+<th align="left">Zodiac Sign</th>
+<td><?=db_val($user[0]['zodiac'])?></td>
+</tr>
+<tr>
+<th align="left">Build</th>
+<td><?=db_val($user[0]['build'])?></td>
+</tr>
+<tr>
+<th align="left"><?=$user[0]['gender'] == 'Male' ? 'Chest' : 'Breast'?> Size</th>
+<td><?=db_val($user[0]['chest'])?></td>
+</tr>
+<tr>
+<th align="left">Burst Size</th>
+<td><?=db_val($user[0]['burst'])?></td>
+</tr>
+<?php if ($user[0]['gender'] == 'Female'): ?>
+<tr>
+<th align="left">Cup</th>
+<td><?=db_val($user[0]['cup'])?></td>
+</tr>
+<?php endif;?>
+<tr>
+<th align="left">Display Age As</th>
+<td><?=db_val($user[0]['age'])?></td>
+</tr>
+<?php if ($user[0]['gender'] == 'Male'): ?>
+<tr>
+<th align="left">Penis Size</th>
+<td><?=db_val($user[0]['penis'])?></td>
+</tr>
+<?php endif;?>
+<tr>
+<th align="left">Pubic Hair</th>
+<td><?=db_val($user[0]['pubic_hair'])?></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</section>
 </main>
 </section>
 <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
