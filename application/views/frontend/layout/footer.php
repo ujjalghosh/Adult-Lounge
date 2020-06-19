@@ -267,6 +267,7 @@ var msnry = new Masonry( '.grid', {
 <script src="<?=base_url('assets/js/imagesloaded.js')?>"></script>
 <script src="<?=base_url('assets/js/classie.js')?>"></script>
 <script src="<?=base_url('assets/js/AnimOnScroll.js')?>"></script>
+<script src="<?=base_url('assets/js/jquery.mCustomScrollbar.concat.min.js')?>"></script>
 <script>
     new AnimOnScroll( document.getElementById( 'grid' ), {
         minDuration : 0.4,

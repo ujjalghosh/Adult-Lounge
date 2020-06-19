@@ -1120,6 +1120,7 @@ form a.assist {
 }
 .form-check {
 	margin-top: 3px;
+	padding-left: 0;
 }
 .check {
 	display: block;
@@ -1563,7 +1564,7 @@ form a.assist {
 	border: 1px solid #b8a368;
 	margin-top: 20px;
 	position: relative;
-    /* display: inline-block; */
+    display: inline-block;
 }
 .content-sec .box-content-layout .title-sec {
 	margin: 0;
@@ -4330,8 +4331,8 @@ h4.best-value {
 	margin-bottom: 30px;
 }
 .step-work {
-	width: 110px;
-	height: 110px;
+	width: 90px;
+	height: 90px;
 	background: #a28d57;
 	color: #fff;
 	border-radius: 50%;
@@ -4340,14 +4341,14 @@ h4.best-value {
 }
 .step-work p {
 	text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 28px;
-    padding-top: 12px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    padding-top: 18px;
+    margin-bottom: 4px;
 }
 .step-work h2 {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	line-height: 21px;
 	color: #fff;
 	font-family: 'ADAM-CGPRO';
@@ -5518,4 +5519,49 @@ span.filter-style:before{
 }
 .forgot-paddword-box.modal-signup{
 	width: 40%;
+}
+.modal.modal-signup{
+	position: relative;
+	overflow: visible;
+}
+.modal.modal-signup .close_reg{
+	right: -30px;
+	top: -10px;
+}
+.mCSB_inside>.mCSB_container {
+    margin-right: 15px;
+}
+.custom-control.custom-switch.filter-switch{
+	float: right;
+	outline: none;
+	margin-right: 7px;
+}
+.custom-switch.filter-switch .custom-control-label::before{
+	width: 3rem;
+    border-radius: 0;
+    border: none;
+	outline: none;
+	top: 3px;
+	height: 11px;
+	background-color: #696969;
+	box-shadow: none;
+}
+.filter-switch.custom-switch .custom-control-label::after{
+	background-color: #cbad71;
+	border-radius: 0;
+	top: calc(0px + 3px);
+	height: calc(14px - 4px);
+	left: calc(-2.40rem + 2px);
+	width: calc(28px - 4px);
+}
+.custom-switch.custom-switch .custom-control-input:checked~.custom-control-label::after{
+	background-color: #cbad71;
+	left: calc(-1.60rem + 2px);
+}
+.custom-switch.custom-switch input:focus, .custom-control.custom-switch.filter-switch{
+	outline: none;
+}
+.box-content-widget.per .video-box{
+	margin: 0 3px;
+    overflow: hidden;
 }

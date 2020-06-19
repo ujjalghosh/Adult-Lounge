@@ -50,7 +50,7 @@
 
 <section class="modal modal-signup forgot-paddword-box" id="show-forgot" style="display: none;">
     <span class="overlay"></span>
-	<span class="close_reg" id="cancel_btn">X</span>
+    <span class="close_reg" id="forgot_cancel_btn">X</span>
     <div class="modal-body">
         <div class="modal-widget mdl-lft forgot-modal" >
             <h2><img src="<?=base_url('assets/images/line-logo.png')?>" alt="logo" /> Forgot Password</h2>

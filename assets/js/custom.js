@@ -1392,3 +1392,15 @@ $("#forgot").click(function () {
     $("#show-forgot").css("display","flex")
     // $("#").show();   
 });
+$("#forgot_cancel_btn").click(function () {
+    $("#show-forgot").css("display","none")
+    window.location.href = base_url;
+    // $("#").show();   
+});
+
+
+(function($){
+    $(window).on("load",function(){
+        $(".content").mCustomScrollbar();
+    });
+});

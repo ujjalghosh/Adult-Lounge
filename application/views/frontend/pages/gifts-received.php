@@ -22,7 +22,7 @@
                             <div class="dash_box_hed">
                                 <p>YOUR GIFTS</p>
                             </div>
-                            <div class="manage-list performer-gift-view">
+                            <div class="manage-list performer-gift-view customScroll">
                                 <ul style="list-style:none">
                                     <?php foreach ($gifts as $gift) : ?>
                                         <li>
