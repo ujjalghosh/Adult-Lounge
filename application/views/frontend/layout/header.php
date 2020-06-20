@@ -184,14 +184,14 @@ $active_url = $controller . '/' . $method;
             <li><a href="<?=base_url('loyalty')?>">Loyalty</a></li>
 
         <?php }?>
-
+<?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) {?>
         <nav class="navbar navbar-expand-lg performer-head">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-                <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') != 1) {?>
+
                   <li class="nav-item"><a href="<?=base_url('content')?>" class="nav-link">CONTENT</a></li>
                   <li class="nav-item"><a href="<?=base_url('manage-users')?>" class="nav-link">MANAGE USERS</a></li>
                   <li class="nav-item"><a href="<?=base_url('financial')?>" class="nav-link">FINANCIAL</a></li>

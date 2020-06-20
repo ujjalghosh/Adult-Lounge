@@ -77,6 +77,29 @@ function common_form_checking(flag, msgbox = '') {
                     return false;
                 }
             }
+  if ($(this).attr('data-check') == 'Image') {
+                if ($.trim($(this).val()).length >0) {
+
+  var val = $(this).val().toLowerCase(),
+            regex = new RegExp("(.*?)\.(jpg|jpeg|png)$");
+
+        if (!(regex.test(val))) {
+            $(this).val('');
+             var txt = 'Please choose image file !!!';
+                    if (msgbox != '') {
+                        $("." + msgbox).text(txt);
+                    } else {
+                        swal_warning(txt);
+                    }
+                    flag = 'false';
+                    return false;
+        } 
+
+                   
+                }
+            }
+
+
             if ($(this).attr('data-check') == 'Phone') {
                 if ($.trim($(this).val()).length != 10) {
                     var txt = 'Enter 10 digit phone number !!!';

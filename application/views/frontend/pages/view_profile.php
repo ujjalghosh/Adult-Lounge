@@ -167,9 +167,9 @@ if (!empty($chat)) {
 <img src="<?=base_url('assets/images/icon-giftbox.png')?>" alt="Send Gift" />
 <?php if ($this->session->userdata('UserType')) {
 	?>
-<a href="javascript:void(0);" class="gift-modal">Send Gift</a>
+<a href="javascript:void(0);" class="gift-modal">Gift</a>
 <?php } else {?>
-<a href="<?=base_url('login')?>" class="gift-modal">Send Gift</a>
+<a href="<?=base_url('login')?>" class="gift-modal">Gift</a>
     <?php }?>
 </li>
 <li>
@@ -186,11 +186,11 @@ if (!empty($chat)) {
 	}?>">
 <?php if (isset($vote)) {?>
 <img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
-<a href="javascript:void(0);" class="vt" id="<?=$user[0]['id']?>">Vote For Me</a>
+<a href="javascript:void(0);" class="vt" id="<?=$user[0]['id']?>">Vote</a>
 <?php }
 } else {?>
    <img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
-<a href="<?=base_url('login')?>"    >Vote For Me</a>
+<a href="<?=base_url('login')?>"    >Vote</a>
 <?php }
 ?>
 </li>

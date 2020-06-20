@@ -82,7 +82,7 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
-                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control username formsm" name="editpro_image" id="editpro_image" />
+                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control requiredCheck" data-check="Image" name="editpro_image" id="editpro_image" />
                                     <div class="brows editpro_image_brows">BROWSER</div>
                                 </div>
                             </div>
