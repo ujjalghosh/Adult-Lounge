@@ -52,6 +52,33 @@ function swal_warning(txt) {
     show_common_popup('Message', txt);
 }
 
+$(document).on('change', '#editpro_image', function(event) {
+    event.preventDefault();
+
+                if ($.trim($(this).val()).length >0) {
+
+  var val = $(this).val().toLowerCase(),
+            regex = new RegExp("(.*?)\.(jpg|jpeg|png)$");
+
+        if (!(regex.test(val))) {
+            $(this).val('');
+            $('.imfvld').show();
+                   
+        } else{
+             $('.imfvld').hide();
+        }
+
+                   
+                }
+           
+});
+
+
+function isValidURL(string) {
+  var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+  return (res !== null)
+};
+
 function common_form_checking(flag, msgbox = '') {
     $('.requiredCheck').each(function () {
         if ($.trim($(this).val()) == '') {
@@ -85,7 +112,7 @@ function common_form_checking(flag, msgbox = '') {
 
         if (!(regex.test(val))) {
             $(this).val('');
-             var txt = 'Please choose image file !!!';
+             var txt = 'Choose image file to upload !!!';
                     if (msgbox != '') {
                         $("." + msgbox).text(txt);
                     } else {
@@ -99,6 +126,20 @@ function common_form_checking(flag, msgbox = '') {
                 }
             }
 
+  if ($(this).attr('data-check') == 'linkcheck') {
+                if ($.trim($(this).val()).length >0) {
+                    if(isValidURL($(this).val())==false){
+                    var txt = 'Invalid gift link';
+                    if (msgbox != '') {
+                        $("." + msgbox).text(txt);
+                    } else {
+                        swal_warning(txt);
+                    }
+                    flag = 'false';
+                    return false;
+                }
+            }
+            }
 
             if ($(this).attr('data-check') == 'Phone') {
                 if ($.trim($(this).val()).length != 10) {
@@ -872,7 +913,7 @@ $(document).on('click', '.add-more-gal-img', function() {
                                         <img src="' + base_url + 'assets/images/noimage.png" alt="" style="height:40px; width:45px;" id="display_gal_img' + new_cnt + '">\
                                     </div>\
                                     <input accept=".png, .jpg, .jpeg" type="file" class="form-control username formsm display_gal_img' + new_cnt + ' brouse-input" onchange="disp_img(\'' + new_cnt + '\', this)" data-count="' + new_cnt + '" name="gallery[]" id="gallery_image' + new_cnt + '" />\
-                                    <div class="brows editpro_gal_image_brows" data-count="' + new_cnt + '">BROWSER</div>\
+                                    <div class="brows editpro_gal_image_brows" data-count="' + new_cnt + '">BROWSE</div>\
                                     <select name="type[]" id="type" class="form-control username formsm display_gal_img1">\
                                             <option value="1">Free Content</option>\
                                             <option value="2">Premium Content</option>\
@@ -887,6 +928,25 @@ $(document).on('click', '.add-more-gal-img', function() {
 // $('.add-more-gal-img').click(function () {
     
 // });
+
+
+//*************Perfomer items buy ********
+
+$(document).on('click', '.add_buy_items', function() {
+    var old_cnt = $('#buy_items_cnt').val();
+    var new_cnt = parseInt($('#buy_items_cnt').val()) + parseInt(1);
+    $('#buy_items_cnt').val(new_cnt);
+    $('.buy_itemsdiv').append(
+        '<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area">\
+        <input  type="text" class="form-control"  name="item_name[]"  placeholder="Item Name"/>\
+        <input  type="text" class="form-control"  name="buy_link[]"  placeholder="Item Link"/>\
+        </div></div>');
+}).on('click', '.remove_item', function(){ 
+     $(this).closest(".add-new-item").remove();
+});
+
+
+//*************
 
 function disp_img(tmp, ths) {
     var tmp = $(ths).attr('data-count');

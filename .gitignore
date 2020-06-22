@@ -4,3 +4,4 @@ app/.cache/
 .phpintel
 application/config/database.php
 sow/*
+.phpintel/*

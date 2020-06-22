@@ -8,6 +8,7 @@ class Paypalpayment extends Common_Controller {
 		parent::__construct();
 		$this->checkLogin();
 		$this->data['header'] = 'two';
+		$this->getCommonMenu();
 
 		$this->load->library('paypal');
 		$this->load->library('mail');

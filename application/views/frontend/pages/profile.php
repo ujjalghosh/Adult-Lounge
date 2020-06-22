@@ -82,8 +82,9 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
-                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control requiredCheck  username formsm" data-check="Image" name="editpro_image" id="editpro_image" />
-                                    <div class="brows editpro_image_brows">BROWSER</div>
+                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control <?=$user[0]['image'] == 'requiredCheck' ? '' : '';?>  username formsm" data-check="Image" name="editpro_image" id="editpro_image" />
+                                    <div class="brows editpro_image_brows">BROWSE</div>
+                                    <label class="error imfvld"  style="display: none;">Choose image file to upload</label>
                                 </div>
                             </div>
                         </div>
@@ -612,6 +613,39 @@ for ($p = 0; $p < count($appearence); $p++) {
                                         </div>
                                     </div>
                                 </div>
+
+
+
+   <div class="box-content-widget pl-0">
+                        <div class="form-two-col per2 leftsc ">
+                            <div   class="show show2">
+                                <h3>MY GIFT LINKS</h3>
+
+                                <br />
+                                <br />
+                                <input type="hidden" id="buy_items_cnt" value="1">
+                                <div class=" add-new-browse">
+                                    <div class="form-group gallery-brouser-area">
+
+                                       <input  type="text" class="form-control"  name="item_name[]" placeholder="Item Name" />
+                                       <input  type="text" class="form-control"  name="buy_link[]" placeholder="Item Link"  />
+                                    </div>
+                                    <div class="form-group add-more-gal">
+                                        <a href="javascript:void(0);" class="add_buy_items">Add More</a>
+                                    </div>
+                                </div>
+                                <div class="buy_itemsdiv">
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+
+
 
                                 <div class="form-two-col">
                                     <div class="form-group form-action mt-0">
