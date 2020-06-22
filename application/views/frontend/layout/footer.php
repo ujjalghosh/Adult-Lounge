@@ -60,7 +60,13 @@
 <script src="<?=base_url('assets/js/waitMe.min.js')?>"></script>
 <script src="<?=base_url('assets/js/jquery.switcher.min.js')?>"></script>
 
-
+<script src="<?=base_url('assets/js/jquery.dataTables.min.js')?>"></script>
+<script src="<?=base_url('assets/js/dataTables.bootstrap4.min.js')?>"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 
 <!--Result Template-->
 <script id="result-template" type="text/x-handlebars-template">
@@ -249,7 +255,7 @@ var elem = document.querySelector('.grid');
 var msnry = new Masonry( elem, {
   itemSelector: '.grid-item',
   columnWidth: 200
-});
+}); 
 var msnry = new Masonry( '.grid', {
 });
 */

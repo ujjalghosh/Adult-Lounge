@@ -28,5 +28,104 @@
                 <?php } ?>
             </div>
         </div>
+
+
+        <div class="dash_box ">
+            <div class="dash_box_hed">
+                <p>YOUR GIFTS</p>
+            </div>
+            <div class="manage-list performer-gift-view customScroll os-host os-theme-round-dark os-host-overflow os-host-overflow-y os-host-scrollbar-horizontal-hidden os-host-transition">
+            <table id="example" class="table table-borderless gift-datatable">
+                <thead>
+                    <tr>
+                        <th>User </th>
+                        <th>Name</th>
+                        <th>Gift</th>
+                        <th>Age</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/assets/profile_image/1591809734XiYCc7q38hQ.jpg" width="80" class="img-circle">
+                        </td>
+                        <td>Test User</td>
+                        <td>
+                            <img src="http://hirewebagency.com/adultlounge/uploads/gifts/gift-5dd4f9c7a87c6.png" alt="Gift 1">
+                        </td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+
     </section>
 </main>
+
+

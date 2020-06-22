@@ -67,7 +67,7 @@ echo SITE_NAME; ?> -->
                 <form id="userprofile-form" action="<?=base_url('home/update_user_profile')?>" autocomplete="off" class="form-catagories">
                     <div class="box-content-widget pl-0">
                         <div class="form-two-col per2 leftsc ">
-                            <div class="show show2">
+                            <div class="show show2 user-profile-edit">
                                 <h3>PROFILE PHOTO</h3>
                                 <div class="form-group">
                                     <div class="proo profile-view">
@@ -77,8 +77,9 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
+                                    <div class="brows editpro_image_brows user-image-brouse-right">BROWSER</div>
                                     <input type="file" value="UPLOAD THUMBNAIL" class="form-control username formsm" name="editpro_image" id="editpro_image" />
-                                    <div class="brows editpro_image_brows">BROWSER</div>
+                                    
                                 </div>
                             </div>
                         </div>

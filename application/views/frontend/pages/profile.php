@@ -72,7 +72,7 @@ echo SITE_NAME; ?> -->
                 <form id="editprofile-form" method="post" autocomplete="off" class="form-catagories">
                     <div class="box-content-widget pl-0">
                         <div class="form-two-col per2 leftsc ">
-                            <div class="show show2">
+                            <div class="show show2 user-profile-edit">
                                 <h3>PROFILE PHOTO</h3>
                                 <div class="form-group">
                                     <div class="proo profile-view">
@@ -82,7 +82,7 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
-                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control requiredCheck" data-check="Image" name="editpro_image" id="editpro_image" />
+                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control requiredCheck  username formsm" data-check="Image" name="editpro_image" id="editpro_image" />
                                     <div class="brows editpro_image_brows">BROWSER</div>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@ if ($user[0]['usernm'] != '') {
                             </div>
 
                             <div id="groupPriceEl" class="form-group" style="display: <?=($perform_type == 'group' ? 'block' : 'none')?>;">
-                                <label class="check">Group price</label>
+                                <!-- <label class="check">Group price</label> -->
                                 <input value="<?php echo ($user['0']['price_in_group']) ? $user['0']['price_in_group'] : 0.00 ?>" type="text" class="form-control" id="price_in_group" name="price_in_group" placeholder="0.00">
                             </div>
                         </div>

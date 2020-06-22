@@ -318,6 +318,7 @@ p{
 	margin-left: 32px;
 	height: 14px;
 	line-height: 1;
+	margin-top: 6px;
 }
 .switch-view span {
 	display: inline-block;
@@ -1564,7 +1565,8 @@ form a.assist {
 	border: 1px solid #b8a368;
 	margin-top: 20px;
 	position: relative;
-    display: inline-block;
+	display: inline-block;
+	width: 100%;
 }
 .content-sec .box-content-layout .title-sec {
 	margin: 0;
@@ -5564,4 +5566,33 @@ span.filter-style:before{
 .box-content-widget.per .video-box{
 	margin: 0 3px;
     overflow: hidden;
+}
+.user-image-brouse-right.brows{
+	float: right;
+}
+.user-profile-edit .profile-view.proo{
+	margin-top: -14px;
+}
+.user-profile-edit .formsm{
+	width: 72% !important;
+}
+.payment-success-page{
+	position: relative;
+}
+.payment-success-page .box-content-layout{
+	max-width: 600px;
+	width: 100%;
+	float: none;
+	display: block;
+	margin: 10% auto;
+}
+.payment-success-page .box-content-widget{
+	padding: 20px;
+}
+.payment-success-page .close_reg{
+	right: -35px;
+    top: 0;
+}
+.gift-datatable, .dataTables_wrapper label, .dataTables_info{
+	color: #fff;
 }
