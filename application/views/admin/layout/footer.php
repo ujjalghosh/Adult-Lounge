@@ -70,8 +70,10 @@
 <!--BASIC scripts-->
 <!-- ========================================================= -->
 <script src="<?=base_url()?>backend/vendor/jquery/jquery-1.12.3.min.js?t<?=time()?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.additional-methods.min.js'); ?>"></script>
 <script>
-    var base_url = "<?= base_url() ?>";
+    var base_url = "<?=base_url()?>";
 </script>
 <script src="<?php echo base_url(); ?>backend/javascripts/common-script.js?t<?=time()?>"></script>
 <script src="<?=base_url()?>backend/vendor/bootstrap/js/bootstrap.min.js?t<?=time()?>"></script>
@@ -99,17 +101,17 @@ function isNumber(evt) {
     return true;
 }
 </script>
-<?php if ($this->session->flashdata('success_msg')) { ?>
+<?php if ($this->session->flashdata('success_msg')) {?>
 <script>
     $('.alert-success').delay(3000).fadeOut(300);
 </script>
-<?php } ?>
+<?php }?>
 
-<?php if ($this->session->flashdata('error_msg')) { ?>
+<?php if ($this->session->flashdata('error_msg')) {?>
 <script>
     $('.alert-danger').delay(8000).fadeOut(300);
 </script>
-<?php } ?>
+<?php }?>
 </body>
 
 

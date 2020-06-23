@@ -214,7 +214,7 @@ jQuery(document).ready(function($) {
                   remote: jQuery.validator.format("Username already exist.")
                 },
                 editpro_image: {
-                     extension: "Allow only image format jpg,png,jpeg,JPG,PNG"
+                     extension: "Allow only image format jpg,png,jpeg "
             },
 
 

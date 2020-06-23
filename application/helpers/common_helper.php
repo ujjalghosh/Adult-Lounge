@@ -166,6 +166,54 @@ function fixed_pages() {
 	return array(1, 2, 3, 4, 5, 6, 7, 8);
 }
 
+function message($var = "", $mode = "") {
+	switch ($mode) {
+	case 1:
+		$var = '<div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <h4><i class="icon fa fa-check"></i> </h4>
+        ' . $var . '
+    </div>';
+
+		break;
+	case 2:
+		//Error
+
+		$var = '<div class="alert alert-danger fade in">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <h4><i class="icon fa fa-check"></i> </h4>
+        ' . $var . '
+    </div>';
+
+		break;
+	case 3:
+		//infoMsg
+		$var = '<div class="alert alert-info fade in">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <h4><i class="icon fa fa-check"></i> </h4>
+        ' . $var . '
+    </div>';
+		break;
+	case 4:
+		//warningMsg
+		$var = '<div class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <h4><i class="icon fa fa-check"></i> </h4>
+        ' . $var . '
+    </div>';
+		break;
+	default:
+		//Message
+		$var = '<div class="alert alert-info fade in">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <h4><i class="icon fa fa-check"></i> </h4>
+        ' . $var . '
+    </div>';
+		break;
+	}
+	return $var;
+}
+
 function setEmailTemplate($msg) {
 	$logo = base_url("assets/images/logo.png");
 	$footer_bg_color = '#0d2a47';

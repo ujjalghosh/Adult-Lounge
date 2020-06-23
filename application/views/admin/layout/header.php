@@ -1,4 +1,4 @@
-<?php 
+<?php
 $UserLoginData = $this->session->userdata('user_logged_in');
 
 ?>
@@ -12,10 +12,10 @@ $UserLoginData = $this->session->userdata('user_logged_in');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>
         <?php
-            if (isset($title)) {
-                echo $title;
-            }
-            ?>
+if (isset($title)) {
+	echo $title;
+}
+?>
     </title>
     <link rel="apple-touch-icon" sizes="120x120" href="<?=base_url()?>backend/favicon/apple-icon-120x120.png">
     <link rel="icon" type="image/png" sizes="192x192" href="<?=base_url()?>backend/favicon/android-icon-192x192.png">
@@ -46,7 +46,11 @@ $UserLoginData = $this->session->userdata('user_logged_in');
     <!-- ========================================================= -->
     <link rel="stylesheet" href="<?=base_url()?>backend/stylesheets/css/style.css?t<?=time()?>">
 
-
+<style type="text/css">
+    .is-invalid{
+        color: red;
+    }
+</style>
 </head>
 
 <body>
@@ -265,7 +269,7 @@ $UserLoginData = $this->session->userdata('user_logged_in');
                         </div>-->
                         <div class="user-info">
                             <span class="user-name">
-                                <?=($UserLoginData['name'])?$UserLoginData['name']:'--'?>
+                                <?=($UserLoginData['name']) ? $UserLoginData['name'] : '--'?>
                             </span>
                             <span class="user-profile">Admin</span>
                         </div>
