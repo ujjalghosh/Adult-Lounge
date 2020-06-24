@@ -239,15 +239,28 @@ if (!empty($chat)) {
 <?php }?>
 </div>
 <div class="short-des-col">
+	<?php if ($buy_items) {
+	?>
 <h5>Buy My Personal Items</h5>
 <ul class="personal-items">
-<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/underwear.png')?>" alt=""/></div>Underwear</a></li>
-<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/toys.png')?>" alt=""/></div>Toys</a></li>
-<li><a href="#"><div class="personal-items-image"><img src="<?=base_url('assets/images/shoes.png')?>" alt=""/></div>Shoes</a></li>
+	<?php foreach ($buy_items as $key => $item) {
+		?>
+<li><a target="_blank" href="<?=$item->buy_link?>"><div class="personal-items-image"><img  src="<?=uploads_url('buy_tem/' . $item->image)?>" alt=""/></div><?=$item->name?></a></li>
+<?php
+if ($key == 2) {
+			break;
+		}
+
+	}?>
+
+
 </ul>
 <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-<a href="javascript:void(0)" class="btn">SHOP ALL PRODUCTS</a>
+<?php if (count($buy_items) > 3) {?>
+<a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
+<?php }?>
+<?php }?>
 </div>
 </div>
 </div>
@@ -356,8 +369,48 @@ if ($user[0]['images'] != '') {
 
 </div>
 </section>
+
+
+
+
 </main>
 </section>
+<!-- <div id="myitems" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Buy My Personal Items</h4>
+      </div>
+      <div class="modal-body">
+        	<?php if ($buy_items) {
+	?>
+
+<ul class="personal-items">
+	<?php foreach ($buy_items as $key => $item) {
+		?>
+<li><a target="_blank" href="<?=$item->buy_link?>"><div class="personal-items-image"><img  src="<?=uploads_url('buy_tem/' . $item->image)?>" alt=""/></div><?=$item->name?></a></li>
+<?php
+if ($key == 2) {
+			break;
+		}
+
+	}?>
+
+
+</ul>
+
+<?php }?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div> -->
 <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
 <script>
 // var $grid = $('.__freeImageGridEl').imagesLoaded( function() {

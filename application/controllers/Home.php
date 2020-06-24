@@ -300,6 +300,24 @@ class Home extends Common_Controller {
 			$this->cm->update('user_preference', array("user_id" => $this->input->post('editpro_id')), $updateArrayTwo);
 		}
 
+		$blk_items = array();
+		$it = 0;
+		$item_name = $this->input->post('item_name[]');
+		$buy_link = $this->input->post('buy_link[]');
+		if ($item_name != '' && $item_name != NULL) {
+			foreach ($item_name as $key => $item) {
+				if (filter_var($buy_link[$key], FILTER_VALIDATE_URL)) {
+					$blk_items[$it]['user_id'] = $this->input->post('editpro_id');
+					$blk_items[$it]['item_id'] = $item;
+					$blk_items[$it]['buy_link'] = $buy_link[$key];
+					$it++;
+				}
+
+			}
+		}
+		//pr($blk_items);die();
+		$this->cm->insert_buy_items($blk_items, $this->input->post('editpro_id'));
+
 		//print 'ok~~Profile Details Updated Successfully!!!';
 		$return_data['message'] = 'Profile Details Updated Successfully!!!';
 		$return_data['status'] = TRUE;
@@ -432,6 +450,7 @@ class Home extends Common_Controller {
 		$this->data['gifts'] = $this->db->select('id, gift_name, gift_point, gift_image_path')->from('gifts')->where(['is_active' => '1'])->get()->result();
 
 		$this->data['point'] = $point;
+		$this->data['buy_items'] = performers_buy_items($id);
 
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/view_profile', $this->data);

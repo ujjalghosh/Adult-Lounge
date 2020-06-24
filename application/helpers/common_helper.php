@@ -292,3 +292,22 @@ function user_log($log) {
 	$user_id = $ci->session->userdata('UserId');
 	$ci->db->insert('log_history', array('user_id' => $user_id, 'log' => $log));
 }
+function all_buy_items() {
+	$ci = &get_instance();
+	$ci->db->select('*');
+	$ci->db->where('status', 1);
+	$query = $ci->db->get('buy_items');
+	return $query->result();
+
+}
+function performers_buy_items($user_id) {
+	$ci = &get_instance();
+	$ci->db->select('pi.*,bi.name,bi.image');
+	$ci->db->where('bi.status', 1);
+	$ci->db->where('pi.user_id', $user_id);
+	$ci->db->from('buy_performer_items pi');
+	$ci->db->join('buy_items bi', 'bi.id=pi.item_id');
+	$query = $ci->db->get();
+	return $query->result();
+
+}

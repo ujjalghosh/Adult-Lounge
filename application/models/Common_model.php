@@ -182,4 +182,16 @@ class Common_model extends CI_model {
 		//echo $this->email->print_debugger();
 		return $status;
 	}
+
+//*******
+
+	function insert_buy_items($data, $user_id) {
+		$this->db->delete('buy_performer_items', array('user_id' => $user_id));
+
+		if (count($data) > 0) {
+			$this->db->insert_batch('buy_performer_items', $data);
+		}
+
+	}
+
 }

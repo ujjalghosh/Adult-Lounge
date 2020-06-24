@@ -77,9 +77,10 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
-                                    
-                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control username formsm" name="editpro_image" id="editpro_image" />
+
+                                    <input type="file" value="UPLOAD THUMBNAIL" class="form-control username formsm" name="editpro_image" id="userpro_image" />
                                     <div class="brows editpro_image_brows user-image-brouse-right">BROWSE</div>
+                                    <span data-name="editpro_image"></span>
                                 </div>
                             </div>
                         </div>
@@ -91,6 +92,7 @@ echo SITE_NAME; ?> -->
                         <div class="form-two-col">
                             <div class="form-group">
                                 <input type="text" placeholder="NAME" class="man form-control username requiredCheck" data-check="Name" name="name" id="name" value="<?=$user[0]['name']?>" />
+                                <span data-name="name"></span>
                             </div>
                                                        <?php
 if ($user[0]['usernm'] != '') {
@@ -101,9 +103,11 @@ if ($user[0]['usernm'] != '') {
 ?>
                             <div class="form-group">
                                 <input type="text" placeholder="user name" class="man form-control username requiredCheck" data-check="usernm" name="usernm" id="usernm" value="<?=$unm?>" />
+                                 <span data-name="usernm"></span>
                             </div>
                             <div class="form-group">
                                 <input type="email" placeholder="Email" class="man form-control username requiredCheck" data-check="email" name="email" id="email" value="<?=$user[0]['email']?>" />
+                                <span data-name="email"></span>
                             </div>
                              <div class="form-group">
                                 <select class="custom-select requiredCheck" name="gender" id="gender"  >
@@ -115,10 +119,12 @@ if ($user[0]['usernm'] != '') {
                             </div>
                              <div class="form-group">
                                 <input type="text" placeholder="Phone No" class="man form-control " data-check="phone_no" name="phone_no" id="phone_no" value="<?=$user[0]['phone_no']?>" />
+                                 <span data-name="phone_no"></span>
                             </div>
 
                             <div class="form-group">
                                 <input type="text" placeholder="Age" class="man form-control " data-check="age" name="age" id="age" value="<?=$user[0]['age']?>" />
+                                 <span data-name="age"></span>
                             </div>
 
 
@@ -159,6 +165,9 @@ if ($user[0]['usernm'] != '') {
 jQuery(document).ready(function($) {
 
         $("#userprofile-form").validate({
+            errorPlacement:function(error, element){
+                $(element).closest("form").find("span[data-name='"+element.attr("name")+"']").append(error);
+            },
             rules:
             {
             name: "required",
@@ -214,7 +223,7 @@ jQuery(document).ready(function($) {
                   remote: jQuery.validator.format("Username already exist.")
                 },
                 editpro_image: {
-                     extension: "Allow only image format jpg,png,jpeg "
+                     extension: "Allow only jpg,png and jpeg image"
             },
 
 

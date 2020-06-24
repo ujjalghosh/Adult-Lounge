@@ -620,19 +620,48 @@ for ($p = 0; $p < count($appearence); $p++) {
                         <div class="form-two-col per2 leftsc w-100">
                             <div   class="show show2">
                                 <h3>MY GIFT LINKS</h3>
+                                 <a href="javascript:void(0);" class="add_buy_items pull-right">Add More</a>
                                 <input type="hidden" id="buy_items_cnt" value="1">
-                                <div class=" add-new-browse">
-                                    <div class="form-group gallery-brouser-area gift-links">
 
-                                       <input  type="text" class="form-control"  name="item_name[]" placeholder="Item Name" />
-                                       <input  type="text" class="form-control"  name="buy_link[]" placeholder="Item Link"  />
-                                    </div>
-                                    <div class="form-group add-more-gal">
-                                        <a href="javascript:void(0);" class="add_buy_items">Add More</a>
-                                    </div>
-                                </div>
+
                                 <div class="buy_itemsdiv">
 
+<?php
+
+//pr($this->session->userdata('curr_user')['id']);
+
+$buyitems = performers_buy_items($this->session->userdata('curr_user')['id']);
+if (isset($buyitems)) {
+	if ($buyitems) {
+		foreach ($buyitems as $buyitem) {?>
+
+<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    <div class="form-group galdiv4 gallery-brouser-area4 gift-links">
+       <?php $items = all_buy_items();?>
+<select class="form-control"  name="item_name[]" placeholder="Item Name">
+    <?php if ($items) {foreach ($items as $item) {?>
+        <option value="<?=$item->id?>" <?=($buyitem->item_id == $item->id ? 'selected' : '')?>  ><?=$item->name?></option>
+    <?php }}?>
+
+</select>
+        <input type="text" class="form-control" name="buy_link[]" placeholder="Item Link" value="<?=$buyitem->buy_link?>"> </div>
+</div>
+
+<?php }}} else {?>
+
+<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    <div class="form-group galdiv4 gallery-brouser-area4 gift-links">
+       <?php $items = all_buy_items();?>
+<select class="form-control"  name="item_name[]" placeholder="Item Name">
+    <?php if ($items) {foreach ($items as $item) {?>
+        <option value="<?=$item->id?>"><?=$item->name?></option>
+    <?php }}?>
+
+</select>
+        <input type="text" class="form-control" name="buy_link[]" placeholder="Item Link"> </div>
+</div>
+
+<?php }?>
 
                                 </div>
 
@@ -680,5 +709,33 @@ for ($p = 0; $p < count($appearence); $p++) {
         animateThumb      : false,
         showThumbByDefault: false,
     });
+
+
+jQuery(document).ready(function($) {
+    //*************Perfomer items buy ********
+
+$(document).on('click', '.add_buy_items', function() {
+    var old_cnt = $('#buy_items_cnt').val();
+    var new_cnt = parseInt($('#buy_items_cnt').val()) + parseInt(1);
+    $('#buy_items_cnt').val(new_cnt);
+
+var html='<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area' + new_cnt + ' gift-links">';
+
+<?php $items = all_buy_items();?>
+html +='<select class="form-control"  name="item_name[]" placeholder="Item Name">';
+    <?php if ($items) {foreach ($items as $item) {?>
+        html +='<option value="<?=$item->id?>"><?=$item->name?></option>';
+    <?php }}?>
+
+html +='</select> <input  type="text" class="form-control"  name="buy_link[]"  placeholder="Item Link"/>\
+        </div></div>';
+
+    $('.buy_itemsdiv').append(html);
+}).on('click', '.remove_item', function(){
+     $(this).closest(".add-new-item").remove();
+});
+});
+
+
 </script>
 <script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script>

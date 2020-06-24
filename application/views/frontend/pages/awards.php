@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="<?= base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css') ?>">
+<link rel="stylesheet" href="<?=base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css')?>">
 <style>
 .awards-list video {
 	max-width: 100%;
 	object-fit: cover;
-	max-height: 100%;    
+	max-height: 100%;
 }
 </style>
 <main class="content-wrapper loyalty-page">
@@ -31,50 +31,48 @@
                         </ul>
                     </div>
                 </div>
-                <div class="item">
-                	<img src="<?=base_url('assets/images/awards-slider.jpg')?>" alt=""/>
-                </div>
+
             </div>
         </div>
         <div class="awards-list">
         	<div class="col gridview index-p-div" id="html5-videos">
-                <?php if (count($performer_videos)) : ?>
-                    <?php foreach ($performer_videos as $performer_video) : ?>
+                <?php if (count($performer_videos)): ?>
+                    <?php foreach ($performer_videos as $performer_video): ?>
                         <div class="col-grid">
                             <figure class="active">
-                                <span class="strapbox"><?= str_replace( '_', ' ', $performer_video->video_type ) ?></span>
-                                <a class="vid-item" href="javascript:void()" data-html="#video<?= encrypt_id( $performer_video->id ) ?>">
+                                <span class="strapbox"><?=str_replace('_', ' ', $performer_video->video_type)?></span>
+                                <a class="vid-item" href="javascript:void()" data-html="#video<?=encrypt_id($performer_video->id)?>">
                                     <video height="143" loop preload="none" style="pointer-events: none;">
-                                        <source src="<?= base_url('assets/profile_videos/' . $performer_video->video ) ?>"></source>
+                                        <source src="<?=base_url('assets/profile_videos/' . $performer_video->video)?>"></source>
                                     </video>
                                 </a>
                                 <figcaption>
                                     <h4>
                                         <span class="active-circle"></span>
-                                        <a href="javascript:void()"><?= $performer_video->name ?></a>
+                                        <a href="javascript:void()"><?=$performer_video->name?></a>
                                     </h4>
                                     <ul>
                                         <li>PRIVATE: <span>£6.99</span> p/m</li>
                                     </ul>
                                 </figcaption>
                             </figure>
-                            <div style="display:none" id="video<?= encrypt_id( $performer_video->id ) ?>">
+                            <div style="display:none" id="video<?=encrypt_id($performer_video->id)?>">
                                 <video class="lg-video-object lg-html5" controls preload="none">
-                                    <source src="<?= base_url('assets/profile_videos/' . $performer_video->video ) ?>" type="video/mp4">
+                                    <source src="<?=base_url('assets/profile_videos/' . $performer_video->video)?>" type="video/mp4">
                                     Your browser does not support HTML5 video.
                                 </video>
-                            </div>                            
+                            </div>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>                
+                    <?php endforeach;?>
+                <?php endif;?>
           	</div>
         </div>
 	</section>
 </main>
-<script src="<?= base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js') ?>"></script>
-<script src="<?= base_url('assets/node_modules/lightgallery.js/dist/js/lg-video.min.js') ?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-video.min.js')?>"></script>
 <script>
     // lightGallery(document.getElementById('html5-videos', {
     //     selector : '.vid-item',
-    // })); 
+    // }));
 </script>
