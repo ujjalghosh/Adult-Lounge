@@ -77,9 +77,9 @@ echo SITE_NAME; ?> -->
                                         <img src="<?=base_url('assets/profile_image/' . $user[0]['image'])?>" alt="" style="height:49px; width:45px;" id="display_img">
                                         <?php }?>
                                     </div>
-                                    <div class="brows editpro_image_brows user-image-brouse-right">BROWSE</div>
+                                    
                                     <input type="file" value="UPLOAD THUMBNAIL" class="form-control username formsm" name="editpro_image" id="editpro_image" />
-
+                                    <div class="brows editpro_image_brows user-image-brouse-right">BROWSE</div>
                                 </div>
                             </div>
                         </div>

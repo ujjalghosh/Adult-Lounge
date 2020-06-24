@@ -247,7 +247,7 @@ if (!empty($chat)) {
 </ul>
 <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-<a href="javascript:void(0)" class="btn">BUY MY ITEMS</a>
+<a href="javascript:void(0)" class="btn">SHOP ALL PRODUCTS</a>
 </div>
 </div>
 </div>

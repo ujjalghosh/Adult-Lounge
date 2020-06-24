@@ -616,16 +616,13 @@ for ($p = 0; $p < count($appearence); $p++) {
 
 
 
-   <div class="box-content-widget pl-0">
-                        <div class="form-two-col per2 leftsc ">
+   <div class="box-content-widget pl-0 pr-0">
+                        <div class="form-two-col per2 leftsc w-100">
                             <div   class="show show2">
                                 <h3>MY GIFT LINKS</h3>
-
-                                <br />
-                                <br />
                                 <input type="hidden" id="buy_items_cnt" value="1">
                                 <div class=" add-new-browse">
-                                    <div class="form-group gallery-brouser-area">
+                                    <div class="form-group gallery-brouser-area gift-links">
 
                                        <input  type="text" class="form-control"  name="item_name[]" placeholder="Item Name" />
                                        <input  type="text" class="form-control"  name="buy_link[]" placeholder="Item Link"  />

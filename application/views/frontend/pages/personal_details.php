@@ -176,7 +176,7 @@ $billingdtls = get_billdetails();
                                     <input type="text" placeholder="Search" id="subs_search" style="color: #b8a368;" onkeyup="search_suggestion(this.value)" />
                                 </form>
                             </div>
-                            <div class="paging-list">
+                            <div class="paging-list mCustomScrollbar custom-height">
                                 <ul class="subs-ul">
                                     <?php
 if (!empty($subs)) {
@@ -209,7 +209,7 @@ if (!empty($subs)) {
                             <div class="sub-title">
                                 <h3>HISTORY</h3>
                             </div>
-                            <div class="paging-list">
+                            <div class="paging-list mCustomScrollbar custom-height">
                                 <ul class="subs-ul">
                                     <?php
 if (!empty($history)) {
@@ -238,7 +238,7 @@ if (!empty($history)) {
                         </div>
                         <!--HISTORY-->
                         <div class="tab_content">
-                        	<div class="p-policy">
+                        	<div class="p-policy mCustomScrollbar custom-height">
                                 <h3>PRIVACY</h3>
                                 <p>Under penalties of perjury, I declare that I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete. I further certify under penalties of perjury that:</p>
                                 <p>I am the individual that is the beneficial owner (or am authorized to sign for the individual that is the beneficial owner) of all the income to which this form relates or am using this form to document myself for chapter 4 purposes,</p>
@@ -262,7 +262,7 @@ if (!empty($history)) {
                                     <input type="text" placeholder="Search" />
                                 </form>
                             </div>
-                            <div class="paging-list">
+                            <div class="paging-list mCustomScrollbar custom-height">
                                 <?php if (count($invoices)): ?>
                                 <ul>
                                     <?php foreach ($invoices as $invoice): ?>

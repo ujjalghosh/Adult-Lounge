@@ -5567,9 +5567,9 @@ span.filter-style:before{
 	margin: 0 3px;
     overflow: hidden;
 }
-.user-image-brouse-right.brows{
+/* .user-image-brouse-right.brows{
 	float: right;
-}
+} */
 .user-profile-edit .profile-view.proo{
 	margin-top: -14px;
 }
@@ -5595,4 +5595,39 @@ span.filter-style:before{
 }
 .gift-datatable, .dataTables_wrapper label, .dataTables_info{
 	color: #fff;
+}
+.form-group.gallery-brouser-area.gift-links{
+	margin: 0;
+}
+.form-group.gallery-brouser-area.gift-links .form-control, .form-group.gift-links .form-control{
+	margin-left: 0;
+	margin-bottom: 10px;
+	width: 49%;
+	display: inline-block;
+}
+.form-group.gallery-brouser-area.gift-links .form-control:last-child{
+	margin-left: 10px;
+}
+.gift-links.form-group input + input{
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.buy_itemsdiv{
+	width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    position: relative;
+}
+.buy_itemsdiv .add-new-item{
+	position: relative;
+}
+.buy_itemsdiv .add-new-item .remove_item{
+	position: absolute;
+	right: -15px;
+    top: 15px;
+}
+
+.custom-height{
+	max-height: 400px;
 }

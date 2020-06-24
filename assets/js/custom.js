@@ -937,7 +937,7 @@ $(document).on('click', '.add_buy_items', function() {
     var new_cnt = parseInt($('#buy_items_cnt').val()) + parseInt(1);
     $('#buy_items_cnt').val(new_cnt);
     $('.buy_itemsdiv').append(
-        '<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area">\
+        '<div class="add-new-item"><a href="javascript:void(0);" class="remove_item"><i class="fa fa-trash-o" aria-hidden="true"></i></a><div class="form-group galdiv' + new_cnt + ' gallery-brouser-area' + new_cnt + ' gift-links">\
         <input  type="text" class="form-control"  name="item_name[]"  placeholder="Item Name"/>\
         <input  type="text" class="form-control"  name="buy_link[]"  placeholder="Item Link"/>\
         </div></div>');
