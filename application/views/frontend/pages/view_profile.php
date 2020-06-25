@@ -257,14 +257,15 @@ if ($key == 2) {
 </ul>
 <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-<?php if (count($buy_items) > 3) {?>
-<a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
-<?php }?>
 <?php }?>
 </div>
 </div>
 </div>
+<?php if ($buy_items) {
+	//if (count($buy_items) > 3) {?>
 <a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
+<?php //}?>
+<?php }?>
 <div class="perform-widget">
 <div class="top-bar-layout">
 <div class="top-bar-widgets">
@@ -298,9 +299,9 @@ if ($user[0]['images'] != '') {
 	 <div class="video-view ">
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -319,9 +320,9 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		   
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -340,9 +341,9 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -361,9 +362,9 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		  
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -389,38 +390,39 @@ if ($user[0]['images'] != '') {
 <div class="img-masgrid">
 	<h4 class="free-image-heading">Free Image</h4>
 	<!-- <ul class="grid effect-1 __freeImageGridEl" id="grid">
-		
+
 	</ul> -->
-	
+
 
 	<div class="card-columns profile-more-image">
 		<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
+if (!empty($img)) {
+	for ($i = 0; $i < (count($img) / 2); $i++) {
+		?>
 			<div class="card">
-				<?php if (empty($subs)) { ?>
+				<?php if (empty($subs)) {?>
 							<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } else { ?>
+						<?php } else {
+			?>
 							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
+				print 'style="display:none;"';
+			}?>>
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
+						<?php }?>
+						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
 			</div>
 		<?php }
-			} ?>
-		
+}?>
+
 	</div>
 
 	<div class="load-more-btn">
@@ -428,34 +430,35 @@ if ($user[0]['images'] != '') {
 	</div>
 		<!-- <ul>
 			<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
+if (!empty($img)) {
+	for ($i = 0; $i < (count($img) / 2); $i++) {
+		?>
 					<li>
-						<?php if (empty($subs)) { ?>
+						<?php if (empty($subs)) {?>
 							<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } else { ?>
+						<?php } else {
+			?>
 							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
+				print 'style="display:none;"';
+			}?>>
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
+						<?php }?>
+						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
 					</li>
 			<?php }
-			} ?>
+}?>
 		</ul> -->
 
-	
+
 </div>
 </div>
 <div id="" class="user-content-block d-none">
@@ -464,15 +467,15 @@ if ($user[0]['images'] != '') {
 	 <div class="video-view ">
 	 						<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -491,15 +494,15 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 						<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		   
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -518,15 +521,15 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 			<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -545,15 +548,15 @@ if ($user[0]['images'] != '') {
 	<div class="video-view ">
 			<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
 		<div class="video-play">
 			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		  
+
 			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
+				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
@@ -579,38 +582,39 @@ if ($user[0]['images'] != '') {
 <div class="img-masgrid">
 	<h4 class="free-image-heading">Free Image</h4>
 	<!-- <ul class="grid effect-1 __freeImageGridEl" id="grid">
-		
+
 	</ul> -->
-	
+
 
 	<div class="card-columns profile-more-image">
 		<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
+if (!empty($img)) {
+	for ($i = 0; $i < (count($img) / 2); $i++) {
+		?>
 			<div class="card">
-				<?php if (empty($subs)) { ?>
+				<?php if (empty($subs)) {?>
 							<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } else { ?>
+						<?php } else {
+			?>
 							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
+				print 'style="display:none;"';
+			}?>>
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
+						<?php }?>
+						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
 			</div>
 		<?php }
-			} ?>
-		
+}?>
+
 	</div>
 
 	<div class="load-more-btn">
@@ -618,34 +622,35 @@ if ($user[0]['images'] != '') {
 	</div>
 		<!-- <ul>
 			<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
+if (!empty($img)) {
+	for ($i = 0; $i < (count($img) / 2); $i++) {
+		?>
 					<li>
-						<?php if (empty($subs)) { ?>
+						<?php if (empty($subs)) {?>
 							<div class="item-subscribe">
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } else { ?>
+						<?php } else {
+			?>
 							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
+				print 'style="display:none;"';
+			}?>>
 								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
+									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
+									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
 								</figure>
 							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
+						<?php }?>
+						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
 					</li>
 			<?php }
-			} ?>
+}?>
 		</ul> -->
 
-	
+
 </div>
 </div>
 <div id="content">

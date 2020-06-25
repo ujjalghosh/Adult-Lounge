@@ -380,6 +380,8 @@ class Common_Controller extends CI_Controller {
 		);
 		//$voting = $this->db->query('SELECT DISTINCT performer_id, count(id) vote FROM `vote` ORDER BY vote DESC')->result();
 		$voting = $this->db->query('SELECT DISTINCT v.performer_id, (select count(vt.id) from vote vt where vt.performer_id = v.performer_id) vote FROM `vote` v ORDER BY vote DESC')->result();
+		//echo $this->db->last_query();die();
+
 		if (!empty($voting)) {
 			$rank = 1;
 			foreach ($voting as $vot) {

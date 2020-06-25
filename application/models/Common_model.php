@@ -194,4 +194,26 @@ class Common_model extends CI_model {
 
 	}
 
+	public function top_awards() {
+/*		'SELECT
+@rank := @rank +1 AS rank,
+`user_id`,
+`point`
+FROM
+`vote` u
+JOIN(
+SELECT
+@rank := 0
+) r
+ORDER BY
+u.`point`
+DESC
+'
+return $this->db->select(' @rank := @rank +1 AS rank')
+->from('users u')
+->join()
+->get()->result();*/
+
+	}
+
 }
