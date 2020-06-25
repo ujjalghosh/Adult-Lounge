@@ -1474,3 +1474,4 @@ $("#forgot_cancel_btn").click(function () {
         $(".content").mCustomScrollbar();
     });
 });
+

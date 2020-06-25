@@ -264,7 +264,6 @@ if ($key == 2) {
 </div>
 </div>
 </div>
-<a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
 <div class="perform-widget">
 <div class="top-bar-layout">
 <div class="top-bar-widgets">
@@ -292,361 +291,11 @@ if ($user[0]['images'] != '') {
 	$img = array();
 }
 ?>
-<div class="user-content-block">
-<div class="video-grid __freeVideoGridEl">
-	<h4 class="free-image-heading">Free Video</h4>
-	 <div class="video-view ">
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		   
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		  
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
+<div id="__freeContent" class="user-content-block">
+
 </div>
-<div class="load-more-btn">
-	<a href="#" class="btn-load-more">Load More...</a>
-</div>
+<div id="__premiumContent" class="user-content-block d-none">
 
-<hr class="hr-devider" />
-
-<div class="img-masgrid">
-	<h4 class="free-image-heading">Free Image</h4>
-	<!-- <ul class="grid effect-1 __freeImageGridEl" id="grid">
-		
-	</ul> -->
-	
-
-	<div class="card-columns profile-more-image">
-		<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
-			<div class="card">
-				<?php if (empty($subs)) { ?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else { ?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
-			</div>
-		<?php }
-			} ?>
-		
-	</div>
-
-	<div class="load-more-btn">
-		<a href="#" class="btn-load-more">Load More...</a>
-	</div>
-		<!-- <ul>
-			<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
-					<li>
-						<?php if (empty($subs)) { ?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else { ?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
-					</li>
-			<?php }
-			} ?>
-		</ul> -->
-
-	
-</div>
-</div>
-<div id="" class="user-content-block d-none">
-<div class="video-grid __freeVideoGridEl">
-	<h4 class="free-image-heading">Free Video</h4>
-	 <div class="video-view ">
-	 						<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-						<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		   
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-			<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-			
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-			<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-		  
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?= base_url('assets/images/show.png') ?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="load-more-btn">
-	<a href="#" class="btn-load-more">Load More...</a>
-</div>
-
-<hr class="hr-devider" />
-
-<div class="img-masgrid">
-	<h4 class="free-image-heading">Free Image</h4>
-	<!-- <ul class="grid effect-1 __freeImageGridEl" id="grid">
-		
-	</ul> -->
-	
-
-	<div class="card-columns profile-more-image">
-		<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
-			<div class="card">
-				<?php if (empty($subs)) { ?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else { ?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
-			</div>
-		<?php }
-			} ?>
-		
-	</div>
-
-	<div class="load-more-btn">
-		<a href="#" class="btn-load-more">Load More...</a>
-	</div>
-		<!-- <ul>
-			<?php
-			if (!empty($img)) {
-				for ($i = 0; $i < (count($img) / 2); $i++) {
-					?>
-					<li>
-						<?php if (empty($subs)) { ?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else { ?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-																		print 'style="display:none;"';
-																	} ?>>
-								<figure>
-									<img src="<?= base_url('assets/images/lock-icon.png') ?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?= $user[0]['id'] ?>', '<?= $this->session->userdata('UserId') ?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } ?>
-						<img src="<?= base_url('assets/performer_gallery/' . $img[$i]) ?>">
-					</li>
-			<?php }
-			} ?>
-		</ul> -->
-
-	
-</div>
 </div>
 <div id="content">
 </div>
@@ -726,14 +375,14 @@ if ($user[0]['images'] != '') {
 
 </main>
 </section>
-<div id="myitems" class="modal fade gift-modal " aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
-  <div class="modal-dialog modal-dialog-centered">
+<!-- <div id="myitems" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
 
     <div class="modal-content">
       <div class="modal-header">
-		<h4 class="modal-title">Buy My Personal Items</h4>
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Buy My Personal Items</h4>
       </div>
       <div class="modal-body">
         	<?php if ($buy_items) {
@@ -761,7 +410,7 @@ if ($key == 2) {
     </div>
 
   </div>
-</div>
+</div> -->
 <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
 <script>
 // var $grid = $('.__freeImageGridEl').imagesLoaded( function() {

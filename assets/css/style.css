@@ -5631,3 +5631,44 @@ span.filter-style:before{
 .custom-height{
 	max-height: 400px;
 }
+.profile-more-image .card{
+	border: none;
+	border-radius: 0;
+}
+.modal.gift-modal{
+	position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+.modal.gift-modal.show ,.modal.gift-modal.show:nth-child(2n+0){
+	float: none;
+	margin: 0;
+	width: 100%;
+	background: rgba(0,0,0,.5);
+	height: 100%;
+}
+.modal-open{
+	padding-right: 0 !important;
+}
+.gift-modal .modal-content{
+	border-radius: 0;
+	background: #000;
+}
+.gift-modal .modal-header, .gift-modal .modal-body, .gift-modal .modal-footer{
+	border: none;
+}
+.gift-modal .modal-header h4{
+	font-family: 'ADAM-CGPRO';
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+.gift-modal .modal-header button{
+	color: #fff;
+}
