@@ -257,15 +257,13 @@ if ($key == 2) {
 </ul>
 <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-<?php }?>
-</div>
-</div>
-</div>
-<?php if ($buy_items) {
-	//if (count($buy_items) > 3) {?>
+<?php if (count($buy_items) > 3) {?>
 <a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
-<?php //}?>
 <?php }?>
+<?php }?>
+</div>
+</div>
+</div>
 <div class="perform-widget">
 <div class="top-bar-layout">
 <div class="top-bar-widgets">
