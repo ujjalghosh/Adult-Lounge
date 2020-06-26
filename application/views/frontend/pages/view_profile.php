@@ -257,9 +257,9 @@ if ($key == 2) {
 </ul>
 <!--<a href="javascript:void(0)" class="btn">Subscribe</a>
 <a href="javascript:void(0)" class="btn">Message</a>-->
-<?php if (count($buy_items) > 3) {?>
+<?php //if (count($buy_items) > 3) {?>
 <a href="javascript:void(0)" data-toggle="modal" data-target="#myitems" class="btn">SHOP ALL PRODUCTS</a>
-<?php }?>
+<?php //}?>
 <?php }?>
 </div>
 </div>
@@ -747,9 +747,6 @@ if (!empty($img)) {
 		?>
 <li><a target="_blank" href="<?=$item->buy_link?>"><div class="personal-items-image"><img  src="<?=uploads_url('buy_tem/' . $item->image)?>" alt=""/></div><?=$item->name?></a></li>
 <?php
-if ($key == 2) {
-			break;
-		}
 
 	}?>
 

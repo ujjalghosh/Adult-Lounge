@@ -11,29 +11,33 @@
 		<div class="slider-head">
 			<p>THE TOP 100 MODELS IN AWARDS</p>
 		</div>
+        <?php if (isset($top_performer)) {?>
 		<div class="awards-slider">
         	<div class="owl-carousel owl-theme slider-awards">
+                <?php foreach ($top_performer as $key => $performer): ?>
+
                 <div class="item">
-                	<img src="<?=base_url('assets/images/awards-slider.jpg')?>" alt=""/>
+                	<img src="<?=base_url('assets/profile_image/' . $performer->image)?>" alt=""/>
                     <div class="awards-slider-content">
                     	<ul>
                         	<li>
                             	<div class="step-work">
                                 	<p>no.</p>
-                                    <h2>23</h2>
+                                    <h2><?=($key + 1)?></h2>
                                 </div>
                                 <div class="step-description">
-                                	<h3><i class="fa fa-circle" aria-hidden="true"></i> AlisMorris</h3>
-                                    <p>Winnings $100 - 13,903 points</p>
-                                    <p>PRIVATE: £6.99 p/m  &nbsp; &nbsp;  GROUP: £3.99 p/M</p>
+                                	<h3><i class="fa fa-circle" aria-hidden="true"></i> <?=$performer->name?></h3>
+                                    <p><?=$performer->rank?> points</p>
+                                    <p><?=($performer->perform_type == 'private' ? 'PRIVATE: £' . $performer->price_in_private : 'GROUP: £' . $performer->price_in_group)?>  p/M</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
-
+<?php endforeach?>
             </div>
         </div>
+    <?php }?>
         <div class="awards-list">
         	<div class="col gridview index-p-div" id="html5-videos">
                 <?php if (count($performer_videos)): ?>

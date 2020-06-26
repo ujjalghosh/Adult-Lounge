@@ -195,24 +195,17 @@ class Common_model extends CI_model {
 	}
 
 	public function top_awards() {
-/*		'SELECT
-@rank := @rank +1 AS rank,
-`user_id`,
-`point`
-FROM
-`vote` u
-JOIN(
-SELECT
-@rank := 0
-) r
-ORDER BY
-u.`point`
-DESC
-'
-return $this->db->select(' @rank := @rank +1 AS rank')
-->from('users u')
-->join()
-->get()->result();*/
+
+		return $this->db->select('IFNULL(up.display_name,u.name) as name,u.image,up.price_in_private,up.price_in_group,up.perform_type')
+			->select('(SELECT IFNULL( SUM(point),0) FROM `vote` WHERE performer_id=u.id) as rank ')
+			->from('users u')
+			->join('user_preference up', 'up.user_id=u.id', 'left')
+			->where('u.status', '1')
+			->where('u.login_type', '2')
+			->where('u.image !=', null)
+			->order_by('rank', 'desc')
+			->limit(100)
+			->get()->result();
 
 	}
 

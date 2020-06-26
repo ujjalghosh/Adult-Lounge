@@ -90,17 +90,6 @@ class Service extends Common_Controller {
 		}
 	}
 
-	public function awards() {
-		$this->db->select('PV.*, UT.name');
-		$this->db->from('performer_video_gallery PV');
-		$this->db->join('users UT', 'PV.user_id = UT.id');
-		$this->data['performer_videos'] = $this->db->where('is_showing', '1')->get()->result();
-		//echo $this->db->last_query();die();
-		$this->load->view('frontend/layout/header', $this->data);
-		$this->load->view('frontend/pages/awards');
-		$this->load->view('frontend/layout/footer');
-	}
-
 	public function mySubscriptions() {
 		$join[] = ['table' => 'users u', 'on' => 's.user_id = u.id', 'type' => 'left'];
 		$join[] = ['table' => 'user_preference up', 'on' => 'up.user_id = u.id', 'type' => 'left'];
