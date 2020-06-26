@@ -5663,12 +5663,28 @@ span.filter-style:before{
 .gift-modal .modal-header, .gift-modal .modal-body, .gift-modal .modal-footer{
 	border: none;
 }
+.gift-modal .modal-header{
+	background-color: #5f5b50;
+	border-radius: 0;
+    padding: 10px 12px;
+}
 .gift-modal .modal-header h4{
 	font-family: 'ADAM-CGPRO';
     font-size: 1rem;
     color: #fff;
-    text-transform: uppercase;
+	text-transform: uppercase;
+	line-height: inherit;
 }
 .gift-modal .modal-header button{
 	color: #fff;
+}
+.gift-modal .modal-content{
+	border: 1px solid #b8a368;
+}
+.gift-modal.modal .modal-body{
+	align-items: inherit;
+	min-height: 250px;
+}
+.gift-modal.modal .modal-body ul.personal-items{
+	flex: 1;
 }
