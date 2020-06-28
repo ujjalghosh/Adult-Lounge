@@ -123,6 +123,25 @@ class Service extends Common_Controller {
 	}
 
 	public function manageUsers() {
+		$user_id = $this->session->userdata('UserId');
+		$sql = "SELECT a.*, IFNULL(u.name,Up.display_name) as username, u.image,u.usernm FROM ( SELECT user_id FROM `video_chat` WHERE status!='0' AND performer_id='" . $user_id . "'
+UNION
+SELECT sender_id as user_id FROM `user_gifts` WHERE receiver_id='" . $user_id . "'
+UNION
+SELECT sender_id as user_id FROM `chat`  WHERE receiver_id='" . $user_id . "'
+UNION
+SELECT user_id FROM `vote`  WHERE performer_id='" . $user_id . "') as a
+
+JOIN users u ON u.id=user_id
+LEFT JOIN user_preference up on up.user_id=u.id
+GROUP BY a.user_id";
+
+		$result = $this->db->query($sql)->result();
+		//pr($result);
+		//echo $this->db->last_query();die();
+		$this->data['all_users'] = $result;
+		$this->data['all_subscribers'] = $this->performers_subscribe($user_id);
+
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/manageUsers');
 		$this->load->view('frontend/layout/footer');

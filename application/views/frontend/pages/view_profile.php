@@ -729,7 +729,7 @@ if (!empty($img)) {
 
 </main>
 </section>
-<div id="myitems" class="modal fade gift-modal " aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+<div id="myitems" class="modal fade buy-items-modal "  role="dialog">
   <div class="modal-dialog modal-dialog-centered">
 
 

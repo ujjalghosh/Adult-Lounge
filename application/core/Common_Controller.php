@@ -533,5 +533,19 @@ class Common_Controller extends CI_Controller {
 		}
 		return $video;
 	}
+
+//***** preformer's subscribers
+
+	function performers_subscribe($p_id = '') {
+		$this->db->select('S.user_id, IFNULL(U.name,Up.display_name) as username,U.image,U.usernm');
+		$this->db->from('subscribe S');
+		$this->db->join('users U', 'U.id=S.user_id');
+		$this->db->join('user_preference Up', 'Up.user_id=U.id', 'LEFT');
+		$this->db->where('S.status', '1');
+		$this->db->where('U.status', '1');
+		$this->db->where('S.performer_id', $p_id);
+		return $this->db->get()->result();
+	}
+
 }
 ?>

@@ -6,7 +6,7 @@
             	<li>
                 	<img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/>
                     <h5>PERFORMER NAME</h5>
-                    <a href="<?= base_url('profile') ?>">EDIT PROFILE</a>
+                    <a href="<?=base_url('profile')?>">EDIT PROFILE</a>
                 </li>
                 <li>
                 	<h5>CURRENT RANKING</h5>
@@ -23,27 +23,18 @@
                         </div>
                         <div class="manage-list">
                         	<ul>
+                                <?php if ($all_subscribers) {
+	foreach ($all_subscribers as $subscribe) {
+
+		?>
                             	<li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
+                                	<h4><img height="30" width="30" src="<?=base_url('assets/profile_image/' . $subscribe->image)?>" alt=""/> <?=$subscribe->username?>  @<?=$subscribe->usernm?></h4>
                                     <div class="list-btn">
                                     	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
+                                    	<a href="#" class="btn">BLOCK</a>
                                     </div>
                                 </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
+                             <?php }}?>
                             </ul>
                         </div>
                     </div>
@@ -55,69 +46,18 @@
                         </div>
                         <div class="manage-list">
                         	<ul>
-                            	<li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
+                            	       <?php if ($all_users) {
+	foreach ($all_users as $user) {
+
+		?>
                                 <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
+                                    <h4><img height="30" width="30"  src="<?=base_url('assets/profile_image/' . $user->image)?>" alt=""/> <?=$user->username?>  @<?=$user->usernm?></h4>
                                     <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
+                                        <a href="#" class="btn">MESSAGE</a>
+                                        <a href="#" class="btn">BLOCK</a>
                                     </div>
                                 </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/chrisblades.png')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
+                             <?php }}?>
                             </ul>
                         </div>
                     </div>
