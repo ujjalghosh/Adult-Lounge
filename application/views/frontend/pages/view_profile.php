@@ -175,19 +175,20 @@ if (!empty($chat)) {
 <li>
     <?php if ($this->session->userdata('UserType')) {
 	?>
-<?php if (isset($vote)) {?>
+<?php //if (isset($user[0]['performer_rank'])) {?>
 <input type="hidden" id="perf_vote<?=$user[0]['id']?>" value="<?=$point;?>">
-<input type="hidden" id="perf_rank<?=$user[0]['id']?>" value="<?=$vote['rank']?>">
-<?php }?>
+<input type="hidden" id="perf_rank<?=$user[0]['id']?>" value="<?=$user[0]['performer_rank']?>">
+<?php //}?>
 <input type="hidden" id="perf_name<?=$user[0]['id']?>" value="<?php if ($user[0]['display_name'] != '') {
 		print $user[0]['display_name'];
 	} else {
 		print $user[0]['name'];
 	}?>">
-<?php if (isset($vote)) {?>
-<img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
+<?php //if (isset($user[0]['performer_rank'])) {?>
+<img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="
+or Me" />
 <a href="javascript:void(0);" class="vt" id="<?=$user[0]['id']?>">Vote</a>
-<?php }
+<?php //}
 } else {?>
    <img src="<?=base_url('assets/images/icon-trophy.png')?>" alt="Vote For Me" />
 <a href="<?=base_url('login')?>"    >Vote</a>
