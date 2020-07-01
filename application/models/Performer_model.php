@@ -415,7 +415,7 @@ class Performer_model extends CI_model {
 
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
-			$this->db->order_by('u.id', 'DESC');
+
 			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
@@ -439,7 +439,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['users_appearance'] . ' as uap', 'uap.id_users = u.id', 'left outer');
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
-			$this->db->order_by('u.id', 'DESC');
+
 			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
@@ -452,10 +452,23 @@ class Performer_model extends CI_model {
             ');
 
 		}
+
+		if (isset($this->data['filter']) && !empty($this->data['filter'])) {
+
+			if ($this->data['filter'] == 'latest') {
+				$this->db->order_by('u.created_at', 'DESC');
+			} elseif ($this->data['filter'] == 'rating') {
+				$this->db->order_by('u.performer_rank', 'ASC');
+			}
+		} else {
+			$this->db->order_by('u.id', 'DESC');
+		}
+
 		$this->db->where('u.login_type', 2);
 		$this->db->where('u.status', 1);
 		$this->db->where('u.account_verified', 'Yes');
 		$query = $this->db->get();
+		//echo $this->db->last_query();die();
 		return $query->num_rows();
 	}
 
@@ -497,6 +510,17 @@ class Performer_model extends CI_model {
 
 			}
 
+			if (isset($this->data['filter']) && !empty($this->data['filter'])) {
+
+				if ($this->data['filter'] == 'latest') {
+					$this->db->order_by('u.created_at', 'DESC');
+				} elseif ($this->data['filter'] == 'rating') {
+					$this->db->order_by('u.performer_rank', 'ASC');
+				}
+			} else {
+				$this->db->order_by('u.id', 'DESC');
+			}
+
 		}
 		// echo "<pre>";
 		// print_r($this->conditions);
@@ -520,7 +544,7 @@ class Performer_model extends CI_model {
 
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
-			$this->db->order_by('u.id', 'DESC');
+			//$this->db->order_by('u.id', 'DESC');
 			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
@@ -536,8 +560,8 @@ class Performer_model extends CI_model {
 			$this->db->where('u.account_verified', 'Yes');
 			if (isset($this->data['page'])) {
 				$page = $this->data['page'] - 1;
-				$offset = $page * 10;
-				$this->db->limit(10, $offset);
+				$offset = $page * 12;
+				$this->db->limit(12, $offset);
 			}
 			$this->setQuery($this->db->get());
 		} else {
@@ -552,7 +576,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['users_appearance'] . ' as uap', 'uap.id_users = u.id', 'left outer');
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
-			$this->db->order_by('u.id', 'DESC');
+			//$this->db->order_by('u.id', 'DESC');
 			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
@@ -569,8 +593,8 @@ class Performer_model extends CI_model {
 
 			if (isset($this->data['page'])) {
 				$page = $this->data['page'] - 1;
-				$offset = $page * 10;
-				$this->db->limit(10, $offset);
+				$offset = $page * 12;
+				$this->db->limit(12, $offset);
 			}
 			$this->setQuery($this->db->get());
 		}

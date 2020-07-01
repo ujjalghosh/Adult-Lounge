@@ -126,7 +126,7 @@ class ApiController extends Common_Controller {
 					->set_status_header(200)
 					->set_output(json_encode(array(
 						'status' => TRUE,
-						'total_page' => ceil($total_perfomers / 10),
+						'total_page' => ceil($total_perfomers / 12),
 						'total_perfomers' => $total_perfomers,
 						'data' => $this->data,
 					)));
