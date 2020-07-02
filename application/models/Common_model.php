@@ -2,6 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Common_model extends CI_model {
+	public function getSingleRow($filed = '*', $tbl, $where = null, $order_by_fld = null, $order_by = 'DESC', $limit = 1, $offset = null) {
+		if ($tbl) {
+			$this->db->select($filed);
+			$this->db->from($tbl);
+			if ($where != '') {
+				$this->db->where($where);
+			}
+
+			if ($order_by_fld != '') {
+				$this->db->order_by($order_by_fld, $order_by);
+			}
+
+			if ($limit != '' && $offset != '') {
+				$this->db->limit($limit, $offset);
+			}
+
+			$query = $this->db->get();
+			return $query->row_array();
+		} else {
+			return FALSE;
+		}
+	}
+
 	public function get_all($table, $condition = NULL, $limit = NULL, $offset = NULL) {
 		$this->db->select('*');
 		$this->db->from($table);
@@ -207,6 +230,19 @@ class Common_model extends CI_model {
 			->limit(100)
 			->get()->result();
 
+	}
+
+	public function update_otp($user_id) {
+		if ($user_id > 0) {
+			$num = rand(100000, 999999);
+			$data = array();
+
+			$data['reset_otp'] = $num;
+			$this->db->update('users', $data, array('id' => $user_id));
+
+		} else {
+			//error
+		}
 	}
 
 }

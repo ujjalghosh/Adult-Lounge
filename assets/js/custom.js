@@ -693,6 +693,67 @@ $("#login-form").submit(function (e) {
         });
     }
 });
+
+
+        $("#forgot-form").validate({
+            errorPlacement:function(error, element){
+                $(element).closest("form").find("span[data-name='"+element.attr("name")+"']").append(error);
+            },
+            rules:
+            {
+             
+             forgot_email: {
+                required:true,
+                email:true,              
+            },
+           
+
+            },
+            messages:{
+                forgot_email:{
+                  required: "Please enter email", 
+                },
+              
+
+
+            },
+            submitHandler: function(form) {
+                var formData = new FormData($(form)[0]);
+                $.ajax({
+                    type     : "POST",
+                    cache    : false,
+                    contentType: false,
+                    processData: false,
+                    url      : form.action,
+                    dataType : 'json',
+                    data     : formData,
+                    success  : function(res) {
+                      $('#fmsg').html(res.message); 
+                      if(res.success==true){
+                        $("#fmsg").css("color", "green");
+                      }else{
+                        $("#fmsg").css("color", "red");
+                      }
+
+                    }, 
+
+                    beforeSend: function () {
+                        $('#fmsg').html(''); 
+                        $("body").waitMe(waitmeOptions);
+                    },
+                    complete: function () {
+                        $("body").waitMe("hide");
+                    },
+
+
+
+                });
+
+            }
+        }).settings.ignore = [];
+
+
+
 $("#editprofile-form").submit(function (e) {
     e.preventDefault();
     $(".editpro-message").text('');

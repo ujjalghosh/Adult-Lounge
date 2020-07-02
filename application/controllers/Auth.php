@@ -148,4 +148,120 @@ class Auth extends Common_Controller {
 		$this->session->unset_userdata('credited_amount');
 		redirect(base_url());
 	}
+
+//**************************
+	public function passwordResetSubmit() {
+		$rest = base64_decode($this->input->post('user_secret', TRUE));
+		$explode_string = explode('-', $rest);
+
+		$user_id = $explode_string[0];
+		$reset_otp = $explode_string[1];
+
+		$admin_password = $this->input->post('password', TRUE);
+		$admin_reset_password = $this->input->post('confirm_password', TRUE);
+		$this->form_validation->set_rules('confirm_password', 'Confirm password', 'required|xss_clean');
+		$this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
+		if ($this->form_validation->run() == FALSE) {
+
+			$return_data['message'] = validation_errors('<span>', '</span>');
+			$return_data['success'] = FALSE;
+
+		} else {
+			$admins = $this->cm->getSingleRow('id,login_password,email', 'users', array('id' => $user_id));
+			if ($admins) {
+
+				$enc_pass = password_hash($admin_password, PASSWORD_DEFAULT);
+				$data = array(
+					'updated_at' => date("Y-m-d H:i:s"),
+					'login_password' => $enc_pass,
+				);
+				if ($this->db->update('users', $data, array('id' => $user_id))) {
+
+					$return_data['message'] = 'Password has been updated.';
+					$return_data['success'] = TRUE;
+				} else {
+					$return_data['message'] = 'Error occurred. Please try again.';
+					$return_data['success'] = FALSE;
+				}
+			} else {
+				$return_data['message'] = 'Error occurred. Please try again.';
+				$return_data['success'] = FALSE;
+			}
+		}
+		echo json_encode($return_data);
+	}
+
+	public function reset_password($str = '') {
+		$ar = base64_decode($str);
+		$ar = explode('-', $ar);
+
+		if (count($ar) == 2) {
+			$user_id = $ar[0];
+			$reset_otp = $ar[1];
+			$admins = $this->cm->getSingleRow('id,reset_otp', 'users', array('id' => $user_id));
+
+			if ($admins) {
+				if ($admins['reset_otp'] == $reset_otp) {
+					$this->data['user_secret'] = $str;
+
+					$this->load->view('frontend/layout/header', $this->data);
+					$this->load->view('frontend/pages/reset_password', $this->data);
+					$this->load->view('frontend/layout/footer');
+
+				} else {
+					$this->session->set_flashdata('notification_msg', message('It looks like this password reset link can\'t be used anymore. This probably means that you sent us another password reset request; in that case you\'ll need to use the newer reset link.', 4));
+					$this->load->view('frontend/layout/header', $this->data);
+					$this->load->view('frontend/pages/login');
+					$this->load->view('frontend/layout/footer');
+				}
+			} else {
+				$this->session->set_flashdata('notification_msg', message('Your reset password link is wrong.', 2));
+			}
+		} else {
+			$this->session->set_flashdata('notification_msg', message('Error occurred. Please try again.', 2));
+			$this->load->view('frontend/layout/header', $this->data);
+			$this->load->view('frontend/pages/login');
+			$this->load->view('frontend/layout/footer');
+		}
+	}
+
+	public function forgot_password() {
+		$email = $this->input->post('forgot_email', TRUE);
+		$return_data = array();
+		$admins = $this->db->select('NULLIF(u.name,up.display_name) as name,u.id,u.email')->join('user_preference up', 'up.user_id=u.id', 'left')->where('u.email', $email)->from('users u')->get()->row();
+
+		if ($admins) {
+			$this->cm->update_otp($admins->id, 'admin');
+			$results_otp = $this->cm->getSingleRow('reset_otp', 'users', array('id' => $admins->id));
+			$this->load->library('encryption');
+			$salt = $this->config->item('encryption_key');
+			$str = $admins->id . '-' . $results_otp['reset_otp'];
+			$username = base64_encode($str);
+			$reset_link = base_url('reset_password/' . $username);
+
+			$to = $admins->email;
+			$subject = 'Reset your password';
+			$message = '<table width="100%">
+			<tbody>
+				<tr>
+					<td style="padding: 0 20px; font: normal 13px/18px Arial, Helvetica, sans-serif; color: #666;" align="left" valign="top">
+						<p><span style="color: #000000;">Hello ' . $admins->name . ',</span></p>
+						<p><span style="color: #000000;">As requested, here is the link to reset your password. If you didn\'t make this request then ignore the email.</span></p>
+						<p>&nbsp;</p>
+						<p><span style="color: #000000;">If you did make the request, then <a href="' . $reset_link . '" target="_blank">click here</a> to reset your password.</span></p>
+					</td>
+				</tr>
+			</tbody>
+			</table>';
+			//$message = setEmailTemplate($message);
+			SendEmailTo($to, $subject, $message);
+			$return_data['message'] = 'A password reset link is sent to your email address.';
+			$return_data['success'] = TRUE;
+		} else {
+			$return_data['message'] = 'Your email address is invalid.';
+			$return_data['success'] = FALSE;
+		}
+		echo json_encode($return_data);
+	}
+
 }

@@ -55,10 +55,13 @@
         <div class="modal-widget mdl-lft forgot-modal" >
             <h2><img src="<?=base_url('assets/images/line-logo.png')?>" alt="logo" /> Forgot Password</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lorem nisl. convallis nec semper quis, tincidunt non est. </p>
-            <form id="forgot-form" method="post" autocomplete="off">
+            <form id="forgot-form" method="post" autocomplete="off" action="<?=base_url('auth/forgot_password')?>">
                 <div class="form-group">
                     <input type="email" placeholder="Email" class="form-control  "  name="forgot_email" id="forgot_email" />
+                    <span data-name="forgot_email"></span>
+                    <p id="fmsg"></p>
                 </div>
+
                 <button type="submit" class="btn">Submit</button>
                 <div class="form-action">
                     <ul>

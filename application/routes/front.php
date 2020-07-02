@@ -9,6 +9,7 @@ $route['do-registration'] = 'Auth/doRegistration';
 $route['do-login'] = 'Auth/doLogin';
 $route['logout'] = 'Auth/logOut';
 $route['verify_account'] = 'Auth/verify_account';
+$route['reset_password/(:any)'] = 'Auth/reset_password/$1';
 
 $route['landing'] = 'Home/landing';
 $route['profile'] = 'Home/profile';
