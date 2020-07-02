@@ -2308,16 +2308,16 @@ nav {
 	width: 220px;
 }
 .gridview .col-grid {
-	-ms-flex: 0 0 20%;
-	flex: 0 0 20%;
-	max-width: 20%
+	-ms-flex: 0 0 25%;
+	flex: 0 0 25%;
+	max-width: 25%
 }
 }
  @media (min-width: 1440px) {
 .gridview .col-grid {
-	-ms-flex: 0 0 16.6666%;
-	flex: 0 0 16.6666%;
-	max-width: 16.6666%
+	-ms-flex: 0 0 25%;
+	flex: 0 0 25%;
+	max-width: 25%
 }
 }
 /*******************************************************
@@ -4423,6 +4423,8 @@ h4.best-value {
 }
 .slider-awards .item {
 	position: relative;
+	max-height: 550px;
+	overflow: hidden;
 }
 .slider-awards .awards-slider-content {
 	position: absolute;
@@ -5635,7 +5637,7 @@ span.filter-style:before{
 	border: none;
 	border-radius: 0;
 }
-.modal.gift-modal{
+.modal.buy-items-modal{
 	position: fixed;
     top: 0;
     left: 0;
@@ -5646,7 +5648,7 @@ span.filter-style:before{
     overflow: hidden;
     outline: 0;
 }
-.modal.gift-modal.show ,.modal.gift-modal.show:nth-child(2n+0){
+.modal.buy-items-modal.show ,.modal.buy-items-modal.show:nth-child(2n+0){
 	float: none;
 	margin: 0;
 	width: 100%;
@@ -5656,35 +5658,38 @@ span.filter-style:before{
 .modal-open{
 	padding-right: 0 !important;
 }
-.gift-modal .modal-content{
+.buy-items-modal .modal-content{
 	border-radius: 0;
 	background: #000;
 }
-.gift-modal .modal-header, .gift-modal .modal-body, .gift-modal .modal-footer{
+.buy-items-modal .modal-header, .buy-items-modal .modal-body, .buy-items-modal .modal-footer{
 	border: none;
 }
-.gift-modal .modal-header{
+.buy-items-modal .modal-header{
 	background-color: #5f5b50;
 	border-radius: 0;
     padding: 10px 12px;
 }
-.gift-modal .modal-header h4{
+.buy-items-modal .modal-header h4{
 	font-family: 'ADAM-CGPRO';
     font-size: 1rem;
     color: #fff;
 	text-transform: uppercase;
 	line-height: inherit;
 }
-.gift-modal .modal-header button{
+.buy-items-modal .modal-header button{
 	color: #fff;
 }
-.gift-modal .modal-content{
+.buy-items-modal .modal-content{
 	border: 1px solid #b8a368;
 }
-.gift-modal.modal .modal-body{
+.buy-items-modal.modal .modal-body{
 	align-items: inherit;
 	min-height: 250px;
 }
-.gift-modal.modal .modal-body ul.personal-items{
+.buy-items-modal.modal .modal-body ul.personal-items{
 	flex: 1;
+}
+.vote-container{
+	height: 390px;
 }
