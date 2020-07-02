@@ -64,6 +64,28 @@ $(document).on('click', '._tag .rmv', function(event) {
 
  });
 
+
+$(document).on('change', '#filter_', function(event) {
+	event.preventDefault();
+	var fltr =$(this).val();
+	if(fltr!=''){
+	let a= {
+		name: fltr,
+	    key: 'filter',
+	    value: fltr
+	    }
+	//paramsArr.push(a)
+ 	add(paramsArr, a);
+ }else{
+ 	var index = paramsArr.findIndex(p => p.key == 'filter') 
+	paramsArr.splice(index,1);
+ }
+	current_page=1;
+ 	$('.paginationBox').bootpag({page: 1});
+	update_mount()
+});
+
+
 function update_mount() {
 let params=[];
 var fish = {};

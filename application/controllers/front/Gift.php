@@ -36,6 +36,7 @@ class Gift extends Common_Controller {
 		$values['sender_id'] = $this->userId;
 		$values['receiver_id'] = decrypt_id($this->input->post('receiver_id'));
 		$values['gift_id'] = decrypt_id($this->input->post('gift_id'));
+		$values['gift_credit'] = $gift->gift_point;
 
 		if ($this->gift->send_gift($values)) {
 			if ($this->user->deductCredit($gift->gift_point, $this->userId)) {

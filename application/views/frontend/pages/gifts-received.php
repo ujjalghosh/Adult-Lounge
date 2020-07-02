@@ -4,9 +4,9 @@
             <h3 class="dashboard-text">MY NETWORK</h3>
             <ul>
                 <li>
-                    <img src="<?= base_url('assets/profile_image/' . $current_user['image']) ?>" alt="<?= $current_user['name'] ?>">
+                    <img src="<?=base_url('assets/profile_image/' . $current_user['image'])?>" alt="<?=$current_user['name']?>">
                     <h5>PERFORMER NAME</h5>
-                    <a href="<?= base_url('profile') ?>">EDIT PROFILE</a>
+                    <a href="<?=base_url('profile')?>">EDIT PROFILE</a>
                 </li>
                 <li>
                     <h5>CURRENT RANKING</h5>
@@ -18,25 +18,26 @@
             <div class="ad-row">
                 <div class="col-md-6 pr-20">
                     <div class="dash_box">
-                        <?php if (count($gifts)) : ?>
+                        <?php if (count($gifts)): ?>
                             <div class="dash_box_hed">
                                 <p>YOUR GIFTS</p>
                             </div>
                             <div class="manage-list performer-gift-view customScroll">
                                 <ul style="list-style:none">
-                                    <?php foreach ($gifts as $gift) : ?>
+                                    <?php foreach ($gifts as $gift): ?>
                                         <li>
                                             <h4>
-                                                <img src="<?= base_url('assets/profile_image/' . $gift->image) ?>" width="80" class="img-circle"> <?= $gift->username ?>
+                                                <img src="<?=base_url('assets/profile_image/' . $gift->image)?>" width="80" class="img-circle"> <?=$gift->username?>
                                             </h4>
-                                            <img src="<?= uploads_url($gift->gift_image_path) ?>" alt="<?= $gift->gift_name ?>">
+                                            <span><?=$gift->gift_credit?></span>
+                                            <img src="<?=uploads_url($gift->gift_image_path)?>" alt="<?=$gift->gift_name?>">
                                         </li>
-                                    <?php endforeach; ?>
+                                    <?php endforeach;?>
                                 </ul>
                             </div>
-                        <?php else : ?>
+                        <?php else: ?>
                             <h3>No gift found!!!</h3>
-                        <?php endif; ?>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="col-md-6 pl-20">
@@ -51,7 +52,7 @@
                                     <span class="lft_txt">SHOWS: £0.00</span>
                                 </li>
                                 <li>
-                                    <span class="lft_txt">GIFTS: <?= currency_format($current_month_gift_totals) ?></span>
+                                    <span class="lft_txt">GIFTS: <?=currency_format($current_month_gift_totals)?></span>
                                 </li>
                                 <li>
                                     <span class="lft_txt">CHAT: £0.00</span>
@@ -59,7 +60,7 @@
                             </ul>
                             <div class="bg_txt">
                                 <span>THIS MONTH</span>
-                                <p><?= currency_format($current_month_gift_totals) ?></p>
+                                <p><?=currency_format($current_month_gift_totals)?></p>
                             </div>
                         </div>
                     </div>
@@ -70,11 +71,11 @@
                         <div class="dash_box_body grid_2">
                             <div class="bg_txt bg_txt1">
                                 <span>MONTHLY POINTS EARNED</span>
-                                <p><?= number_format($gift_points); ?></p>
+                                <p><?=$gift_points;?></p>
                             </div>
                             <div class="bg_txt">
                                 <span>TOTAL EARNED</span>
-                                <p><?= currency_format($gift_points); ?></p>
+                                <p><?=currency_format($gift_points);?></p>
                             </div>
                         </div>
                     </div>

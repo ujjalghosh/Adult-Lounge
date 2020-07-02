@@ -311,3 +311,9 @@ function performers_buy_items($user_id) {
 	return $query->result();
 
 }
+function update_rank() {
+	$ci = &get_instance();
+	$sql = "UPDATE users JOIN( SELECT u.id, u.name, v.points, ROW_NUMBER() OVER( ORDER BY v.points DESC ) AS RowNumberRank FROM users u LEFT OUTER JOIN( SELECT performer_id, SUM(POINT) AS points FROM `vote` GROUP BY performer_id ) v ON v.performer_id = u.id WHERE u.login_type = 2 AND u.status = 1 ORDER BY v.points DESC ) AS sorted USING(id) SET users.performer_rank = sorted.RowNumberRank ";
+	$ci->db->query($sql);
+
+}

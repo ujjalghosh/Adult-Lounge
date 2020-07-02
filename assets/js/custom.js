@@ -310,11 +310,14 @@ function vote(performer_id,val) {
             },
             cache: false,
             success: function (data) {
-                $(".voteClose").click();
+                
                 var res = data.split('~~');
-                if (res[0] == 'ok') {
+                if (res[0] == 'ok') {  
+                    $('#vote_rnk').html('RANK: '+res[2]);
                     swal_success(res[1]);
+                    $(".voteClose").click();
                 } else {
+                    $(".voteClose").click();
                     swal_warning(res[1]);
                 }
             }
@@ -1467,6 +1470,48 @@ $("#forgot_cancel_btn").click(function () {
     window.location.href = base_url;
     // $("#").show();   
 });
+
+
+
+
+$(".user-block").click(function(){
+    let btn = $(this);
+    let options = swalConfirmationOptions;
+    options.title = "Confirmation";
+ var uid=  btn.data('uid');
+   var m= $('.blk_'+uid).html()
+    options.text = "Are you sure to "+m+" this user?";
+
+ 
+
+    swal(options).then(function () {
+        $.ajax({
+            url: base_url + 'service/block_user',
+            type: "post",
+            data: {
+                user_id: btn.data('uid')
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("body").waitMe(waitmeOptions);
+            },
+            complete: function () {
+                $("body").waitMe("hide");
+            },
+            success: function(resp) {
+                if (resp.status==true) {
+                     $('.blk_'+uid).html(resp.msg);
+                } else {
+                    swal_warning('Sorry Internal Server Error !');
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    });
+});
+
 
 
 (function($){

@@ -59,7 +59,9 @@ class Service extends Common_Controller {
 				"point" => $this->input->post('point'),
 			);
 			$this->cm->insert('vote', $insertData);
-			print 'ok~~Thank you for your vote !!!';
+			update_rank();
+			$performer_rank = $this->getUserProfile($this->input->post('performer_id'))->performer_rank;
+			print 'ok~~Thank you for your vote !!!~~' . $performer_rank;
 		} else {
 			print "notok~~You've already given vote to this performer !!!";
 		}
@@ -123,6 +125,26 @@ class Service extends Common_Controller {
 	}
 
 	public function manageUsers() {
+		$user_id = $this->session->userdata('UserId');
+		$sql = "SELECT a.*, (SELECT COUNT(*) FROM `user_block` WHERE user_id=u.id and performer_id='" . $user_id . "') as is_blocked  , IFNULL(u.name,up.display_name) as username, u.image,u.usernm FROM ( SELECT user_id FROM `video_chat` WHERE status!='0' AND performer_id='" . $user_id . "'
+UNION
+SELECT sender_id as user_id FROM `user_gifts` WHERE receiver_id='" . $user_id . "'
+UNION
+SELECT sender_id as user_id FROM `chat`  WHERE receiver_id='" . $user_id . "'
+UNION
+SELECT user_id FROM `vote`  WHERE performer_id='" . $user_id . "') as a
+
+JOIN users u ON u.id=user_id
+LEFT JOIN user_preference up on up.user_id=u.id
+GROUP BY a.user_id";
+
+		$result = $this->db->query($sql)->result();
+		//pr($result);
+		//echo $this->db->last_query();die();
+		$this->data['user_details'] = $this->getUserProfile($user_id);
+		$this->data['all_users'] = $result;
+		$this->data['all_subscribers'] = $this->performers_subscribe($user_id);
+
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/manageUsers');
 		$this->load->view('frontend/layout/footer');
@@ -205,6 +227,28 @@ class Service extends Common_Controller {
 				'message' => $this->lang->line('general_error_msg'),
 			]);
 		}
+	}
+
+	function block_user() {
+		$user_id = $this->input->post('user_id');
+		$performer_id = $this->session->userdata('UserId');
+
+		$row = $this->db->select('*')->where('user_id', $user_id)->where('performer_id', $performer_id)->get('user_block')->num_rows();
+		$response['status'] = FALSE;
+		if ($row == 0) {
+			$data['user_id'] = $user_id;
+			$data['performer_id'] = $performer_id;
+			$this->db->insert('user_block', $data);
+			$response['status'] = TRUE;
+			$response['msg'] = "UNBLOCK";
+
+		} else {
+			$this->db->delete('user_block', array('user_id' => $user_id, 'performer_id' => $performer_id));
+			$response['status'] = TRUE;
+			$response['msg'] = "BLOCK";
+		}
+		echo json_encode($response);
+
 	}
 
 }
