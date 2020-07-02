@@ -694,7 +694,7 @@ $("#login-form").submit(function (e) {
     }
 });
 
-
+if($("#forgot-form").length>0){
         $("#forgot-form").validate({
             errorPlacement:function(error, element){
                 $(element).closest("form").find("span[data-name='"+element.attr("name")+"']").append(error);
@@ -751,7 +751,7 @@ $("#login-form").submit(function (e) {
 
             }
         }).settings.ignore = [];
-
+}
 
 
 $("#editprofile-form").submit(function (e) {
