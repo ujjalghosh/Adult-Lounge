@@ -65,7 +65,9 @@
                 <button type="submit" class="btn">Submit</button>
                 <div class="form-action">
                     <ul>
-                        <li><input type="submit" value="Back to Login" id="login_btn" /></li>
+                        <li>
+                        <a href="javascript:void(0)" onclick="$('#hide-forgot').show();$('#show-forgot').hide()">Back to Login</a>
+                        </li>
                         <!--<li><a href="javascript:void(0)" class="assist">NEED ASSISTANCE</a></li>-->
                     </ul>
                 </div>
