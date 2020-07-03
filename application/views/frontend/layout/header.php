@@ -296,28 +296,33 @@ $active_url = $controller . '/' . $method;
       <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-name="GIRLS" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS </a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="GIRLS" data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS </a> -->
                 <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                  <label class="custom-control-label" for="customSwitch1"></label>
+                  <label class="custom-control-label" for="customSwitch1"><span data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>">GIRLS</span></label>
                 </div>
+                
               </li>
-              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS </a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS </a> -->
               <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                  <label class="custom-control-label" for="customSwitch2"></label>
+                  <label class="custom-control-label" for="customSwitch2"><span data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>">BOYS</span></label>
                 </div>
               </li>
-              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES </a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES </a> -->
                 <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                  <label class="custom-control-label" for="customSwitch3"></label>
+                  <label class="custom-control-label" for="customSwitch3"><span data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>">COUPLES</span></label>
                 </div>
               </li>
-              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS </a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS </a> -->
               <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                  <label class="custom-control-label" for="customSwitch4"></label>
+                  <label class="custom-control-label" for="customSwitch4"><span data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>">TV_TS</span></label>
                 </div>
               </li>
           </ul>
@@ -412,28 +417,33 @@ foreach ($appearence as $aprnc) {
     <ul class="sidebar-menu">
           <li class="performers"><a href="javascript:void(0);">PERFORMERS</a>
             <ul>
-              <li><a class="_filter" data-key="performer" data-name="GIRLS"  data-value="<?php echo strtolower(str_replace(' ', '_', 'GIRLS')); ?>" href="javascript:void(0);" >GIRLS</a>
+              <li>
+              <!-- <a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a> -->
               <div class="custom-control custom-switch filter-switch">
+                  
                   <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                  <label class="custom-control-label" for="customSwitch1"></label>
+                  <label class="custom-control-label" for="customSwitch1"><span data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>">GIRLS</span></label>
                 </div>
               </li>
-              <li><a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>" href="javascript:void(0);" >BOYS</a> -->
               <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                  <label class="custom-control-label" for="customSwitch2"></label>
+                  <label class="custom-control-label" for="customSwitch2"><span data-key="performer" data-name="BOYS" data-value="<?php echo strtolower(str_replace(' ', '_', 'BOYS')); ?>">BOYS</span></label>
                 </div>
               </li>
-              <li><a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>"  href="javascript:void(0);" >COUPLES</a> -->
               <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                  <label class="custom-control-label" for="customSwitch3"></label>
+                  <label class="custom-control-label" for="customSwitch3"><span data-key="performer" data-name="COUPLES" data-value="<?php echo strtolower(str_replace(' ', '_', 'COUPLES')); ?>">COUPLES</span></label>
                 </div>
               </li>
-              <li><a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a>
+              <li>
+                <!-- <a class="_filter" data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>"  href="javascript:void(0);" >TV/TS</a> -->
               <div class="custom-control custom-switch filter-switch">
                   <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                  <label class="custom-control-label" for="customSwitch4"></label>
+                  <label class="custom-control-label" for="customSwitch4"><span data-key="performer" data-name="TV/TS" data-value="<?php echo strtolower(str_replace(' ', '_', 'TV_TS')); ?>">TV_TS</span></label>
                 </div>
               </li>
           </ul>

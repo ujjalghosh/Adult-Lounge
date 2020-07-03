@@ -15,8 +15,9 @@
                     <input type="password" placeholder="Confirm Password" class="form-control"  name="confirm_password" id="confirm_password" />
                 </div>
 <div id="fmsg"></div>
-  <a href="<?=base_url('login')?>">Login</a>
-                <button type="submit" class="btn">Reset</button>
+  
+                <button type="submit" class="btn reset-btn-form">Reset</button>
+                <a href="<?=base_url('login')?>" class="reset-login">Login</a>
             </form>
             <span style="color:red;" class="login-message"></span>
             <h4>LEGAL DISCLAIMER:</h4>

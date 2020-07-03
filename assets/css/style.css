@@ -416,11 +416,14 @@ aside .sidebar {
 .sidebar-menu > li ul li {
 	font-size: 10px;
 	color: #fff;
-	margin-bottom: 6px;
+	margin-bottom: 2px;
 	text-transform: uppercase;
-	padding: 3px 14px;
+	padding: 3px 5px 3px 15px;
 	-webkit-transition: all linear 0.5s;
 	transition: all linear 0.5s;
+	display: block;
+	padding-top: 6px;
+    height: 30px;
 }
 .sidebar-menu > li ul li:hover {
 	background-color: #655a42
@@ -5539,6 +5542,8 @@ span.filter-style:before{
 	float: right;
 	outline: none;
 	margin-right: 7px;
+	width: 100%;
+    padding-left: 0;
 }
 .custom-switch.filter-switch .custom-control-label::before{
 	width: 3rem;
@@ -5549,20 +5554,30 @@ span.filter-style:before{
 	height: 11px;
 	background-color: #696969;
 	box-shadow: none;
+	right: 0;
 }
 .filter-switch.custom-switch .custom-control-label::after{
 	background-color: #cbad71;
 	border-radius: 0;
 	top: calc(0px + 3px);
-	height: calc(14px - 4px);
-	left: calc(-2.40rem + 2px);
+	height: calc(15px - 4px);
+	right: calc(21px + 2px);
 	width: calc(28px - 4px);
+	left: initial;
 }
-.custom-switch.custom-switch .custom-control-input:checked~.custom-control-label::after{
+.custom-switch.filter-switch .custom-control-input:checked~.custom-control-label::after, .custom-switch.filter-switch._filter .custom-control-input:checked~.custom-control-label::after{
 	background-color: #cbad71;
-	left: calc(-1.60rem + 2px);
+	right: calc(8px + 4px);
 }
-.custom-switch.custom-switch input:focus, .custom-control.custom-switch.filter-switch{
+.filter-switch .custom-control-label{
+	width: 100%;
+	cursor: pointer;
+}
+.filter-switch .custom-control-label::before{
+	right:  0;
+	left: auto;
+}
+.custom-switch.filter-switch input:focus, .custom-control.custom-switch.filter-switch{
 	outline: none;
 }
 .box-content-widget.per .video-box{
@@ -5692,4 +5707,28 @@ span.filter-style:before{
 }
 .vote-container{
 	height: 390px;
+}
+.mdl-lft.forgot-modal .form-action ul li{
+	flex: 1;
+	margin: 5px;
+	text-align: center;
+}
+.mdl-lft.forgot-modal .form-action ul li a{
+	background: linear-gradient(to bottom, rgba(217, 194, 127, 1) 0%, rgba(170, 149, 93, 1) 46%, rgba(172, 151, 95, 1) 57%, rgba(217, 194, 127, 1) 100%);
+	font-family: 'Gotham-Thin';
+    font-size: 0.75rem;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    letter-spacing: 1px;
+	text-transform: uppercase;
+	display: block;
+	padding: 7px 10px;
+}
+.reset-btn-form, .reset-login{
+	display: inline-block;
+}
+a.reset-login{
+	font-size: 12px;
+	padding-left: 10px;
 }
