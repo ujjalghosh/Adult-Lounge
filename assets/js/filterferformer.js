@@ -2,6 +2,28 @@
         return window.location.origin;
     }
   
+  let paramsArr = [];
+  var checkedVals = $('.filter_performer:checkbox:checked').map(function() {
+    return this.value;
+}).get();
+ checkedVals=checkedVals.join(",") ;
+
+if(checkedVals!=''){
+	let a= {
+		name: 'performer',
+	    key: 'performer',
+	    value: checkedVals
+	    }
+	//paramsArr.push(a)
+ 	add(paramsArr, a);
+ }else{
+ 	var index = paramsArr.findIndex(p => p.key == 'performer') 
+	paramsArr.splice(index,1);
+ }
+
+console.log('paramsArr',paramsArr,checkedVals)
+
+
     var total_performer=1;
     var current_page=1;
  $('.paginationBox').bootpag({
@@ -43,7 +65,7 @@ $(document).on('click', '._tag .rmv', function(event) {
 	update_mount()
 });
 
- let paramsArr = [];
+ 
  $(document).on('click', '._filter', function(event) {
  	event.preventDefault();
  	
@@ -60,7 +82,6 @@ $(document).on('click', '._tag .rmv', function(event) {
  	current_page=1;
  	$('.paginationBox').bootpag({page: 1});
 	update_mount()
- 
 
  });
 
@@ -84,6 +105,40 @@ $(document).on('change', '#filter_', function(event) {
  	$('.paginationBox').bootpag({page: 1});
 	update_mount()
 });
+
+ 
+
+
+$('.filter_performer').change(function() { 
+   var checkedVals = $('.filter_performer:checkbox:checked').map(function() {
+    return this.value;
+}).get();
+ checkedVals=checkedVals.join(",") ;
+if(checkedVals!=''){
+	let a= {
+		name: 'performer',
+	    key: 'performer',
+	    value: checkedVals
+	    }
+	//paramsArr.push(a)
+ 	add(paramsArr, a);
+ }else{
+ 	var index = paramsArr.findIndex(p => p.key == 'performer') 
+	paramsArr.splice(index,1);
+ }
+	current_page=1;
+ 	$('.paginationBox').bootpag({page: 1});
+	update_mount()
+
+
+});
+
+
+
+
+ 
+
+
 
 
 function update_mount() {
