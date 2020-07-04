@@ -317,7 +317,7 @@ function update_rank() {
 
 	//$sql = "UPDATE users JOIN(SELECT id, name,(SELECT COALESCE(sum(point),0) FROM `vote` WHERE performer_id=u.id) as points , @ab:=@ab+1 as SrNo from users u , (SELECT @ab:= 0) AS ab WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC, name ASC  ) AS sorted USING(id) SET users.performer_rank = sorted.SrNo ";
 
-	$sql = "UPDATE users JOIN(SELECT *, @c := @c +1 AS serialNumber FROM ( SELECT @c := 0 ) AS c, ( SELECT id, NAME, ( SELECT COALESCE(SUM(POINT), 0) FROM `vote` WHERE performer_id = u.id ) AS points FROM users u WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC , NAME ASC ) AS t ) AS sorted USING(id) SET users.performer_rank = sorted.serialNumber ";
+	$sql = "UPDATE users JOIN(SELECT *, @c := @c +1 AS serialNumber FROM ( SELECT @c := 0 ) AS c, ( SELECT id, name, ( SELECT COALESCE(SUM(POINT), 0) FROM `vote` WHERE performer_id = u.id ) AS points FROM users u WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC , name ASC ) AS t ) AS sorted USING(id) SET users.performer_rank = sorted.serialNumber ";
 
 	$ci->db->query($sql);
 
