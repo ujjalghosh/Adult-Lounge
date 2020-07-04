@@ -373,7 +373,9 @@ class Performer_model extends CI_model {
 
 			foreach ($this->data as $key => $value) {
 				if (array_key_exists('performer', $this->data) && isset($this->data['performer']) && !empty($this->data['performer'])) {
-					$this->conditions['up.performer_type'] = $this->data['performer'];
+					$performer = explode(',', $this->data['performer']);
+					$this->db->where_in('up.performer_type', $performer);
+					//$this->conditions['up.performer_type'] = $this->data['performer'];
 				}
 				if (array_key_exists('category', $this->data) && isset($this->data['category']) && !empty($this->data['category'])) {
 					$this->conditions['c.name LIKE'] = '%' . $this->data['category'] . '%';
@@ -478,7 +480,9 @@ class Performer_model extends CI_model {
 
 			foreach ($this->data as $key => $value) {
 				if (array_key_exists('performer', $this->data) && isset($this->data['performer']) && !empty($this->data['performer'])) {
-					$this->conditions['up.performer_type'] = $this->data['performer'];
+					$performer = explode(',', $this->data['performer']);
+					$this->db->where_in('up.performer_type', $performer);
+					//$this->conditions['up.performer_type'] = $this->data['performer'];
 				}
 				if (array_key_exists('category', $this->data) && isset($this->data['category']) && !empty($this->data['category'])) {
 					$this->conditions['c.name LIKE'] = '%' . $this->data['category'] . '%';
