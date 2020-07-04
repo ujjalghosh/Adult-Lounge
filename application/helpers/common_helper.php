@@ -315,7 +315,9 @@ function update_rank() {
 	$ci = &get_instance();
 	//$sql = "UPDATE users JOIN( SELECT u.id, u.name, v.points, ROW_NUMBER() OVER( ORDER BY v.points DESC ) AS RowNumberRank FROM users u LEFT OUTER JOIN( SELECT performer_id, SUM(POINT) AS points FROM `vote` GROUP BY performer_id ) v ON v.performer_id = u.id WHERE u.login_type = 2 AND u.status = 1 ORDER BY v.points DESC ) AS sorted USING(id) SET users.performer_rank = sorted.RowNumberRank ";
 
-	$sql = "UPDATE users JOIN(SELECT id, name,(SELECT COALESCE(sum(point),0) FROM `vote` WHERE performer_id=u.id) as points , @ab:=@ab+1 as SrNo from users u , (SELECT @ab:= 0) AS ab WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC, name ASC  ) AS sorted USING(id) SET users.performer_rank = sorted.SrNo ";
+	//$sql = "UPDATE users JOIN(SELECT id, name,(SELECT COALESCE(sum(point),0) FROM `vote` WHERE performer_id=u.id) as points , @ab:=@ab+1 as SrNo from users u , (SELECT @ab:= 0) AS ab WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC, name ASC  ) AS sorted USING(id) SET users.performer_rank = sorted.SrNo ";
+
+	$sql = "UPDATE users JOIN(SELECT *, @c := @c +1 AS serialNumber FROM ( SELECT @c := 0 ) AS c, ( SELECT id, NAME, ( SELECT COALESCE(SUM(POINT), 0) FROM `vote` WHERE performer_id = u.id ) AS points FROM users u WHERE u.login_type = 2 AND u.status = 1 ORDER BY `points` DESC , NAME ASC ) AS t ) AS sorted USING(id) SET users.performer_rank = sorted.serialNumber ";
 
 	$ci->db->query($sql);
 

@@ -226,7 +226,7 @@ class Common_model extends CI_model {
 			->where('u.status', '1')
 			->where('u.login_type', '2')
 			->where('u.image !=', null)
-			->order_by('rank', 'desc')
+			->order_by('u.performer_rank', 'asc')
 			->limit(100)
 			->get()->result();
 

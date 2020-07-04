@@ -293,7 +293,7 @@ if ($user[0]['images'] != '') {
 }
 ?>
 <div class="user-content-block">
-<div class="video-grid __freeVideoGridEl">
+<div class="video-grid __freeVideoGridEl" id="free_videogrid">
 	<h4 class="free-image-heading">Free Video</h4>
 	 <div class="video-view ">
 		<div class="video-play">
@@ -310,59 +310,15 @@ if ($user[0]['images'] != '') {
 				</div>
 			</div> -->
 		</div>
-		<div class="video-details">
+		<!-- <div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
 			<div class="video-pricing-area">
 				<h5>User Id: 6474314</h5>
 				<p>29 Dec, 2019</p>
 			</div>
-		</div>
+		</div> -->
 	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
 
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
-
-			
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
 </div>
 <div class="load-more-btn">
 	<a href="#" class="btn-load-more">Load More...</a>
@@ -411,35 +367,7 @@ if (!empty($img)) {
 	<div class="load-more-btn">
 		<a href="#" class="btn-load-more">Load More...</a>
 	</div>
-		<!-- <ul>
-			<?php
-if (!empty($img)) {
-	for ($i = 0; $i < (count($img) / 2); $i++) {
-		?>
-					<li>
-						<?php if (empty($subs)) {?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else {
-			?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-				print 'style="display:none;"';
-			}?>>
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php }?>
-						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
-					</li>
-			<?php }
-}?>
-		</ul> -->
+
 
 
 </div>
@@ -530,7 +458,7 @@ if (!empty($img)) {
 				<source src="<?=base_url('assets/profile_videos/xvideos.com_17c5483ab3e2e614a433b8d8fecbff01-1.mp4')?>" type="video/mp4">
 			</video>
 
-			
+
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
