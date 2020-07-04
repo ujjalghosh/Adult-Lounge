@@ -52,7 +52,7 @@
     <span class="overlay"></span>
     <span class="close_reg" id="forgot_cancel_btn">X</span>
     <div class="modal-body">
-        <div class="modal-widget mdl-lft forgot-modal" >
+        <div class="modal-widget mdl-lft forgot-modal forgot-area" >
             <h2><img src="<?=base_url('assets/images/line-logo.png')?>" alt="logo" /> Forgot Password</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lorem nisl. convallis nec semper quis, tincidunt non est. </p>
             <form id="forgot-form" method="post" autocomplete="off" action="<?=base_url('auth/forgot_password')?>">
@@ -63,7 +63,7 @@
                 </div>
 
                 <button type="submit" class="btn">Submit</button>
-                <div class="form-action">
+                <div class="form-action back-to-login-btn">
                     <ul>
                         <li>
                         <a href="javascript:void(0)" onclick="$('#hide-forgot').show();$('#show-forgot').hide()">Back to Login</a>

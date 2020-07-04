@@ -297,16 +297,18 @@ if ($user[0]['images'] != '') {
 	<h4 class="free-image-heading">Free Video</h4>
 	 <div class="video-view ">
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/xvideos.com_17c5483ab3e2e614a433b8d8fecbff01-1.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
+			<!-- <div class="lock-video free-video">
 				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
 					<h5>4:57</h5>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -318,16 +320,9 @@ if ($user[0]['images'] != '') {
 	</div>
 	<div class="video-view ">
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
-
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -339,16 +334,10 @@ if ($user[0]['images'] != '') {
 	</div>
 	<div class="video-view ">
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -360,16 +349,11 @@ if ($user[0]['images'] != '') {
 	</div>
 	<div class="video-view ">
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
+			
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -471,16 +455,18 @@ if (!empty($img)) {
 								</figure>
 							</div>
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
+			<!-- <div class="lock-video free-video">
 				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
 			</div>
 			<div class="video-time">
 				<div class="time-show">
 					<h5>4:57</h5>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -498,16 +484,10 @@ if (!empty($img)) {
 								</figure>
 							</div>
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -525,16 +505,10 @@ if (!empty($img)) {
 								</figure>
 							</div>
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
@@ -552,16 +526,11 @@ if (!empty($img)) {
 								</figure>
 							</div>
 		<div class="video-play">
-			<img  src="<?=base_url('assets/images/awards-slider.jpg')?>">
+			<video width="100%" height="" controls>
+				<source src="<?=base_url('assets/profile_videos/xvideos.com_17c5483ab3e2e614a433b8d8fecbff01-1.mp4')?>" type="video/mp4">
+			</video>
 
-			<div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div>
+			
 		</div>
 		<div class="video-details">
 			<h4>Lorem Ipsum Dolor Text</h4>
