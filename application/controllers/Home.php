@@ -300,7 +300,7 @@ class Home extends Common_Controller {
 		);
 		$chkTwo = $this->cm->get_all('user_preference', array("user_id" => $this->input->post('editpro_id')));
 		if ($this->session->userdata('UserType') == 2 && count($files['gallery']['name']) > 0) {
-			$this->galleryFilesUpload('assets/performer_gallery/', $files['gallery'], 'performer_gallery', array("user_id" => $this->input->post('editpro_id')));
+			$this->galleryFilesUpload('assets/performer_gallery/', $files['gallery'], 'performer_gallery', array("user_id" => $this->input->post('editpro_id')), $this->input->post('type[]'));
 		}
 
 		if (empty($chkTwo)) {
@@ -516,6 +516,103 @@ class Home extends Common_Controller {
 		$this->load->model('Payment_model', 'pm');
 
 		return $this->pm->getPayments();
+	}
+
+///*********performer
+
+	function getperformer_images() {
+		$type = $this->input->post('type');
+		$page = $this->input->post('page');
+		$performer = $this->input->post('performer');
+		$UserId = $this->session->userdata('UserId');
+		$totalimages = $this->cm->getTotalImages($type, $performer);
+		$results = $this->cm->getImages($type, $performer, $page);
+
+		$response['loadmore'] = (($page * 8) >= $totalimages ? FALSE : TRUE);
+		$response['status'] = FALSE;
+		$images = '';
+		$subs = $this->cm->get_specific('subscribe', array("user_id" => $this->session->userdata('UserId'), "performer_id" => $performer));
+		if ($results) {
+			$response['status'] = TRUE;
+			foreach ($results as $img) {
+
+				$images .= '<div class="card"> ';
+				if ($type == 2) {
+					if (!$subs) {
+						$images .=
+						'<div class="item-subscribe">
+								<figure>
+									<img src="' . base_url('assets/images/lock-icon.png') . '" alt="lock" /> ';
+						if ($UserId) {
+							$images .= '<a href="javascript:void(0)" onclick="subscribe(' . $performer . ', ' . $UserId . ')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>';
+						} else {
+							$images .= '<a href="' . base_url('login') . '" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>';
+						}
+
+						$images .= '</figure>
+							</div>';
+					}
+				}
+
+				$images .= '<img src="' . base_url('assets/performer_gallery/' . $img->image) . '">
+			</div>';
+
+			}
+		}
+
+		$response['images'] = $images;
+
+		echo json_encode($response);
+	}
+
+	function getperformer_videos() {
+		$type = $this->input->post('type');
+		$page = $this->input->post('page');
+		$performer = $this->input->post('performer');
+
+		$totalVideos = $this->cm->getTotalVideos($type, $performer);
+		$results = $this->cm->getVideos($type, $performer, $page);
+		$subs = $this->cm->get_specific('subscribe', array("user_id" => $this->session->userdata('UserId'), "performer_id" => $performer));
+		$UserId = $this->session->userdata('UserId');
+
+		$response['loadmore'] = (($page * 8) >= $totalVideos ? FALSE : TRUE);
+		$videos = '';
+		$response['status'] = FALSE;
+		if ($results) {
+			$response['status'] = TRUE;
+			foreach ($results as $vid) {
+
+				$videos .= '<div class="video-view ">';
+				if ($type == 2) {
+					if (!$subs) {
+						$videos .=
+						'<div class="item-subscribe">
+					<figure>
+					<img src="' . base_url('assets/images/lock-icon.png') . '" alt="lock" /> ';
+						if ($UserId) {
+							$videos .= '<a href="javascript:void(0)" onclick="subscribe(' . $performer . ', ' . $UserId . ')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>';
+						} else {
+							$videos .= '<a href="' . base_url('login') . '" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>';
+						}
+
+						$videos .= '</figure>
+							</div>';
+					}
+				}
+				$videos .= '<div class="video-play">
+			<video width="100%" height="" controls>
+				<source src="' . base_url('assets/profile_videos/' . $vid->video) . '" type="video/mp4">
+			</video>
+
+		</div>
+	</div>';
+			}
+		}
+
+		$response['videos'] = $videos;
+
+		echo json_encode($response);
+
 	}
 
 }

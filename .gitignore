@@ -4,4 +4,6 @@ app/.cache/
 .phpintel
 application/config/database.php
 sow/*
-.phpintel/*
+phpintel/*
+assets/profile_videos/*
+assets/performer_gallery/*

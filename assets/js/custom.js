@@ -1444,7 +1444,7 @@ $(".common-popup #msg-close").click(function(){
 $("#video_submit_btn").click(function(){
     let formData = new FormData();
 
-    formData.append("video_type", $("#video_type").val());
+    formData.append("video_type", $("#video-upload-form #type").val());
     formData.append("video_file", video_file.files[0]);
 
     if(! video_file.files.length) {

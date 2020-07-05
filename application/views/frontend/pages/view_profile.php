@@ -295,33 +295,11 @@ if ($user[0]['images'] != '') {
 <div class="user-content-block">
 <div class="video-grid __freeVideoGridEl" id="free_videogrid">
 	<h4 class="free-image-heading">Free Video</h4>
-	 <div class="video-view ">
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/xvideos.com_17c5483ab3e2e614a433b8d8fecbff01-1.mp4')?>" type="video/mp4">
-			</video>
 
-			<!-- <div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div> -->
-		</div>
-		<!-- <div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div> -->
-	</div>
 
 </div>
-<div class="load-more-btn">
-	<a href="#" class="btn-load-more">Load More...</a>
+<div class="load-more-btn ">
+	<a href="javascript:get_videos(1)" class="btn-load-more  freeVideopage">Load More...</a>
 </div>
 
 <hr class="hr-devider" />
@@ -332,40 +310,11 @@ if ($user[0]['images'] != '') {
 
 	</ul> -->
 
-
-	<div class="card-columns profile-more-image">
-		<?php
-if (!empty($img)) {
-	for ($i = 0; $i < (count($img) / 2); $i++) {
-		?>
-			<div class="card">
-				<?php if (empty($subs)) {?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else {
-			?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-				print 'style="display:none;"';
-			}?>>
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php }?>
-						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
-			</div>
-		<?php }
-}?>
-
+	<div class="card-columns profile-more-image" id="free_imagegrid">
 	</div>
 
 	<div class="load-more-btn">
-		<a href="#" class="btn-load-more">Load More...</a>
+		<a href="#" class="btn-load-more freeImagepage">Load More...</a>
 	</div>
 
 
@@ -373,148 +322,30 @@ if (!empty($img)) {
 </div>
 </div>
 <div id="" class="user-content-block d-none">
-<div class="video-grid __freeVideoGridEl">
-	<h4 class="free-image-heading">Free Video</h4>
-	 <div class="video-view ">
-	 						<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
-
-			<!-- <div class="lock-video free-video">
-				<a href="#"><img src="<?=base_url('assets/images/show.png')?>"></a>
-			</div>
-			<div class="video-time">
-				<div class="time-show">
-					<h5>4:57</h5>
-				</div>
-			</div> -->
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-						<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
-
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-			<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/2b1b39bb58df8b4741b286c8a2894e69.mp4')?>" type="video/mp4">
-			</video>
-
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
-	<div class="video-view ">
-			<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-		<div class="video-play">
-			<video width="100%" height="" controls>
-				<source src="<?=base_url('assets/profile_videos/xvideos.com_17c5483ab3e2e614a433b8d8fecbff01-1.mp4')?>" type="video/mp4">
-			</video>
+<div class="video-grid __freeVideoGridEl" id="premium_videogrid">
+	<h4 class="free-image-heading">Premium Video</h4>
 
 
-		</div>
-		<div class="video-details">
-			<h4>Lorem Ipsum Dolor Text</h4>
-			<div class="video-pricing-area">
-				<h5>User Id: 6474314</h5>
-				<p>29 Dec, 2019</p>
-			</div>
-		</div>
-	</div>
 </div>
 <div class="load-more-btn">
-	<a href="#" class="btn-load-more">Load More...</a>
+	<a href="#" class="btn-load-more premiumVideopage">Load More...</a>
 </div>
 
 <hr class="hr-devider" />
 
-<div class="img-masgrid">
-	<h4 class="free-image-heading">Free Image</h4>
+<div class="img-masgrid" >
+	<h4 class="free-image-heading">Premium Image</h4>
 	<!-- <ul class="grid effect-1 __freeImageGridEl" id="grid">
 
 	</ul> -->
 
 
-	<div class="card-columns profile-more-image">
-		<?php
-if (!empty($img)) {
-	for ($i = 0; $i < (count($img) / 2); $i++) {
-		?>
-			<div class="card">
-				<?php if (empty($subs)) {?>
-							<div class="item-subscribe">
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php } else {
-			?>
-							<div class="item-subscribe" <?php if ($subs[0]->status == 1) {
-				print 'style="display:none;"';
-			}?>>
-								<figure>
-									<img src="<?=base_url('assets/images/lock-icon.png')?>" alt="lock" />
-									<a href="javascript:void(0)" onclick="subscribe('<?=$user[0]['id']?>', '<?=$this->session->userdata('UserId')?>')" class="btn subscribebtn">SUBSCRIBE TO UNLOCK</a>
-								</figure>
-							</div>
-						<?php }?>
-						<img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
-			</div>
-		<?php }
-}?>
+	<div class="card-columns profile-more-image" id="premium_imagegrid">
 
 	</div>
 
 	<div class="load-more-btn">
-		<a href="#" class="btn-load-more">Load More...</a>
+		<a href="#" class="btn-load-more premiumImagepage">Load More...</a>
 	</div>
 		<!-- <ul>
 			<?php
@@ -553,7 +384,7 @@ if (!empty($img)) {
 </div>
 <div class="user-content-block d-none pt-2">
 <h2>Performer Details</h2>
-<table class="performer-details"
+<table class="performer-details">
 <tbody>
 <tr>
 <th align="left">Full Name</th>
@@ -677,3 +508,101 @@ if (!empty($img)) {
 </script>
 
 <!-- <script type="module" defer src="<?=base_url('assets/js/components/performer/ViewPerformerComponent.js')?>"></script> -->
+<script >
+	jQuery(document).ready(function($) {
+var freeImagepage=freeVideopage=premiumImagepage=premiumVideopage=1
+get_images();
+get_videos();
+get_images(2);
+get_videos(2);
+$(document).on('click', '.freeImagepage', function(event) {
+	event.preventDefault();
+	$(this).css('visibility', 'hidden');
+	 get_images(1);
+});
+$(document).on('click', '.freeVideopage', function(event) {
+	event.preventDefault();
+	$(this).css('visibility', 'hidden');
+	 get_videos(1);
+});
+$(document).on('click', '.premiumImagepage', function(event) {
+	event.preventDefault();
+	$(this).css('visibility', 'hidden');
+	 get_images(2);
+});
+$(document).on('click', '.premiumVideopage', function(event) {
+	event.preventDefault();
+	$(this).css('visibility', 'hidden');
+	 get_videos(2);
+});
+
+		function get_images(type=1) {
+			$.ajax({
+				url: '<?=base_url('home/getperformer_images')?>',
+				type: 'POST',
+				dataType: 'json',
+				data: {type: type,page:  (type==1?freeImagepage:premiumImagepage),performer:<?=$user[0]['id']?> },
+			})
+			.done(function(res) {
+				if(res.status==true){
+					if(type==1){
+						$('#free_imagegrid').append(res.images);
+						$('.freeImagepage').css('visibility', 'hidden');
+						if(res.loadmore==true){
+							$('.freeImagepage').css('visibility', 'visible');
+						}
+						freeImagepage++;
+					}else{
+						$('#premium_imagegrid').append(res.images);
+						$('.premiumImagepage').css('visibility', 'hidden');
+						if(res.loadmore==true){
+							$('.premiumImagepage ').css('visibility', 'visible');
+						}
+						premiumImagepage++;
+					}
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+
+		}
+
+		function get_videos (type=1) {
+			$.ajax({
+				url: '<?=base_url('home/getperformer_videos')?>',
+				type: 'POST',
+				dataType: 'json',
+				data: {type: type,page:  (type==1?freeVideopage:premiumVideopage),performer:<?=$user[0]['id']?> },
+			})
+			.done(function(res) {
+				if(res.status==true){
+					if(type==1){
+						$('#free_videogrid').append(res.videos);
+						$('.freeVideopage').css('visibility', 'hidden');
+						if(res.loadmore==true){
+							$('.freeVideopage').css('visibility', 'visible');
+						}
+						freeVideopage++;
+					}else{
+						$('#premium_videogrid').append(res.videos);
+						$('.premiumVideopage').css('visibility', 'hidden');
+						if(res.loadmore==true){
+							$('.premiumVideopage ').css('visibility', 'visible');
+						}
+						premiumVideopage++;
+					}
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+		}
+	});
+</script>

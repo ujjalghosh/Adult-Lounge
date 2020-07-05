@@ -206,7 +206,7 @@ GROUP BY a.user_id";
 				$this->cm->insert('performer_video_gallery', [
 					'user_id' => $user_id,
 					//'video_type' => $this->input->post('video_type'),
-					'type' => $this->input->post('type'),
+					'type' => $this->input->post('video_type'),
 					'video' => $filename,
 				]);
 

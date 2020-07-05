@@ -245,4 +245,21 @@ class Common_model extends CI_model {
 		}
 	}
 
+///******** Performer
+	public function getTotalImages($type, $performer) {
+		return $this->db->where('user_id', $performer)->where('type', $type)->get('performer_gallery')->num_rows();
+	}
+	public function getImages($type, $performer, $page = 1) {
+		$start = $page - 1;
+		return $this->db->select('*')->where('user_id', $performer)->where('type', $type)->limit(8, $start)->get('performer_gallery')->result();
+	}
+
+	public function getTotalVideos($type, $performer) {
+		return $this->db->where('user_id', $performer)->where('type', $type)->get('performer_video_gallery')->num_rows();
+	}
+	public function getVideos($type, $performer, $page = 1) {
+		$start = $page - 1;
+		return $this->db->select('*')->where('user_id', $performer)->where('type', $type)->limit(8, $start)->get('performer_video_gallery')->result();
+	}
+
 }

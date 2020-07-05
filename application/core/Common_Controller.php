@@ -470,7 +470,7 @@ class Common_Controller extends CI_Controller {
 		}
 	}
 
-	public function galleryFilesUpload($path = '', $filesArray = array(), $tableName = '', $oldArray = array()) {
+	public function galleryFilesUpload($path = '', $filesArray = array(), $tableName = '', $oldArray = array(), $videotype = array()) {
 		$upPath = FCPATH . $path;
 
 		if (!file_exists($upPath)) {
@@ -496,6 +496,7 @@ class Common_Controller extends CI_Controller {
 			if ($this->upload->do_upload('images[]')) {
 				$imageDetailArray = $this->upload->data();
 				$newArray['image'] = $imageDetailArray['file_name'];
+				$newArray['type'] = $videotype[$key];
 				$this->cm->insert($tableName, $newArray);
 			} else {
 				write_log('File not uploaded');

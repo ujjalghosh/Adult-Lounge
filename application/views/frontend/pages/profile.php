@@ -322,7 +322,7 @@ if (!empty($img)) {
                                         </div>
                                         <input accept=".png, .jpg, .jpeg" type="file" class="form-control username formsm display_gal_img1 brouse-input" onchange="disp_img('1', this)" data-count="1" name="gallery[]" id="gallery_image1" />
                                         <div class="brows editpro_gal_image_brows" data-count="1">BROWSER</div>
-                                        <select name="video_type" id="video_type" class="form-control username formsm display_gal_img1">
+                                        <select name="type[]" id="type" class="form-control username formsm display_gal_img1">
                                             <option value="1">Free Content</option>
                                             <option value="2">Premium Content</option>
                                         </select>
