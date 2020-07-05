@@ -511,6 +511,7 @@ if (!empty($img)) {
 <script >
 	jQuery(document).ready(function($) {
 var freeImagepage=freeVideopage=premiumImagepage=premiumVideopage=1
+$('.freeImagepage, .freeVideopage, .premiumImagepage, .premiumVideopage').css('visibility', 'hidden');
 get_images();
 get_videos();
 get_images(2);
