@@ -118,6 +118,7 @@ class Service extends Common_Controller {
 
 	public function content() {
 		$this->data['page'] = $this->db->where('id', 17)->from('static_pages')->get()->row();
+		$this->data['user'] = $this->getUserDetails($this->session->userdata('UserId'));
 
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/content');
