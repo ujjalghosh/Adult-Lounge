@@ -160,6 +160,8 @@ GROUP BY a.user_id";
 	}
 
 	public function myNetwork() {
+		$user_id = $this->session->userdata('UserId');
+		$this->data['user_details'] = $this->getUserProfile($user_id);
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/myNetwork');
 		$this->load->view('frontend/layout/footer');
@@ -250,6 +252,28 @@ GROUP BY a.user_id";
 		}
 		echo json_encode($response);
 
+	}
+
+	function add_to_network() {
+		$user_id = $_REQUEST['user_id'];
+		$performer_id = $this->session->userdata('UserId');
+		$response['status'] = FALSE;
+		if ($user_id > 0) {
+			$rows = $this->db->where('user_id', $user_id)->where('performer_id', $performer_id)->get('my_networks')->num_rows();
+			if ($rows) {
+				$response['status'] = FALSE;
+				$response['msg'] = 'Performer already exist to your network';
+			} else {
+				$this->db->insert('my_networks', array('user_id' => $user_id, 'performer_id' => $performer_id));
+				$response['status'] = TRUE;
+				$response['msg'] = 'Performer Successfully added to your network';
+			}
+
+		} else {
+			$response['status'] = FALSE;
+			$response['msg'] = 'Please search and choose performer';
+		}
+		echo json_encode($response);
 	}
 
 }
