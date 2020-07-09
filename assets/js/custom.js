@@ -1533,9 +1533,9 @@ $("#forgot_cancel_btn").click(function () {
 });
 
 
-
-
-$(".user-block").click(function(){
+$(document).on('click', '.user-block', function(event) {
+    event.preventDefault();
+    
     let btn = $(this);
     let options = swalConfirmationOptions;
     options.title = "Confirmation";

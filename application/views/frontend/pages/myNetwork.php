@@ -20,79 +20,27 @@ $image = base_url('assets/profile_image/' . $curr_user['image']);
         </div>
         <div class="manage-area">
         	<div class="ad-row">
-            	<div class="col-md-6 pr-20">
-                	<div class="dash_box">
-                        <div class="dash_box_hed">
-                            <p>YOUR NETWORK</p>
-                        </div>
-                        <div class="manage-list">
-                        	<ul>
-                            	<li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                                <li>
-                                	<h4><img src="<?=base_url('assets/images/performere.jpg')?>" alt=""/> Megan Kroft  @megankroft</h4>
-                                    <div class="list-btn">
-                                    	<a href="#" class="btn">MESSAGE</a>
-                                    	<a href="#" class="btn">MANAGE</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="col-md-6 pr-20">
+
+            <div class="dash_box ">
+            <div class="dash_box_hed">
+                <p>YOUR NETWORK</p>
+            </div>
+            <div class="manage-list performer-gift-view customScroll os-host os-theme-round-dark os-host-overflow os-host-overflow-y os-host-scrollbar-horizontal-hidden os-host-transition">
+            <table id="my_networktbl" class="table table-borderless gift-datatable">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Join Date</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
+            </div>
+
                 </div>
                 <div class="col-md-6 pl-20">
                 	<div class="search-network">
@@ -154,7 +102,58 @@ $image = base_url('assets/profile_image/' . $curr_user['image']);
 	</section>
 </main>
 <script>
-    $(document).ready(function () {
+$(document).ready(function() {
+var dataTable = $('#my_networktbl').DataTable({
+"processing":true,
+"serverSide":true,
+"DisplayLength": 25,
+"order":[[ 1, "asc" ]],
+"ajax":{
+url:"<?php echo base_url() . 'service/get_networks'; ?>",
+type:"POST"
+},
+"columnDefs":[
+{
+"targets":[0,3,4],
+"orderable":false,
+},
+],
+});
+
+del =function (aa,bb,cc) {
+  var a = confirm("Are you sure, you want to delete this " + cc + "?");
+  if (a) {
+  //  location.href = bb + "?cid=" + aa + "&action=delete";
+
+
+            $.ajax({
+              type     : "POST",
+              cache    : false,
+              contentType: false,
+              processData: false,
+              url      : "<?=base_url();?>"+bb,
+              dataType : 'json',
+              success  : function(data) {
+                if(data.success==0){
+                  $('#message_show').html(data.error_message);
+                }else{
+                  $('#message_show').html(data.success_message);
+                   dataTable.ajax.reload();
+                }
+              },
+              beforeSend: function(){
+                $(".page_load").show();
+              },
+              complete: function(){
+                $(".page_load").hide();
+              }
+            });
+
+  }
+}
+
+
+////*********************
 
   var engine, remoteHost, template, empty;
   $.support.cors = true;
@@ -232,6 +231,7 @@ $(document).on('submit', '#network_user', function(event) {
    .done(function(res) {
        console.log(res);
        if(res.status==true){
+        dataTable.ajax.reload();
         $('#network_user')[0].reset();
         swal(res.msg, "", "success");
        }else{

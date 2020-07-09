@@ -276,4 +276,33 @@ GROUP BY a.user_id";
 		echo json_encode($response);
 	}
 
+	public function get_networks() {
+		$this->load->model('performer_model');
+		$fetch_data = $this->performer_model->network_datatables();
+		$data = array();
+		foreach ($fetch_data as $row) {
+			$sub_array = array();
+			$sub_array[] = '<img src="' . base_url('assets/profile_image/' . $row->image) . '" height="50" width="80" />';
+			$sub_array[] = $row->name;
+			$sub_array[] = date('d/m/Y', strtotime($row->created_at));
+			$sub_array[] = '
+				 <div class="list-btn">
+                                    	<a href="#" class="btn">MESSAGE</a>
+                                    </div>
+				';
+			$sub_array[] = '
+<a href="javascript:void(0);" class="btn user-block blk_' . $row->id . '" data-uid="' . $row->id . '">' . ($row->is_blocked > 0 ? 'UNBLOCK' : 'BLOCK') . '</a>
+				';
+
+			$data[] = $sub_array;
+		}
+		$output = array(
+			"draw" => intval($_POST["draw"]),
+			"recordsTotal" => $this->performer_model->get_all_data_network(),
+			"recordsFiltered" => $this->performer_model->get_filtered_data_network(),
+			"data" => $data,
+		);
+		echo json_encode($output);
+	}
+
 }

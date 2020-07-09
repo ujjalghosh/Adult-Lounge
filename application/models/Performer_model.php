@@ -85,7 +85,7 @@ class Performer_model extends CI_model {
 			if (is_array($option)) {
 				if (array_key_exists('name', $option) && in_array($option['name'], $option)) {
 					//$condition['up.display_name LIKE'] = '%' . $option['name'] . '%';
-					//$condition['up.display_name LIKE'] = '%' . $option['name'] . '%' . ' OR u.gender =' . $option['name'] . ' OR u.name %' . $option['name'] . '%';
+					//$condition['up.display_name LIKE'] = '%' . $option['name'] . '%' . ' OR u.gender =' . $option['name'] . ' OR U.name %' . $option['name'] . '%';
 
 					$this->db->group_start();
 					$this->db->where('u.gender', $option['name']);
@@ -418,7 +418,7 @@ class Performer_model extends CI_model {
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
 
-			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -442,7 +442,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
 
-			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -549,7 +549,7 @@ class Performer_model extends CI_model {
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
 			//$this->db->order_by('u.id', 'DESC');
-			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -581,7 +581,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
 			//$this->db->order_by('u.id', 'DESC');
-			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -705,4 +705,64 @@ class Performer_model extends CI_model {
 	*/
 
 	public function test() {echo 1;}
+
+//********* My networks **********
+
+	function network_query() {
+		$select_column = array("U.id", "U.image", "ifnull(UP.display_name,U.name) as name", "UP.created_at", "(SELECT count(*) FROM user_block where user_id=U.id and performer_id=N.performer_id) as is_blocked");
+		$order_column = array("U.id", "name", "UP.created_at");
+		$sSearch = $this->input->get_post('search[value]', true);
+		$this->db->select($select_column);
+		$this->db->from('my_networks N');
+		$this->db->join('users U', 'U.id=N.user_id');
+		$this->db->join('user_preference UP', 'UP.user_id=U.id', 'left');
+
+		$this->db->where('N.performer_id', $this->session->userdata('UserId'));
+
+		if (isset($sSearch) && !empty($sSearch)) {
+			$this->db->like("ifnull(UP.display_name,U.name)", $_POST["search"]["value"]);
+		}
+		/*     if(isset($_POST["search"]["value"]))
+			{
+			$this->db->like("first_name", $_POST["search"]["value"]);
+			$this->db->or_like("last_name", $_POST["search"]["value"]);
+		*/
+		/*if (isset($sSearch) && !empty($sSearch)) {
+			for ($i = 0; $i < count($select_column); $i++) {
+				$bSearchable = $this->input->get_post('columns[' . $i . '][searchable]', true);
+				// Individual column filtering
+				if (isset($bSearchable) && $bSearchable == 'true') {
+					$this->db->or_like($select_column[$i], $this->db->escape_like_str($sSearch), 'both');
+				}
+			}
+		}*/
+		if (isset($_POST["order"])) {
+			$this->db->order_by($order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+			//$this->db->order_by($aColumns[intval($this->db->escape_str($iSortCol))], $this->db->escape_str($sSortDir));
+		} else {
+			$this->db->order_by('name', 'ASC');
+		}
+
+	}
+	function network_datatables() {
+		$this->network_query();
+		if ($_POST["length"] != -1) {
+			$this->db->limit($_POST['length'], $_POST['start']);
+		}
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		return $query->result();
+	}
+	function get_filtered_data_network() {
+		$this->network_query();
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+	function get_all_data_network() {
+		$this->db->select("*");
+		$this->db->from('my_networks N');
+		$this->db->join('users U', 'U.id=N.user_id');
+		return $this->db->count_all_results();
+	}
+
 }
