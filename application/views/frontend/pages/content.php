@@ -11,7 +11,7 @@
 
 <!-- Profile content -->
 
- <div class="box-content-widget pl-0">
+ <div class="box-content-widget pl-3">
                         <div class="form-two-col per2 leftsc ">
                             <div class="show show2 user-profile-edit">
                                 <h3>PROFILE PHOTO</h3>
@@ -39,7 +39,7 @@ if ($user[0]['images'] != '') {
 }
 ?>
 
-                    <div class="box-content-widget pl-0">
+                    <div class="box-content-widget pl-3">
                         <div class="form-two-col per2 leftsc ">
                             <div id="image-lightgallery" class="show show2">
                                 <h3>GALLERY</h3>
@@ -70,7 +70,7 @@ if ($user[0]['videos'] != '') {
 	$performer_videos = array();
 }
 ?>
-                    <div class="box-content-widget pl-0">
+                    <div class="box-content-widget pl-3">
                         <div class="form-two-col per2 leftsc ">
                             <div class="show show2">
                                 <h3>VIDEO GALLERY  </h3>
@@ -95,7 +95,7 @@ if ($user[0]['videos'] != '') {
                     </div>
 
 
-                    <div class="box-content-widget pl-0 checkbox-area">
+                    <div class="box-content-widget pl-3 checkbox-area">
 
 
                         <div class="form-two-col per2 leftsc float-left-none">

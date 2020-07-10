@@ -4,20 +4,31 @@ $image = base_url('assets/profile_image/' . $curr_user['image']);
 ?>
 <main class="content-wrapper loyalty-page">
 	<section class="content-sec">
-    	<div class="manage-user-heading">
-        	<h3 class="dashboard-text">MY NETWORK</h3>
-              <ul>
-                <li>
-                    <img src="<?=$image?>" alt=""/>
-                    <h5><?=$name?></h5>
-                    <a href="<?=base_url('profile')?>">EDIT PROFILE</a>
-                </li>
-                <li>
-                    <h5>CURRENT RANKING</h5>
-                    <h2><?=$user_details->performer_rank?></h2>
-                </li>
-            </ul>
+        <div class="dash_inner">
+            <div class="dash_nav row">
+                <div class="col-sm-2">
+                    <h3 class="dashboard-text">MY NETWORK</h3>
+                </div>
+                <div class="col-sm-10">
+                    <div class="">
+                        <div class="dash_user_info">
+                            <div class="dash_user_pic">
+                                <img src="<?=$image?>" alt=""/>
+                            </div>
+                            <div class="dash_user_name">
+                                <p><?=$name?></p>
+                                <a href="<?=base_url('profile')?>">EDIT PROFILE</a>
+                            </div>
+                            <div class="dash_user_rank">
+                                <p>CURRENT RANKING</p>
+                                <span><?=$user_details->performer_rank?></span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    	
         <div class="manage-area">
         	<div class="ad-row">
             <div class="col-md-6 pr-20">
@@ -49,7 +60,7 @@ $image = base_url('assets/profile_image/' . $curr_user['image']);
                             	<form id="network_user" method="post">
                                     <input type="hidden" id="user_id" name="user_id">
                                 	<input type="text" class="restrictSpecial searchperformer" placeholder="SEARCH USERS">
-                                    <button type="submit"><i class="fa fa-plus m-new" aria-hidden="true"></button>
+                                    <button type="submit"><i class="fa fa-plus m-new" aria-hidden="true"></i></button>
 
                                 </form>
                             <!--<span class="srchBar">

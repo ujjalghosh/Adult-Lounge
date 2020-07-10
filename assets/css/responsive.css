@@ -57,6 +57,11 @@
     .leftsc {
         width: 100%;
     }
+    .header-right-filter{
+        display: inline-flex;
+        float: right;
+        margin-top: 5px;
+    }
 }
 
 @media (max-width: 992px){
@@ -106,6 +111,15 @@
     }
     .spand-heading-area h3, .spand-heading-area h4{
         font-size: 18px;
+    }
+    .header-wrap{
+        min-height: 100%;
+        background: #000;
+    }
+    .header-layout{
+        position: relative;
+        min-height: 100%;
+        z-index: 999;
     }
 }
 

@@ -86,7 +86,7 @@ $active_url = $controller . '/' . $method;
       </div>
     </header>
     <section style="display: block;" class="header-bottom">
-      <nav>
+      <nav class="user-header">
         <ul>
         <?php if (!$this->session->userdata('UserType')) {
 	?>
@@ -120,7 +120,7 @@ $active_url = $controller . '/' . $method;
             <li><a href="<?=base_url('awards')?>">Awards</a></li>
             <li><a href="<?=base_url('loyalty')?>">Loyalty</a></li>
 
-            <div class="right-filters">
+            <div class="right-filters header-right-filter">
       	<div class="search">
         	<!--<span><img src="<?=base_url('assets/images/icon-search.png')?>" alt="search"/></span>-->
             <div class="search-top-box">
@@ -215,7 +215,7 @@ $active_url = $controller . '/' . $method;
         </ul>
       </nav>
       <?php if ($this->session->userdata('UserType') && $this->session->userdata('UserType') == 1) {?>
-      <div class="right-filters">
+      <div class="right-filters header-right-filter">
       	<div class="search">
         	<!--<span><img src="<?=base_url('assets/images/icon-search.png')?>" alt="search"/></span>-->
             <div class="search-top-box">
