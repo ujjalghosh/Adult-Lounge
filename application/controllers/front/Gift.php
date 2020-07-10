@@ -72,6 +72,9 @@ class Gift extends Common_Controller {
 		$this->data['gifts'] = $this->gift->get_received();
 		$this->data['current_user'] = $this->session->userdata('curr_user');
 
+		$user_id = $this->session->userdata('UserId');
+		$this->data['user_details'] = $this->getUserProfile($user_id);
+
 		$this->load->view('frontend/layout/header', $this->data);
 		$this->load->view('frontend/pages/gifts-received', $this->data);
 		$this->load->view('frontend/layout/footer', $this->data);

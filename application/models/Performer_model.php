@@ -418,7 +418,7 @@ class Performer_model extends CI_model {
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
 
-			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -442,7 +442,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
 
-			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -549,7 +549,7 @@ class Performer_model extends CI_model {
 			$this->db->where($this->conditions);
 			$this->db->group_by('u.id');
 			//$this->db->order_by('u.id', 'DESC');
-			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,
@@ -581,7 +581,7 @@ class Performer_model extends CI_model {
 			$this->db->join($this->tables['appearance'] . ' as ap', 'ap.id = uap.id_appearence', 'left outer');
 			$this->db->group_by('u.id');
 			//$this->db->order_by('u.id', 'DESC');
-			$this->db->select('u.id, U.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
+			$this->db->select('u.id, u.name, u.email, u.phone_no, u.usernm, u.gender, u.sexual_pref,
             u.age, u.image, u.isLogin, up.display_name, up.height, up.weight,
             up.hair, up.eye, up.zodiac, up.build, up.chest, up.burst,
             up.cup, up.pubic_hair, up.penis, up.description,up.currency,

@@ -14,7 +14,7 @@ $plans = get_credit_plans();
         <div class="modal-header">
             <h2>Buy Credits</h2>
             <p>You currently have <span class="credit-total"><?=$current_user['credit']?> <?=$current_user['credit'] < 2 ? singular('Credit') : plural('Credit')?></span></p>
-            <span class="close">&times;</span>
+            <span class="close" onclick="$('#buy-modal').hide()">&times;</span>
         </div>
         <div class="creadit-test-area">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lorem nisl. Aliquam erat volutpat. Proin vulputate enim ac hendrerit sagittis. Morbi metus ex, convallis nec semper quis, tincidunt non est. </p>
