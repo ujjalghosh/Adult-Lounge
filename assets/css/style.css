@@ -5762,5 +5762,7 @@ a.reset-login{
     background: red;
     color: white; 
     top: -7px;
-right: 0px;
+left: 0px;
+display: block;
+    z-index: 1;
 }

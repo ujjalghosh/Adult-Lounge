@@ -121,3 +121,18 @@ if ($user[0]['videos'] != '') {
         </div>
     </section>
 </main>
+<link rel="stylesheet" href="<?=base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css')?>">
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-thumbnail.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-autoplay.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-fullscreen.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-zoom.min.js')?>"></script>
+<script>
+    lightGallery(document.getElementById('image-lightgallery'), {
+        selector          : '.gal-item',
+        thumbnail         : true,
+        download          : false,
+        animateThumb      : false,
+        showThumbByDefault: false,
+    });
+</script>
