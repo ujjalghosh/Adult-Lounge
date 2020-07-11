@@ -306,6 +306,7 @@ if (!empty($img)) {
 			?>
                                 <div class="form-group">
                                     <div class="proo">
+                                    <a href="javascript:void(0);" class="close_img" data-img="<?=$img[$i]?>">X</a>
                                         <a class="gal-item" href="<?=base_url('assets/performer_gallery/' . $img[$i])?>">
                                             <img src="<?=base_url('assets/performer_gallery/' . $img[$i])?>" alt="" style="height:49px; width:45px;">
                                         </a>
@@ -356,6 +357,7 @@ if ($user[0]['videos'] != '') {
                                     <?php if (count($performer_videos)): ?>
                                         <?php foreach ($performer_videos as $video): ?>
                                             <div class="video-box">
+                                                <a href="javascript:void(0);" class="close_vid" data-video="<?=$video?>">X</a>
                                                 <video height="160" preload="metadata" loop>
                                                     <source src="<?=base_url('assets/profile_videos/' . $video)?>">
                                                 </video>
@@ -739,3 +741,74 @@ html +='</select> <input  type="text" class="form-control"  name="buy_link[]"  p
 
 </script>
 <script type="module" defer src="<?=base_url('assets/js/components/profile/ProfileComponent.js')?>"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(document).on('click', '.close_img', function(event) {
+            event.preventDefault();
+        var img= $(this).data('img');
+        var $this =$(this);
+
+      swal({
+        title: "Are you sure?",
+       text: "You will not be able to recover this image file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+      }).then(result => {
+        $.ajax({
+            url: "service/delete_image",
+            type: "POST",
+            data: {
+                id: <?=$this->session->userdata('curr_user')['id']?>,
+                img:img
+            },
+            dataType: "html",
+            success: function () {
+                $this.closest('.form-group').remove();
+
+                swal("Done!", "It was succesfully deleted!", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error deleting!", "Please try again", "error");
+            }
+        });
+    });
+
+
+
+        });
+
+        $(document).on('click', '.close_vid', function(event) {
+        event.preventDefault();
+        var video= $(this).data('video');
+        var that =$(this);
+          swal({
+        title: "Are you sure?",
+       text: "You will not be able to recover this video file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+      }).then(result => {
+        $.ajax({
+            url: "service/delete_video",
+            type: "POST",
+            data: {
+                id: <?=$this->session->userdata('curr_user')['id']?>,
+                video:video
+            },
+            dataType: "html",
+            success: function () {
+                that.closest('.video-box').remove();
+                swal("Done!", "It was succesfully deleted!", "success");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal("Error deleting!", "Please try again", "error");
+            }
+        });
+    });
+        });
+    });
+</script>

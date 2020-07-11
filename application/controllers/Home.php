@@ -554,7 +554,10 @@ class Home extends Common_Controller {
 					}
 				}
 
-				$images .= '<img src="' . base_url('assets/performer_gallery/' . $img->image) . '">
+				$images .= '
+					<a class="' . ($type == 2 ? 'premium-gal' : 'free-gal') . '" href="' . base_url('assets/performer_gallery/' . $img->image) . '">
+                      <img src="' . base_url('assets/performer_gallery/' . $img->image) . '">
+                         </a>
 			</div>';
 
 			}

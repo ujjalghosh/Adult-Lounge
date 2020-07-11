@@ -305,4 +305,26 @@ GROUP BY a.user_id";
 		echo json_encode($output);
 	}
 
+//////***
+
+	function delete_image() {
+		$id = $this->input->post('id');
+		$img = $this->input->post('img');
+		if ($this->db->delete('performer_gallery', array('user_id' => $id, 'image' => $img))) {
+			echo 'yes';
+		} else {
+			echo 'no';
+		}
+	}
+
+	function delete_video() {
+		$id = $this->input->post('id');
+		$video = $this->input->post('video');
+		if ($this->db->delete('performer_video_gallery', array('user_id' => $id, 'video' => $video))) {
+			echo 'yes';
+		} else {
+			echo 'no';
+		}
+	}
+
 }

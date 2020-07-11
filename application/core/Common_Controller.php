@@ -316,7 +316,7 @@ class Common_Controller extends CI_Controller {
 	public function getCommonMenu() {
 		$this->data['show'] = $this->cm->get_specific('show_type', array("status" => 1));
 		$this->data['service'] = $this->cm->get_specific('services', array("status" => 1));
-		$this->data['age'] = $this->db->query("select distinct age from users where login_type = '2' ORDER BY age ASC")->result();
+		$this->data['age'] = $this->db->query("select distinct age from users where login_type = '2' and age !=''   ORDER BY age ASC")->result();
 		$this->data['categories'] = $this->cm->get_specific('categories', array("status" => 1));
 		$this->data['will'] = $this->cm->get_specific('willingness', array("status" => 1));
 		$this->data['appearence'] = $this->cm->get_specific('appearence', array("status" => 1));
@@ -374,27 +374,29 @@ class Common_Controller extends CI_Controller {
 	}
 
 	public function getVoteDetails($id = '') {
-		$vote = array(
-			"rank" => 0,
-			"vote" => 0,
-		);
+		$user_details = $this->getUserProfile($id);
+
 		//$voting = $this->db->query('SELECT DISTINCT performer_id, count(id) vote FROM `vote` ORDER BY vote DESC')->result();
-		$voting = $this->db->query('SELECT DISTINCT v.performer_id, (select count(vt.id) from vote vt where vt.performer_id = v.performer_id) vote FROM `vote` v ORDER BY vote DESC')->result();
+		$voting = $this->db->query('SELECT  count(vt.id) as vote from vote vt where vt.performer_id =' . $id . '')->row();
 		//echo $this->db->last_query();die();
 
-		if (!empty($voting)) {
-			$rank = 1;
-			foreach ($voting as $vot) {
-				if ($id == $vot->performer_id) {
-					$vote = array(
-						"rank" => $rank,
-						"vote" => $vot->vote,
-					);
-					break;
-				}
-				$rank++;
-			}
-		}
+		$vote = array(
+			"rank" => $user_details->performer_rank,
+			"vote" => $voting->vote,
+		);
+/*		if (!empty($voting)) {
+$rank = 1;
+foreach ($voting as $vot) {
+if ($id == $vot->performer_id) {
+$vote = array(
+"rank" => $rank,
+"vote" => $vot->vote,
+);
+break;
+}
+$rank++;
+}
+}*/
 		return $vote;
 	}
 	/*public function getPoint(){

@@ -5753,3 +5753,14 @@ a.reset-login{
 .search-network .msg-body-nav #network_user .tt-menu span.active-circle{
 	width: auto;
 }
+
+ .close_img{position: absolute;
+    background: red;
+    color: white; 
+}
+.close_vid{position: absolute;
+    background: red;
+    color: white; 
+    top: -7px;
+right: 0px;
+}

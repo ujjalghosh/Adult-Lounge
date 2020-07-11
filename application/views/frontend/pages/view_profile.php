@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?=base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css')?>">
 <?php if ($this->session->userdata('UserType') == 1) {?>
 <input type="hidden" id="p_receiver_id" value="<?=$user[0]['id']?>">
 <input type="hidden" id="p_receiver_type" value="performer">
@@ -508,6 +509,11 @@ if (!empty($img)) {
 </script>
 
 <!-- <script type="module" defer src="<?=base_url('assets/js/components/performer/ViewPerformerComponent.js')?>"></script> -->
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-thumbnail.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-autoplay.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-fullscreen.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-zoom.min.js')?>"></script>
 <script >
 	jQuery(document).ready(function($) {
 var freeImagepage=freeVideopage=premiumImagepage=premiumVideopage=1
@@ -548,6 +554,13 @@ $(document).on('click', '.premiumVideopage', function(event) {
 				if(res.status==true){
 					if(type==1){
 						$('#free_imagegrid').append(res.images);
+						    lightGallery(document.getElementById('free_imagegrid'), {
+						        selector          : '.free-gal',
+						        thumbnail         : false,
+						        download          : false,
+						        animateThumb      : false,
+						        showThumbByDefault: false,
+						    });
 						$('.freeImagepage').css('visibility', 'hidden');
 						if(res.loadmore==true){
 							$('.freeImagepage').css('visibility', 'visible');
@@ -555,6 +568,13 @@ $(document).on('click', '.premiumVideopage', function(event) {
 						freeImagepage++;
 					}else{
 						$('#premium_imagegrid').append(res.images);
+						  lightGallery(document.getElementById('premium_imagegrid'), {
+						        selector          : '.premium-gal',
+						        thumbnail         : false,
+						        download          : false,
+						        animateThumb      : false,
+						        showThumbByDefault: false,
+						    });
 						$('.premiumImagepage').css('visibility', 'hidden');
 						if(res.loadmore==true){
 							$('.premiumImagepage ').css('visibility', 'visible');

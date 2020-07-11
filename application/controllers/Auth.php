@@ -120,6 +120,7 @@ class Auth extends Common_Controller {
 
 		if ($uid) {
 			$this->db->update('users', array('account_verified' => 'Yes', 'status' => 1), array('id' => $uid));
+			update_rank();
 			$this->data['message'] = 'Thank you for join with us, Now you can enjoy our services.';
 			$this->load->view('frontend/layout/header', $this->data);
 			$this->load->view('frontend/pages/verify_account', $this->data);
