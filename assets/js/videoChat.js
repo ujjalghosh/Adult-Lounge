@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 var hangupButton = document.getElementById('hangupButton');
 //var hangupButton = $('#hangupButton');
 if (hangupButton != null) {
@@ -155,3 +155,4 @@ if (hangupButton != null) {
         );
     }
 }
+*/

@@ -9,47 +9,10 @@
 <section class="content-sec">
 <div class="perform-widget perform-top-layout">
 <div class="perform-left-widget">
-<div class="imgbox">
-<div class="group-message">
-<div class="group-message-text">
-<h3>Megan Kroft is currently in group</h3>
-<h6>Would you join to join at £3.99 per minute</h6>
-<a href="#" class="btn">Join Group</a>
-</div>
-</div>
-<div class="icons-lft">
-<ul>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-001.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-002.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-003.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-004.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-005.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-006.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-007.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-008.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-009.png')?>" alt="" /></a></li>
-</ul>
-<ul>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-010.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-011.png')?>" alt="" /></a></li>
-<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-012.png')?>" alt="" /></a></li>
-</ul>
-</div>
-<div class="box01-rtl">
-<div class="box-trns-blck">
-<span>PRIVATE: £6.99 p/m</span>
-<span>GROUP: £3.99 p/M</span>
-</div>
-<!--<div class="drop-show">
-<span>START SHOW</span>
-<ul>
-<li></li>
-</ul>
-</div>-->
-</div>
-<img src="<?=base_url('assets/images/img-003.jpg')?>" alt="img" />
 
-</div>
+
+<!-- bellow video bar -->
+
 <div class="option-box">
 
 <div class="btn dropup start-show-dropdown">
@@ -57,22 +20,32 @@
 <div class="dropdown-menu dropdown-show-type">
 <h3>SELECT SHOW TYPE</h3>
 <ul>
-<li class="bg-light-pink"><a href="javascript:;">Freeview <span>$3.99 P/M</span></a></li>
-<li class="bg-light-gray"><a href="javascript:;">Group <span>$3.99 P/M</span></a></li>
-<li class="bg-light-green"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
-<li class="bg-deep-pink"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+<li class="bg-light-pink"><a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">Freeview <span>$3.99 P/M</span></a></li>
+<li class="bg-light-gray"><a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">Group <span>$3.99 P/M</span></a></li>
+<li class="bg-light-green"><a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">Closed Private <span>$3.99 P/M</span></a></li>
+<li class="bg-deep-pink"><a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">Closed Private <span>$3.99 P/M</span></a></li>
 </ul>
 </div>
 </div>
 
 
 
-
-<!-- <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
-	print $user[0]['display_name'];
-} else {
-	print $user[0]['name'];
-}?>')">START SHOW</a> -->
 <?php if ($this->session->userdata('UserType')) {
 	?>
 <?php if (empty($subs)) {?>
@@ -509,11 +482,14 @@ if (!empty($img)) {
 </script>
 
 <!-- <script type="module" defer src="<?=base_url('assets/js/components/performer/ViewPerformerComponent.js')?>"></script> -->
-<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js')?>"></script>
+<!-- <script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lightgallery.min.js')?>"></script>
 <script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-thumbnail.min.js')?>"></script>
 <script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-autoplay.min.js')?>"></script>
 <script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-fullscreen.min.js')?>"></script>
-<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-zoom.min.js')?>"></script>
+<script src="<?=base_url('assets/node_modules/lightgallery.js/dist/js/lg-zoom.min.js')?>"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.2/js/lightgallery.js"></script>
+
 <script >
 	jQuery(document).ready(function($) {
 var freeImagepage=freeVideopage=premiumImagepage=premiumVideopage=1
@@ -544,23 +520,40 @@ $(document).on('click', '.premiumVideopage', function(event) {
 });
 
 		function get_images(type=1) {
+			var page= (type==1?freeImagepage:premiumImagepage);
 			$.ajax({
 				url: '<?=base_url('home/getperformer_images')?>',
 				type: 'POST',
 				dataType: 'json',
-				data: {type: type,page:  (type==1?freeImagepage:premiumImagepage),performer:<?=$user[0]['id']?> },
+				data: {type: type,page:page ,performer:<?=$user[0]['id']?> },
 			})
 			.done(function(res) {
 				if(res.status==true){
+					var gallery = $('#free_imagegrid');
+					var gallery2 = $('#premium_imagegrid');
+
+
 					if(type==1){
 						$('#free_imagegrid').append(res.images);
-						    lightGallery(document.getElementById('free_imagegrid'), {
+						if(page>1){
+							gallery.data('lightGallery').destroy(true);
+						}
+
+						 gallery.lightGallery({
+						 	selector          : '.free-gal',
+							thumbnail         : false,
+							download          : false,
+							animateThumb      : false,
+							showThumbByDefault: false
+					    });
+
+						  /*  lightGallery(document.getElementById('free_imagegrid'), {
 						        selector          : '.free-gal',
 						        thumbnail         : false,
 						        download          : false,
 						        animateThumb      : false,
 						        showThumbByDefault: false,
-						    });
+						    });*/
 						$('.freeImagepage').css('visibility', 'hidden');
 						if(res.loadmore==true){
 							$('.freeImagepage').css('visibility', 'visible');
@@ -568,13 +561,26 @@ $(document).on('click', '.premiumVideopage', function(event) {
 						freeImagepage++;
 					}else{
 						$('#premium_imagegrid').append(res.images);
-						  lightGallery(document.getElementById('premium_imagegrid'), {
+
+						if(page>1){
+							gallery2.data('lightGallery').destroy(true);
+						}
+
+						 gallery2.lightGallery({
+						 	selector          : '.premium-gal',
+							thumbnail         : false,
+							download          : false,
+							animateThumb      : false,
+							showThumbByDefault: false
+					    });
+
+						  /*lightGallery(document.getElementById('premium_imagegrid'), {
 						        selector          : '.premium-gal',
 						        thumbnail         : false,
 						        download          : false,
 						        animateThumb      : false,
 						        showThumbByDefault: false,
-						    });
+						    });*/
 						$('.premiumImagepage').css('visibility', 'hidden');
 						if(res.loadmore==true){
 							$('.premiumImagepage ').css('visibility', 'visible');

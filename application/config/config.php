@@ -503,5 +503,10 @@ $config['rewrite_short_tags'] = FALSE;
  */
 $config['proxy_ips'] = '';
 
+$config['TWILIO_ACCOUNT_SID'] = 'AC27936b5b777cfa3037c0b7aeeaff249f';
+$config['TWILIO_CONFIGURATION_SID'] = '17c4bedfbe865301146164a1f7c02a79';
+$config['TWILIO_API_KEY'] = 'SK0b44125674ee0c0ac2d49c226737fa76';
+$config['TWILIO_API_SECRET'] = 'n2UCtELPUmHVAnunUJSNjJRa14t20DpX';
+
 require_once FCPATH . '/vendor/autoload.php';
 //exit;

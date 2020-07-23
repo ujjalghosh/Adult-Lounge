@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc
+class ComposerStaticInite12dbc77e2065e9b35936f48f70d8a54
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -22,6 +22,7 @@ class ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc
         ),
         'T' => 
         array (
+            'Twilio\\' => 7,
             'Twig\\' => 5,
         ),
         'S' => 
@@ -55,6 +56,10 @@ class ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Twilio\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twilio/sdk/src/Twilio',
         ),
         'Twig\\' => 
         array (
@@ -585,10 +590,10 @@ class ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitdace5b9366cde9ce3f21b93a19be9afc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite12dbc77e2065e9b35936f48f70d8a54::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite12dbc77e2065e9b35936f48f70d8a54::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite12dbc77e2065e9b35936f48f70d8a54::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite12dbc77e2065e9b35936f48f70d8a54::$classMap;
 
         }, null, ClassLoader::class);
     }

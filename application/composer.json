@@ -14,7 +14,8 @@
 		"php": ">=5.3.7",
 		"paypal/rest-api-sdk-php": "^1.14",
 		"hashids/hashids": "^2.0",
-		"twig/twig": "^1.42"
+		"twig/twig": "^1.42",
+		"twilio/sdk": "^5.4"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

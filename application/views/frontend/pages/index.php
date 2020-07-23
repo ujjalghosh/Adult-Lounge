@@ -76,6 +76,14 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
                     <p class="dash_action_hed">Actions</p>
                     <ul class="dash_tabs">
                         <li>
+                            <a href="<?=base_url('start_live')?>">
+                                <span class="show_icon">
+                                    <img src="<?=base_url('assets/images/show.png')?>" alt="Shows">
+                                </span>
+                                <span class="show_name">Live</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?=base_url('my-shows')?>">
                                 <span class="show_icon">
                                     <img src="<?=base_url('assets/images/show.png')?>" alt="Shows">

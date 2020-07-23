@@ -527,6 +527,7 @@ class Home extends Common_Controller {
 		$UserId = $this->session->userdata('UserId');
 		$totalimages = $this->cm->getTotalImages($type, $performer);
 		$results = $this->cm->getImages($type, $performer, $page);
+		//echo $this->db->last_query();die();
 
 		$response['loadmore'] = (($page * 8) >= $totalimages ? FALSE : TRUE);
 		$response['status'] = FALSE;

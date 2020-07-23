@@ -1,28 +1,47 @@
-<script type='text/javascript' src="<?=base_url('assets/js/scaledrone.min.js')?>"></script>
+<!-- <script type='text/javascript' src="<?=base_url('assets/js/scaledrone.min.js')?>"></script> -->
+  <script src="//media.twiliocdn.com/sdk/js/video/releases/1.20.1/twilio-video.js"></script>
 <input type="hidden" id="vcStarted" value="Started">
 <input type="hidden" id="url_hash">
-<?php if($this->session->userdata('UserType') == 1){ ?>
+<?php if ($this->session->userdata('UserType') == 1) {?>
 <input type="hidden" id="videoChatId" value="<?=$this->session->userdata('vcChatId')?>">
 <input type="hidden" id="vcPerformerId" value="<?=$this->session->userdata('vcPerformerId')?>">
 <input type="hidden" id="vcUserId" value="<?=$this->session->userdata('UserId')?>">
 <input type="hidden" id="vcSenderType" value="user">
 <input type="hidden" id="vcReceiverType" value="performer">
-<?php }else{ ?>
+<?php } else {?>
 <input type="hidden" id="vcPerformerId" value="<?=$this->session->userdata('UserId')?>">
 <input type="hidden" id="vcUserId" value="<?=$this->session->userdata('vcUserId')?>">
 <input type="hidden" id="hangupButton">
 <input type="hidden" id="vcSenderType" value="performer">
 <input type="hidden" id="vcReceiverType" value="user">
-<?php } ?>
+<?php }?>
 <main class="content-wrapper">
     <section class="content-sec">
         <div class="vid_chat">
+
+  <div id="remote-media"></div>
+  <div id="controls">
+    <div id="preview">
+      <p class="instructions">Hello Beautiful</p>
+      <div id="local-media"></div>
+      <button id="button-preview">Preview My Camera</button>
+    </div>
+    <div id="room-controls">
+      <p class="instructions">Room Name:</p>
+      <input id="room-name" type="text" placeholder="Enter a room name" />
+      <button id="button-join">Join Room</button>
+      <button id="button-leave">Leave Room</button>
+    </div>
+    <div id="log"></div>
+  </div>
+
+       <!--
             <div class="performer_sec">
                 <div class="performer_cam_vid">
                     <video id="remoteVideo" autoplay poster="<?=base_url('assets/images/giphy.gif')?>"></video>
                 </div>
                 <div class="show_controll">
-                    <?php if($this->session->userdata('UserType') == '1'){ ?>
+                    <?php if ($this->session->userdata('UserType') == '1') {?>
                     <ul>
                         <li>
                             <a href="javascript:void(0);" id="hangupButton" class="btn">HANG UP</a>
@@ -34,7 +53,7 @@
                             <a href="javascript:void(0);" class="btn">SHOP NOW</a>
                         </li>
                     </ul>
-                    <?php } ?>
+                    <?php }?>
                 </div>
                 <div class="user_msg">
                     <div class="msg_hed">
@@ -43,19 +62,19 @@
                     <div class="msg_body">
                         <ul class="vcChatList">
                             <?php
-                            $vcLastChatId = 0;
-                            if(!empty($chat)){
-                                for($i = 0; $i<count($chat); $i++){
-                                    $vcLastChatId = $chat[$i]->id;
-                            ?>
-                            <li <?php if($chat[$i]->sender_id == $this->session->userdata('UserId')){ ?> class="align-right" <?php }else{ ?> class="align-left" <?php } ?>>
+$vcLastChatId = 0;
+if (!empty($chat)) {
+	for ($i = 0; $i < count($chat); $i++) {
+		$vcLastChatId = $chat[$i]->id;
+		?>
+                            <li <?php if ($chat[$i]->sender_id == $this->session->userdata('UserId')) {?> class="align-right" <?php } else {?> class="align-left" <?php }?>>
                                 <span><?=$chat[$i]->msg?></span>
                                 <span><?=$chat[$i]->sender_unm?></span>
                             </li>
                             <?php
-                                }
-                            }
-                            ?>
+}
+}
+?>
                         </ul>
                         <input type="hidden" id="vcLastChatId" value="<?=$vcLastChatId?>">
                         <form class="msg_rply">
@@ -72,7 +91,7 @@
                             <p><?=(($usrnm[0]->display_name)) ? $usrnm[0]->display_name : $usrnm[0]->name?></p>
                             <span><img src="<?=base_url('assets/images/heart.png')?>" alt="img">320,000</span>
                             <span><img src="<?=base_url('assets/images/trophy.png')?>" alt="img">£100</span>
-                            <?php if(!empty($subs)){ ?> <span>SUBSCRIBED</span> <?php } ?>
+                            <?php if (!empty($subs)) {?> <span>SUBSCRIBED</span> <?php }?>
                         </div>
                         <div class="col_2">
                             <div class="chat_duration">
@@ -85,7 +104,8 @@
                         <video id="localVideo" autoplay muted poster="<?=base_url('assets/images/giphy.gif')?>"></video>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </main>
+<script src="<?=base_url('assets/js/')?>quickstart.js"></script>
