@@ -31,15 +31,16 @@ class Videochat extends Common_Controller {
 	public function videoChatStart() {
 		$chk = $this->cm->get_specific('users', array("id" => $this->input->post('performer_id')));
 		if ($chk[0]->isLogin == '1' && $chk[0]->hasWebcam == 'Y') {
-			if (empty($this->db->query("select id from video_chat where performer_id = '" . $this->input->post('performer_id') . "' AND (status = '0' OR status = '1') order by id asc limit 0, 1")->result())) {
+			$res = $this->db->query("select id from performer_live where performer_id = '" . $this->input->post('performer_id') . "'   order by id DESC limit 0, 1")->result();
+			if ($res) {
 				$insertArray = array(
 					"user_id" => $this->session->userdata('UserId'),
 					"performer_id" => $this->input->post('performer_id'),
-					"url_hash" => $this->input->post('url_hash'),
+					"url_hash" => $res[0]->id,
 				);
 				$chat_id = $this->cm->insert('video_chat', $insertArray);
 				$this->session->set_userdata('vcPerformerId', $this->input->post('performer_id'));
-				$this->session->set_userdata('vcPerformerId', $this->input->post('performer_id'));
+				//$this->session->set_userdata('vcPerformerId', $this->input->post('performer_id'));
 				$this->session->set_userdata('vcChatId', $chat_id);
 				print 'ok';
 			} else {
@@ -141,7 +142,16 @@ class Videochat extends Common_Controller {
 		$appName = 'TwilioVideoDemo';
 
 // choose a random username for the connecting user
-		$identity = randomUsername();
+		//$identity = randomUsername();
+
+// return serialized token and the user's randomly generated ID
+		if ($this->session->userdata('UserId')) {
+			$userdetails = $this->getUserDetails($this->session->userdata('UserId'));
+			//pr($userdetails[0]["display_name"]);
+			$identity = $userdetails[0]["id"] . '~' . ($userdetails[0]["display_name"] == '' ? $userdetails[0]["name"] : $userdetails[0]["display_name"]);
+		} else {
+			$identity = rand() . '~' . 'Guest';
+		}
 
 // Create access token, which we will serialize and send to the client
 		$token = new AccessToken(
@@ -157,13 +167,55 @@ class Videochat extends Common_Controller {
 //$grant->setConfigurationProfileSid($TWILIO_CONFIGURATION_SID);
 		$token->addGrant($grant);
 
-// return serialized token and the user's randomly generated ID
-		$userdetails = $this->getUserDetails($this->session->userdata('UserId'));
-		//pr($userdetails[0]["display_name"]);
-		$uname = ($userdetails[0]["display_name"] == '' ? $userdetails[0]["name"] : $userdetails[0]["display_name"]);
 		echo json_encode(array(
-			'identity' => $uname,
+			'identity' => $identity,
 			'token' => $token->toJWT(),
 		));
 	}
+
+	function start_live_video() {
+		$data['performer_id'] = $this->session->userdata('UserId');
+		$data['start_at'] = date('Y-m-d H:i:s');
+		$this->db->insert('performer_live', $data);
+		$insert_id = $this->db->insert_id();
+		$this->db->update('users', array('performer_live' => '1'), array('id' => $data['performer_id']));
+		echo $insert_id;
+	}
+
+	function join_live_video() {
+		$performer_id = $this->session->userdata('UserId');
+		$details = $this->getUserDetails($performer_id);
+		if ($details[0]['perform_type'] == 'private') {
+			$this->db->update('users', array('performer_live' => '2'), array('id' => $performer_id));
+		} else {
+			$this->db->update('users', array('performer_live' => '3'), array('id' => $performer_id));
+		}
+
+		echo TRUE;
+	}
+
+	function stop_live_video($id = 0) {
+		if ($id == 0) {
+			$performer_id = $this->session->userdata('UserId');
+			$result = $this->db->where('performer_id', $performer_id)->get('performer_live')->row();
+			if ($result) {
+				$data['end_at'] = date('Y-m-d H:i:s');
+				$this->db->update('performer_live', $data, array('id' => $result->id));
+			}
+			$this->db->update('users', array('performer_live' => '0'), array('id' => $performer_id));
+		} else {
+			$data['end_at'] = date('Y-m-d H:i:s');
+			$this->db->update('performer_live', $data, array('id' => $id));
+
+			$sql = "UPDATE users, performer_live
+SET performer_live.end_at = '" . date('Y-m-d H:i:s') . "',
+    users.performer_live ='0'
+WHERE
+    users.id = performer_live.performer_id
+    AND performer_live.id = '" . $id . "'";
+			$this->db->query($sql);
+		}
+
+	}
+
 }

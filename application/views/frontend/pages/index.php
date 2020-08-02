@@ -6,7 +6,7 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
             <div class="list-widget">
                 <div class="main-heading">
                     <h3><span id="s_cat">ALL GIRLS CAMS</span> <a href="javascript:void(0);" id="reload">
-            <img src="http://hirewebagency.com/adultlounge/assets/images/icon-reload.png"></a>
+            <img src="<?=base_url()?>/assets/images/icon-reload.png"></a>
             <span><a href="#" ><span id="_totfnd">0</span> Models Found </a></span></h3> </div>
                 <div class="shorting-list">
                     <ul> </ul>
@@ -29,7 +29,7 @@ if (!$this->session->userdata('UserType') || $this->session->userdata('UserType'
             <div class="list-widget">
                 <div class="main-heading">
                     <h3><span id="s_cat">ALL GIRLS CAMS</span> <a href="javascript:void(0);" id="reload">
-            <img src="http://hirewebagency.com/adultlounge/assets/images/icon-reload.png"></a>
+            <img src="<?=base_url()?>/assets/images/icon-reload.png"></a>
             <span><a href="#" ><span id="_totfnd">0</span> Models Found </a></span></h3> </div>
                 <div class="shorting-list">
                     <ul> </ul>

@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use Twilio\Jwt\AccessToken;
+use Twilio\Jwt\Grants\VideoGrant;
+
 class Auth extends Common_Controller {
 
 	public function __construct() {
@@ -263,6 +266,72 @@ class Auth extends Common_Controller {
 			$return_data['success'] = FALSE;
 		}
 		echo json_encode($return_data);
+	}
+
+/*** twilio access token****/
+
+	function access_token() {
+
+		$TWILIO_ACCOUNT_SID = $this->config->item('TWILIO_ACCOUNT_SID');
+		$TWILIO_API_KEY = $this->config->item('TWILIO_API_KEY');
+		$TWILIO_API_SECRET = $this->config->item('TWILIO_API_SECRET');
+
+		//          use Twilio\Jwt\AccessToken;
+		//use Twilio\Jwt\Grants\VideoGrant;
+
+// An identifier for your app - can be anything you'd like
+		$appName = 'TwilioVideoDemo';
+
+// choose a random username for the connecting user
+		//$identity = randomUsername();
+		if ($this->session->userdata('UserId')) {
+			$userdetails = $this->getUserDetails($this->session->userdata('UserId'));
+			//pr($userdetails[0]["display_name"]);
+			$identity = $userdetails[0]["id"] . '~' . ($userdetails[0]["display_name"] == '' ? $userdetails[0]["name"] : $userdetails[0]["display_name"]);
+		} else {
+			$identity = rand() . '~' . 'Guest';
+		}
+
+// Create access token, which we will serialize and send to the client
+		$token = new AccessToken(
+			$TWILIO_ACCOUNT_SID,
+			$TWILIO_API_KEY,
+			$TWILIO_API_SECRET,
+			3600,
+			$identity
+		);
+
+// Grant access to Video
+		$grant = new VideoGrant();
+//$grant->setConfigurationProfileSid($TWILIO_CONFIGURATION_SID);
+		$token->addGrant($grant);
+
+// return serialized token and the user's randomly generated ID
+
+		echo json_encode(array(
+			'identity' => $identity,
+			'token' => $token->toJWT(),
+		));
+	}
+
+	public function sendChat() {
+		if ($this->input->post('chat_msg')) {
+			$insertData = array(
+				"sender_id" => $this->input->post('sender_id'),
+				"sender_type" => $this->input->post('sender_type'),
+				"receiver_id" => $this->input->post('receiver_id'),
+				"receiver_type" => $this->input->post('receiver_type'),
+				"msg" => $this->input->post('chat_msg'),
+				"send_stat" => 0,
+			);
+
+			$chat_id = $this->cm->insert('chat', $insertData);
+			$join[] = ['table' => 'user_preference up', 'on' => 'up.user_id = u.id', 'type' => 'left'];
+			$this->data['sndrImg'] = $this->cm->select('users u', array('u.id' => $this->input->post('sender_id')), 'u.id, u.name, u.usernm, u.image, up.display_name', 'u.id', 'desc', $join);
+			$this->data['msg'] = $this->input->post('chat_msg');
+			$this->html = $this->load->view('frontend/pages/ajax_load', $this->data, TRUE);
+			print $chat_id . '~~' . $this->html;
+		}
 	}
 
 }

@@ -30,15 +30,15 @@
     <div id="preview">
       <p class="instructions"><?=($usrnm[0]->display_name == '' ? $usrnm[0]->name : $usrnm[0]->display_name)?></p>
       <div id="local-media"></div>
-      <button id="button-preview">Preview My Camera</button>
+      <button id="button-preview" class="btn text-center">Preview My Camera</button>
     </div>
     <div id="room-controls">
      <!--  <p class="instructions">Room Name:</p>
       <input id="room-name" type="text" placeholder="Enter a room name" /> -->
-      <button id="button-join">Start Live</button>
-      <button id="button-leave">Stop Live</button>
+      <button id="button-join" class="btn text-center">Start Live</button>
+      <button id="button-leave" class="btn text-center">Stop Live</button>
     </div>
-    <div id="log"></div>
+    <div id="log" style="display: none;"></div>
 
 
 
@@ -117,7 +117,62 @@ if (!empty($chat)) {
 <script src="<?=base_url('assets/js/')?>quickstart.js"></script>
 <script type="text/javascript">
 
+jQuery(document).ready(function($) {
+         setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: base_url + "check-new-video-chat-request",
+                data: {
+                    'performer_id': <?=$this->session->userdata('UserId')?>
+                },
+                cache: false,
+                success: function (data) {
+                    var res = data.split('~~');
+                    if (res[0] != 'no-request') {
+                        var options = swalConfirmationOptions;
+                        options.title = "Confirmation";
+                        options.text = "New Video Call Request from " + res[1] + "!!!";
+                        options.type = "success";
+                        options.confirmButtonText = "Accept";
 
+                        swal(options).then(function () {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + "accept-video-chat",
+                                data: {
+                                    'performer_id': <?=$this->session->userdata('UserId')?>,
+                                    'url_hash': res[0],
+                                    'user_id': res[2]
+                                },
+                                cache: false,
+                                success: function (data) {
+                                    $('#url_hash').val(res[0]);
+                                   // window.location = base_url + 'video-chat#' + res[0];
+                                }
+                            });
+                            //window.open(base_url + 'video-chat#' + res, '_blank');
+                        }, function (dismiss) {
+                            if (dismiss == 'cancel') {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + "cancel-video-chat",
+                                    data: {
+                                        'performer_id': UserId,
+                                        'url_hash': res[0],
+                                        'user_id': res[2]
+                                    },
+                                    cache: false,
+                                    success: function (data) {}
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }, 5000);
+
+
+});
 
 
 //var Video = require('twilio-video');
@@ -127,6 +182,7 @@ var activeRoom;
 var previewTracks;
 var identity;
 var roomName;
+var start_id;
 
 // Attach the Tracks to the DOM.
 function attachTracks(tracks, container) {
@@ -177,7 +233,19 @@ $.getJSON('videochat/access_token', function(data) {
     log("Starting live...");
     var connectOptions = {
       name: roomName,
-      logLevel: 'debug'
+      logLevel: 'debug',
+        bandwidthProfile: {
+    video: {
+      dominantSpeakerPriority: 'high',
+      mode: 'collaboration',
+      renderDimensions: {
+        high: { height: 720, width: 1280 },
+        standard: { height: 90, width: 160 }
+      }
+    }
+  },
+      video: { height: 720, frameRate: 24, width: 1280 },
+      audio: true
     };
 
     if (previewTracks) {
@@ -201,7 +269,9 @@ $.getJSON('videochat/access_token', function(data) {
 // Successfully connected!
 function roomJoined(room) {
   window.room = activeRoom = room;
-
+$.get('<?=base_url('videochat/start_live_video')?>', function(data) {
+    start_id=data
+    });
   log("Started as '" + identity + "'");
   document.getElementById('button-join').style.display = 'none';
   document.getElementById('button-leave').style.display = 'inline';
@@ -229,6 +299,7 @@ function roomJoined(room) {
     log(participant.identity + " added track: " + track.kind);
     var previewContainer = document.getElementById('remote-media');
     attachTracks([track], previewContainer);
+
   });
 
   // When a Participant removes a Track, detach it from the DOM.
@@ -246,6 +317,9 @@ function roomJoined(room) {
   // Once the LocalParticipant leaves the room, detach the Tracks
   // of all Participants, including that of the LocalParticipant.
   room.on('disconnected', function() {
+     $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
+      /*optional stuff to do after success */
+    });
     log('Left');
     if (previewTracks) {
       previewTracks.forEach(function(track) {

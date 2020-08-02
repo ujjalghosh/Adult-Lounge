@@ -1,12 +1,4 @@
-  <script src="//media.twiliocdn.com/sdk/js/video/releases/1.20.1/twilio-video.js"></script>
 <link rel="stylesheet" href="<?=base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css')?>">
-<?php if (!$this->session->userdata('UserType')) {?>
-<input type="hidden" id="p_receiver_id" value="<?=$user[0]['id']?>">
-<input type="hidden" id="p_receiver_type" value="performer">
-<input type="hidden" id="p_sender_id" value="0">
-<input type="hidden" id="p_sender_type" value="user">
-	<?php }?>
-
 <?php if ($this->session->userdata('UserType') == 1) {?>
 <input type="hidden" id="p_receiver_id" value="<?=$user[0]['id']?>">
 <input type="hidden" id="p_receiver_type" value="performer">
@@ -18,79 +10,46 @@
 <div class="perform-widget perform-top-layout">
 <div class="perform-left-widget">
 <div class="imgbox">
-
-<?php if ($user[0]['performer_live'] == 1) {?>
-
- <div id="remote-media"  >
-
- </div>
-
-<?php } else {
-	if ($user[0]['performer_live'] != 0) {
-		?>
-
-  <div class="group-message">
+<div class="group-message">
 <div class="group-message-text">
-	<?php if ($user[0]['performer_live'] == 2 && $user[0]['perform_type'] == 'group') {
-			?>
-<h3><?php if ($user[0]['display_name'] != '') {
-				print $user[0]['display_name'];
-			} else {
-				print $user[0]['name'];
-			}?> is currently in group</h3>
-<h6>Would you join to join at £<?=$user[0]['price_in_group']?> per minute</h6>
-<?php if ($this->session->userdata('UserType')) {
-				?>
-<a href="javascript:void(0);" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
-					print $user[0]['display_name'];
-				} else {
-					print $user[0]['name'];
-				}?>')" class="btn">Join Group</a>
-		<?php } else {?>
-<a href="<?=base_url('login')?>"   class="btn">Join Group</a>
-		<?php }?>
-
-<?php }?>
-
-
-
+<h3>Megan Kroft is currently in group</h3>
+<h6>Would you join to join at £3.99 per minute</h6>
+<a href="#" class="btn">Join Group</a>
 </div>
 </div>
-
-
-
-
+<div class="icons-lft">
+<ul>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-001.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-002.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-003.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-004.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-005.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-006.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-007.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-008.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-009.png')?>" alt="" /></a></li>
+</ul>
+<ul>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-010.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-011.png')?>" alt="" /></a></li>
+<li><a href="javascript:void(0)"><img src="<?=base_url('assets/images/icon-012.png')?>" alt="" /></a></li>
+</ul>
+</div>
+<div class="box01-rtl">
+<div class="box-trns-blck">
+<span>PRIVATE: £6.99 p/m</span>
+<span>GROUP: £3.99 p/M</span>
+</div>
+<!--<div class="drop-show">
+<span>START SHOW</span>
+<ul>
+<li></li>
+</ul>
+</div>-->
+</div>
 <img src="<?=base_url('assets/images/img-003.jpg')?>" alt="img" />
 
-<?php }}?>
-<?php if ($user[0]['performer_live'] == 0): ?>
-
-  <div class="group-message">
-<div class="group-message-text">
-
-<h3><?php if ($user[0]['display_name'] != '') {
-	print $user[0]['display_name'];
-} else {
-	print $user[0]['name'];
-}?> is currently offline</h3>
-
-
 </div>
-</div>
-
-
-
-
-<img src="<?=base_url('assets/images/img-003.jpg')?>" alt="img" />
-
-
-<?php endif?>
-
-</div>
-
-
-<!-- bellow video bar -->
-
 <div class="option-box">
 
 <div class="btn dropup start-show-dropdown">
@@ -98,46 +57,22 @@
 <div class="dropdown-menu dropdown-show-type">
 <h3>SELECT SHOW TYPE</h3>
 <ul>
-	<?php if ($user[0]['perform_type'] == 'private' && $user[0]['performer_live'] == 1): ?>
-<li class="bg-light-pink">
-<?php if ($this->session->userdata('UserType')) {
-	?>
-	<a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
-		print $user[0]['display_name'];
-	} else {
-		print $user[0]['name'];
-	}?>')">Private <span>$<?=$user[0]['price_in_private']?> P/M</span></a>
-
-<?php } else {?>
-<a href="<?=base_url('login')?>"   class="btn">Private <span>$<?=$user[0]['price_in_private']?> P/M</span></a>
-		<?php }?>
-
-
-</li>
-
-<?php endif?>
-
-	<?php if ($user[0]['perform_type'] == 'group' && $user[0]['performer_live'] != 0): ?>
-<li class="bg-light-pink">
-<?php if ($this->session->userdata('UserType')) {
-	?>
-	<a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
-		print $user[0]['display_name'];
-	} else {
-		print $user[0]['name'];
-	}?>')">Group <span>$<?=$user[0]['price_in_group']?> P/M</span></a>
-<?php } else {?>
-<a href="<?=base_url('login')?>"   class="btn">Group <span>$<?=$user[0]['price_in_group']?> P/M</span></a>
-		<?php }?>
-</li>
-
-<?php endif?>
+<li class="bg-light-pink"><a href="javascript:;">Freeview <span>$3.99 P/M</span></a></li>
+<li class="bg-light-gray"><a href="javascript:;">Group <span>$3.99 P/M</span></a></li>
+<li class="bg-light-green"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
+<li class="bg-deep-pink"><a href="javascript:;">Closed Private <span>$3.99 P/M</span></a></li>
 </ul>
 </div>
 </div>
 
 
 
+
+<!-- <a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+	print $user[0]['display_name'];
+} else {
+	print $user[0]['name'];
+}?>')">START SHOW</a> -->
 <?php if ($this->session->userdata('UserType')) {
 	?>
 <?php if (empty($subs)) {?>
@@ -557,24 +492,6 @@ if (!empty($img)) {
 
   </div>
 </div>
-
-<?php if ($user[0]['performer_live'] == 1 || $user[0]['performer_live'] == 3): ?>
-<div style="display: none;">
-    <div id="preview">
-      <p class="instructions">me</p>
-      <div id="local-media"></div>
-      <button id="button-preview">Preview My Camera</button>
-    </div>
-    <div id="room-controls">
-       <p class="instructions">Room Name:</p>
-      <input id="room-name" type="text" placeholder="Enter a room name" />
-      <button id="button-join">Start Live</button>
-      <button id="button-leave">Stop Live</button>
-    </div>
-<div id="log"></div>
-</div>
-<?php endif;?>
-
 <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
 <script>
 // var $grid = $('.__freeImageGridEl').imagesLoaded( function() {
@@ -743,221 +660,3 @@ $(document).on('click', '.premiumVideopage', function(event) {
 		}
 	});
 </script>
-
-
-<?php if ($user[0]['performer_live'] == 1 || $user[0]['performer_live'] == 3): ?>
-<!-- video -->
-<script src="<?=base_url('assets/js/')?>quickstart.js"></script>
-<script type="text/javascript">
-
-jQuery(document).ready(function($) {
-	//$('#button-join').trigger('click');
-});
-//start_online();
-//var Video = require('twilio-video');
-var Video =Twilio.Video;
-
-var activeRoom;
-var previewTracks;
-var identity;
-var roomName;
-
-// Attach the Tracks to the DOM.
-function attachTracks(tracks, container) {
-  tracks.forEach(function(track) {
-    container.appendChild(track.attach());
-  });
-}
-
-// Attach the Participant's Tracks to the DOM.
-function attachParticipantTracks(participant, container) {
-  var tracks = Array.from(participant.tracks.values());
-  attachTracks(tracks, container);
-}
-
-// Detach the Tracks from the DOM.
-function detachTracks(tracks) {
-  tracks.forEach(function(track) {
-    track.detach().forEach(function(detachedElement) {
-      detachedElement.remove();
-    });
-  });
-}
-
-// Detach the Participant's Tracks from the DOM.
-function detachParticipantTracks(participant) {
-  var tracks = Array.from(participant.tracks.values());
-  detachTracks(tracks);
-}
-
-// When we are about to transition away from this page, disconnect
-// from the room, if joined.
-window.addEventListener('beforeunload', leaveRoomIfJoined);
-
-// Obtain a token from the server in order to connect to the Room.
-$.getJSON('<?=base_url()?>auth/access_token', function(data) {
-  identity = data.identity;
-  document.getElementById('room-controls').style.display = 'block';
-
-  // Bind button to join Room.
-
-  /* $(document).on('click', '#button-join', function(event) {
-  	event.preventDefault();*/
-  	/* Act on the event */
-
-  //document.getElementById('button-join').onclick = function() {
-    //roomName = document.getElementById('room-name').value;
-    roomName='<?=$user[0]['id']?>_performer'
-    if (!roomName) {
-      alert('Your room is missing.');
-      return;
-    }
-
-    log("Starting live...");
-    var connectOptions = {
-      name: roomName,
-      logLevel: 'debug',
-     // audio: false,
-      video: false
-    };
-
-    if (previewTracks) {
-      connectOptions.tracks = previewTracks;
-    }
-
-    // Join the Room with the token from the server and the
-    // LocalParticipant's Tracks.
-    Video.connect(data.token, connectOptions).then(roomJoined, function(error) {
-      log('Could not start: ' + error.message);
-    });
-
-   //});
-
-  // Bind button to leave Room.
-  document.getElementById('button-leave').onclick = function() {
-    log('Leaving room...');
-    activeRoom.disconnect();
-  };
-});
-
-// Successfully connected!
-function roomJoined(room) {
-  window.room = activeRoom = room;
-
-  log("Started as '" + identity + "'");
-  document.getElementById('button-join').style.display = 'none';
-  document.getElementById('button-leave').style.display = 'inline';
-
-  // Attach LocalParticipant's Tracks, if not already attached.
-/*  var previewContainer = document.getElementById('local-media');
-  if (!previewContainer.querySelector('video')) {
-    attachParticipantTracks(room.localParticipant, previewContainer);
-  }*/
-
-  // Attach the Tracks of the Room's Participants.
-  room.participants.forEach(function(participant) {
-	console.warn(participant)
-	var array =  participant.identity.split('~');
-	if(array[0]==<?=$user[0]['id']?>){
-    log("Already in Room: '" + participant.identity + "'");
-    var previewContainer = document.getElementById('remote-media');
-    attachParticipantTracks(participant, previewContainer);
-		}
-  });
-
-  // When a Participant joins the Room, log the event.
-  room.on('participantConnected', function(participant) {
-    log("Joining: '" + participant.identity + "'");
-  });
-
-  // When a Participant adds a Track, attach it to the DOM.
-  room.on('trackAdded', function(track, participant) {
-  	var array =  participant.identity.split('~');
-  	if(array[0]==<?=$user[0]['id']?>){
-    log(participant.identity + " added track: " + track.kind);
-    var previewContainer = document.getElementById('remote-media');
-    attachTracks([track], previewContainer);
-    console.warn(participant)
-   var video = document.querySelector('video');
-	//video.muted = true;
-	video.play();
-	//video.unmuted = true;
-	//video.attr('controls', '');
-	video.setAttribute("autoplay","true");
-	video.setAttribute("controls","controls")
-	}
-  });
-
-  // When a Participant removes a Track, detach it from the DOM.
-  room.on('trackRemoved', function(track, participant) {
-    log(participant.identity + " removed track: " + track.kind);
-    detachTracks([track]);
-  });
-
-  // When a Participant leaves the Room, detach its Tracks.
-  room.on('participantDisconnected', function(participant) {
-  	var array =  participant.identity.split('~');
-  	if(array[0]==<?=$user[0]['id']?>){
-  		window.location.reload();
-    log("Participant '" + participant.identity + "' left the room");
-    detachParticipantTracks(participant);
-	}
-  });
-
-  // Once the LocalParticipant leaves the room, detach the Tracks
-  // of all Participants, including that of the LocalParticipant.
-  room.on('disconnected', function() {
-    log('Left');
-    if (previewTracks) {
-      previewTracks.forEach(function(track) {
-        track.stop();
-      });
-      previewTracks = null;
-    }
-    detachParticipantTracks(room.localParticipant);
-    room.participants.forEach(detachParticipantTracks);
-    activeRoom = null;
-    document.getElementById('button-join').style.display = 'inline';
-    document.getElementById('button-leave').style.display = 'none';
-  });
-}
-
-// Preview LocalParticipant's Tracks.
-document.getElementById('button-preview').onclick = function() {
-  var localTracksPromise = previewTracks
-    ? Promise.resolve(previewTracks)
-    : Video.createLocalTracks();
-
-  localTracksPromise.then(function(tracks) {
-    window.previewTracks = previewTracks = tracks;
-    var previewContainer = document.getElementById('local-media');
-    if (!previewContainer.querySelector('video')) {
-      attachTracks(tracks, previewContainer);
-    }
-  }, function(error) {
-    console.error('Unable to access local media', error);
-    log('Unable to access Camera and Microphone');
-  });
-};
-
-// Activity log.
-function log(message) {
-  var logDiv = document.getElementById('log');
-  logDiv.innerHTML += '<p>&gt;&nbsp;' + message + '</p>';
-  logDiv.scrollTop = logDiv.scrollHeight;
-}
-
-// Leave Room.
-function leaveRoomIfJoined() {
-  if (activeRoom) {
-    activeRoom.disconnect();
-  }
-}
-
-jQuery(document).ready(function($) {
-	$('#button-join').trigger('click');
-});
-
-</script>
-
-<?php endif?>
