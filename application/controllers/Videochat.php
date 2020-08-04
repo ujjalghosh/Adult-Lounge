@@ -36,6 +36,7 @@ class Videochat extends Common_Controller {
 				$insertArray = array(
 					"user_id" => $this->session->userdata('UserId'),
 					"performer_id" => $this->input->post('performer_id'),
+					"type" => $this->input->post('type'),
 					"url_hash" => $res[0]->id,
 				);
 				$chat_id = $this->cm->insert('video_chat', $insertArray);

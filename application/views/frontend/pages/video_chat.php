@@ -24,12 +24,12 @@
             <div class="performer_sec">
                  <div id="controls">
                 <div class="performer_cam_vid">
-                    <!-- <video id="remoteVideo" autoplay poster="<?=base_url('assets/images/giphy.gif')?>"></video> -->
+
 
 
     <div id="preview">
       <p class="instructions"><?=($usrnm[0]->display_name == '' ? $usrnm[0]->name : $usrnm[0]->display_name)?></p>
-     <div id="remote-media"></div>
+     <div id="remote-media"> <video id="remoteVideo" autoplay poster="<?=base_url('assets/images/giphy.gif')?>"></video> </div>
       <button id="button-preview" class="btn text-center" style="display: none;">Preview My Camera</button>
     </div>
     <div id="room-controls" style="display: none;">
@@ -233,7 +233,7 @@ $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
     log(participant.identity + " added track: " + track.kind);
     var previewContainer = document.getElementById('remote-media');
     attachTracks([track], previewContainer);
-
+  $('#remoteVideo').hide();
   });
 
   // When a Participant removes a Track, detach it from the DOM.

@@ -22,7 +22,7 @@
 <?php if ($user[0]['performer_live'] == 1) {?>
 
  <div id="remote-media"  >
-
+<video id="remoteVideo" autoplay poster="<?=base_url('assets/images/giphy.gif')?>"></video>
  </div>
 
 <?php } else {
@@ -45,7 +45,7 @@
 					print $user[0]['display_name'];
 				} else {
 					print $user[0]['name'];
-				}?>')" class="btn">Join Group</a>
+				}?>',2)" class="btn">Join Group</a>
 		<?php } else {?>
 <a href="<?=base_url('login')?>"   class="btn">Join Group</a>
 		<?php }?>
@@ -106,7 +106,7 @@
 		print $user[0]['display_name'];
 	} else {
 		print $user[0]['name'];
-	}?>')">Private <span>$<?=$user[0]['price_in_private']?> P/M</span></a>
+	}?>',1)">Private <span>$<?=$user[0]['price_in_private']?> P/M</span></a>
 
 <?php } else {?>
 <a href="<?=base_url('login')?>"   class="btn">Private <span>$<?=$user[0]['price_in_private']?> P/M</span></a>
@@ -125,7 +125,7 @@
 		print $user[0]['display_name'];
 	} else {
 		print $user[0]['name'];
-	}?>')">Group <span>$<?=$user[0]['price_in_group']?> P/M</span></a>
+	}?>',2)">Group <span>$<?=$user[0]['price_in_group']?> P/M</span></a>
 <?php } else {?>
 <a href="<?=base_url('login')?>"   class="btn">Group <span>$<?=$user[0]['price_in_group']?> P/M</span></a>
 		<?php }?>

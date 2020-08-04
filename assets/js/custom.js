@@ -513,7 +513,7 @@ function send_pop_chat() {
 }
 $(document).ready(function () {
     setInterval(function () {
-		//$("#pop_snd_msg,#p_send_chat").click(function(){
+        //$("#pop_snd_msg,#p_send_chat").click(function(){
         url = $(location).attr('href');
         parts = url.split("/");
         last_part = parts[parts.length - 4];
@@ -556,7 +556,7 @@ $(document).ready(function () {
                 }
             });
         }
-		//});
+        //});
     }, 5000);
 
     $(document).on('keypress', '#chatrply_form', function(e){
@@ -1065,7 +1065,7 @@ function search_suggestion(val) {
 /**************VIDEO CHAT****************/
 var constHasCamera = '';
 
-function startVideoChat(performer_id, performer_nm) {
+function startVideoChat(performer_id, performer_nm,type=1) {
     DetectRTC.load(function () {
         if (DetectRTC.hasWebcam == false) {
             swal_warning("Sorry !!! You do not have a webcam. Please install one for your Video Call. Thank you.");
@@ -1077,6 +1077,7 @@ function startVideoChat(performer_id, performer_nm) {
                 data: {
                     'performer_id': performer_id,
                     'performer_nm': performer_nm,
+                    'type': type,
                     'url_hash': hsh
                 },
                 cache: false,
@@ -1095,58 +1096,7 @@ function startVideoChat(performer_id, performer_nm) {
 }
 $(document).ready(function () {
     if (UserId != '' && UserType != '' && UserType == '2') {
-        setInterval(function () {
-            $.ajax({
-                type: "POST",
-                url: base_url + "check-new-video-chat-request",
-                data: {
-                    'performer_id': UserId
-                },
-                cache: false,
-                success: function (data) {
-                    var res = data.split('~~');
-                    if (res[0] != 'no-request') {
-                        var options = swalConfirmationOptions;
-                        options.title = "Confirmation";
-                        options.text = "New Video Call Request from " + res[1] + "!!!";
-                        options.type = "success";
-                        options.confirmButtonText = "Accept";
-
-                        swal(options).then(function () {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + "accept-video-chat",
-                                data: {
-                                    'performer_id': UserId,
-                                    'url_hash': res[0],
-                                    'user_id': res[2]
-                                },
-                                cache: false,
-                                success: function (data) {
-                                    $('#url_hash').val(res[0]);
-                                    window.location = base_url + 'video-chat#' + res[0];
-                                }
-                            });
-                            //window.open(base_url + 'video-chat#' + res, '_blank');
-                        }, function (dismiss) {
-                            if (dismiss == 'cancel') {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + "cancel-video-chat",
-                                    data: {
-                                        'performer_id': UserId,
-                                        'url_hash': res[0],
-                                        'user_id': res[2]
-                                    },
-                                    cache: false,
-                                    success: function (data) {}
-                                });
-                            }
-                        });
-                    }
-                }
-            });
-        }, 5000);
+ 
 
         if (document.getElementById('vcStarted') != null) {
             setInterval(function () {
@@ -1320,10 +1270,10 @@ function startTimer(duration, display) {
 
 //$('body').overlayScrollbars({className : "os-theme-round-dark"}); 
 $('.customScroll').overlayScrollbars({
-	className : "os-theme-round-dark",
-	resize : "false",
-	sizeAutoCapable : true,
-	paddingAbsolute : true
+    className : "os-theme-round-dark",
+    resize : "false",
+    sizeAutoCapable : true,
+    paddingAbsolute : true
 }); 
 
 
@@ -1334,7 +1284,7 @@ $('.buy-credit-slider').owlCarousel({
     loop:false,
     margin:10,
     nav:true,
-	dots: false,
+    dots: false,
     responsive:{
         0:{
             items:1
@@ -1354,10 +1304,10 @@ $('.slider-awards').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
-	items:1,
-	dots: false,
-	autoplay: true,
-	autoplayHoverPause:true,
+    items:1,
+    dots: false,
+    autoplay: true,
+    autoplayHoverPause:true,
 });
 
 
