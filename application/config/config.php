@@ -503,10 +503,15 @@ $config['rewrite_short_tags'] = FALSE;
  */
 $config['proxy_ips'] = '';
 
-$config['TWILIO_ACCOUNT_SID'] = 'AC27936b5b777cfa3037c0b7aeeaff249f';
+/*$config['TWILIO_ACCOUNT_SID'] = 'AC27936b5b777cfa3037c0b7aeeaff249f';
 $config['TWILIO_CONFIGURATION_SID'] = '17c4bedfbe865301146164a1f7c02a79';
 $config['TWILIO_API_KEY'] = 'SK0b44125674ee0c0ac2d49c226737fa76';
-$config['TWILIO_API_SECRET'] = 'n2UCtELPUmHVAnunUJSNjJRa14t20DpX';
+$config['TWILIO_API_SECRET'] = 'n2UCtELPUmHVAnunUJSNjJRa14t20DpX';*/
+
+$config['TWILIO_ACCOUNT_SID'] = 'ACc21acf1208f24165cd8a7f7edfb0dc20';
+$config['TWILIO_CONFIGURATION_SID'] = '17c4bedfbe865301146164a1f7c02a79';
+$config['TWILIO_API_KEY'] = 'SKf1ad310fe3f7ca1e4fc29f83f8bb5084';
+$config['TWILIO_API_SECRET'] = 'yxYazMmwfcGwjBmSqd1jWwgaJsoc1diW';
 
 require_once FCPATH . '/vendor/autoload.php';
 //exit;

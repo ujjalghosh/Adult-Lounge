@@ -117,7 +117,11 @@ if (!empty($chat)) {
 <script src="<?=base_url('assets/js/')?>quickstart.js"></script>
 <script type="text/javascript">
 
-jQuery(document).ready(function($) {
+
+
+function new_request() {
+
+
          setInterval(function () {
             $.ajax({
                 type: "POST",
@@ -172,7 +176,8 @@ jQuery(document).ready(function($) {
         }, 5000);
 
 
-});
+}
+
 
 
 //var Video = require('twilio-video');
@@ -234,16 +239,16 @@ $.getJSON('videochat/access_token', function(data) {
     var connectOptions = {
       name: roomName,
       logLevel: 'debug',
-        bandwidthProfile: {
-    video: {
-      dominantSpeakerPriority: 'high',
-      mode: 'collaboration',
-      renderDimensions: {
-        high: { height: 720, width: 1280 },
-        standard: { height: 90, width: 160 }
+      bandwidthProfile: {
+      video: {
+        dominantSpeakerPriority: 'high',
+        mode: 'collaboration',
+        renderDimensions: {
+          high: { height: 720, width: 1280 },
+          standard: { height: 90, width: 160 }
+        }
       }
-    }
-  },
+    },
       video: { height: 720, frameRate: 24, width: 1280 },
       audio: true
     };
@@ -269,13 +274,13 @@ $.getJSON('videochat/access_token', function(data) {
 // Successfully connected!
 function roomJoined(room) {
   window.room = activeRoom = room;
-$.get('<?=base_url('videochat/start_live_video')?>', function(data) {
+  $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
     start_id=data
     });
   log("Started as '" + identity + "'");
   document.getElementById('button-join').style.display = 'none';
   document.getElementById('button-leave').style.display = 'inline';
-
+  new_request();
   // Attach LocalParticipant's Tracks, if not already attached.
   var previewContainer = document.getElementById('local-media');
   if (!previewContainer.querySelector('video')) {
@@ -317,7 +322,7 @@ $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
   // Once the LocalParticipant leaves the room, detach the Tracks
   // of all Participants, including that of the LocalParticipant.
   room.on('disconnected', function() {
-     $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
+    $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
       /*optional stuff to do after success */
     });
     log('Left');

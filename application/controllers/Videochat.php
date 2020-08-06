@@ -219,4 +219,16 @@ WHERE
 
 	}
 
+	function is_accepted($request_id = '') {
+
+		$row = $this->db->select('status')->where('id', $request_id)->from('video_chat')->get()->row();
+		if ($row) {
+			$return_data['status'] = TRUE;
+			$return_data['r_status'] = $row->status;
+		} else {
+			$return_data['status'] = FALSE;
+		}
+		echo json_encode($return_data);
+	}
+
 }

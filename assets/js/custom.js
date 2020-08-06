@@ -1266,6 +1266,11 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
+
+function stop_time() {
+    clearInterval(interval);
+}
+
 /************** Custom ScrollBar----10-09-19 ****************/
 
 //$('body').overlayScrollbars({className : "os-theme-round-dark"}); 
