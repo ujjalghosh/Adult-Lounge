@@ -29,7 +29,9 @@
 
     <div id="preview">
       <p class="instructions"><?=($usrnm[0]->display_name == '' ? $usrnm[0]->name : $usrnm[0]->display_name)?></p>
-     <div id="remote-media"></div>
+     <div id="remote-media">
+       <video id="remoteVideo" autoplay poster="<?=base_url('assets/images/giphy.gif')?>"></video>
+     </div>
       <button id="button-preview" class="btn text-center" style="display: none;">Preview My Camera</button>
     </div>
     <div id="room-controls" style="display: none;">
@@ -112,12 +114,14 @@ if (!empty($chat)) {
                 </div>
             </div>
         </div>
+        <div id="request_wait" class="overlay"><div class="center"><p>Please wait..</p>
+          <p>Performer not accepted your video request yet ..!</p></div></div>
     </section>
 </main>
 <script src="<?=base_url('assets/js/')?>quickstart.js"></script>
 <script type="text/javascript">
 
-
+$('#request_wait').show();
 
 
 //var Video = require('twilio-video');
@@ -161,6 +165,55 @@ function detachParticipantTracks(participant) {
 // from the room, if joined.
 window.addEventListener('beforeunload', leaveRoomIfJoined);
 
+var interval_accpt = setInterval(isaccept, 4000);
+function myStopFunction() {
+  clearInterval(interval_accpt);
+}
+
+   function isaccept() {
+    var videoChatId=$('#videoChatId').val();
+    $.getJSON(base_url+'videochat/is_accepted/'+videoChatId , function(res,  Status) {
+      console.log(res,  Status);
+        if (Status=='success') {
+          if(res.status==true){
+            if(res.r_status==1){
+              accepted_performer();
+              myStopFunction();
+              $('#request_wait').hide();
+            }
+            else if(res.r_status==3){
+               myStopFunction();
+              $('#request_wait').hide();
+                var options     = swalConfirmationOptions;
+                options.title   = "Video Call Request Cancelled !!!";
+                options.type    = "Video Call Request Cancelled !!!";
+                options.buttons = "OK";
+
+                swal(options).then(function () {
+                window.location = base_url ;
+                });
+            }
+            else if(res.r_status==4){
+              myStopFunction();
+              $('#request_wait').hide();
+                var options     = swalConfirmationOptions;
+                options.title   = "Performer is offline now !!!";
+                options.type    = "Performer is offline now !!!";
+                options.buttons = "OK";
+
+                swal(options).then(function () {
+                window.location = base_url ;
+                });
+            }
+          }
+        }
+    });
+
+     }
+
+
+
+function accepted_performer(){
 // Obtain a token from the server in order to connect to the Room.
 $.getJSON('videochat/access_token', function(data) {
   identity = data.identity;
@@ -170,7 +223,6 @@ $.getJSON('videochat/access_token', function(data) {
  // document.getElementById('button-join').onclick = function() {
     //roomName = document.getElementById('room-name').value;
 
-function accepted_performer(){
 
     roomName='<?=$this->session->userdata('vcPerformerId')?>_performer'
     if (!roomName) {
@@ -203,14 +255,19 @@ function accepted_performer(){
   };
 });
 
+
 }
 
 // Successfully connected!
 function roomJoined(room) {
   window.room = activeRoom = room;
-$.get('<?=base_url('videochat/start_live_video')?>', function(data) {
+/*$.get('<?=base_url('videochat/start_live_video')?>', function(data) {
     start_id=data
-    });
+    });*/
+
+ //start active time
+  start(0);
+
   log("Started as '" + identity + "'");
   //document.getElementById('button-join').style.display = 'none';
   document.getElementById('button-leave').style.display = 'inline';
@@ -223,9 +280,18 @@ $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
 
   // Attach the Tracks of the Room's Participants.
   room.participants.forEach(function(participant) {
+
+/*    log("Already in Room: '" + participant.identity + "'");
+    var previewContainer = document.getElementById('remote-media');
+    attachParticipantTracks(participant, previewContainer);*/
+
+  var array =  participant.identity.split('~');
+  if(array[0]==<?=$this->session->userdata('vcPerformerId')?>){
     log("Already in Room: '" + participant.identity + "'");
     var previewContainer = document.getElementById('remote-media');
     attachParticipantTracks(participant, previewContainer);
+    }
+
   });
 
   // When a Participant joins the Room, log the event.
@@ -238,6 +304,14 @@ $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
     log(participant.identity + " added track: " + track.kind);
     var previewContainer = document.getElementById('remote-media');
     attachTracks([track], previewContainer);
+        $('#remoteVideo').hide();
+   var video = document.querySelector('video');
+  //video.muted = true;
+  video.play();
+  //video.unmuted = true;
+  //video.attr('controls', '');
+  video.setAttribute("autoplay","true");
+  video.setAttribute("controls","controls")
 
   });
 
@@ -250,15 +324,18 @@ $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
   // When a Participant leaves the Room, detach its Tracks.
   room.on('participantDisconnected', function(participant) {
     log("Participant '" + participant.identity + "' left the room");
+
+stop_time();
+
     detachParticipantTracks(participant);
   });
 
   // Once the LocalParticipant leaves the room, detach the Tracks
   // of all Participants, including that of the LocalParticipant.
   room.on('disconnected', function() {
-     $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
-      /*optional stuff to do after success */
-    });
+     /*$.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
+
+    });*/
     log('Left');
     if (previewTracks) {
       previewTracks.forEach(function(track) {

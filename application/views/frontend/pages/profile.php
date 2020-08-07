@@ -238,23 +238,23 @@ if ($user[0]['usernm'] != '') {
                                     <option value="GBP" <?php if (isset($user)) {if ($user[0]['currency'] == 'GBP') {print 'selected';}}?>>GBP</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <select class="custom-select requiredCheck" name="perform_type" id="perform_type" data-check="Display perform type">
-                                    <option value="" selected>Perform Type</option>
-                                    <option value="private" <?php if (isset($user)) {if ($user[0]['perform_type'] == 'private') {print 'selected';}}?>>In Private</option>
-                                    <option value="group" <?php if (isset($user)) {if ($user[0]['perform_type'] == 'group') {print 'selected';}}?>>In Group</option>
-                                </select>
-                            </div>
-                            <?php $perform_type = isset($user) ? $user[0]['perform_type'] : '';?>
-                            <div id="privatePriceEl" class="form-group" style="display: <?=($perform_type == 'private' ? 'block' : 'none')?>;">
-                                <!--<label class="check">Private price</label>-->
-                                <input value="<?php echo ($user['0']['price_in_private']) ? $user['0']['price_in_private'] : 0.00 ?>" type="text" class="form-control" id="price_in_private" name="price_in_private" placeholder="0.00">
+
+                            <div  class="form-group">
+                                <input value="<?php echo ($user['0']['price_in_private']) ? $user['0']['price_in_private'] : '' ?>" type="text" class="form-control" id="price_in_private" name="price_in_private" placeholder="Enter private call price">
                             </div>
 
-                            <div id="groupPriceEl" class="form-group" style="display: <?=($perform_type == 'group' ? 'block' : 'none')?>;">
-                                <!-- <label class="check">Group price</label> -->
-                                <input value="<?php echo ($user['0']['price_in_group']) ? $user['0']['price_in_group'] : 0.00 ?>" type="text" class="form-control" id="price_in_group" name="price_in_group" placeholder="0.00">
+                            <div class="form-group" >
+                                <input value="<?php echo ($user['0']['price_in_group']) ? $user['0']['price_in_group'] : '' ?>" type="text" class="form-control" id="price_in_group" name="price_in_group" placeholder="Enter group call price">
                             </div>
+
+                            <div class="form-group" >
+                                <input value="<?php echo ($user['0']['price_private_spy_2_spy']) ? $user['0']['price_private_spy_2_spy'] : '' ?>" type="text" class="form-control" id="price_private_spy_2_spy" name="price_private_spy_2_spy" placeholder="Enter Private spy to spy call price">
+                            </div>
+
+                             <div class="form-group" >
+                                <input value="<?php echo ($user['0']['price_full_private']) ? $user['0']['price_full_private'] : '' ?>" type="text" class="form-control" id="price_full_private" name="price_full_private" placeholder="Enter Full private call price">
+                            </div>
+
                         </div>
                         <div class="form-two-col">
                             <div class="form-group">

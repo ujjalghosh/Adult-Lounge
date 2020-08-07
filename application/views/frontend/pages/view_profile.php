@@ -31,7 +31,7 @@
 
   <div class="group-message">
 <div class="group-message-text">
-	<?php if ($user[0]['performer_live'] == 2 && $user[0]['perform_type'] == 'group') {
+	<?php if ($user[0]['performer_live'] == 2) {
 			?>
 <h3><?php if ($user[0]['display_name'] != '') {
 				print $user[0]['display_name'];
@@ -98,7 +98,7 @@
 <div class="dropdown-menu dropdown-show-type">
 <h3>SELECT SHOW TYPE</h3>
 <ul>
-	<?php if ($user[0]['perform_type'] == 'private' && $user[0]['performer_live'] == 1): ?>
+	<?php if ($user[0]['performer_live'] == 1): ?>
 <li class="bg-light-pink">
 <?php if ($this->session->userdata('UserType')) {
 	?>
@@ -117,8 +117,8 @@
 
 <?php endif?>
 
-	<?php if ($user[0]['perform_type'] == 'group' && $user[0]['performer_live'] != 0): ?>
-<li class="bg-light-pink">
+	<?php if ($user[0]['performer_live'] != 0): ?>
+<li class="bg-light-gray">
 <?php if ($this->session->userdata('UserType')) {
 	?>
 	<a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
@@ -132,6 +132,46 @@
 </li>
 
 <?php endif?>
+
+
+
+
+	<?php if ($user[0]['performer_live'] != 0): ?>
+<li class="bg-light-green">
+<?php if ($this->session->userdata('UserType')) {
+	?>
+	<a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+		print $user[0]['display_name'];
+	} else {
+		print $user[0]['name'];
+	}?>',3)">Private spy to spy <span>$<?=$user[0]['price_private_spy_2_spy']?> P/M</span></a>
+<?php } else {?>
+<a href="<?=base_url('login')?>" class="btn">Private spy to spy <span>$<?=$user[0]['price_private_spy_2_spy']?> P/M</span></a>
+		<?php }?>
+</li>
+
+<?php endif?>
+
+
+<?php if ($user[0]['performer_live'] != 0): ?>
+<li class="bg-deep-pink">
+<?php if ($this->session->userdata('UserType')) {
+	?>
+	<a href="javascript:void(0);" class="btn text-center" id="videostartButton" onclick="startVideoChat('<?=$user[0]['id']?>', '<?php if ($user[0]['display_name'] != '') {
+		print $user[0]['display_name'];
+	} else {
+		print $user[0]['name'];
+	}?>',4)">Full Private <span>$<?=$user[0]['price_full_private']?> P/M</span></a>
+<?php } else {?>
+<a href="<?=base_url('login')?>"   class="btn">Full Private<span>$<?=$user[0]['price_full_private']?> P/M</span></a>
+		<?php }?>
+</li>
+
+<?php endif?>
+
+
+
+
 </ul>
 </div>
 </div>
@@ -878,6 +918,7 @@ function roomJoined(room) {
     var previewContainer = document.getElementById('remote-media');
     attachTracks([track], previewContainer);
     console.warn(participant)
+    $('#remoteVideo').hide();
    var video = document.querySelector('video');
 	//video.muted = true;
 	video.play();

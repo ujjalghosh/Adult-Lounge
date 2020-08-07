@@ -112,6 +112,7 @@ if (!empty($chat)) {
                 </div>
             </div>
         </div>
+                <div id="start_wait" class="overlay"><div class="center"><p>Please wait..</p> </div></div>
     </section>
 </main>
 <script src="<?=base_url('assets/js/')?>quickstart.js"></script>
@@ -234,21 +235,21 @@ $.getJSON('videochat/access_token', function(data) {
       alert('Your room is missing.');
       return;
     }
-
+    $('#start_wait').show();
     log("Starting live...");
     var connectOptions = {
       name: roomName,
       logLevel: 'debug',
-      bandwidthProfile: {
-      video: {
-        dominantSpeakerPriority: 'high',
-        mode: 'collaboration',
-        renderDimensions: {
-          high: { height: 720, width: 1280 },
-          standard: { height: 90, width: 160 }
-        }
+        bandwidthProfile: {
+    video: {
+      dominantSpeakerPriority: 'high',
+      mode: 'collaboration',
+      renderDimensions: {
+        high: { height: 720, width: 1280 },
+        standard: { height: 90, width: 160 }
       }
-    },
+    }
+  },
       video: { height: 720, frameRate: 24, width: 1280 },
       audio: true
     };
@@ -260,6 +261,7 @@ $.getJSON('videochat/access_token', function(data) {
     // Join the Room with the token from the server and the
     // LocalParticipant's Tracks.
     Video.connect(data.token, connectOptions).then(roomJoined, function(error) {
+      $('#start_wait').hide();
       log('Could not start: ' + error.message);
     });
   };
@@ -267,6 +269,7 @@ $.getJSON('videochat/access_token', function(data) {
   // Bind button to leave Room.
   document.getElementById('button-leave').onclick = function() {
     log('Leaving room...');
+    stop_time();
     activeRoom.disconnect();
   };
 });
@@ -274,9 +277,13 @@ $.getJSON('videochat/access_token', function(data) {
 // Successfully connected!
 function roomJoined(room) {
   window.room = activeRoom = room;
-  $.get('<?=base_url('videochat/start_live_video')?>', function(data) {
+$.get('<?=base_url('videochat/start_live_video')?>', function(data) {
     start_id=data
     });
+  //start active time
+  start(0);
+  $('#start_wait').hide();
+
   log("Started as '" + identity + "'");
   document.getElementById('button-join').style.display = 'none';
   document.getElementById('button-leave').style.display = 'inline';
@@ -322,7 +329,7 @@ function roomJoined(room) {
   // Once the LocalParticipant leaves the room, detach the Tracks
   // of all Participants, including that of the LocalParticipant.
   room.on('disconnected', function() {
-    $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
+     $.get('<?=base_url('videochat/stop_live_video')?>/'+start_id, function(data) {
       /*optional stuff to do after success */
     });
     log('Left');
@@ -342,6 +349,7 @@ function roomJoined(room) {
 
 // Preview LocalParticipant's Tracks.
 document.getElementById('button-preview').onclick = function() {
+   $('#start_wait').show();
   var localTracksPromise = previewTracks
     ? Promise.resolve(previewTracks)
     : Video.createLocalTracks();
@@ -352,8 +360,10 @@ document.getElementById('button-preview').onclick = function() {
     if (!previewContainer.querySelector('video')) {
       attachTracks(tracks, previewContainer);
     }
+     $('#start_wait').hide();
   }, function(error) {
     console.error('Unable to access local media', error);
+    $('#start_wait').hide();
     log('Unable to access Camera and Microphone');
   });
 };

@@ -293,6 +293,8 @@ class Home extends Common_Controller {
 			'currency' => $this->input->post('currency'),
 			'price_in_private' => $this->input->post('price_in_private'),
 			'price_in_group' => $this->input->post('price_in_group'),
+			'price_full_private' => $this->input->post('price_full_private'),
+			'price_private_spy_2_spy' => $this->input->post('price_private_spy_2_spy'),
 			'performer_type' => $this->input->post('performer_type'),
 			'subscription_rate' => $this->input->post('subscription_rate'),
 			'subscription_rate_for' => $this->input->post('subscription_rate_for'),

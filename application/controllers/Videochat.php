@@ -221,8 +221,18 @@ WHERE
 
 	function is_accepted($request_id = '') {
 
-		$row = $this->db->select('status')->where('id', $request_id)->from('video_chat')->get()->row();
+		$row = $this->db->select('V.status,L.end_at')
+			->where('V.id', $request_id)
+			->from('video_chat V')
+			->join('performer_live L', 'L.performer_id=V.performer_id and L.id=V.url_hash')
+			->get()->row();
+
+		//$row = $this->db->select('status')->where('id', $request_id)->from('video_chat')->get()->row();
 		if ($row) {
+			if ($row->end_at != '0000-00-00 00:00:00' && $row->end_at != '') {
+				$this->db->update('video_chat', array('status' => 4), array('id' => $request_id));
+			}
+
 			$return_data['status'] = TRUE;
 			$return_data['r_status'] = $row->status;
 		} else {
