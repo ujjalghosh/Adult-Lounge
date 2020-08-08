@@ -429,7 +429,8 @@ function commonSendChat(msg, rec_id, rec_typ, sndr_id, sndr_typ) {
             'receiver_id': rec_id,
             'receiver_type': rec_typ,
             'sender_id': sndr_id,
-            'sender_type': sndr_typ
+            'sender_type': sndr_typ,
+            'last_chat': $("#last_chat").val()
         },
         beforeSend: function () {
             $("#p_send_chat").prop('disabled', true);
@@ -681,7 +682,12 @@ $("#login-form").submit(function (e) {
             success: function (data) {
                 $("#login_btn").prop("disabled", false);
                 if (data == 'ok') {
+                    var ref_url=$('#ref_url').val();
+                    if(ref_url){
+                    window.location.href = ref_url;
+                    }else{                        
                     window.location.href = base_url;
+                    }
                 } else if (data == 'notok') {
                     $(".login-message").text('Something Went Wrong!!! Please Try Again.');
                     //swal_warning('Something Went Wrong!!! Please Try Again.');
@@ -1223,7 +1229,8 @@ $("#vcSendMsg").click(function () {
                 'receiver_id': r_id,
                 'receiver_type': $("#vcReceiverType").val(),
                 'sender_id': s_id,
-                'sender_type': $("#vcSenderType").val()
+                'sender_type': $("#vcSenderType").val(),
+                'last_chat': $("#last_chat").val()
             },
             beforeSend: function () {
                 $("#vcSendMsg").prop('disabled', true);

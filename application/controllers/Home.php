@@ -439,6 +439,8 @@ class Home extends Common_Controller {
 		$this->checkAge();
 		//$this->checkLogin();
 		$this->data['user'] = $this->getUserDetails($id);
+
+		$this->data['last_chat'] = $this->db->where('performer_id', $id)->order_by('id', 'desc')->get('performer_live')->row();
 		if ($this->session->userdata('UserId')) {
 			$this->data['current_user'] = $this->getUserDetails($this->session->userdata('UserId'))[0];
 		}

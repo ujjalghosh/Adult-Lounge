@@ -324,10 +324,19 @@ function roomJoined(room) {
   // When a Participant leaves the Room, detach its Tracks.
   room.on('participantDisconnected', function(participant) {
     log("Participant '" + participant.identity + "' left the room");
+   // stop_time();
+    //detachParticipantTracks(participant);
 
-stop_time();
 
+  var array =  participant.identity.split('~');
+    if(array[0]==<?=$this->session->userdata('vcPerformerId')?>){
+       stop_time();
+      window.location.href='performer/'+array[0]+'/'+array[1];
+    log("Participant '" + participant.identity + "' left the room");
     detachParticipantTracks(participant);
+  }
+
+
   });
 
   // Once the LocalParticipant leaves the room, detach the Tracks

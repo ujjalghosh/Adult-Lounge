@@ -109,6 +109,7 @@ class Videochat extends Common_Controller {
 			"receiver_id" => $this->input->post('receiver_id'),
 			"receiver_type" => $this->input->post('receiver_type'),
 			"msg" => $this->input->post('chat_msg'),
+			'live_id' => $this->input->post('last_chat'),
 		);
 		$chat_id = $this->cm->insert('chat', $insertData);
 		$usrnm = $this->cm->get_specific('users', array("id" => $this->input->post('sender_id')));

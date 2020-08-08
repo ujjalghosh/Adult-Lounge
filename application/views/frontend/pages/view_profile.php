@@ -12,6 +12,7 @@
 <input type="hidden" id="p_receiver_type" value="performer">
 <input type="hidden" id="p_sender_id" value="<?=$this->session->userdata('UserId')?>">
 <input type="hidden" id="p_sender_type" value="user">
+<input type="hidden" id="last_chat" value="<?=$last_chat->id?>">
 <?php }?>
 <main class="content-wrapper">
 <section class="content-sec">
@@ -163,8 +164,8 @@
 		print $user[0]['name'];
 	}?>',4)">Full Private <span>$<?=$user[0]['price_full_private']?> P/M</span></a>
 <?php } else {?>
-<a href="<?=base_url('login')?>"   class="btn">Full Private<span>$<?=$user[0]['price_full_private']?> P/M</span></a>
-		<?php }?>
+<a href="<?=base_url('login')?>" class="btn">Full Private<span>$<?=$user[0]['price_full_private']?> P/M</span></a>
+<?php }?>
 </li>
 
 <?php endif?>
@@ -267,7 +268,12 @@ if (!empty($chat)) {
 <div class="box003">
 <div class="btm-form">
 <input type="text" id="p_chat_msg" />
+<?php if ($this->session->userdata('UserType')) {
+	?>
 <input type="button" value="Send" id="p_send_chat" />
+<?php } else {?>
+<a href="<?=base_url('login')?>"  >Send</a>
+<?php }?>
 <ul>
 <li>
 <img src="<?=base_url('assets/images/icon-giftbox.png')?>" alt="Send Gift" />

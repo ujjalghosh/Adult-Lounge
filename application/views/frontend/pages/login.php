@@ -7,6 +7,15 @@
                 <h2><img src="<?=base_url('assets/images/line-logo.png')?>" alt="logo" /> Sign In</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lorem nisl. convallis nec semper quis, tincidunt non est. </p>
                 <form id="login-form" method="post" autocomplete="off">
+<?php
+if ($this->agent->is_referral()) {
+	echo '<input type="hidden" id="ref_url" value="' . $this->agent->referrer() . '">';
+} else {
+
+	echo '<input type="hidden" id="ref_url" value="' . $_SERVER['HTTP_REFERER'] . '">';
+}
+?>
+
                     <div class="form-group">
                         <input type="email" placeholder="Email" class="form-control username requiredCheck" data-check="Email" name="login_email" id="login_email" />
                     </div>
