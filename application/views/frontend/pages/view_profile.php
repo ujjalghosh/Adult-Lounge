@@ -1,3 +1,29 @@
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		    setInterval(function () {
+
+			$.ajax({
+			    type: "POST",
+			    url: base_url + "user-check-new-msg",
+			    data: {
+			        'last_id': $("#vcLastChatId").val(),
+			        'performer_id':'<?=$user[0]['id']?>',
+			    },
+			    cache: false,
+			    dataType:'json',
+			    success: function (data) {
+			        if(data.status==true){
+			            $('#mCSB_1_container').append(data.chatlist);
+			            $('#vcLastChatId').val(data.last_chat_id);
+			             scrollToLast();
+			        }
+			    }
+			});
+
+        //});
+    }, 5000);
+	});
+</script>
   <script src="//media.twiliocdn.com/sdk/js/video/releases/1.20.1/twilio-video.js"></script>
 <link rel="stylesheet" href="<?=base_url('assets/node_modules/lightgallery.js/dist/css/lightgallery.min.css')?>">
 <?php if (!$this->session->userdata('UserType')) {?>
@@ -12,8 +38,9 @@
 <input type="hidden" id="p_receiver_type" value="performer">
 <input type="hidden" id="p_sender_id" value="<?=$this->session->userdata('UserId')?>">
 <input type="hidden" id="p_sender_type" value="user">
-<input type="hidden" id="last_chat" value="<?=$last_chat->id?>">
 <?php }?>
+<input type="hidden" id="last_chat" value="<?=$last_chat->id?>">
+<input type="hidden" id="vcLastChatId" value="0">
 <main class="content-wrapper">
 <section class="content-sec">
 <div class="perform-widget perform-top-layout">
@@ -1003,7 +1030,12 @@ function leaveRoomIfJoined() {
 
 jQuery(document).ready(function($) {
 	$('#button-join').trigger('click');
+
 });
+
+
+
+
 
 </script>
 

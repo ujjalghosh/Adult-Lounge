@@ -15,6 +15,7 @@
 <input type="hidden" id="vcSenderType" value="performer">
 <input type="hidden" id="vcReceiverType" value="user">
 <?php }?>
+<input type="hidden" id="last_chat" value="<?=$last_chat->id?>">
 <main class="content-wrapper">
     <section class="content-sec">
         <div class="vid_chat">
@@ -82,7 +83,7 @@ if (!empty($chat)) {
 ?>
                         </ul>
                         <input type="hidden" id="vcLastChatId" value="<?=$vcLastChatId?>">
-                        <form class="msg_rply">
+                        <form class="msg_rply" id='frm_chat'>
                             <input type="text" id="vcMsgBody">
                             <input type="button" value="SEND" id="vcSendMsg">
                         </form>
@@ -381,5 +382,31 @@ function leaveRoomIfJoined() {
     activeRoom.disconnect();
   }
 }
+
+
+
+jQuery(document).ready(function($) {
+          setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: base_url + "check-new-msg",
+                data: {
+                    'last_id': $("#vcLastChatId").val()
+                },
+                cache: false,
+                dataType:'json',
+                success: function (data) {
+                    if(data.status==true){
+                        $('.vcChatList').append(data.chatlist);
+                        $('#vcLastChatId').val(data.last_chat_id);
+                        $('.vcChatList').animate({
+                            scrollTop: $('.vcChatList').get(0).scrollHeight
+                        }, 100);
+                    }
+                }
+            });
+        }, 5000);
+});
+
 
 </script>

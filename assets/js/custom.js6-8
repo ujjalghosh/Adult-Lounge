@@ -429,8 +429,7 @@ function commonSendChat(msg, rec_id, rec_typ, sndr_id, sndr_typ) {
             'receiver_id': rec_id,
             'receiver_type': rec_typ,
             'sender_id': sndr_id,
-            'sender_type': sndr_typ,
-            'last_chat': $("#last_chat").val()
+            'sender_type': sndr_typ
         },
         beforeSend: function () {
             $("#p_send_chat").prop('disabled', true);
@@ -439,10 +438,10 @@ function commonSendChat(msg, rec_id, rec_typ, sndr_id, sndr_typ) {
         cache: false,
         success: function (data) {
             var res = data.split('~~');
-            /*$("#last_chat_id").val(res[0]);
+            $("#last_chat_id").val(res[0]);
             $("#pop_last_chat").val(res[0]);
             $('#mCSB_1_container').append('<li style="text-align: right;">' + msg + '</li>');
-            $('.chatLstUl').append(res[1]);*/
+            $('.chatLstUl').append(res[1]);
             $("#p_chat_msg").val('');
             $("#pop_chat_msg").val('');
             $("#p_send_chat").prop('disabled', false);
@@ -472,11 +471,6 @@ function scrollToLast() {
         }, 500);
     }      
 }
-
-$('#frm_u_chat').submit(function(event) {
-    event.preventDefault();
-    $("#p_send_chat").trigger('click');
-});
 
 $("#p_send_chat").click(function () {
     if ($("#p_chat_msg").val() != '') {
@@ -687,12 +681,7 @@ $("#login-form").submit(function (e) {
             success: function (data) {
                 $("#login_btn").prop("disabled", false);
                 if (data == 'ok') {
-                    var ref_url=$('#ref_url').val();
-                    if(ref_url){
-                    window.location.href = ref_url;
-                    }else{                        
                     window.location.href = base_url;
-                    }
                 } else if (data == 'notok') {
                     $(".login-message").text('Something Went Wrong!!! Please Try Again.');
                     //swal_warning('Something Went Wrong!!! Please Try Again.');
@@ -1192,17 +1181,30 @@ $(document).ready(function () {
         $('.vcChatList').animate({
             scrollTop: $('.vcChatList').get(0).scrollHeight
         }, 1500);
-
+        setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: base_url + "vc-check-new-text",
+                data: {
+                    'last_id': $("#vcLastChatId").val(),
+                    'receiver_id': $("#vcPerformerId").val(),
+                    'sender_id': $("#vcUserId").val()
+                },
+                cache: false,
+                success: function (data) {
+                    var res = data.split('~~');
+                    if (res[0] != '') {
+                        $('.vcChatList').append(res[1]);
+                        $('#vcLastChatId').val(res[0]);
+                        $('.vcChatList').animate({
+                            scrollTop: $('.vcChatList').get(0).scrollHeight
+                        }, 100);
+                    }
+                }
+            });
+        }, 5000);
     }
 });
-
-$('#frm_chat').submit(function(event) {
-     event.preventDefault();
-   $('#vcSendMsg').trigger('click');
-});
-
-
-
 
 $("#vcSendMsg").click(function () {
     if ($("#vcMsgBody").val() != '') {
@@ -1221,8 +1223,7 @@ $("#vcSendMsg").click(function () {
                 'receiver_id': r_id,
                 'receiver_type': $("#vcReceiverType").val(),
                 'sender_id': s_id,
-                'sender_type': $("#vcSenderType").val(),
-                'last_chat': $("#last_chat").val()
+                'sender_type': $("#vcSenderType").val()
             },
             beforeSend: function () {
                 $("#vcSendMsg").prop('disabled', true);
@@ -1265,11 +1266,6 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
-
-function stop_time() {
-    clearInterval(interval);
-}
-
 /************** Custom ScrollBar----10-09-19 ****************/
 
 //$('body').overlayScrollbars({className : "os-theme-round-dark"}); 

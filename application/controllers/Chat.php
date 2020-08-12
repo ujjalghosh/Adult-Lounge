@@ -91,31 +91,69 @@ class Chat extends Common_Controller {
 	}
 
 	public function checkNewMsg() {
-		$chat = $this->db->query("select * from chat where ((sender_id = '" . $this->session->userdata('UserId') . "' AND receiver_id = '" . $this->input->post('rec_id') . "') OR (receiver_id = '" . $this->session->userdata('UserId') . "' AND sender_id = '" . $this->input->post('rec_id') . "')) AND id > '" . $this->input->post('last_chat_id') . "' AND send_stat = 0 order by id ASC")->result();
-		if (!empty($chat)) {
-			$data['newChat'] = $chat;
-			$html = $this->load->view('frontend/pages/ajax_load', $data, TRUE);
-			$data['newChat'] = array();
-			$data['newChatTwo'] = $chat;
-			$join[] = ['table' => 'user_preference up', 'on' => 'up.user_id = u.id', 'type' => 'left'];
-			$data['sessImg'] = $this->cm->select('users u', array('u.id' => $this->session->userdata('UserId')), 'u.name, u.usernm, u.image, up.display_name', 'u.id', 'desc', $join);
-			$data['usrImg'] = $this->cm->select('users u', array('u.id' => $this->input->post('rec_id')), 'u.id, u.name, u.usernm, u.image, up.display_name', 'u.id', 'desc', $join);
-			$htmlTwo = $this->load->view('frontend/pages/ajax_load', $data, TRUE);
-			$last_chat_id = '';
-			for ($i = 0; $i < count($chat); $i++) {
-				$last_chat_id = $chat[$i]->id;
-			}
-			$data = array(
-				'send_stat' => 1,
-			);
-			$this->db->where('id', $last_chat_id);
-			$this->db->update('chat', $data);
-		} else {
-			$html = '';
-			$htmlTwo = '';
-			$last_chat_id = '';
+/*		$chat = $this->db->query("select * from chat where ((sender_id = '" . $this->session->userdata('UserId') . "' AND receiver_id = '" . $this->input->post('rec_id') . "') OR (receiver_id = '" . $this->session->userdata('UserId') . "' AND sender_id = '" . $this->input->post('rec_id') . "')) AND id > '" . $this->input->post('last_chat_id') . "' AND send_stat = 0 order by id ASC")->result();
+if (!empty($chat)) {
+$data['newChat'] = $chat;
+$html = $this->load->view('frontend/pages/ajax_load', $data, TRUE);
+$data['newChat'] = array();
+$data['newChatTwo'] = $chat;
+$join[] = ['table' => 'user_preference up', 'on' => 'up.user_id = u.id', 'type' => 'left'];
+$data['sessImg'] = $this->cm->select('users u', array('u.id' => $this->session->userdata('UserId')), 'u.name, u.usernm, u.image, up.display_name', 'u.id', 'desc', $join);
+$data['usrImg'] = $this->cm->select('users u', array('u.id' => $this->input->post('rec_id')), 'u.id, u.name, u.usernm, u.image, up.display_name', 'u.id', 'desc', $join);
+$htmlTwo = $this->load->view('frontend/pages/ajax_load', $data, TRUE);
+$last_chat_id = '';
+for ($i = 0; $i < count($chat); $i++) {
+$last_chat_id = $chat[$i]->id;
+}
+$data = array(
+'send_stat' => 1,
+);
+$this->db->where('id', $last_chat_id);
+$this->db->update('chat', $data);
+} else {
+$html = '';
+$htmlTwo = '';
+$last_chat_id = '';
+}
+print $last_chat_id . '~~' . $html . '~~' . $htmlTwo;*/
+
+		$last_chat = $this->db->where('performer_id', $this->session->userdata('UserId'))->order_by('id', 'desc')->get('performer_live')->row();
+
+		$this->db->select(' c.id, c.sender_id, u.usernm sender_unm, c.receiver_id,   c.msg, c.created_at')
+			->from('chat c')
+			->join('users u', 'u.id = c.sender_id');
+		$l_id = $this->input->post('last_id');
+		if ($l_id > 0) {
+			$this->db->where('c.id>', $l_id);
 		}
-		print $last_chat_id . '~~' . $html . '~~' . $htmlTwo;
+
+		$this->db->order_by('c.id', 'ASC');
+		$vcNewChat = $this->db->get()->result();
+		//print_r($vcNewChat);
+		$last_chat_id = '';
+		$return_data['status'] = FALSE;
+		if (!empty($vcNewChat)) {
+			//$this->data['vcNewChat'] = $vcNewChat;
+			//$this->html = $this->load->view('frontend/pages/ajax_load', $this->data, TRUE);
+			$tot = count($vcNewChat);
+			//print_r($vcNewChat[$tot - 1]);
+			$last_chat_id = $vcNewChat[$tot - 1]->id;
+			$chatlist = '';
+			$uid = $this->session->userdata('UserId');
+			foreach ($vcNewChat as $Chat) {
+				$chatlist .= '<li class="align-' . ($Chat->sender_id == $uid ? 'right' : 'left') . '">
+                                <span>' . $Chat->msg . '</span>
+                                <span>' . $Chat->sender_unm . '</span>
+                            </li>';
+			}
+			$return_data['status'] = TRUE;
+			$return_data['chatlist'] = $chatlist;
+			$return_data['last_chat_id'] = $last_chat_id;
+		} else {
+			$return_data['status'] = FALSE;
+		}
+		echo json_encode($return_data);
+
 	}
 
 	public function searchUser() {

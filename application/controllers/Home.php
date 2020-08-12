@@ -453,7 +453,8 @@ class Home extends Common_Controller {
 			}
 		}
 
-		$this->data['chat'] = $this->cm->get_chat($this->session->userdata('UserId'), $id);
+		//$this->data['chat'] = $this->cm->get_chat($this->session->userdata('UserId'), $id);
+		$this->data['chat'] = '';
 		if ($this->session->userdata('UserType') == 1) {
 			$this->data['vote'] = $this->getVoteDetails($id);
 
@@ -620,6 +621,48 @@ class Home extends Common_Controller {
 		$response['videos'] = $videos;
 
 		echo json_encode($response);
+
+	}
+
+	public function checkNewMsg() {
+		$performer_id = $this->input->post('performer_id');
+		$last_chat = $this->db->where('performer_id', $performer_id)->order_by('id', 'desc')->get('performer_live')->row();
+
+		$this->db->select(' c.id, c.sender_id, u.usernm sender_unm, c.receiver_id,   c.msg, c.created_at')
+			->from('chat c')
+			->join('users u', 'u.id = c.sender_id');
+		$l_id = $this->input->post('last_id');
+		if ($l_id > 0 && $l_id != '') {
+			$this->db->where('c.id>', $l_id);
+		}
+		$this->db->where('c.live_id', $last_chat->id);
+		$this->db->order_by('c.id', 'ASC');
+		$vcNewChat = $this->db->get()->result();
+		//echo $this->db->last_query();
+		//print_r($vcNewChat);
+		$last_chat_id = '';
+		$return_data['status'] = FALSE;
+		if (!empty($vcNewChat)) {
+			//$this->data['vcNewChat'] = $vcNewChat;
+			//$this->html = $this->load->view('frontend/pages/ajax_load', $this->data, TRUE);
+			$tot = count($vcNewChat);
+			//print_r($vcNewChat[$tot - 1]);
+			$last_chat_id = $vcNewChat[$tot - 1]->id;
+			$chatlist = '';
+			$uid = $this->session->userdata('UserId');
+			foreach ($vcNewChat as $Chat) {
+				$chatlist .= '<li class="align-' . ($Chat->sender_id == $uid ? 'right' : 'left') . '">
+                                <span>' . $Chat->msg . '</span>
+                                <span>' . $Chat->sender_unm . '</span>
+                            </li>';
+			}
+			$return_data['status'] = TRUE;
+			$return_data['chatlist'] = $chatlist;
+			$return_data['last_chat_id'] = $last_chat_id;
+		} else {
+			$return_data['status'] = FALSE;
+		}
+		echo json_encode($return_data);
 
 	}
 

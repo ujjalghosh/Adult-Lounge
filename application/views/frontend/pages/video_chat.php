@@ -84,7 +84,7 @@ if (!empty($chat)) {
 ?>
                         </ul>
                         <input type="hidden" id="vcLastChatId" value="<?=$vcLastChatId?>">
-                        <form class="msg_rply">
+                        <form class="msg_rply" id='frm_chat'>
                             <input type="text" id="vcMsgBody">
                             <input type="button" value="SEND" id="vcSendMsg">
                         </form>
@@ -330,10 +330,10 @@ function roomJoined(room) {
 
   var array =  participant.identity.split('~');
     if(array[0]==<?=$this->session->userdata('vcPerformerId')?>){
-       stop_time();
+      stop_time();
       window.location.href='performer/'+array[0]+'/'+array[1];
-    log("Participant '" + participant.identity + "' left the room");
-    detachParticipantTracks(participant);
+      log("Participant '" + participant.identity + "' left the room");
+      detachParticipantTracks(participant);
   }
 
 

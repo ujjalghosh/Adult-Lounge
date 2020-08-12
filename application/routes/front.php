@@ -44,6 +44,7 @@ $route['full-chat-details'] = 'Chat/fullChatDetails';
 $route['delete-chat'] = 'Chat/deleteChat';
 $route['send-chat'] = 'Chat/sendChat';
 $route['check-new-msg'] = 'Chat/checkNewMsg';
+$route['user-check-new-msg'] = 'Home/checkNewMsg';
 $route['search-user'] = 'Chat/searchUser';
 
 $route['start_live'] = 'Videochat/start_live';

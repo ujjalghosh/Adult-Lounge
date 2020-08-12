@@ -19,6 +19,8 @@ class Videochat extends Common_Controller {
 	}
 
 	function start_live() {
+		$this->data['last_chat'] = $this->db->where('performer_id', $this->session->userdata('UserId'))->order_by('id', 'desc')->get('performer_live')->row();
+
 		$this->data['chat'] = $this->db->query("select c.id, c.sender_id, u.usernm sender_unm, c.receiver_id, up.usernm receiver_unm, c.msg, c.created_at from chat c left JOIN users u ON u.id = c.sender_id left JOIN users up ON up.id = c.receiver_id where (c.sender_id = '" . $this->session->userdata('UserId') . "' AND c.receiver_id = '" . $this->session->userdata('vcPerformerId') . "') OR (c.sender_id = '" . $this->session->userdata('vcPerformerId') . "' AND c.receiver_id = '" . $this->session->userdata('UserId') . "') order by c.id ASC")->result();
 		$this->data['subs'] = $this->cm->get_all('subscribe', array("user_id" => $this->session->userdata('UserId'), "performer_id" => $this->session->userdata('vcPerformerId')));
 		$this->data['usrnm'] = $this->db->query("select u.name, up.display_name from users u left join user_preference up on up.user_id = u.id where u.id = '" . $this->session->userdata('UserId') . "'")->result();
@@ -116,16 +118,43 @@ class Videochat extends Common_Controller {
 		print $chat_id . '~~' . $usrnm[0]->usernm;
 	}
 	public function vcCheckNewText() {
-		$vcNewChat = $this->db->query("select c.id, c.sender_id, u.usernm sender_unm, c.receiver_id, up.usernm receiver_unm, c.msg, c.created_at from chat c left JOIN users u ON u.id = c.sender_id left JOIN users up ON up.id = c.receiver_id where ((c.sender_id = '" . $this->input->post('receiver_id') . "' AND c.receiver_id = '" . $this->input->post('sender_id') . "') OR (c.sender_id = '" . $this->input->post('sender_id') . "' AND c.receiver_id = '" . $this->input->post('receiver_id') . "')) AND c.id > '" . $this->input->post('last_id') . "' order by c.id ASC")->result();
-		$last_chat_id = '';
-		if (!empty($vcNewChat)) {
-			$this->data['vcNewChat'] = $vcNewChat;
-			$this->html = $this->load->view('frontend/pages/ajax_load', $this->data, TRUE);
-			for ($i = 0; $i < count($vcNewChat); $i++) {
-				$last_chat_id = $vcNewChat[$i]->id;
-			}
+		$last_chat = $this->db->where('performer_id', $this->session->userdata('UserId'))->order_by('id', 'desc')->get('performer_live')->row();
+		/*$vcNewChat = $this->db->query("select c.id, c.sender_id, u.usernm sender_unm, c.receiver_id, up.usernm receiver_unm, c.msg, c.created_at from chat c left JOIN users u ON u.id = c.sender_id left JOIN users up ON up.id = c.receiver_id where ((c.sender_id = '" . $this->input->post('receiver_id') . "' AND c.receiver_id = '" . $this->input->post('sender_id') . "') OR (c.sender_id = '" . $this->input->post('sender_id') . "' AND c.receiver_id = '" . $this->input->post('receiver_id') . "')) AND c.id > '" . $this->input->post('last_id') . "' order by c.id ASC")->result();*/
+
+		$this->db->select(' c.id, c.sender_id, u.usernm sender_unm, c.receiver_id,   c.msg, c.created_at')
+			->from('chat c')
+			->join('users u', 'u.id = c.sender_id');
+		$l_id = $this->input->post('last_id');
+		if ($l_id > 0) {
+			$this->db->where('c.id>', $l_id);
 		}
-		print $last_chat_id . '~~' . $this->html;
+
+		$this->db->order_by('c.id', 'ASC');
+		$vcNewChat = $this->db->get()->result();
+		//print_r($vcNewChat);
+		$last_chat_id = '';
+		$return_data['status'] = FALSE;
+		if (!empty($vcNewChat)) {
+			//$this->data['vcNewChat'] = $vcNewChat;
+			//$this->html = $this->load->view('frontend/pages/ajax_load', $this->data, TRUE);
+			$tot = count($vcNewChat);
+			//print_r($vcNewChat[$tot - 1]);
+			$last_chat_id = $vcNewChat[$tot - 1]->id;
+			$chatlist = '';
+			$uid = $this->session->userdata('UserId');
+			foreach ($vcNewChat as $Chat) {
+				$chatlist .= '<li class="align-' . ($Chat->sender_id == $uid ? 'right' : 'left') . '">
+							    <span>' . $Chat->msg . '</span>
+							    <span>' . $Chat->sender_unm . '</span>
+							</li>';
+			}
+			$return_data['status'] = TRUE;
+			$return_data['chatlist'] = $chatlist;
+			$return_data['last_chat_id'] = $last_chat_id;
+		} else {
+			$return_data['status'] = FALSE;
+		}
+		echo json_encode($return_data);
 	}
 	public function checkWebcamPerformer() {
 		$this->cm->update('users', array("id" => $this->input->post('performer_id')), array("hasWebcam" => $this->input->post('hasCamera')));

@@ -255,7 +255,7 @@ var elem = document.querySelector('.grid');
 var msnry = new Masonry( elem, {
   itemSelector: '.grid-item',
   columnWidth: 200
-}); 
+});
 var msnry = new Masonry( '.grid', {
 });
 */
@@ -295,6 +295,24 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+<style>
+    li.align-right {
+    float: right;
+    padding-left: 20%;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    text-align: right;
+    width: 100%;
+}
+li.align-left {
+    width: 50%;
+    float: left;
+    padding-right: 20%;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+</style>
 </body>
 
 </html>
